@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LeeCode151_翻转字符串里的单词 | 不做Deadline选手</title>
+  <meta name="keywords" content=" 字符串 ">
+  <meta name="description" content="LeeCode151_翻转字符串里的单词 | 不做Deadline选手">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="笔名：不做Deadline选手 签名：奋起直追的凤尾 个人介绍：男，出生于1998年，本科生，数据科学方向，对足球和计算机领域感兴趣。 希望实现自我价值的同时可以为世界带来更多的正能量。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于作者">
+<meta property="og:url" content="http://yoursite.com/about/index.html">
+<meta property="og:site_name" content="不做Deadline选手">
+<meta property="og:description" content="笔名：不做Deadline选手 签名：奋起直追的凤尾 个人介绍：男，出生于1998年，本科生，数据科学方向，对足球和计算机领域感兴趣。 希望实现自我价值的同时可以为世界带来更多的正能量。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-19T01:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-19T01:21:52.147Z">
+<meta property="article:author" content="Ryan">
+<meta property="article:tag" content="Student">
+<meta property="article:tag" content=" Computer Science">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/William.png">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/William.png" />
+</a>
+<div class="author">
+    <span>Ryan</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="github" href="https://github.com/weiren1998" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/7c14f989b183" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=876819220&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="email" href="mailto:876819220@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(11)</small></div></li>
+    
+        
+            
+            <li><div data-rel="Coding">Coding<small>(4)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="English">English<small>(2)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Thoughts">Thoughts<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Configs">Configs<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="DL&amp;CV">DL&amp;CV<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    </div>
+    <div><a class="about  site_url"  href="/about">关于</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="11">
+<input type="hidden" id="yelog_site_word_count" value="23.5k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color4">字符串</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">规划</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">英语</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">托福</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">blog</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">数组</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">查找</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">二分查找</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">hexo</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">字符数组</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">替换</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">写作</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">链表</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">链表遍历</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">vector</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">鸡汤</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">football</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">CS231n</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">CV</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Note</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="Coding "
+           href="/2020/04/10/LeeCode151_%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/"
+           data-tag="字符串"
+           data-author="" >
+            <span class="post-title" title="LeeCode151_翻转字符串里的单词">LeeCode151_翻转字符串里的单词</span>
+            <span class="post-date" title="2020-04-10 23:42:26">2020/04/10</span>
+        </a>
+        
+        <a id="top" class="English "
+           href="/2020/04/19/051620%E6%89%98%E7%A6%8F%E5%A4%87%E8%80%83%E8%A7%84%E5%88%92/"
+           data-tag="规划,英语,托福"
+           data-author="" >
+            <span class="post-title" title="0516托福备考规划">0516托福备考规划</span>
+            <span class="post-date" title="2020-04-19 18:13:25">2020/04/19</span>
+        </a>
+        
+        <a  class="Thoughts "
+           href="/2020/04/06/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/"
+           data-tag="blog"
+           data-author="" >
+            <span class="post-title" title="关于博客的一点思考">关于博客的一点思考</span>
+            <span class="post-date" title="2020-04-06 17:02:42">2020/04/06</span>
+        </a>
+        
+        <a  class="Coding "
+           href="/2020/04/07/%E5%89%91%E6%8C%87offer1_%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/"
+           data-tag="数组,查找,二分查找"
+           data-author="" >
+            <span class="post-title" title="剑指offer1_二维数组中的查找">剑指offer1_二维数组中的查找</span>
+            <span class="post-date" title="2020-04-07 22:53:27">2020/04/07</span>
+        </a>
+        
+        <a  class="Configs "
+           href="/2020/04/06/%E6%90%AD%E5%BB%BAHexo%E7%8E%AF%E5%A2%83%20&%20Quick%20Start/"
+           data-tag="hexo"
+           data-author="" >
+            <span class="post-title" title="搭建Hexo环境 &amp; Quick Start">搭建Hexo环境 &amp; Quick Start</span>
+            <span class="post-date" title="2020-04-06 16:54:03">2020/04/06</span>
+        </a>
+        
+        <a  class="Coding "
+           href="/2020/04/09/%E5%89%91%E6%8C%87offer2_%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2/"
+           data-tag="字符数组,替换"
+           data-author="" >
+            <span class="post-title" title="剑指offer2_空格替换">剑指offer2_空格替换</span>
+            <span class="post-date" title="2020-04-09 17:30:17">2020/04/09</span>
+        </a>
+        
+        <a  class="English "
+           href="/2020/04/26/%E7%99%BE%E5%8F%A5%E5%A4%A9%E5%A4%A9%E7%BB%83/"
+           data-tag="英语,写作"
+           data-author="" >
+            <span class="post-title" title="百句天天练">百句天天练</span>
+            <span class="post-date" title="2020-04-26 22:14:20">2020/04/26</span>
+        </a>
+        
+        <a  class="Coding "
+           href="/2020/04/09/%E5%89%91%E6%8C%87offer3_%E4%BB%8E%E5%B0%BE%E5%88%B0%E5%A4%B4%E6%89%93%E5%8D%B0%E9%93%BE%E8%A1%A8/"
+           data-tag="链表,链表遍历,vector"
+           data-author="" >
+            <span class="post-title" title="剑指offer3_从尾到头打印链表">剑指offer3_从尾到头打印链表</span>
+            <span class="post-date" title="2020-04-09 17:44:28">2020/04/09</span>
+        </a>
+        
+        <a  class="Thoughts "
+           href="/2020/04/18/%E8%9B%8B%E7%B3%95%E4%B8%8E%E7%B3%96/"
+           data-tag="鸡汤"
+           data-author="" >
+            <span class="post-title" title="蛋糕与糖">蛋糕与糖</span>
+            <span class="post-date" title="2020-04-18 22:53:45">2020/04/18</span>
+        </a>
+        
+        <a  class="Thoughts "
+           href="/2020/04/07/%E8%B6%B3%E7%90%83%E5%92%8C%E6%88%91%E7%9A%84%E6%95%85%E4%BA%8B/"
+           data-tag="football"
+           data-author="" >
+            <span class="post-title" title="足球和我的故事">足球和我的故事</span>
+            <span class="post-date" title="2020-04-07 15:00:14">2020/04/07</span>
+        </a>
+        
+        <a  class="DL&amp;CV "
+           href="/2020/04/24/CS231n/"
+           data-tag="CS231n,CV,Note"
+           data-author="" >
+            <span class="post-title" title="Standford CS231n 2017 Summary">Standford CS231n 2017 Summary</span>
+            <span class="post-date" title="2020-04-24 17:15:35">2020/04/24</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-LeeCode151_翻转字符串里的单词" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">LeeCode151_翻转字符串里的单词</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a  data-rel="Coding">Coding</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color4">字符串</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-04-19 09:10:53'>2020-04-10 23:42</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:704</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-解题"><span class="toc-text">C++解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路1：整体反转-单词反转"><span class="toc-text">思路1：整体反转+单词反转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度分析："><span class="toc-text">复杂度分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路2-利用双端队列或栈"><span class="toc-text">思路2 利用双端队列或栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度分析：-1"><span class="toc-text">复杂度分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点总结"><span class="toc-text">知识点总结</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
+<p>给定一个字符串，逐个翻转字符串中的每个单词。<br>无空格字符构成一个单词。<br>输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。<br>如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</p>
+</blockquote>
+<p>示例 1：</p>
+<pre><code>输入: &quot;the sky is blue&quot;
+输出: &quot;blue is sky the&quot;</code></pre><p>示例 2：</p>
+<pre><code>输入: &quot;  hello world!  &quot;
+输出: &quot;world! hello&quot;
+解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</code></pre><p>题目链接：<a href="https://leetcode-cn.com/problems/reverse-words-in-a-string" target="_blank" rel="noopener">151. 翻转字符串里的单词</a></p>
+<h2 id="C-解题"><a href="#C-解题" class="headerlink" title="C++解题"></a>C++解题</h2><h3 id="思路1：整体反转-单词反转"><a href="#思路1：整体反转-单词反转" class="headerlink" title="思路1：整体反转+单词反转"></a>思路1：整体反转+单词反转</h3><ul>
+<li>我们也可以不使用语言中的 API，而是自己编写对应的函数。在不同语言中，这些函数实现是不一样的，主要的差别是有些语言的字符串不可变（如 Java 和 Python)，有些语言的字符串可变（如 C++)。</li>
+<li>对于字符串可变的语言，不需要再额外开辟空间了，直接在字符串上原地实现。在这种情况下，反转字符和去除空格可以一起完成。</li>
+</ul>
+<p><img src="./LeeCode151_%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/c++%E6%80%9D%E8%B7%AF1.png" alt="图1.整体反转+单词反转"></p>
+<p>代码如下：</p>
+<pre><code class="C++">class Solution {
+public:
+    string reverseWords(string s) {
+        // 反转整个字符串
+        reverse(s.begin(), s.end());
+
+        int n = s.size();
+        int idx = 0;
+        for (int start = 0; start &lt; n; ++start) {
+            if (s[start] != &#39; &#39;) {
+                // 填一个空白字符然后将idx移动到下一个单词的开头位置
+                if (idx != 0) s[idx++] = &#39; &#39;;
+
+                // 循环遍历至单词的末尾
+                int end = start;
+                while (end &lt; n &amp;&amp; s[end] != &#39; &#39;) s[idx++] = s[end++];
+
+                // 反转整个单词
+                reverse(s.begin() + idx - (end - start), s.begin() + idx);
+
+                // 更新start，去找下一个单词
+                start = end;
+            }
+        }
+        s.erase(s.begin() + idx, s.end());
+        return s;
+    }
+};</code></pre>
+<h3 id="复杂度分析："><a href="#复杂度分析：" class="headerlink" title="复杂度分析："></a>复杂度分析：</h3><ul>
+<li>时间复杂度: $O(N)$，其中 N 为输入字符串的长度。</li>
+<li>空间复杂度: $O(1)$</li>
+</ul>
+<hr>
+<h3 id="思路2-利用双端队列或栈"><a href="#思路2-利用双端队列或栈" class="headerlink" title="思路2 利用双端队列或栈"></a>思路2 利用双端队列或栈</h3><ul>
+<li>将字符串分成单词一个个放到双端队列或栈中,按照栈的顺序输出</li>
+</ul>
+<p><img src="./LeeCode151_%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D/c++%E6%80%9D%E8%B7%AF2.png" alt="图1.队列或栈"></p>
+<p>代码如下：</p>
+<pre><code class="C++">class Solution {
+public:
+    string reverseWords(string s) {
+        int left = 0, right = s.size() - 1;
+        // 去掉字符串开头的空白字符
+        while (left &lt;= right &amp;&amp; s[left] == &#39; &#39;) ++left;
+
+        // 去掉字符串末尾的空白字符
+        while (left &lt;= right &amp;&amp; s[right] == &#39; &#39;) --right;
+
+        deque&lt;string&gt; d;
+        string word;
+
+        while (left &lt;= right) {
+            char c = s[left];
+            if (word.size() &amp;&amp; c == &#39; &#39;) {
+                // 将单词 push 到队列的头部
+                d.push_front(move(word));
+                word = &quot;&quot;;
+            }
+            else if (c != &#39; &#39;) {
+                word += c;
+            }
+            ++left;
+        }
+        d.push_front(move(word));
+
+        string ans;
+        while (!d.empty()) {
+            ans += d.front();
+            d.pop_front();
+            if (!d.empty()) ans += &#39; &#39;;
+        }
+        return ans;
+    }
+};</code></pre>
+<h3 id="复杂度分析：-1"><a href="#复杂度分析：-1" class="headerlink" title="复杂度分析："></a>复杂度分析：</h3><ul>
+<li>时间复杂度$O(n)$</li>
+</ul>
+<h3 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h3><ol>
+<li>单向链表的创建和遍历</li>
+<li>vector的运用，push_back(), insert()</li>
+<li>stack的运用，push(), size(), top(), pop()</li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 注:转载请注明来源，欢迎指出任何有错误或不够清晰的表达。可以邮件至 876819220@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo  </a>©2020 奋起直追的凤尾</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#字符串','#规划','#英语','#托福','#blog','#数组','#查找','#二分查找','#hexo','#字符数组','#替换','#写作','#链表','#链表遍历','#vector','#鸡汤','#football','#CS231n','#CV','#Note',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    .post {
+        background: url(/img/wallhaven-0pgeo9.png);
+    }
+    
+    
+    .post.index {
+        background: url(/img/wallhaven-0pgeo9.png);
+    }
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+        background: url("/img/naruto.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+<!--加入音乐模块bottom: 0; right: -10;-->
+<div style="position:absolute; bottom: 20px; right: 60px; ">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=240 height=52 src="//music.163.com/outchain/player?type=2&id=489499305&auto=1&height=32"></iframe>
+</div>
+</html>
