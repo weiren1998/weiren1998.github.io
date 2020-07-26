@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>剑指offer3_从尾到头打印链表 | 不做Deadline选手</title>
-  <meta name="keywords" content=" 链表 , 链表遍历 , vector ">
-  <meta name="description" content="剑指offer3_从尾到头打印链表 | 不做Deadline选手">
+  <title>深度学习实操 | 不做Deadline选手</title>
+  <meta name="keywords" content=" Linux , Screen , Pytorch , Anaconda ">
+  <meta name="description" content="深度学习实操 | 不做Deadline选手">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="笔名：不做Deadline选手 签名：奋起直追的凤尾 个人介绍：男，出生于1998年，本科生，数据科学方向，对足球和计算机领域感兴趣。 希望实现自我价值的同时可以为世界带来更多的正能量。">
 <meta property="og:type" content="website">
@@ -518,9 +518,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-剑指offer3_从尾到头打印链表" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux基本命令" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">剑指offer3_从尾到头打印链表</h1>
+        <h1 class="article-title">深度学习实操</h1>
     
     <div class="article-meta">
         
@@ -528,30 +528,32 @@
         
         <span class="book">
             
-                <a  data-rel="Coding">Coding</a>
+                <a  data-rel="CV">CV</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a class="color3">链表</a>
+            <a class="color1">Linux</a>
             
-            <a class="color5">链表遍历</a>
+            <a class="color2">Screen</a>
             
-            <a class="color2">vector</a>
+            <a class="color3">Pytorch</a>
+            
+            <a class="color4">Anaconda</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-19 09:11:30'>2020-04-09 17:44</time>
+        创建时间:<time class="date" title='更新时间: 2020-07-26 21:26:30'>2020-05-30 21:15</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:542</span>
+        <span>字数:1.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -570,7 +572,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单项列表结构体"><span class="toc-text">单项列表结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-解题"><span class="toc-text">C++解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路1：利用vector的push-back-插入后，再遍历使得前后反转"><span class="toc-text">思路1：利用vector的push_back()插入后，再遍历使得前后反转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路2：利用vector的vector-insert-vector-begin-x-从第一个元素前方插入元素，省去反转过程"><span class="toc-text">思路2：利用vector的vector.insert(vector.begin(),x)从第一个元素前方插入元素，省去反转过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路3：创建额外的stack，存入stack后在正向pop出来"><span class="toc-text">思路3：创建额外的stack，存入stack后在正向pop出来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#知识点总结"><span class="toc-text">知识点总结</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux基本命令"><span class="toc-text">Linux基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#再也不用担心程序中断的问题了"><span class="toc-text">再也不用担心程序中断的问题了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看文件个数"><span class="toc-text">查看文件个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复制文件"><span class="toc-text">复制文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看GPU使用情况"><span class="toc-text">查看GPU使用情况</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pytorch训练"><span class="toc-text">Pytorch训练</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到GPU"><span class="toc-text">部署到GPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习率"><span class="toc-text">学习率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#梯度查看"><span class="toc-text">梯度查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BN层-Batch-Normalization"><span class="toc-text">BN层(Batch Normalization)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Anaconda"><span class="toc-text">Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本操作"><span class="toc-text">基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟环境"><span class="toc-text">虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加镜像源（包下载速度加快）"><span class="toc-text">添加镜像源（包下载速度加快）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享环境"><span class="toc-text">分享环境</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图像指标"><span class="toc-text">图像指标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PSNR（峰值信噪比）"><span class="toc-text">PSNR（峰值信噪比）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSIM-structural-similarity-结构相似度"><span class="toc-text">SSIM(structural similarity) 结构相似度</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -586,99 +588,178 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
-<p>输入一个链表，按链表从尾到头的顺序返回一个ArrayList。</p>
-<p>时间限制：C/C++ 1秒，其他语言2秒 空间限制：C/C++ 32M，其他语言64M</p>
+        <h1 id="Linux基本命令"><a href="#Linux基本命令" class="headerlink" title="Linux基本命令"></a>Linux基本命令</h1><h2 id="再也不用担心程序中断的问题了"><a href="#再也不用担心程序中断的问题了" class="headerlink" title="再也不用担心程序中断的问题了"></a>再也不用担心程序中断的问题了</h2><blockquote>
+<p>GNU Screen可以看作是窗口管理器的命令行界面版本。它提供了统一的管理多个会话的界面和相应的功能。</p>
 </blockquote>
-<p>题目链接：<a href="https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tqId=11156&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking" target="_blank" rel="noopener">剑指offer3 从尾到头打印链表</a></p>
-<h2 id="单项列表结构体"><a href="#单项列表结构体" class="headerlink" title="单项列表结构体"></a>单项列表结构体</h2><pre><code class="C++">struct ListNode 
-{
-    int val;
-    struct ListNode *next;
-};</code></pre>
-<h2 id="C-解题"><a href="#C-解题" class="headerlink" title="C++解题"></a>C++解题</h2><h3 id="思路1：利用vector的push-back-插入后，再遍历使得前后反转"><a href="#思路1：利用vector的push-back-插入后，再遍历使得前后反转" class="headerlink" title="思路1：利用vector的push_back()插入后，再遍历使得前后反转"></a>思路1：利用vector的push_back()插入后，再遍历使得前后反转</h3><blockquote>
-<p>运行时间：4ms  占用内存：504k</p>
-</blockquote>
-<p>代码如下：</p>
-<pre><code class="C++">class Solution 
-{
-public:
-    vector&lt;int&gt; printListFromTailToHead(ListNode* head)
-    {
-        vector&lt;int&gt; ArrayList;
-        ListNode* p = head; // 防止head丢失
-        while (p)
-        {
-            ArrayList.push_back(p-&gt;val);
-            p = p-&gt;next;
-        }
-        // for(int i = 0; i &lt; ArrayList.size() / 2; i++) 和下方循环效果相同
-        for (int i = 0; i &lt; ArrayList.size() - i; i++)
-        {
-            int tmp = ArrayList[i];
-            ArrayList[i] = ArrayList[ArrayList.size() - 1 - i];
-            ArrayList[ArrayList.size() - 1 - i] = tmp;
+<ol>
+<li><p>简介：在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。</p>
+</li>
+<li><p>常用命令</p>
+<pre><code class="shell">screen -S name # 创建新的screen
+# 正常跑程序
+# Ctrl+A+D 中断当前screen
 
-        }
-        return ArrayList;
-    }
-};</code></pre>
-<p>复杂度分析：遍历链表复杂度为n，遍历vector复杂度也为n，所以总的时间复杂度为$O(n)$</p>
-<h3 id="思路2：利用vector的vector-insert-vector-begin-x-从第一个元素前方插入元素，省去反转过程"><a href="#思路2：利用vector的vector-insert-vector-begin-x-从第一个元素前方插入元素，省去反转过程" class="headerlink" title="思路2：利用vector的vector.insert(vector.begin(),x)从第一个元素前方插入元素，省去反转过程"></a>思路2：利用vector的vector.insert(vector.begin(),x)从第一个元素前方插入元素，省去反转过程</h3><blockquote>
-<p>运行时间：3ms  占用内存：456k</p>
+screen -ls # 查看当前所有的screen，并找到想要进入的id号
+screen -r id # 进入中断前的screen
+</code></pre>
+</li>
+<li><p>命令列表</p>
+<pre><code class="shell">$&gt; screen [-AmRvx -ls -wipe][-d &lt;作业名称&gt;][-h &lt;行数&gt;][-r &lt;作业名称&gt;][-s ][-S &lt;作业名称&gt;]
+
+-A 　将所有的视窗都调整为目前终端机的大小。
+-d   &lt;作业名称&gt; 　将指定的screen作业离线。
+-h   &lt;行数&gt; 　指定视窗的缓冲区行数。
+-m 　即使目前已在作业中的screen作业，仍强制建立新的screen作业。
+-r   &lt;作业名称&gt; 　恢复离线的screen作业。
+-R 　先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。
+-s 　指定建立新视窗时，所要执行的shell。
+-S   &lt;作业名称&gt; 　指定screen作业的名称。
+-v 　显示版本信息。
+-x 　恢复之前离线的screen作业。
+-ls或--list 　显示目前所有的screen作业。
+-wipe 　检查目前所有的screen作业，并删除已经无法使用的screen作业
+
+杀死screen虚拟环境
+exit
+screen -X -S [session # you want to kill] quit
+
+取消闪屏效果
+ctrl + a &amp; ctrl + g来停止当前screen的闪屏
+如果要对所有的screen生效，在~/.screenrc中加入vbell off
+
+快捷键
+ctrl + a + c：创建新窗口（create）
+ctrl + a + n：切换至下一个窗口（next）
+ctrl + a + p：切换至上一个窗口（previous）
+ctrl + a + w: 列出所有窗口
+ctrl + a + A: 窗口重命名
+ctrl + a + d：detach当前会话
+ctrl + a + [1-9]: 切换到指定窗口（1-9为窗口号）
+ctrl + d：退出（关闭）当前窗口</code></pre>
+</li>
+</ol>
+<h2 id="查看文件个数"><a href="#查看文件个数" class="headerlink" title="查看文件个数"></a>查看文件个数</h2><pre><code class="shell"># 查看文件夹下文件数
+ls -l |grep &quot;^-&quot;|wc -l
+# 查看文件夹下文件详情
+ls -l</code></pre>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><ul>
+<li>rm -rf ./*** r表示递归，f为强制删除没有提醒</li>
+<li>rm -r ./***</li>
+</ul>
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><ul>
+<li>cp -i ./copy/file/path ./target/path i表示重名时会提醒(-f为强制)</li>
+<li>cp -r ./copy/file/path ./target/path</li>
+</ul>
+<h2 id="查看GPU使用情况"><a href="#查看GPU使用情况" class="headerlink" title="查看GPU使用情况"></a>查看GPU使用情况</h2><ul>
+<li>nvidia-smi</li>
+<li>watch -n <strong>10</strong> -d nvidia-smi     #每隔10秒刷新一次</li>
+</ul>
+<h1 id="Pytorch训练"><a href="#Pytorch训练" class="headerlink" title="Pytorch训练"></a>Pytorch训练</h1><h2 id="部署到GPU"><a href="#部署到GPU" class="headerlink" title="部署到GPU"></a>部署到GPU</h2><ul>
+<li>CUDA_VISIBLE_DEVICES=6</li>
+</ul>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><h2 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h2><ul>
+<li>SGD</li>
+<li>SGD+Momentum</li>
+<li>RMSprop</li>
+<li>Adam</li>
+</ul>
+<pre><code class="Python">opt_SGD=torch.optim.SGD(net_SGD.parameters(),lr=LR)
+opt_Momentum=torch.optim.SGD(net_Momentum.parameters(),lr=LR,momentum=0.8)
+opt_RMSprop=torch.optim.RMSprop(net_RMSprop.parameters(),lr=LR,alpha=0.9)
+opt_Adam=torch.optim.Adam(net_Adam.parameters(),lr=LR,betas=(0.9,0.99))</code></pre>
+<h2 id="梯度查看"><a href="#梯度查看" class="headerlink" title="梯度查看"></a>梯度查看</h2><h2 id="BN层-Batch-Normalization"><a href="#BN层-Batch-Normalization" class="headerlink" title="BN层(Batch Normalization)"></a>BN层(Batch Normalization)</h2><blockquote>
+<p><a href="https://blog.csdn.net/Fate_fjh/article/details/53375881" target="_blank" rel="noopener">https://blog.csdn.net/Fate_fjh/article/details/53375881</a></p>
 </blockquote>
-<p>代码如下：</p>
-<pre><code class="C++">class Solution 
-{
-public:
-    vector&lt;int&gt; printListFromTailToHead(ListNode* head) 
-    {
-        vector&lt;int&gt; ArrayList;
-        ListNode* p = head;
-        if (p != NULL) // 首先要保证head指针不为空
-        {
-            ArrayList.insert(ArrayList.begin(), p-&gt;val); // 在第0个位置之前插入值
-            while (p-&gt;next != NULL) // 这里要保证head的子节点不为空
-            {
-                ArrayList.insert(ArrayList.begin(), p-&gt;next-&gt;val); // 这里添加的元素是子节点的值，而非当前节点的值
-                p = p-&gt;next;
-            }
-        }
-        return ArrayList;
-    }
-};</code></pre>
-<p>复杂度分析：时间复杂度$O(n)$</p>
-<h3 id="思路3：创建额外的stack，存入stack后在正向pop出来"><a href="#思路3：创建额外的stack，存入stack后在正向pop出来" class="headerlink" title="思路3：创建额外的stack，存入stack后在正向pop出来"></a>思路3：创建额外的stack，存入stack后在正向pop出来</h3><blockquote>
-<p>运行时间：4ms  占用内存：452k</p>
-</blockquote>
-<p>代码如下：</p>
-<pre><code class="C++">class Solution 
-{
-public:
-    vector&lt;int&gt; printListFromTailToHead(ListNode* head)
-    {
-        vector&lt;int&gt; ArrayList;
-        stack&lt;int&gt; tmp;
-        ListNode* p = head; // 防止head丢失
-        while (p != NULL)
-        {
-            tmp.push(p-&gt;val);
-            p = p-&gt;next;
-        }
-        int size = tmp.size();
-        for (int i = 0; i &lt; size; i++)
-        {
-            ArrayList.push_back(tmp.top()); //stack.top()取栈顶值
-            tmp.pop(); // 移除栈顶值
-        }
-        return ArrayList;
-    }
-};</code></pre>
-<p>复杂度分析：时间复杂度$O(n)$，运用额外的空间</p>
-<h3 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h3><ol>
-<li>单向链表的创建和遍历</li>
-<li>vector的运用，push_back(), insert()</li>
-<li>stack的运用，push(), size(), top(), pop()</li>
+<ol>
+<li>方法：在激活函数前，将输入的feature按照batch来进行标准化</li>
+<li>用途：解决梯度消失</li>
+<li>代码：<ul>
+<li>4维(N,<strong>C</strong>,H,W): self.bn1 = torch.nn.``BatchNorm2d`(<em>num_features</em> = <strong>C</strong>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=True</em>, <em>track_running_stats = True</em>)</li>
+</ul>
+</li>
+</ol>
+<h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><pre><code class="shell"># 获取版本号
+conda --version # 或 
+conda -V
+
+# 检查更新当前conda
+conda update conda
+
+# 包相关操作
+conda list # 查看
+conda search package_name # 查询
+conda install package_name # 安装
+conda install package_name=1.5.0 # 安装指定版本的包
+conda update package_name # 更新
+conda remove package_name # 删除</code></pre>
+<h2 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h2><pre><code class="shell"># 查看当前所有虚拟环境
+conda env list 
+# 创建名为your_env_name的环境
+conda create --name your_env_name
+
+# 激活虚拟环境（包需要在激活后安装）
+source activate your_env_name # Linux
+activate your_env_name # Windows
+# 退出虚拟环境
+source deactivate your_env_name # Linux
+deactivate env_name # Windows
+
+# 删除虚拟环境
+conda remove -n your_env_name --all
+conda remove --name your_env_name --all
+
+# 复制某个环境
+conda create --name new_env_name --clone old_env_name</code></pre>
+<h2 id="添加镜像源（包下载速度加快）"><a href="#添加镜像源（包下载速度加快）" class="headerlink" title="添加镜像源（包下载速度加快）"></a>添加镜像源（包下载速度加快）</h2><ol>
+<li><p>conda添加镜像</p>
+<pre><code class="shell"># windows：
+# 清华源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge 
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ # pytorch
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+
+# 中科大源
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+conda config --set show_channel_urls yes
+
+# Linux：将以上配置文件写在~/.condarc中
+vim ~/.condarc
+channels:
+  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - defaults
+show_channel_urls: true</code></pre>
+</li>
+<li><p>pip添加镜像</p>
+<pre><code class="shell"> # 二、pip 添加镜像
+ # 1.临时方法：
+ pip install jieba -i https://pypi.tuna.tsinghua.edu.cn/simple
+ # 2.永久设置方法：
+ pip install pip -U
+ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</code></pre>
+</li>
+</ol>
+<h2 id="分享环境"><a href="#分享环境" class="headerlink" title="分享环境"></a>分享环境</h2><pre><code class="shell">#首先通过activate target_env要分享的环境target_env，然后输入下面的命令会在当前工作目录下生成一个environment.yml文件
+conda env export &gt; environment.yml
+#小伙伴拿到environment.yml文件后，将该文件放在工作目录下，可以通过以下命令从该文件创建环境
+conda env create -f environment.yml</code></pre>
+<h1 id="图像指标"><a href="#图像指标" class="headerlink" title="图像指标"></a>图像指标</h1><h2 id="PSNR（峰值信噪比）"><a href="#PSNR（峰值信噪比）" class="headerlink" title="PSNR（峰值信噪比）"></a>PSNR（峰值信噪比）</h2><ol>
+<li>计算公式：$PSNR=10log_{10}{\frac{(2^{n}-1)^{2}}{MSE}}$ </li>
+<li>其中，MSE表示当前图像X和参考图像Y的均方误差（Mean Square Error），H、W分别为图像的高度和宽度；n为每像素的比特数，一般取8，即像素灰阶数为256</li>
+<li>PSNR的单位是dB，数值越大表示失真越小</li>
+</ol>
+<h2 id="SSIM-structural-similarity-结构相似度"><a href="#SSIM-structural-similarity-结构相似度" class="headerlink" title="SSIM(structural similarity) 结构相似度"></a>SSIM(structural similarity) 结构相似度</h2><ol>
+<li>计算公式</li>
+<li>是一种全参考的图像质量评价指标，它分别从亮度、对比度、结构三方面度量图像相似性。</li>
 </ol>
 
       
