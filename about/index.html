@@ -247,6 +247,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -735,6 +736,26 @@ if(canvas.getContext){
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'd0cbb9b4ac6f930d8fde',
+      clientSecret: 'ee24993cc20ba8e4457199d7052f2bae70817a82',
+      repo        : 'https://weiren1998.github.io/',
+      owner       : 'weiren1998',
+      admin       : ['weiren1998'],
+      id          : '3be7aa98d992907175cbd79c194399f2',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 
   <script async src="/js/cursor/fireworks.js"></script>
