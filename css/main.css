@@ -1252,7 +1252,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #6cab57;
+  background: #ffff05;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2040,41 +2040,6 @@ pre .javascript .function {
 #qr p {
   text-align: center;
 }
-#qr > div:hover p {
-  animation: roll 0.1s infinite linear;
-}
-@-moz-keyframes roll {
-  from {
-    transform: rotateZ(30deg);
-  }
-  to {
-    transform: rotateZ(-30deg);
-  }
-}
-@-webkit-keyframes roll {
-  from {
-    transform: rotateZ(30deg);
-  }
-  to {
-    transform: rotateZ(-30deg);
-  }
-}
-@-o-keyframes roll {
-  from {
-    transform: rotateZ(30deg);
-  }
-  to {
-    transform: rotateZ(-30deg);
-  }
-}
-@keyframes roll {
-  from {
-    transform: rotateZ(30deg);
-  }
-  to {
-    transform: rotateZ(-30deg);
-  }
-}
 .post-copyright {
   background: var(--card-bg-color);
   border-left: 3px solid #ff2a2a;
@@ -2844,7 +2809,7 @@ body {
 .comments {
   padding: 40px;
   margin: initial;
-  margin-top: sboffset;
+  margin-top: 2%;
   background: rgba(255,255,255,0.9);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   border-radius: 15px;
@@ -2853,7 +2818,8 @@ body {
   opacity: 0.8;
 }
 .header {
-  width: 90%;
+  margin-top: 1%;
+  width: 80%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
@@ -2866,7 +2832,7 @@ body {
   }
 }
 .container .main-inner {
-  width: 90%;
+  width: 80%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .container .main-inner {
@@ -2879,7 +2845,7 @@ body {
   }
 }
 .content-wrap {
-  width: calc(100% - 260px);
+  width: calc(100% - 320px);
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
@@ -2890,4 +2856,21 @@ body {
   .content-wrap {
     width: 100%;
   }
+}
+.back-to-top {
+  opacity: 1;
+  right: 60px;
+  width: 70px;
+  height: 900px;
+  top: -900px;
+  bottom: unset;
+  transition: all 0.5s ease-in-out;
+  background: url("/images/backtotop/scroll.png");
+}
+.back-to-top > i {
+  display: none;
+}
+.back-to-top.back-to-top-on {
+  bottom: unset;
+  top: calc(100vh - 900px - 200px);
 }
