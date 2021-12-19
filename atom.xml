@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2021-12-18T05:05:30.465Z</updated>
+  <updated>2021-12-19T07:46:46.579Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -17,23 +17,184 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://weiren1998.github.io/archives/4a17b156.html"/>
-    <id>https://weiren1998.github.io/archives/4a17b156.html</id>
-    <published>2021-12-15T05:14:48.057Z</published>
-    <updated>2021-12-18T05:05:30.465Z</updated>
+    <title>opencv在win10上部署</title>
+    <link href="https://weiren1998.github.io/archives/8901be7f.html"/>
+    <id>https://weiren1998.github.io/archives/8901be7f.html</id>
+    <published>2021-08-26T10:06:13.000Z</published>
+    <updated>2021-12-19T07:46:46.579Z</updated>
     
     
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/print_out/article/details/88558841&quot;&gt;https://blog.csdn.net/print_out/article/details/88558841&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装版本：opencv3.4.0&lt;/p&gt;
+&lt;p&gt;编译环境：visual studio 2017&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
     <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-    <category term="博客" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
     
+    
+    <category term="环境配置" scheme="https://weiren1998.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="opencv" scheme="https://weiren1998.github.io/tags/opencv/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux基本命令</title>
+    <link href="https://weiren1998.github.io/archives/4b6ea061.html"/>
+    <id>https://weiren1998.github.io/archives/4b6ea061.html</id>
+    <published>2021-05-28T08:50:25.509Z</published>
+    <updated>2021-12-19T08:20:37.737Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在实验室得服务器上运行跑代码时，总是会用到一些Linux的基础命令，在此做一些积累，方便之后不用百度再去查。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Linux" scheme="https://weiren1998.github.io/tags/Linux/"/>
+    
+    <category term="Screen" scheme="https://weiren1998.github.io/tags/Screen/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown语法</title>
+    <link href="https://weiren1998.github.io/archives/3c50d03d.html"/>
+    <id>https://weiren1998.github.io/archives/3c50d03d.html</id>
+    <published>2021-05-26T15:51:07.000Z</published>
+    <updated>2021-12-19T09:57:14.829Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;之前只学过一些基础的markdown语法，但今日需要用到表格、行内公式、行内代码、代码段、流程图、引用网址、引用图片等语法，因此在此总结，方便之后使用。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Markdown" scheme="https://weiren1998.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>悉尼雪城对比</title>
+    <link href="https://weiren1998.github.io/archives/8d8dca72.html"/>
+    <id>https://weiren1998.github.io/archives/8d8dca72.html</id>
+    <published>2021-05-26T10:54:20.000Z</published>
+    <updated>2021-12-19T08:03:54.489Z</updated>
+    
+    
+    <summary type="html">文章被加密了，输入密码后方可阅读~</summary>
+    
+    
+    
+    <category term="思考" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="学业" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/%E5%AD%A6%E4%B8%9A/"/>
+    
+    
+    <category term="重要决策" scheme="https://weiren1998.github.io/tags/%E9%87%8D%E8%A6%81%E5%86%B3%E7%AD%96/"/>
+    
+    <category term="思考" scheme="https://weiren1998.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Of Studies</title>
+    <link href="https://weiren1998.github.io/archives/8b15f764.html"/>
+    <id>https://weiren1998.github.io/archives/8b15f764.html</id>
+    <published>2020-07-07T12:42:12.888Z</published>
+    <updated>2021-12-19T10:02:42.141Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;of-studies&quot;&gt;Of Studies&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;——Francis Bacon&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Studies serve for delight, for ornament, and</summary>
+        
+      
+    
+    
+    
+    <category term="思考" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="读书笔记" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="读书" scheme="https://weiren1998.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+    <category term="鸡汤" scheme="https://weiren1998.github.io/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>足球和我的故事</title>
+    <link href="https://weiren1998.github.io/archives/4c58ca92.html"/>
+    <id>https://weiren1998.github.io/archives/4c58ca92.html</id>
+    <published>2020-04-07T07:00:14.079Z</published>
+    <updated>2021-12-19T14:42:59.047Z</updated>
+    
+    
+    <summary type="html">文章被加密了，输入密码后方可阅读~</summary>
+    
+    
+    
+    <category term="思考" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="足球" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/%E8%B6%B3%E7%90%83/"/>
+    
+    
+    <category term="思考" scheme="https://weiren1998.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="足球" scheme="https://weiren1998.github.io/tags/%E8%B6%B3%E7%90%83/"/>
+    
+    <category term="访谈" scheme="https://weiren1998.github.io/tags/%E8%AE%BF%E8%B0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>个人博客搭建 Hexo+Next</title>
+    <link href="https://weiren1998.github.io/archives/57027c96.html"/>
+    <id>https://weiren1998.github.io/archives/57027c96.html</id>
+    <published>2020-04-06T08:54:03.471Z</published>
+    <updated>2021-12-19T09:08:15.194Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;又一次做了修改哈哈哈，目前重新搭了一下所有的环境，沿用了next的Gemini主题，配置了很多有的没得，感谢几位大佬，学到了很多。这次直接在hexo的source/_data中对主题进行了修改，所以之后next更新后，不会有过多的影响，只有归档页的格式对主题中的一些文件进行了修改，其他均未在主题文件中进行改动。&lt;/p&gt;
+&lt;p&gt;主要参考：&lt;a href=&quot;https://tding.top/&quot;&gt;小丁的博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;back2top小猫：&lt;a href=&quot;http://yearito.cn/posts/hexo-theme-beautify.html&quot;&gt;yearito&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;归档&amp;amp;分类样式参考：&lt;a href=&quot;https://jrbcode.gitee.io/posts/be9758cd.html&quot;&gt;CodeHeap&lt;/a&gt; &lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="环境配置" scheme="https://weiren1998.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
     <category term="hexo" scheme="https://weiren1998.github.io/tags/hexo/"/>
+    
+    <category term="next" scheme="https://weiren1998.github.io/tags/next/"/>
     
   </entry>
   
