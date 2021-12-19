@@ -19,6 +19,10 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>博客</category>
+      </categories>
       <tags>
         <tag>hexo</tag>
       </tags>
