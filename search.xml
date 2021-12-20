@@ -43,6 +43,814 @@
       </tags>
   </entry>
   <entry>
+    <title>HOG特征</title>
+    <url>/archives/6a4ff405.html</url>
+    <content><![CDATA[<ul>
+<li>简介：HOG全称<strong>histogram of oriented gradients</strong>，中文是<strong>方向梯度直方图</strong>。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。</li>
+<li>主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述</li>
+<li>本质：梯度的统计信息，而梯度主要存在于边缘的地方</li>
+<li>优点：
+<ol type="1">
+<li>由于HOG是在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上</li>
+<li>在粗的空域抽样、精细的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响检测效果。因此HOG特征是特别适合于做图像中的人体检测的</li>
+</ol></li>
+</ul>
+<span id="more"></span>
+<h2 id="hog的原理">HOG的原理</h2>
+<ol type="1">
+<li>图像预处理：伽马校正和灰度化，也可不做，对实验影响不大。
+<ul>
+<li>伽马校正是减少光度对实验的影响</li>
+<li>灰度化是将彩色图片变成灰度图。其实彩色图片也可以直接处理，不过是分别对三通道的颜色值进行梯度计算，最后选择梯度最大的那个</li>
+<li>为简单起见，假设输入为灰度图，同时大小是**64*128**</li>
+</ul></li>
+<li>计算每个像素点的梯度大小和梯度方向
+<ul>
+<li>水平<span class="math inline">\(x\)</span>方向梯度<span class="math inline">\(\frac{\mathrm{d}f}{\mathrm{d} x}=\frac{f(x+1)-f(x-1)}{2}\approx f(x+1)-f(x-1)\)</span></li>
+<li>竖直<span class="math inline">\(y\)</span>方向的梯度<span class="math inline">\(\frac{\mathrm{d} f}{\mathrm{d} y}=\frac{f(y+1)-f(y-1)}{2}\approx f(y+1)-f(y-1)\)</span></li>
+<li>梯度大小<span class="math inline">\(||f&#39;|| = \sqrt{(\frac{\mathrm{d} f}{\mathrm{d} x})^2+(\frac{\mathrm{d} f}{\mathrm{d} y})^2}\)</span></li>
+<li>梯度方向<span class="math inline">\(\theta=tan^{-1}{(\frac{\mathrm{d} f}{\mathrm{d} y}/\frac{\mathrm{d} f}{\mathrm{d} x})}\)</span></li>
+</ul></li>
+<li>每8*8个pixel为一个cell，根据梯度方向的大小划分为9个bins，并将梯度大小根据梯度方向投递到不同的bin中，计算直方图</li>
+<li><span class="math inline">\(2*2\)</span>的cell为一个block，计算对block中<span class="math inline">\(2*2*9\)</span>个数字进行归一化，每个block得到一个大小为<span class="math inline">\(36\)</span>的特征向量</li>
+<li>对于<span class="math inline">\(64*128\)</span>大小的输入图像，用stride为1的block逐一计算每个block的特征向量，共得到<span class="math inline">\((8-1)*(16-1)\)</span>个<span class="math inline">\(36\)</span>维的特征向量，将其拉成一个concat成一个<span class="math inline">\(7*15*36=3780\)</span>维的特征向量，即为HOG特征</li>
+</ol>
+<blockquote>
+<p>参考文献：</p>
+<ol type="1">
+<li>https://zhuanlan.zhihu.com/p/40960756</li>
+<li>https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2<sub>all</sub>sobaiduweb~default-1-7929348&amp;spm=3001.4430</li>
+</ol>
+</blockquote>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>图像处理</tag>
+        <tag>图像边缘信息提取</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据预处理</title>
+    <url>/archives/e92b12e5.html</url>
+    <content><![CDATA[<blockquote>
+<p>做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。</p>
+</blockquote>
+<p>今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等</p>
+<span id="more"></span>
+<h1 id="basic-concepts">Basic Concepts</h1>
+<h2 id="nominal-vs.-numeric">Nominal vs. Numeric</h2>
+<ul>
+<li>Nominal(Categorical) Attributes: 取值是某个类别，类别属于一个特定的数据集，可以有序也可以无序。处理这类数据时，可以根据一定方法转化为Numeric的数据再处理。</li>
+<li>Numeric(continuous) Attributes: 取值是一个数值，有的可比（定比）有的不可比（定距），通常也要去量纲后才能在类别之间比较</li>
+</ul>
+<h2 id="type-of-data">Type of Data</h2>
+<ol type="1">
+<li>Data matrix</li>
+<li>Sequential</li>
+<li>graph</li>
+<li>transaction data</li>
+<li>spatio-temporal</li>
+</ol>
+<h2 id="noise">Noise</h2>
+<ol type="1">
+<li>Distortion of values: 例如语音中的噪声</li>
+<li>Adding of spurious examples</li>
+<li>Inconsistent and duplicate data</li>
+</ol>
+<blockquote>
+<p>最后一类是比较好处理的，前两类噪声可以通过信号、图像处理等方式处理，也可以通过机器学习的算法来消除，后者更准确</p>
+</blockquote>
+<h2 id="missing-values">Missing values</h2>
+<ol type="1">
+<li>删除有缺失值的数据项</li>
+<li>给缺失值赋值
+<ol type="1">
+<li>Nominal特征：采用多数投票方式，有以下两种方式
+<ul>
+<li>在总体中投票</li>
+<li>在该类别中投票</li>
+</ul></li>
+<li>Numerical特征：用k近邻点的均值赋值（最相似样本）</li>
+</ol></li>
+</ol>
+<h1 id="data-preprocessing">Data Preprocessing</h1>
+<h2 id="data-aggregation">Data aggregation</h2>
+<ol type="1">
+<li>定义：将两个或多个特征combine到一起</li>
+<li>目的：
+<ul>
+<li>减少数据维度</li>
+<li>减少计算量</li>
+<li>降低数据方差，使得数据更平稳</li>
+<li>缺点：有损失重要特征的风险</li>
+</ul></li>
+<li>降维方法Dimensionality reduction：
+<ul>
+<li>待补充</li>
+</ul></li>
+</ol>
+<h2 id="feature-extraction">Feature extraction</h2>
+<ol type="1">
+<li>定义：从原始数据中提取特征</li>
+<li><h2 id="目的得到更容易理解的数据">目的：得到更容易理解的数据</h2></li>
+</ol>
+<h2 id="feature-subset-selection">Feature subset selection</h2>
+<h2 id="converting-attributes-from-one-type-to-another">Converting attributes from one type to another</h2>
+<h2 id="normalization">Normalization</h2>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>数据预处理</tag>
+        <tag>挖坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>论文阅读：Analysis of Human Back Shape Using Surface Curvatures</title>
+    <url>/archives/8918aa0c.html</url>
+    <content><![CDATA[<p>给出一种评测标准，使其不受坐标系和病人位置的影响，这种方法叫做surface curvature表面曲率</p>
+<span id="more"></span>
+<h3 id="introduction">Introduction</h3>
+<ul>
+<li>Moire topogram不可以很好的刻画脊柱侧弯，因受坐标系和人体朝向的影响</li>
+<li>kyphosis 驼背可以通过图像表面特征用数字的方式得到较高的准确判断</li>
+<li>因此作者尝试并找到了Surface Curvature表面曲率的方法，该指标不受坐标系和人体位置的影响</li>
+</ul>
+<h3 id="curvature-shape">Curvature &amp; Shape</h3>
+<ul>
+<li>几何图形的两种表示形式：
+<ul>
+<li>将所有点的坐标存储，用以表示</li>
+<li>记录位置、朝向、大小、形状等来表示</li>
+</ul></li>
+<li>Global invariants：距离、面积、体积、角度</li>
+<li>Local invariants：只依赖于周围点的环境，表面曲率是一个局部不变量</li>
+<li>等高线图可以较好的描述平面曲率，不同角度的照片生成的等高线图不一致，无法直接比大小</li>
+<li>但同样的物体曲率是相同的</li>
+</ul>
+<h3 id="calculation-of-surface-curvature-from-photogrammetric-measurements">Calculation of Surface Curvature from Photogrammetric Measurements</h3>
+<ul>
+<li>用偏差来表示局部曲率，二维图像需要用两个独立方向的向量才可以描述局部形状，通常用两个正交的方向，每个方向对应一个<span class="math inline">\(k\)</span>值</li>
+<li>曲率<span class="math inline">\(k\)</span>：<span class="math inline">\(k=1/R\)</span>对应曲率圆半径的导数，曲率<span class="math inline">\(k=lim_{n-&gt;inf}弧长/圆心角\)</span>https://www.zhihu.com/question/30236122</li>
+<li>高斯曲率：<span class="math inline">\(K=k_1*k_2\)</span>，用高斯曲率的符号可以区分椭圆面(&gt;0)和马鞍面(&lt;0)</li>
+<li>主曲率：<span class="math inline">\(H=(k_1+k_2)/2\)</span>，其正负可以表示抛物面和椭圆面的凹凸关系(&gt;0凸，&lt;0凹)，但马鞍面会捣乱</li>
+</ul>
+<blockquote>
+<p>感谢Dr. Body的Jackal Xu，非常感谢他耐心的指引方向和讲解，虽然最终没能去实地实习，但非常感谢他对我的信任和指导，这种事情要记一辈子的！也希望你的事业有成，我很看好你的产品，加油！</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>脊柱侧弯检测</tag>
+        <tag>表面曲率</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>目标检测算法脉络梳理</title>
+    <url>/archives/78535d66.html</url>
+    <content><![CDATA[<blockquote>
+<p>目标检测（Object Detection）是计算机视觉中一个重要分支，其<strong>定义</strong>就是<strong>在给定的图片中精确找到物体所在位置，并标注出物体的类别。</strong>其主流方法包括<strong>R-CNN、Fast R-CNN、Faster R-CNN、YOLO、SSD</strong>等。主要<strong>难点</strong>在于<strong>物体尺寸变化大、物体摆放角度不同、出现位置随机、多物体、多类别</strong>等等。</p>
+<p>参考文献：https://www.julyedu.com/question/big/kp_id/32/ques_id/2103</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="目标检测常见算法">目标检测常见算法</h2>
+<ol type="1">
+<li>传统目标检测算法：
+<ul>
+<li>算法流程：基于滑动窗口的区域选择策略 + HOG/SIFT（提取特征） + SVM/Adaboost（分类器分类）</li>
+<li>主要问题：
+<ul>
+<li>滑动窗口的策略没有针对性，时间复杂度高，窗口冗余</li>
+<li>手工设计特征鲁棒性不高</li>
+</ul></li>
+</ul></li>
+<li>候选框+深度学习分类：
+<ul>
+<li>算法流程：提取候选区域，并用相应区域以深度学习的方法进行分类，如：
+<ul>
+<li>R-CNN: Selective Search + CNN + SVM</li>
+<li>SPP-net: ROI Pooling</li>
+<li>Fast R-CNN: Selective Search + CNN + ROI</li>
+<li>Faster R-CNN: RPN +CNN + ROI</li>
+<li>R-FCN</li>
+</ul></li>
+</ul></li>
+<li>基于深度学习的回归方法：YOLO/SSD/DenseBox等；以及结合RNN的RRC detection；结合DPM的Deformable CNN等</li>
+</ol>
+<h2 id="如何解决定位的问题">如何解决定位的问题？</h2>
+<blockquote>
+<p>因为初期是单目标检测，因此就是分类和定位这两个问题。而图像分类问题已经有很好的网络来提取图像特征了，那么此时如何做定位就是一个问题。</p>
+</blockquote>
+<ol type="1">
+<li><p>思路一：看做回归问题，预测(x,y,w,h)这四个参数</p>
+<ol type="1">
+<li>先搭建一个图像分类的网络，在这个基础上fine-tuning一下</li>
+<li>CNN提取特征部分不变，将网络尾部展开，加上Classification head和Regression head <img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/分类和回归头.png" width="80%" height="80%" align="center"></li>
+<li>其中Regression部分利用欧氏距离损失，并使用SGD训练</li>
+<li>预测阶段将2个头拼上，完成不同的部分</li>
+</ol>
+<blockquote>
+<p>上述步骤<strong>需要两次fine-tuning</strong>，第一次在AlexNet上；第二次在将头改为regression head后，前面保持不变，做一次fine-tuning。</p>
+<p><font color=red>Regression的收敛速度太慢，尝试用Classification代替回归，因此只是fine-tuningregression head，且前面参数值保持不变</font></p>
+</blockquote></li>
+<li>思路二：先取框，对每个框都利用分类头和回归头，这里分类头输出的是一个score，代表了当前框的分数，<font color=red>而回归头同样也是回归(x,y,w,h)这四个参数，但我没搞懂为什么回归？</font>
+<ul>
+<li>问题：框要取多大？怎么移动？</li>
+<li>取不同大小的框，步长为1的从左上移动到右下。此时时间复杂度高，窗口冗余严重</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>以上均是单个目标的检测，而对于多目标的检测而言，需要优化上述滑动窗口的方法</p>
+</blockquote>
+<h2 id="候选窗深度学习分类">候选窗+深度学习分类</h2>
+<h3 id="r-cnnregion-based-convolution-networks">R-CNN：Region-based Convolution Networks</h3>
+<ol type="1">
+<li>算法步骤</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/R-CNN示意图1.jpg" width="80%" height="80%" align="center"></p>
+<h2 id="补充">补充</h2>
+<h3 id="什么是iou">什么是IoU？</h3>
+<blockquote>
+<p>全称为Intersection-over-Union，即交并比，即检测框与GT框之间的交集面积除以并集的面积，用于评估检测框与GT之间的差距。</p>
+<p>在目标检测中，模型通常会生成大量（~2000）的候选框，根据每个框的置信度排序，以此计算框与框之间的IoU，并用非极大值抑制NMS删除多余的检测框</p>
+<p>**为什么以此计算框与框之间的IoU？NMS具体是什么？</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>目标检测</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CV面试之常识题</title>
+    <url>/archives/555d6097.html</url>
+    <content><![CDATA[<blockquote>
+<p>最近本科毕业，想回顾一下本科的学习内容，同时为实习&amp;找工作的面试做准备，刚好找到了一个网站，有一些“常识题”，自己需要积累并且背下来，加油！</p>
+<p>参考：https://www.julyedu.com/question/topic_list/32</p>
+<p>​ https://m.julyedu.com/problems/920</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="什么是归一化它和标准化的区别是什么">什么是归一化，它和标准化的区别是什么？</h3>
+<ol type="1">
+<li>定义
+<ul>
+<li>归一化：将数值规约到(0,1)或者(-1,1)
+<ul>
+<li>max-min归一化</li>
+<li>小数定标归一化</li>
+<li>softmax对数归一化：</li>
+<li>L2归一化</li>
+</ul></li>
+<li>标准化：将对应数据的分布规约到以均值为0，标准差为1的（近高斯）分布上
+<ul>
+<li>Z-score：减均值除标准差</li>
+</ul></li>
+</ul></li>
+<li>如何选择用哪种？
+<ul>
+<li>在不用计算距离（例如决策树算法）、计算协方差、不符合正态分布或必须严格控制在[0,1]之间（入RGB图像存储）时，用归一化；有异常点时不适合用归一化</li>
+<li>更符合统计假设的，比如数据服从正态分布，用标准化；
+<ul>
+<li>用到距离：聚类（Kmeans）、用到正则化的线性模型、KNN</li>
+<li>PCA降维</li>
+</ul></li>
+</ul></li>
+<li>注意事项：
+<ul>
+<li>训练集和测试集分别做标准化</li>
+<li>两者都可以去除量纲，只有量纲去除后，不同属性间才可以比大小（用来筛出重要或不重要指标）</li>
+<li>标准化后，梯度下降算法是在圆形而非椭圆形上寻找，因此收敛速度更快</li>
+</ul></li>
+</ol>
+<blockquote>
+<p>https://www.zhongxiaoping.cn/2019/01/15/%E6%A0%87%E5%87%86%E5%8C%96%E4%B8%8E%E6%AD%A3%E5%88%99%E5%8C%96/（）</p>
+<p>https://blog.csdn.net/u012768474/article/details/99871942</p>
+</blockquote>
+<h3 id="如何确定cnn的卷积核通道数和卷积输出层的通道数">如何确定CNN的卷积核通道数和卷积输出层的通道数？</h3>
+<ul>
+<li><p>CNN的卷积核通道数就是输入张量的通道数</p></li>
+<li><p>卷积输出层的通道数是卷积核的数量</p></li>
+</ul>
+<h3 id="什么是卷积">什么是卷积？</h3>
+<ul>
+<li>卷积定义：将三维矩阵（长*宽*通道）和一个固定数值的滤波矩阵做内积（逐个元素相乘再相加）</li>
+</ul>
+<h3 id="什么是池化层池化层如何反向传播">什么是池化层？池化层如何反向传播？</h3>
+<ul>
+<li>池化：对区域取平均值或最大值，分别叫做平均池化和最大池化</li>
+<li>池化作用：减小feature map的尺寸，同时不加入参数量</li>
+<li>池化层的反向传播：因为池化层没有参数，因此只是将误差传递到上一层
+<ul>
+<li>AvgPooling：反向传播时，把一个patch的值分成四块回传，其中每块是patch的平均</li>
+<li>MaxPooling：需要在前向传播时几下max id，从而在反向传播时，将一个patch的值赋值给max id，其他三块为0</li>
+</ul></li>
+</ul>
+<h3 id="简述什么是生成对抗网络">简述什么是生成对抗网络？</h3>
+<ul>
+<li>简介：生成对抗网络GAN（Generative Adversarial Network）。假设有两个模型，一个是生成模型(Generative Model，下文简写为G)，一个是判别模型(Discriminative Model，下文简写为D)，判别模型(D)的任务就是判断一个实例是真实的还是由模型生成的，生成模型(G)的任务是生成一个实例来骗过判别模型(D) ，两个模型互相对抗，发展下去就会达到一个平衡，生成模型生成的实例与真实的没有区别，判别模型无法区分自然的还是模型生成的。</li>
+</ul>
+<h3 id="roi-pooling-和roi-align区别">ROI Pooling 和ROI Align区别</h3>
+<blockquote>
+<p>目标检测相关，前者为Faster RCNN提出，后者为其改进，再Mask RCNN中提出</p>
+</blockquote>
+<ol type="1">
+<li><p>ROI Pooling</p></li>
+<li><p>ROI Align</p></li>
+</ol>
+<h3 id="iou评价指标">IOU评价指标</h3>
+<p>常用于目标检测，是一个评价指标，具体是指检测结果和GT之间的交集和并集的比值，即为准确率IoU。而通常会用1-IoU做为loss训练。其优点在于据有尺度不变性，非负且对称；缺点在于当交集为0时，无法比较两者远近；当存在交集时，无法知道两者如何相交。</p>
+<h3 id="knn和k-means的区别">KNN和K-means的区别</h3>
+<ul>
+<li>KNN是有监督学习的分类算法，没有前期训练过程，预测时直接统计离该点最近的K个点的类别，多数投票即可。</li>
+<li>K-means是聚类算法，属于非监督学习，有明显的训练过程，不断迭代中心点和类别标记，最终达到平衡。其中K是指有K个聚类中心。</li>
+</ul>
+<h3 id="k-means选择初始点的方法有哪些优缺点是什么">K-means选择初始点的方法有哪些,优缺点是什么?</h3>
+<ol type="1">
+<li>从样本中随机选取K个点进行初始化</li>
+<li>多次随机选取中心点并训练，选择使损失函数最小的那一组做为最优</li>
+<li>选择尽量远的K个样本做为中心点</li>
+<li>对于文本这种高维稀疏向量，可以选择K个两两正交的做为初始化中心点</li>
+</ol>
+<h4 id="简述线性分类器的原理">简述线性分类器的原理</h4>
+<ul>
+<li><p><span class="math inline">\(f(x_i,W,b)=Wx_i+b\)</span>，这是线性分类器的方程，其中参数<span class="math inline">\(W\)</span>是权重矩阵，参数<span class="math inline">\(b\)</span>是偏置向量，在图像分类任务中，<span class="math inline">\(x_i\)</span>的维度是<span class="math inline">\((w*h*c,1)\)</span>，而<span class="math inline">\(W\)</span>的维度是<span class="math inline">\((classNum,w*h*c)\)</span>，<span class="math inline">\(b\)</span>的维度是<span class="math inline">\((classNum,1)\)</span>。</p></li>
+<li><p>解释一：此时<span class="math inline">\(W\)</span>就的每一行就可以理解为是一个类别的线性分类器，该行对应的输出就可以理解为图像是这一类的概率是多少。</p></li>
+<li><p>解释二：另一种解释方法是认为<span class="math inline">\(W\)</span>的每一行对应一个分类模板，通过内积来比较图像和模板之间的相似程度，从这个角度看，线性分类器就是在利用学习到的模板针对图像做模板匹配。</p></li>
+</ul>
+<h3 id="什么是softmax层">什么是Softmax层？</h3>
+<h3 id="为什么用softmax归一化而不用直接算求和的占比">为什么用Softmax归一化，而不用直接算求和的占比？</h3>
+<h3 id="什么是交叉熵损失">什么是交叉熵损失？</h3>
+<h3 id="交叉熵损失和最大似然估计之间的关系">交叉熵损失和最大似然估计之间的关系</h3>
+<h3 id="激活函数是sigmoid时交叉熵损失和均方误差损失的区别">激活函数是sigmoid时，交叉熵损失和均方误差损失的区别</h3>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>挖坑</tag>
+        <tag>常识题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Action Spotting Experiments</title>
+    <url>/archives/e7d645d1.html</url>
+    <content><![CDATA[<blockquote>
+<p>最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="对比试验一判断skip-connection在tmm中是否有用">对比试验一：判断skip connection在TMM中是否有用</h3>
+<blockquote>
+<p>modify3_10 vs modify3_11: 在baseline的基础上加入TMM结构（12 3, 27 3, 40 3, 80 3）</p>
+</blockquote>
+<ol type="1">
+<li>modify3_10：两个TMB都有跳连操作</li>
+<li>modify3_11：两个TMB都没有跳连操作</li>
+</ol>
+<hr />
+<h3 id="对比试验二tam模块的作用">对比试验二：TAM模块的作用</h3>
+<blockquote>
+<p>目前全部加TAM的效果最好</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>实验</th>
+<th>设置</th>
+<th>screen</th>
+<th>nvidia</th>
+<th>参数量（万）</th>
+<th>s/epoch</th>
+<th>ave-mAP on V</th>
+<th>ave-mAP on T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>modify4_1</td>
+<td>全部卷积后面都加入TAM</td>
+<td>1</td>
+<td>0</td>
+<td>32</td>
+<td>43</td>
+<td>55.97</td>
+<td>54.74</td>
+</tr>
+<tr class="even">
+<td>modify4_2</td>
+<td>只在TMM中加入TAM</td>
+<td>2</td>
+<td>1</td>
+<td>27</td>
+<td>36</td>
+<td>57.92</td>
+<td>54.11</td>
+</tr>
+<tr class="odd">
+<td>modify4_3</td>
+<td>只在分类网络内加入TAM</td>
+<td>3</td>
+<td>2</td>
+<td>15</td>
+<td>32</td>
+<td>55.96</td>
+<td>53.52</td>
+</tr>
+<tr class="even">
+<td>modify4_4</td>
+<td>所有卷积后都不加TAM</td>
+<td>4</td>
+<td>3</td>
+<td>15</td>
+<td>32</td>
+<td>57.05</td>
+<td>54.98</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对比实验三model3_5基础上修改">对比实验三：Model3_5基础上修改</h3>
+<table>
+<thead>
+<tr class="header">
+<th>实验</th>
+<th>设置</th>
+<th>screen</th>
+<th>nvidia</th>
+<th>参数量（万）</th>
+<th>s/epoch</th>
+<th>ave-mAP on V</th>
+<th>ave-mAP on T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>model3_5</td>
+<td>无TAM结构，TMM：（33，53，73）</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>60.44</td>
+<td>59.37</td>
+</tr>
+<tr class="even">
+<td>model3_12</td>
+<td>TMM中加入TAM结构</td>
+<td>5</td>
+<td>4</td>
+<td>32</td>
+<td>34</td>
+<td>57.83</td>
+<td>56.32</td>
+</tr>
+<tr class="odd">
+<td>model3_13</td>
+<td>无TAM结构，TMM(33, 53, 73, 93)</td>
+<td>1</td>
+<td>0</td>
+<td>26</td>
+<td>36</td>
+<td>58.48</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>model3_14</td>
+<td>无TAM结构，TMM(33, 55, 77, 99)</td>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td>59.97</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="对比实验四baseline基础上实验tam">对比实验四：baseline基础上实验TAM</h3>
+<table>
+<thead>
+<tr class="header">
+<th>序号</th>
+<th>实验</th>
+<th>设置</th>
+<th>epoch</th>
+<th>screen</th>
+<th>nvidia</th>
+<th>参数量（万）</th>
+<th>s/epoch</th>
+<th>ave-mAP on V</th>
+<th>ave-mAP on T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>modify5_0</td>
+<td>Baseline</td>
+<td>600</td>
+<td>8</td>
+<td>7</td>
+<td>33</td>
+<td>16</td>
+<td>64.85</td>
+<td>61.15</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>model5_1</td>
+<td>只在conv1后加入</td>
+<td>600</td>
+<td>3</td>
+<td>2</td>
+<td>35</td>
+<td>16</td>
+<td><strong>65.55</strong></td>
+<td>62.49</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>model5_2</td>
+<td>只在conv2后加入</td>
+<td>600</td>
+<td>4</td>
+<td>3</td>
+<td>35</td>
+<td>16</td>
+<td>61.52</td>
+<td>60.94</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>model5_3</td>
+<td>只在conv3_后加入</td>
+<td>600</td>
+<td>5</td>
+<td>4</td>
+<td>39</td>
+<td>20</td>
+<td>64.30</td>
+<td><strong>62.95</strong></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>model5_4</td>
+<td>在conv1&amp;2后加入</td>
+<td>600</td>
+<td>6</td>
+<td>5</td>
+<td>36</td>
+<td>17</td>
+<td>63.70</td>
+<td>61.24</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>model5_5</td>
+<td>在conv1&amp;2&amp;3都加入</td>
+<td>600</td>
+<td>7</td>
+<td>6</td>
+<td>42</td>
+<td>19</td>
+<td>64.61</td>
+<td>61.45</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>5_6</td>
+<td>同5_1</td>
+<td>1000</td>
+<td>3</td>
+<td>2</td>
+<td>35</td>
+<td>16</td>
+<td>63.28</td>
+<td>62.20</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>5_7</td>
+<td>5_2</td>
+<td>1000</td>
+<td>4</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>63.97</td>
+<td>62.48</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>5_8</td>
+<td>5_3</td>
+<td>1000</td>
+<td>5</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td>65.04</td>
+<td>61.94</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>5_9</td>
+<td>5_4</td>
+<td>1000</td>
+<td>6</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td>65.09</td>
+<td>62.14</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>5_10</td>
+<td>5_5</td>
+<td>1000</td>
+<td>7</td>
+<td>6</td>
+<td></td>
+<td></td>
+<td>61.03</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>5_11</td>
+<td>5_0</td>
+<td>1000</td>
+<td>8</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td>64.42</td>
+<td>62.39</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>5_12</td>
+<td>5_3 加入BN</td>
+<td>600</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="对比试验五在baseline的基础上实验tmm">对比试验五：在baseline的基础上实验TMM</h3>
+<table>
+<thead>
+<tr class="header">
+<th>序号</th>
+<th>实验</th>
+<th>设置</th>
+<th>epoch</th>
+<th>screen</th>
+<th>nvidia</th>
+<th>参数量（万）</th>
+<th>s/epoch</th>
+<th>ave-mAP on V</th>
+<th>ave-mAP on T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>6_1</td>
+<td>baseline TMM(33, 53, 73)</td>
+<td>600</td>
+<td>2</td>
+<td>2</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>6_2</td>
+<td>36+TMM(53, 73, 93)+add</td>
+<td>600</td>
+<td>3</td>
+<td>3</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>6_5</td>
+<td>36+TMM(33, 93, 27 3)+add</td>
+<td>600</td>
+<td>6</td>
+<td>6</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>6_6</td>
+<td>36+TMM(73, 14 3, 21 3)+add</td>
+<td>600</td>
+<td>7</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>6_3</td>
+<td>36+TMM(33, 73, 11 3)+add</td>
+<td>600</td>
+<td>4</td>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>6_4</td>
+<td>36+TMM(53, 10 3, 15 3)+add</td>
+<td>600</td>
+<td>5</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>足球</tag>
+        <tag>毕业设计</tag>
+        <tag>实验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux基本命令</title>
     <url>/archives/4b6ea061.html</url>
     <content><![CDATA[<p>在实验室得服务器上运行跑代码时，总是会用到一些Linux的基础命令，在此做一些积累，方便之后不用百度再去查。</p>
@@ -184,6 +992,93 @@
       </tags>
   </entry>
   <entry>
+    <title>天文词汇 Astronomy</title>
+    <url>/archives/27799dd0.html</url>
+    <content><![CDATA[<h2 id="一太阳系-solar-system">一、太阳系 Solar System</h2>
+<h3 id="基本信息">1. 基本信息</h3>
+<ul>
+<li>在太阳的引力作用下(Under the control of the Sun's gravitational force)，周边有8个行星(planet)、67个卫星(moon)、至少50万个小行星(asteroid)、矮行星(dwarf planet)和少量彗星(comet)绕其运转</li>
+</ul>
+<span id="more"></span>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/Solar_System.jpg" width="50%" height="50%" align="center"></p>
+<ul>
+<li><p>太阳系分为<strong>内太阳系(inner solar system)</strong>和<strong>外太阳系(outer solar system)</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/inner_outer_solar_system.png" width="90%" height="90%" align="center"></p></li>
+</ul>
+<h3 id="详情">2. 详情</h3>
+<h4 id="star-sun-太阳">1. Star: Sun 太阳</h4>
+<ol type="1">
+<li>从内到外：Core(日核)、Radiative zone(辐射层)、Tachocline(差旋层)、Convective zone(对流层)、Photosphere(光球)、Atmosphere(太阳大气层是一种气态晕(Gaseous halo))</li>
+<li>Gaseous halo 气态晕：
+<ul>
+<li>chromospheres 色球层</li>
+<li>solar transition region 太阳过渡区</li>
+<li>corona 日冕</li>
+<li>heliosphere 太阳圈</li>
+</ul></li>
+<li>Solar eclipse 日食</li>
+<li>太阳风：当太阳中的太阳黑子(Sunspot)、耀斑(Solar flare)、日珥(Solar prominence)活动剧烈时，会产生太阳风，强烈时会影响通讯和航天设备运行</li>
+<li>Aurora 极光：太阳风与高纬度地区磁场交互后产生</li>
+</ol>
+<h4 id="planet-行星-搞懂tpo16-2planets-in-our-solar-system">2. Planet 行星 （搞懂：TPO16-2《Planets in Our Solar System》）</h4>
+<blockquote>
+<p>按照物理性质可分为类地行星(Terrestrial <strong>(Earth-like)</strong> planets)和类木行星(Jovian <strong>(Jupiter-like)</strong> planets)</p>
+<p>类地行星的特点：体积小、平均密度大、自转速度慢、卫星较少</p>
+<p>类木行星的特点：体积大、平均密度小、自转速度快、卫星较多</p>
+<p>在太阳的引力的控制下(Under the control of the Sun's gravitational force)，每个行星都保持一个椭圆轨道(maintains an elliptical orbit)，并且它们都沿相同的方向行进(travel in the same direction)</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/8_Planets.png" width="50%" height="50%" align="center"></p>
+<h5 id="mercury-水星">Mercury 水星</h5>
+<h5 id="venus-金星">Venus 金星</h5>
+<h5 id="earth-地球">Earth 地球</h5>
+<h5 id="mars-火星">Mars 火星</h5>
+<h5 id="jupiter-木星">Jupiter 木星</h5>
+<h5 id="saturn-土星">Saturn 土星</h5>
+<h5 id="uranus-天王星">Uranus 天王星</h5>
+<h5 id="neptune-海王星">Neptune 海王星</h5>
+<h4 id="dwarf-planet-矮行星">3. Dwarf planet 矮行星</h4>
+<ul>
+<li><p>包括：冥王星(Pluto)、谷神星(Ceres)、阋神星(Eris)、鸟神星(Makemake)、赛德娜(Sedna)和妊神星(Haumea)</p></li>
+<li>特点：That is, it is in direct orbit of the Sun and is massive enough to be plastic – for its gravity to maintain it in a hydrostatically equilibrious shape (usually a spheroid) – but has not cleared the neighborhood around its orbit of other material.
+<ul>
+<li>必须围绕太阳运动</li>
+<li>质量必须足够大，自身引力足以克服其固体引力以达到流体静力平衡，而使自己成圆球状</li>
+<li>不能清除其轨道附近的其他物体</li>
+</ul></li>
+</ul>
+<h4 id="comet-asteroid-彗星小行星">4. Comet &amp; Asteroid 彗星&amp;小行星</h4>
+<ul>
+<li><strong>小行星(Asteroid)</strong>类似行星环绕太阳运动，体积和质量比行星小得多，数量有数百万</li>
+<li><strong>小行星带(asteroid belt)</strong>位于火星和木星轨道之间，由几百万颗大小不一的小行星组成。其中，最大的是谷神星，也是唯一的矮行星</li>
+<li><strong>彗星(Comet)</strong>的外貌独特，呈云雾状，亮度和形状会随日距变化而变化。<strong>彗星分为彗核（comet nuclei）、彗发(coma)、彗尾(tail of comet)三部分</strong>。彗核由水、氨、甲烷等冻结的冰块和夹杂许多固体尘埃的粒子构成，进入太阳系后，当与恒星接近时，彗星冰冷表面的物质就会升华和电离，从而形成朦胧的彗发和一条稀薄物质流构成的彗尾</li>
+</ul>
+<h4 id="moonsatellitesecondary-planet-卫星">5. Moon/Satellite/Secondary planet 卫星</h4>
+<ul>
+<li>卫星(moon)围绕某颗行星按闭合轨道做周期性运动</li>
+<li>除了水星和金星外，其它行星都有卫星环绕</li>
+<li>木星最为富有，拥有79个卫星</li>
+<li>半径大于1000km的有7个，月球即为其中之一</li>
+<li>特点：
+<ul>
+<li>不会发光</li>
+<li>围绕行星运转</li>
+<li>随行星环绕恒星运转</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>以上内容+图片均参考自&quot;X大仙机经&quot;微信公众号</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>托福</tag>
+        <tag>听力</tag>
+        <tag>天文学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Of Studies</title>
     <url>/archives/8b15f764.html</url>
     <content><![CDATA[<h2 id="of-studies">Of Studies</h2>
@@ -215,6 +1110,817 @@
       <tags>
         <tag>读书</tag>
         <tag>鸡汤</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>名词性从句</title>
+    <url>/archives/1f5cd790.html</url>
+    <content><![CDATA[<h2 id="day-71-从句充当名词成份可跟在介词后">Day 71 从句充当名词成份(可跟在介词后)</h2>
+<ol type="1">
+<li><p><strong>句子</strong>：<font color=red>To reduce our</font> diet's <font color=red>impact, we'd also need to be a bit more rational about</font> <a href="n."><strong>how much</strong> we eat</a>.</p>
+<span id="more"></span></li>
+<li><p><strong>生词</strong></p>
+<ul>
+<li>rational adj.理性的</li>
+<li>ration n.理性 v. 饮食合理化 (饥荒时期ration your food)</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>To do, 状语结构</li>
+<li>how much/what/when/how/... 从句充当名词成份</li>
+<li>Food production is an important contributor to environmental issues.</li>
+</ul></li>
+<li><p><strong>翻译</strong>：为了减少我们饮食的影响，我们同样应该在饮食上更加合理一些。</p></li>
+<li><p><strong>默写</strong>：To reduce the diet's impact, we'd also need to be a bit more rational about how much we eat.</p></li>
+<li><p><strong>造句</strong>：</p>
+<ul>
+<li>To complete the project, we'd also need to be a bit more patient about what we do.</li>
+</ul></li>
+</ol>
+<h2 id="day-72-人-be-at-odds-over-n.">Day 72 人 + be at odds over +n.</h2>
+<ol type="1">
+<li><strong>句子</strong>：Economists <font color=red>are at odds over how</font> climate change <font color=red>will impact</font> the economy.</li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>人 + be at odds over + n.</font> 意见不一致 $ $ have a debate on + n.</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>how/why/what等疑问词引导名词性从句时，需要用陈述句语序</li>
+<li>how/why等引导疑问句且对宾语提问时，动词/助动词/be/情态动词需提前（特殊疑问词+一般疑问句）;对主语提问时语序不变。
+<ul>
+<li>How will climate change impact the economy?</li>
+<li>Why did climate change come into being?</li>
+</ul></li>
+</ul></li>
+<li><strong>翻译</strong>：经济学家对于气候变化将如何影响经济的意见不统一。</li>
+<li><strong>默写</strong>：Economists are at odds over how climate change will impact the economy.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Ecologists are at odds over why/how climate change came into being.</li>
+<li>Seismologists are at odds over how they can predict the earthquake.</li>
+</ul></li>
+</ol>
+<h2 id="day-77">Day 77</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>There is often no transparency about why</font> people are seeing particular content on their social media feeds <font color=red>or who</font> is financing this content.</li>
+<li><strong>生词</strong>：
+<ul>
+<li>transparency n. 信息透明、公开化</li>
+<li>behind closed doors adj. 不为人知的</li>
+<li>be kept ... in the dark v. 被蒙在鼓里</li>
+<li>keep ... informed v. 使信息公开</li>
+<li>well-informed adj. 消息灵通的（人）</li>
+<li>feed n.数据流</li>
+<li>rationality n. 合理性，机制背后的原因</li>
+<li>algorithom n. 算法</li>
+<li>finance <span class="math inline">\(\Leftrightarrow\)</span> sposnor vt. 资助，提供资金</li>
+</ul></li>
+<li><strong>句式</strong>：There is often no transparency about <strong>+ n.</strong>（why ... or who）名词性从句<br />
+</li>
+<li><strong>翻译</strong>：关于为什么人们在社交媒体数据流中可以看到一些特定的内容以及谁为这些内容付费，这些通常是不公开的。</li>
+<li><strong>默写</strong>：There is often no transparency about why people are seeing <em>particular</em> content <strong>on</strong> <em>their social media feeds</em> or who <del>are</del> is financing the content.</li>
+<li><strong>造句</strong>：There is often no transparency about why some nagtive news are forbidden on popular medias such as Sina Weibo and Wechat or what the forbidden machanism is.</li>
+</ol>
+<h2 id="day-78">Day 78</h2>
+<ol type="1">
+<li><strong>句子</strong>：Auctions <font color=red>can be exciting or intimidating</font>, with both buyers and sellers wondering exactly <strong>how much the property will sell for.</strong></li>
+<li><strong>生词</strong>：
+<ul>
+<li><strong>intimidating</strong> adj. 惶恐的，不安的(frighten, make sb. less confidence; trigger)</li>
+<li><em>sky diving</em> v. 跳伞</li>
+<li><em>First date</em> v. 第一次约会</li>
+</ul></li>
+<li><strong>句式</strong>：... can be exciting or intimidating ...</li>
+<li><strong>翻译</strong>：拍卖是紧张和不安的，买方和卖方都想知道这个东西确切价格是多少。</li>
+<li><strong>默写</strong>：Auctions can be exciting or intimidating, with both <del>sallers</del> sellers and buyers wondering excetly how much the property will sell for.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>First date can be exciting and intimidating, with both boys and girls wondering what the other person thinks (what will happen next).</li>
+<li>Interviews can be exciting and intimidating with interviewees wodering whether they will be adopted/recruited/employed.</li>
+</ul></li>
+</ol>
+<h2 id="day-79-某人扮演的角色">Day 79 某人扮演的角色</h2>
+<ol type="1">
+<li><strong>句子</strong>：Parents <font color=red>will certainly be the</font> first <font color=red>to help</font> children learn <font color=red>what </font> is important in life, <font color=red>how </font> they are expected to behave <font color=red>and what </font> role they will play in their world.
+<ol type="1">
+<li>value 价值观</li>
+<li>manners 行为方式</li>
+<li>passion/niche 热爱的事业</li>
+</ol></li>
+<li><strong>生词</strong>：
+<ul>
+<li>be expected to do = be required to do 被期待/要求做某事</li>
+</ul></li>
+<li><strong>句式</strong>：sb. will be the someone to help sb. do what/how...</li>
+<li><strong>翻译</strong>：父母将是第一个帮助孩子学会在生活中什么是重要的，孩子被期待什么样的表现，以及他们在世界上将要扮演的角色是什么。</li>
+<li><strong>默写</strong>：Parents will certainly be the first to help children learn what is important in life, how they are expected to behave and what <font color=red>role</font> they will play in their world.</li>
+<li><strong>造句</strong>：Friends will certainly be the first to help you know why friendship is important, how you will cooperate with somebody and how many funs you will have from them.</li>
+</ol>
+<h2 id="day-80">Day 80</h2>
+<ol type="1">
+<li><strong>句子</strong>：[<font color=red>What</font> consumers <font color=red>may come to see in</font> Amazon], <font color=red><strong>instead</strong>, is what I've started to notice</font> -- it's an inescapable, all-consuming retail paradise.</li>
+<li><strong>生词</strong>：
+<ul>
+<li><strong>come to 逐渐，总算，终于</strong> 和 have to notice 呼应，表达后知后觉</li>
+<li><strong>inescapable=unavoidable</strong> adj. 不可逃避的</li>
+<li><strong>all-consuming 全身心的投入</strong>（修饰interest 指take up time/energy的事情）这里形容电商就是指会上瘾的<strong>addictive</strong></li>
+<li>paradise n. 天堂 <span class="math inline">\(\Leftrightarrow\)</span> sencond to none 第一的，最好的</li>
+<li>Amazon $$ online retailer 线上零售商
+<ul>
+<li>speed/convenience/wide selection</li>
+</ul></li>
+<li>counterfeit products 假货</li>
+<li>shady products 质量不好的货</li>
+<li>quality control 质量监控</li>
+<li>rules = regulations 规章 regulate 管控</li>
+<li>break up 结束；分解；解散</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><strong>What 引导的主语从句有强调功能</strong></li>
+<li>instead 插入语，一般放在句首，表示“取而代之的是”</li>
+<li>-- dash 等同于 ':' 有解释说明的意思</li>
+</ul></li>
+<li><strong>翻译</strong>：取而代之的是，消费者在亚马逊上逐渐看到的是我刚刚开始意识到的——它是不可避免的，是会沉浸其中的零售天堂。</li>
+<li><strong>默写</strong>：What consumers may come to see in Amazon, instead, is what I've started to notice -- it's an inescapable, all-consuming retail paratise.</li>
+<li><strong>造句</strong>：What students may come to see in collage is what I've started to notice -- it's an broad platform connecting both students and the society.</li>
+</ol>
+<h1 id="模板">模板</h1>
+<h2 id="day">Day</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red></font></li>
+<li><h2 id="生词"><strong>生词</strong></h2></li>
+<li><h2 id="句式"><strong>句式</strong>：</h2></li>
+<li><strong>翻译</strong>：</li>
+<li><strong>默写</strong>：</li>
+<li><h2 id="造句"><strong>造句</strong>：</h2></li>
+</ol>
+]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>百句天天练</tag>
+        <tag>写作</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>表语从句</title>
+    <url>/archives/39059898.html</url>
+    <content><![CDATA[<h2 id="day-91-paraphrase-句子改写技巧">Day 91 Paraphrase 句子改写技巧</h2>
+<ol type="1">
+<li><p><strong>原题</strong>：Some people say that main environmental problem of our time is the loss of particular species of plants and animals.</p></li>
+<li><p><strong>改写</strong>：<font color=red>Some people consider that</font> the loss of individual species of plants and animals <font color=red>is the main</font> environmental <font color=red>problem of our time.</font></p>
+<span id="more"></span></li>
+<li><p><strong>生词</strong></p>
+<ul>
+<li>individual = particular adj.特定的；单一的(=single)</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>Some people <strong>consider/argue/believe/say</strong> that + 句子</font></li>
+<li><font color=red><strong>同义替换</strong></font>
+<ol type="1">
+<li>同义词替换（注意保持词性不变）
+<ul>
+<li>loss <span class="math inline">\(\rightarrow\)</span> disappearance <span class="math inline">\(\rightarrow\)</span> extinction</li>
+<li>problem <span class="math inline">\(\rightarrow\)</span> issue</li>
+<li>particular <span class="math inline">\(\rightarrow\)</span> individual</li>
+</ul></li>
+<li>词性替换
+<ul>
+<li><ol start="14" type="a">
+<li><span class="math inline">\(\rightarrow\)</span> v. (<strong>the loss of</strong> particular species of plants and animals <span class="math inline">\(\rightarrow\)</span> particular animals and plants <strong>are lost</strong>)</li>
+</ol></li>
+<li>adj. <span class="math inline">\(\rightarrow\)</span> adv.</li>
+</ul></li>
+<li>句式改写
+<ul>
+<li>主语和宾语互换位置</li>
+<li>主动态 <span class="math inline">\(\rightarrow\)</span> 被动态 It has been said that</li>
+<li>将状语部分提到句首</li>
+<li>主谓宾 <span class="math inline">\(\rightarrow\)</span> There be</li>
+<li>简单句 <span class="math inline">\(\rightarrow\)</span> 状语从句/定语从句</li>
+</ul></li>
+</ol></li>
+</ul></li>
+<li><p><strong>翻译</strong>：一些人认为特定植物和动物物种的灭亡是我们这个时代主要的环境问题。</p></li>
+<li><p><strong>默写</strong>：Some people consider that the loss of individual <font color=red>species of</font> plants and animals is the main problem of our time.</p></li>
+<li><strong>造句</strong>：
+<ol type="1">
+<li>原题：Some people say that life is easier and more comfortable than it was when your grandparents were children.</li>
+<li>改写：
+<ol type="1">
+<li>Some people argue that life is poorer and more backbreaking when your grandparents were children than it was today.</li>
+<li>Some people consider that it is easier and more convenient to make a living than it was when your grandparents were children.</li>
+</ol></li>
+</ol></li>
+</ol>
+<h2 id="day-92-改写词性">Day 92 改写词性</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The most common belief among</font> Australians <font color=red>is that we will have to</font> change our lifestyles <font color=red>to</font> reduce energy consumption.</li>
+<li><strong>生词</strong>
+<ul>
+<li>reduce energy consumption 减少能源消耗</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>believe v.<span class="math inline">\(\rightarrow\)</span> belief n.</font> 此时句式也要修改</li>
+<li><font color=red>Some people believe that ... <span class="math inline">\(\rightarrow\)</span> The most common belief <strong><em>among</em></strong> somewhere is ...</font></li>
+<li>此时用介词among + 地点来代替some people
+<ul>
+<li>among the scientific community</li>
+<li>among primary school teachers</li>
+<li>among young people/ the millennials (84-9?)</li>
+</ul></li>
+</ul></li>
+<li><strong>翻译</strong>：在澳大利亚人中间有这样一个说法，我们将不得不改变我们的生活方式来减少能源的消耗。</li>
+<li><strong>默写</strong>：The most common belief among Australians is that we will have to change our lifestyle<strong>s</strong> to reduce the energy consumption<del><strong>s</strong></del>.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The most common belief among Chinese is that we should honor our parents to accord with the moral standard.</li>
+<li>The most common belief among the millennials is that we will have to <strong>be rational about</strong> how much we eat to reduce our diet's impact <strong>on</strong> the environment.</li>
+</ul></li>
+</ol>
+<h2 id="day-93-指出逻辑谬误">Day 93 指出逻辑谬误</h2>
+<ol type="1">
+<li><strong>句子</strong>：A good critical thinker will point out <font color=red>while this is a significant issue, it <strong>is not relevant to</strong> the question.</font> (logging <span class="math inline">\(\rightarrow\)</span> biodiversity counter-point: x logging <span class="math inline">\(\rightarrow\)</span> job loss)</li>
+<li><strong>生词</strong>
+<ul>
+<li><strong>while</strong> 1)Although 2)对比 3)与...同时</li>
+<li>A be not relevant to B A与B不相关
+<ul>
+<li>miss the point</li>
+<li>is beside the point</li>
+</ul></li>
+<li><strong>critical thinker</strong> 具有批判性思维的人</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>主语+谓语+<font color=red>while this is a significant issue, it is not relevant to the question.</font></li>
+</ul></li>
+<li><strong>翻译</strong>：尽管这是一个非常重要的问题，一个具有批判性思维的人将会指出这是和当前问题不相关的问题。</li>
+<li><strong>默写</strong>：A good critical thinker will point out while this is a significant issue <del>problem</del>, it is not relevant to the question.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>While this is a significant issue, A good critical thinker will point out that it is beside the point(missing the point).</li>
+</ul></li>
+</ol>
+<h2 id="day-94-背后机制的描述-rationality">Day 94 背后机制的描述 rationality</h2>
+<ol type="1">
+<li><strong>句子</strong>：Business groups <font color=red>would <strong>no doubt</strong> argue that if</font> wages <font color=red>rise, and</font> productivity <font color=red>remains flat, or negative, (then)</font> profits <font color=red>will fall and</font> jobs <font color=red>could go. <strong>That's a fair point.</strong></font></li>
+<li><strong>生词</strong>
+<ul>
+<li>Business <strong>groups</strong> 商业公司</li>
+<li>no doubt = undoubtedly adv. 毋庸置疑的</li>
+<li>flat = unchanged = the same 不变的</li>
+<li>rationality 背后的机制</li>
+<li>productivity 生产率</li>
+<li>profit n.利润</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>... would <strong>no doubt argue</strong> that <strong>if</strong> ... rise, and ... remains flat, or negative, <strong>then</strong> ... will fall and ...</font></li>
+<li><strong>That's a fair point.(书面) = Fair enough(口语) 也行；也有道理</strong></li>
+</ul></li>
+<li><strong>翻译</strong>：商业公司毋庸置疑的会说，如果公司提升，生产效率会持平或者变低，从而导致利润降低以及裁员。</li>
+<li><strong>默写</strong>：Business groups could no doubt argue that if wage<strong>s</strong> rise, and productivity remains flat, or negative, then the profit<strong>s</strong> will fall and jobs could go. That's a fair point.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Students could undoubtedly argue that if homework load rise, and time of finishing it remains the same, or negative, then the accuracy rate could drop and the efficacy will fall. That is a fair point.</li>
+</ul></li>
+</ol>
+<h2 id="day-95-现象-rightarrow-问题">Day 95 现象 <span class="math inline">\(\rightarrow\)</span> 问题</h2>
+<ol type="1">
+<li><p><strong>句子</strong>：The season's awards movies <font color=red>demonstrate that</font> cinema <font color=red>is dodging todays's pressing issues in favour of anodyne distraction.</font></p></li>
+<li><p><strong>生词</strong></p>
+<ul>
+<li><p>cinema = film industry</p></li>
+<li><p><font color=red>dodge</font> = avoid = shy away from 逃避，躲避</p></li>
+<li><p><font color=red>in favour of</font> 赞成</p></li>
+<li><p><font color=red>anodyne</font> adj. unlikely to offend anyone 不温不火的，不得罪人的；安慰剂</p>
+<p><span class="math inline">\(\Leftrightarrow\)</span> controversial</p></li>
+<li><p><font color=red>distraction</font> = pastime 消遣；分散注意力的事</p></li>
+</ul></li>
+<li><p><strong>句式</strong>：</p>
+<ul>
+<li>社会现象+ <font color=red>demonstrated that +</font> 社会问题 现象揭示问题<br />
+</li>
+<li><font color=red>dodge</font></li>
+</ul></li>
+<li><p><strong>翻译</strong>：这一季度获奖的电影反映了电影行业在逃避当今紧迫的问题，更偏向于一些不得罪人的娱乐主题。</p></li>
+<li><p><strong>默写</strong>：The season's <font color=red>awards</font> films demonstrate<del>d</del> that cinema is dodging <del>the</del> <font color=red>todays's</font> pressing issues in favor of <font color=red>anodyne distraction</font> .</p></li>
+<li><p><strong>造句</strong>：</p>
+<ul>
+<li>The increasing number of infected people by COVID-19 in America demonstrate that government's actions are dodging the pressing issues in favor of anodyne financial policies.</li>
+</ul></li>
+</ol>
+<h2 id="day-96-观点段首句表支持利">Day 96 观点段首句——表支持（利）</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The obvious argument in its favour is that</font> young children pick up languages much more easily than teenagers.</li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>in its favour = use sth. to one's advantage</font> 对...有利，支持它的</li>
+<li>The odds are in our favor.<br />
+</li>
+<li>favorable adj.有利的</li>
+<li>pick up
+<ul>
+<li>pick up languages/a bad habit 不经意间学会（耳濡目染）</li>
+<li>pick up somebody 接人</li>
+</ul></li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>The obvious argument in its favor is that ...</li>
+</ul></li>
+<li><strong>翻译</strong>：支持它（小学开始学习语言课程）的一个最显而易见的论点就是小孩子学会语言相比于青少年更加容易。</li>
+<li><strong>默写</strong>：The obvious argument in its favor is that young children pick up languages easily than teenagers.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The government should spend more money on primary education rather than college education. The obvious argument in its favor is that there are several other ways for colleges to raise money, such as the donation of alumnus.</li>
+</ul></li>
+</ol>
+<h2 id="day-97-总结段正反融合">Day 97 总结段（正反融合）</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>Of course, both views are correct. The problem is they are often framed as mutually exclusive, when in fact we can effectively</font> teach the basics and optimize problem-solving <font color=red>at the same time.</font></li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>frame = express 表达</font> frame the question</li>
+<li><font color=red>mutually exclusive 互斥的</font></li>
+<li><font color=red>optimize</font> problem-solving
+<ul>
+<li>inquiry-base learning</li>
+<li>task-base learning</li>
+<li>project- base learning</li>
+</ul></li>
+</ul></li>
+<li><strong>句式</strong>：文章总结，融合正反两方观点，强调两者并非对立
+<ul>
+<li><font color=red>Of course, both views are correct. The problem is they are often framed as mutually exclusive, when in fact we can effectively + 做什么 and 做什么 at the same time.</font></li>
+</ul></li>
+<li><strong>翻译</strong>：当然，两个观点都是正确的。问题是他们经常作为互斥的观点被表达，事实上我们可以高效的教一些基础知识同时优化一些问题解决的能力。</li>
+<li><strong>默写</strong>：Of course, both views are correct. The problem is that they are always framed as mutually exclusive, when in fact we can efficiently teach the basics and optimize problem-solving at the same time.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Of course, both views are correct. The problem is that they are often framed as mutual exclusive, when in fact we can work effectively and make less mistakes at the same time.</li>
+</ul></li>
+</ol>
+<h2 id="day-98-观点段首句弊">Day 98 观点段首句——弊</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>A longer term fear is that</font> computers <font color=red>become so</font> intelligent <font color=red>that they begin to</font> make decisions <font color=red>without</font> human oversight <font color=red>and without regard for</font> our well-being.</li>
+<li><strong>生词</strong>
+<ul>
+<li>fear <span class="math inline">\(\Leftrightarrow\)</span> concern <span class="math inline">\(\Leftrightarrow\)</span> danger</li>
+<li>human <font color=red>oversight</font>
+<ul>
+<li>neglect <strong>n.</strong> 疏忽</li>
+<li>have oversight of <strong>n.</strong>监管</li>
+</ul></li>
+<li><font color=red>regard for</font> our well-being
+<ul>
+<li>Best regards. 问候，只有这里可数</li>
+<li>without regard for anybody else <strong>n.(v) attention/care</strong></li>
+<li>hold sb. in high regard <strong>n.(v) respect</strong></li>
+</ul></li>
+<li>well-being n. 安危；安康</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>A longer term fear/concern/danger is that</font> 一个长期的缺点</li>
+<li><font color=red>The obvious argument in its favor is that</font> 支持它的观点是</li>
+<li>so + adj. + that 如此...以至于</li>
+<li><ol start="22" type="a">
+<li><ul>
+<li>without + n. and without + n.</li>
+</ul></li>
+</ol></li>
+</ul></li>
+<li><strong>翻译</strong>：一个长期的缺点是计算机变得太智能了，以至于开始不关注我们的安危同时在没有人类监管的情况下做决定。</li>
+<li><strong>默写</strong>：A longer term fear is that computers become so intelligent that <font color=red>they</font> begin to make decisions without human oversight and without regard for our well-being.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>A longer term concern is that viruses become so drug-resistant that we have to raise awareness of prevention and keep researching new vaccines.</li>
+</ul></li>
+</ol>
+<h2 id="day-99-comes-with-time">Day 99 comes with time</h2>
+<ol type="1">
+<li><strong>句子</strong>：This skill <strong>comes with time</strong> and good parenting, <font color=red>and my firm conviction is that</font> punishment <strong>does not have much of a role to play</strong> in this.</li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>The skill/Trust/Team camaraderie/Self-efficacy <strong>comes with</strong> time/care/attention/accumulating experience</font> 某样东西的养成需要时间/精力/经验的积累</li>
+<li>A <strong>does not have much of a role to play in</strong> B A对于B没什么用 = does not work</li>
+<li>A play a role in B A对B有作用</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>A comes with B</font> A的养成需要B的积累</li>
+<li><font color=red>My <strong>firm conviction</strong> is that = I firmly believe that</font></li>
+</ul></li>
+<li><strong>翻译</strong>：这个技能的形成是需要时间以及良好的教育的，我非常坚信的是惩罚这个做法对于这个技能的养成没有任何的作用。</li>
+<li><strong>默写</strong>：This skill comes with time and good parenting, and I firm conviction is that punishment <strong>does not have much of role to play</strong> in this.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Team camaraderie comes with accumulating experience, and I firm conviction is that team terms don't have much of role to play in this.</li>
+</ul></li>
+</ol>
+<h2 id="day-100-问题观点澄清不是-而是">Day 100 问题/观点澄清（不是 而是）</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The trouble isn't that</font> it's hard to make the case that Amazon is extremely big and powerful; <font color=red><strong>t</strong>he trouble is that </font> even as Amazon gets bigger, it still faces relentless competition in the retail business, and <strong>is therefore</strong> not slowing in any obvious way to act like a lumbering monopoly of yore.</li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>make the case that</font> = argue that 认为</li>
+<li><font color=red>relentless competition</font> 不懈的无止境的竞争 relent v. 减弱，缓和</li>
+<li>a lumbering monopoly of yore 昔日老态龙钟的垄断企业</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>My point isn't that ... ; my point is that ...</li>
+<li>The trouble isn't that ... ; the trouble is that ...</li>
+</ul></li>
+<li><strong>翻译</strong>：问题不是说很难证明亚马逊非常强大，问题是即使亚马逊变大，它依然面临着零售行业不懈的竞争，因此它并没有显现出像昔日老态龙钟的垄断企业（一样的样子）。</li>
+<li><strong>默写</strong>：The trouble isn't that it's hard to <strong>make the case</strong> that Amazon is <strong>extremely</strong> big and powerful; the trouble is that even <font color=red>as</font> Amazon gets bigger, it <del>is</del> still <font color=red>faces</font> relentless competition, and is therefore not slowing in any obvious way <strong>to act</strong> like a lumbering monopoly of yore.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The trouble isn't that you are not trying hard to get this job; the trouble is that even as you try your best, the company does not plan to recruit new employees in this year.</li>
+</ul></li>
+</ol>
+]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>百句天天练</tag>
+        <tag>写作</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同位语从句</title>
+    <url>/archives/7dbecab8.html</url>
+    <content><![CDATA[<h2 id="day-81-同位语从句-前面修饰的名词">Day 81 同位语从句 = 前面修饰的名词</h2>
+<ol type="1">
+<li><p><strong>句子</strong>：<font color=red>It's an unsettling thought that</font> extreme temperatures are the new normal for this generation of children.</p>
+<span id="more"></span></li>
+<li><p><strong>生词</strong></p>
+<ul>
+<li>unsettling adj. 使某人感到不安的 upset/anxious</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>It's a/an + adj. +n. +that + 同位语</font>
+<ul>
+<li><font color=red>It's an unsettling thought/news that</font></li>
+<li><font color=red>It's a fun fact that</font></li>
+<li><font color=red>It's a a happy accidence that we ran into each other.</font></li>
+<li><font color=red>It's an universally acknowledged truth that</font></li>
+</ul></li>
+<li>the new normal 最近才有的新的惯例（现在出门戴口罩）</li>
+</ul></li>
+<li><p><strong>翻译</strong>：一个不安的想法是对于孩子这一代人，极端的温度已经是一个新的趋势。</p></li>
+<li><p><strong>默写</strong>：It's an unsettling thought that extreme temperatures are the new normal for this generation of children.</p></li>
+<li><p><strong>造句</strong>：</p>
+<ul>
+<li>It is a terrible news that the US government prohibits Chinese students from gaining American visa.</li>
+</ul></li>
+</ol>
+<h2 id="day-82">Day 82</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The development <strong>aims to</strong> ease the city's chronic housing crisis - <strong>and to</strong> challenge the mindset that</font> indigeneity <font color=red>and</font> urbanity <font color=red>are incompatible.</font></li>
+<li><strong>生词</strong>
+<ul>
+<li>chronic adj. 慢性的</li>
+<li>mindset n. 已有的观念 ideology/perspective</li>
+<li>indigeneity adj. 传统的，本土的 indigenous/aboriginal 原住民的</li>
+<li>urbanity adj. 现代的</li>
+<li>incompatible adj. 不可共存的</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>ease housing crisis/the pain/the burden</li>
+<li>challenge the mindset</li>
+</ul></li>
+<li><strong>翻译</strong>：这个发展（在温哥华土著区建两座大楼）旨在缓解住房压力同时挑战传统的观念，即传统的和现代的不能共存的观念。</li>
+<li><strong>默写</strong>：The development aims to ease the city's chronic housing crisis - and to challenge the mindset that <strong>indigeneity and urbanity</strong> are incompatible.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The policy that school should reduce student's academic burden <strong>aims to</strong> ease the <strong>curricular pressure</strong> of student and challenge the mindset that good education and less academic burden are incompatible.</li>
+</ul></li>
+</ol>
+<h2 id="day-83-would-have-us-believe-that-the-fact-...-means-...">Day 83 would have us believe that the fact ... means ...</h2>
+<ol type="1">
+<li><strong>句子</strong>：Some media commentary <font color=red>would have us believe that the fact</font> the reef was not listed as endangered <font color=red>means</font> any concerns about its well-being are entirely <strong>misplaced</strong>.</li>
+<li><strong>生词</strong>
+<ul>
+<li><font color=red>would have us believe sth.</font> 使我们相信（贬义）</li>
+<li>endangerd adj. 濒危的</li>
+<li><font color=red>misplaced</font> adj. 不合时宜的
+<ul>
+<li>misplaced confidence</li>
+<li>misplaced trust/loyalty</li>
+</ul></li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>The fact that +同位语+ means ...</li>
+</ul></li>
+<li><strong>翻译</strong>：一些媒体的评论引导我们相信，没有把珊瑚列入濒危物种的这个事实意味着任何对它安危的关心都是完全不合时宜的。</li>
+<li><strong>默写</strong>：Some media commentary would have us believe that the fact the reef was not listed as endangered means any concerns about its well-being <strong>are</strong> entir<strong>e</strong>ly misplaced.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Some teachers from training institutions would have us believe that the fact method is more important than practice in learning English means a lot practice is entirely misplaced.</li>
+</ul></li>
+</ol>
+<h2 id="day-84-the-misguided-belief-that-...-means-...">Day 84 The misguided belief that ... means ...</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The misguided belief that</font> searching always results in learning <font color=red>means</font> much classroom practice <font color=red>focuses on</font> searching to learn, <font color=red>rarely on</font> learning to search.</li>
+<li><strong>句式</strong>：
+<ul>
+<li>The msiguided <strong>belief</strong> that + 同位语 + means + 宾语</li>
+<li>searching always <strong>results in</strong> learning</li>
+<li>searching(means) to learn(end) <span class="math inline">\(\Leftrightarrow\)</span> learning(means) to search(end)</li>
+<li>the uncertainty of chaos <span class="math inline">\(\Leftrightarrow\)</span> the chaos of uncertainty -- <The Kite Runner></li>
+</ul></li>
+<li><strong>翻译</strong>：一个错误的观念认为搜索可以驱动学习，这意味着更多课堂练习关注于用搜索的方法去学习，而不是关注于学习搜索的方法。</li>
+<li><strong>默写</strong>：The misguided belief that searching <del>leads to</del> always results in learning means much classroom practice focuses on searching to learn, rarely on learning to search.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The misguided belief that parents are always right means many children focuses on the methods told by their parients, rarely on thinking by themselves.</li>
+</ul></li>
+</ol>
+<h2 id="day-85-tipping-points">Day 85 Tipping Points</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>There is growing evidence = (that</font> Earth's systems <font color=red>are heading towards climate &quot;tipping points&quot; beyond which</font> change <font color=red>becomes abrupt and unstoppable.)</font></li>
+<li><strong>生词</strong>
+<ul>
+<li>evidence 不可数名词，前后不加a, the,s</li>
+<li><font color=red>head towards</font> 向着某处前进</li>
+<li><font color=red>tipping points</font> 顶点（起步很艰难，过了这个点后会很顺利）</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>There be</li>
+<li>beyond which / after which</li>
+</ul></li>
+<li><strong>翻译</strong>：越来越多的证据表明，地球系统正朝着气候的“临界点”迈进，变化变得突然而势不可挡。</li>
+<li><strong>默写</strong>：There <del>are</del> <strong>is</strong> growing evidence that Earth's systems are heading towards climate &quot;tipping points&quot; beyond which <del>the</del> change becomes abrupt and unsto<strong>pp</strong>able.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>There is growing evidence that Artificial Intelligent are heading towards the tipping points beyond which technology revolution becomes abrupt and unstoppable.</li>
+</ul></li>
+</ol>
+<h2 id="day-86-呈上启下说出事物不好的一面">Day 86 呈上启下，说出事物不好的一面</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>However, reaching the conclusion that</font> change is inevitable <font color=red>is not the same as assuming that</font> change is always for the better.</li>
+<li><strong>生词</strong>
+<ul>
+<li>inevitable 不可避免的</li>
+<li><font color=red>is not the same as + n.</font> 并不等同于</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>Reaching the conclusion that + 同位语 + is </font></li>
+<li>assuming that change is always for the better. 这里为宾语从句，并非同位语从句(assuming the fact that)</li>
+</ul></li>
+<li><strong>翻译</strong>：但是，结论说改变是不可避免的并不等同于假设改变是更好的。</li>
+<li><strong>默写</strong>：However, reaching the conclusion that change is inevitable is not the same as assuming that change is always for the better.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>However, reaching the conclusion that drinking water is good for our health is not the same as assuming that drinking water is always for the better.</li>
+<li>However, reaching the conclusion that technology is game-changer is not the same as assuming that technology is always for the better.</li>
+</ul></li>
+</ol>
+<h2 id="day-87-bounce-deeply-entrenched">Day 87 bounce &amp; deeply entrenched</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>While</font> Spain <font color=red>has largely <strong>bounced</strong> back from the economic crisis</font> of 2008, the internas' stories <font color=red>are a <strong>reminder</strong> that the recovery masks deeply entrenched socio-economic problems.</font></li>
+<li><strong>生词</strong>：
+<ul>
+<li>bounce back from/to = recover 经历低估后返回</li>
+<li>economic crisis = economic recession 经济危机/衰退</li>
+<li>internas‘ = live in maid = carer 女佣</li>
+<li>mask = cover up 覆盖</li>
+<li><strong>deeply entrench</strong> = deeply rooted + problem/stigma/bias 根深蒂固的</li>
+<li>socio-economic 社会经济的</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li><font color=red>While ... has largely <strong>bounced</strong> back from the economic crisis</font></li>
+<li>sth <font color=red>are a <strong>reminder</strong> that the recovery masks deeply entrenched socio-economic problems.</font></li>
+</ul></li>
+<li><strong>翻译</strong>：<strong>虽然</strong>西班牙从2008年的经济危机中恢复过来了，但是女佣的故事作为一个警醒，（告诉我们，经济的）恢复掩盖了一些根深蒂固的社会经济问题。</li>
+<li><strong>默写</strong>：While Spain has largely bounced back from the economic crisis of 2008, the internas' stories are <strong>a</strong> reminder that the recovery masks <strong>deeply entrenched</strong> socio-economic problems.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>While Wenchuan has largely bounded back from the earthquake of 2008, the story of corruption in charity is a remainder that the recovery masks deeply entrenched political problems.</li>
+<li>While China has largely bounded back from the epidemic of 2020, the <strong>whistle-blowers'</strong> stories are a reminder that the recovery masks deeply entrenched policial problems.</li>
+</ul></li>
+</ol>
+<h2 id="day-88-extended-family-fragment-into">Day 88 extended family fragment into</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>This is the story of</font> our times--<font color=red>the story of</font> the family, <font color=red>once a dense cluster of many</font> siblings and extended kin, <font color=red>fragmenting into</font> ever smaller and more fragile forms.</li>
+<li><strong>生词</strong>：
+<ul>
+<li>extended family vs. nuclear family 大家庭vs小家庭</li>
+<li>kin 集合名词，不用加s，表示远亲</li>
+<li>siblings 兄弟姐妹，可数</li>
+<li>break into pieces = fragment into 分裂</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>主句 This is the story of family. 后面的是同位语+现在分词结构修饰family</li>
+<li>插入语，两个逗号隔开，这里是同位语，没有that连接</li>
+</ul></li>
+<li><strong>翻译</strong>：这是我们这个时代的故事——关于家庭的故事，曾经一个有很多兄弟姐妹和亲戚的大集合，分裂成了非常小的、破碎的形式。</li>
+<li><strong>默写</strong>：This is the story of our time<strong>s</strong> -- the story of <strong><em>the</em></strong> family, once a dence cluster of many siblings and extended kin, fragementing into <strong><em>ever</em></strong> smaller and <strong><em>more</em></strong> fragile forms.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>This is the theory of Big Bang -- the theory of the universe, once a dence cluster of energy, fragmenting into smaller pieces(planets and stars).</li>
+<li>This is the theory of being -- the theory of the cell, once a zygote full of energy, fragementing into trillions of cells making up our body.</li>
+</ul></li>
+</ol>
+<h2 id="day-89-nurosportlogiq">Day 89 Nuro&amp;Sportlogiq</h2>
+<ol type="1">
+<li><strong>句子</strong>：Nuro <font color=red>, a</font> self-driving tech <font color=red>startup</font> created by two former Google engineers <font color=red>, says it's the first company to</font> win approval from U.S. regulators to test its battery-powered driverless delivery vehicles on public streets.</li>
+<li><strong>生词</strong>
+<ul>
+<li><strong>tech startup 科技创业公司</strong></li>
+<li>approval 批准，授权</li>
+<li><strong>regulators 监管部门</strong></li>
+<li>battery-powered 电池供电的（不烧油的）</li>
+<li><strong>driverless(=self-driving)</strong> delivery vehicles 无人送货车</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>Nure后面的','跟的市 名词成份做同位语</li>
+</ul></li>
+<li><strong>翻译</strong>：Nure是由两位前谷歌工程师创立的自动驾驶创业公司，它说它是第一家获得美国监管部门授权可以在公共道路上检测电池供电的无人驾驶的送货车的公司。</li>
+<li><strong>默写</strong>：Nure, a self-driving tech startup created by two formar Google engineers, says it's the first company <font color=red>to</font> win the approval from U.S regulators to test the battery-powered driverless delivery <del>car</del> <font color=red>vehicles</font> on <del>the</del> public streets.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>Sportlogiq, a tech startup <strong>concentrating on the intersection of sports and advanced AI technology</strong>, says it's products offer insights to help teams, sach as hockey, soccer and football, make smarter decisions and also to help broadcasters and media bring their audience closer to the game with deeper analysis.</li>
+</ul></li>
+</ol>
+<h2 id="day-90-议题引出-climate-changeparentinggov.-spendingracismreform-of-educationgenetic-engineering">Day 90 议题引出 climate change/parenting/gov. spending/racism/reform of education/genetic engineering</h2>
+<ol type="1">
+<li><strong>句子</strong>：<font color=red>The issue of</font> climate change <font color=red>has become a battle of ideologies, values and worldviews, something that become much more pronounced in the last decade thanks to</font> our political class <font color=red>and to</font> parts of the media.</li>
+<li><strong>生词</strong>
+<ul>
+<li>ideologies, values, worldviews 意识形态，价值观，世界观</li>
+<li><strong>pronounced</strong>=obvious=easier to notice adj. 显著的，显而易见的</li>
+<li><strong>thanks to 多亏了，由于</strong></li>
+<li>class 阶级
+<ul>
+<li>political class 政客</li>
+<li>working class 工人阶层</li>
+</ul></li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>views vary from person to person(nation to nation) 因人而异（主语是views）</li>
+<li><font color=red>The issue of</font> climate change <font color=red>has become a battle of ideologies, values and worldviews, something that ...</font>（主语是issue）</li>
+<li>, something that ... 这里是同位语，解释说明climate change</li>
+</ul></li>
+<li><strong>翻译</strong>：气候变化的问题已经成为了一场关于意识形态，价值观和世界观的战争，<strong>由于</strong>政客们以及部分媒体的关注，这个问题在过去的十年间变得更加显著了。</li>
+<li><strong>默写</strong>：The issue of climate change has become a battle of ideologies, values and worldviews, something that become much more pronounced in the last <del>dacades</del> <strong>decade</strong> thanks to the policial class and to parts of the media.</li>
+<li><strong>造句</strong>：
+<ul>
+<li>The issue of <strong>racism</strong> has become a battle of ideologies, values and worldviews, something that become much more pronounced in last decade thanks to our political class and to parts of the media.</li>
+<li>The issue of reform of education has become...</li>
+<li>The issue of genetic engineering, including food production and cloning, has become ...</li>
+</ul></li>
+</ol>
+]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>百句天天练</tag>
+        <tag>写作</tag>
+        <tag>语法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>估计量的相合性和无偏性</title>
+    <url>/archives/84afe1b9.html</url>
+    <content><![CDATA[<h2 id="估计量">估计量</h2>
+<ul>
+<li><p>参数的点估计就是根据样本构造的一个统计量，把这个统计量称作总体总体参数的估计量</p></li>
+<li><p>无偏性、渐进无偏性、有效性、相合性（一致性）都是对与样本统计量好坏的一种度量</p></li>
+</ul>
+<span id="more"></span>
+<h2 id="无偏估计">无偏估计</h2>
+<ul>
+<li>定义：<span class="math inline">\(E(\hat{\theta})=\theta\)</span></li>
+<li>解释：<font color=red>估计量的数学期望等于被估计参数的真实值</font></li>
+<li>意义：在多次重复下（n不变），平均数接近所估计的参数真值</li>
+</ul>
+<h2 id="渐进无偏估计">渐进无偏估计</h2>
+<ul>
+<li>定义：当<span class="math inline">\(N \rightarrow \infty\)</span>时，<span class="math inline">\(E(\hat{\theta}) \rightarrow \theta\)</span>，就称<span class="math inline">\(\hat{\theta}\)</span>是<span class="math inline">\(\theta\)</span>的渐进无偏估计</li>
+</ul>
+<h2 id="相合估计一致性">相合估计（一致性）</h2>
+<ul>
+<li>定义：如果<span class="math inline">\(\hat{\theta}_{N}\)</span>依概率收敛到<span class="math inline">\(\theta\)</span>，就称<span class="math inline">\(\hat{\theta}_{N}\)</span>是<span class="math inline">\(\theta\)</span>的相合估计</li>
+</ul>
+<h2 id="强相合估计">强相合估计</h2>
+<ul>
+<li>定义：如果<span class="math inline">\(\hat{\theta}_{N} a.s.\)</span>收敛到<span class="math inline">\(\theta\)</span>，就称<span class="math inline">\(\hat{\theta}_N\)</span>是<span class="math inline">\(\theta\)</span>的强相合估计</li>
+</ul>
+<h2 id="有效性">有效性</h2>
+<ul>
+<li>指估计量与总体参数的离散程度，如果两个估计量都是无偏的，那么离散程度较小的估计量相对来说是有效的，离散程度用方差来衡量</li>
+</ul>
+<h2 id="举例二阶中心矩">举例：二阶中心矩</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="总结">总结</h2>
+<ul>
+<li><strong>无偏性有期望这个条件，样本均值的期望等于或趋于总体均值</strong></li>
+<li><strong>相合性没有期望这个条件，样本均值随着n增大会趋于总体均值</strong></li>
+<li><strong>相合性与强相合估计的区别</strong>：后者条件加强了，前者依概率收敛，后者a.s.（全概率，即以概率1收敛）收敛。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>参数估计</tag>
+        <tag>相合性</tag>
+        <tag>无偏性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>复杂句式</title>
+    <url>/archives/8e48727d.html</url>
+    <content><![CDATA[<h2 id="day-31-summarize-compare-the-trend-and-key-features">Day 31 summarize &amp; compare the trend and key features</h2>
+<ol type="1">
+<li><p><strong>句子</strong>：<font color=red>A whopping</font> 83 per cent <font color=red>of us wolud like to see</font> Australia <font color=red>rely more on solar power, <strong>while</strong></font> 68% <font color=red>would like to see more wind and</font> 62% <font color=red>more hydro power.</font></p>
+<span id="more"></span></li>
+<li><strong>生词</strong>
+<ul>
+<li>whopping = very large adj.相当大的
+<ul>
+<li>(whopping) hundreds of people 相当多的人</li>
+<li>whop = hit, strike v.击打</li>
+<li>screech v.发出尖叫、刺耳的声音</li>
+<li>come to a screeching halt 戛然而止</li>
+</ul></li>
+<li><strong>a lion's share</strong> 绝大多数的人</li>
+</ul></li>
+<li><strong>句式</strong>：
+<ul>
+<li>while 这里表对比
+<ul>
+<li>虽然（放句首）= Although</li>
+<li>对比（两句中间）</li>
+<li>时间上的同时</li>
+</ul></li>
+<li>省略句，注意while后省略了&quot;of us&quot; 而and后面也省略了&quot;of us&quot;以及&quot;would like to see&quot;</li>
+</ul></li>
+<li><p><strong>翻译</strong>：有83%的人希望看到澳大利亚以后依赖于太阳能，而希望风能和水利发电的人分别是68%和62%。</p></li>
+<li><p><strong>默写</strong>：A whopping 83 per cent of us would like to see <del>in</del> Australia rely more on solar power, while 68% would like to see more on wind and 62% more on hydro power.</p></li>
+<li><p><strong>造句</strong>：</p>
+<ul>
+<li>In Peking University, 40 per cent of undergraduates would like to attend a company directly after graduate, while 30% would like to go abroad for a master or PhD degree and 30% would like to keep studying in China.</li>
+</ul></li>
+</ol>
+]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>写作</tag>
+        <tag>语法</tag>
+        <tag>英语</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>托福备考规划051620</title>
+    <url>/archives/d47528e1.html</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="3c3fff5f3d9a90167749f31119f98dde64341ff7fa215f0ec633320ac9791e46">283549565e3b2714e95c29f56cf4001858a5720f754722287c54df53589cd4e0bda6133f8cfa686bb1d1af559c6491e8529fca216a3aa7907946c0276e3332a889b204389fbb05132b831e1ec966f7f0f7a021a82b3b9443327347b86be900a74a05fed4858240e17c7d49b863f1d7e6e924278e6fd00abc25fb6036de9d931efe5b192834091ddd38cd896a02db2218873e79fa528be6a11db5f3b6bbc2d1c08f2ab36f3bf0a8cc503c8d212d74599a103e57bb83a62133e593eb6f3407a287d30de9920f6652f6042e4e3f71913c5cc5104881eb7eebd2426e7e8c8b25b36edcdc5edb9ab43a75d4b7710229a04af5dda82050ff6e65266e96a2fb1f7a81b87ca51b9df6528f30d1f025b42a7f38da83efeb6c3e2fb0cbb108272d9fc364cfb9b8af27e05818e096b5615820ea51f1387805b930e9527b50c13dbb9c510b6fdc9451d7b755a4e7d2e3e3d3e71133c30cdbef6bf63dc3ee82836fce6b89f2f79750411dff7c1b4ec0a144a0744c0efd483ff76c6f2f84b34bcedc818dbada80f7391005e54c0a6dfbc6af5a0bfbc775dfe4f28269c4bdb9d9130bd7f540b1981136c5bbe499232d80e7927e141371bf779cb176d7b240fa13d3d240d4a2f49eea9606fd8457ac0a54c8bd0c20c090ab59239559e8ac1227bc27913170ce18d5b8bcaf8446682fee80d407e98ca94e2f918f059cd62e079a5c477708aa5efb90f0e0f4e5e5a1639f1ea6342415a993a6b02ed42469443e2cad85cfbd1bef46fe01cafd7bc40256134d4feede350796f54906e84162972a16ec9c9fd2d9281f6d37888c08479f30484143ab94a266992d606b065314f5d5b4a1752a63e45a89c08724880c40f4fe75d0a030a173ef9372c5c6d1b5dc15378faacaaf223370c4f6bf30851c68f6d15113820fe79695b732073dbedd4bab1999529ff3dfbedda5364166bc6cf713a82f7969df5c17813b0ee6ee3e61d6a849730ab3dfd8aed89419ea33d2993ec1bdb4940a327f6e89ab30cd5b0b095e042d9ba35969480d2cad6528039f0ea6816f151de1255b4fcba1e42ca46f93050f4723f806c7e371d355477a7d6f283d5f1fcf11233587e0edebb6afcb98a2316782ea708655a739b8fd37e75376c6fb8c95f47416bb93e142fcca09c276d07b3161ae5c0923c320951584aad5fd47b1408dcea3256eb8276b832bb187145b2ac44ee37920a3fd1d086825776e0d0f599b72b3741eb8d99171ac301d76d101c5a969eefe1b8786c3812cf9d80de8c62188917f9558fb007cdb17a80ca69e4c92d919106f875de981948c3af6330c8d8b9b0ac99bdc0a6b64fac68a07f326ff40de290bba9bbae2302bb144abd1fd985e511e3d369d309d7b6fe6c13038af8bd7d48b7abc4635d2d66ee4fed5eab148a37e008a0fff6481500b2a6e410c15148e14d91096d73926ac0a4a4743fbad3f3ef843c748dc7c4a996f9225b5572b7c00bb338e1fea760991d7e9923e710c36f264fd1f0764b1bfa970ff6c6ddd92621430387c0cbd0714cb4736e89f8edfdb128c72adfcfff954166cf29bc94bfe2b046732268f55c6403ea1b40ad14dcadbc3b8f041cb804c2ac18816b0cc139a59444ef4e1e26f5fba24d4e48580a8b66a10ac70cf069f84b9624ac736c635934e2ba454dbf85b0b11611f4bc8daf0ac050d63c032f65b0a44de2266c83feb17d8ad8102b34cd94fd69806a7fe2eed947a25c5fbec1ccf457afe106248c10b296221b6b8039eb8f33b162a573ccdfcca938b1ae6d315a8bb2ac6f6106ab6ca52ef607c92fc2eb4899a788489ab83daaf3ee5a24da0be7aa872f4c39139fbde25c6cef6f697083ccd0e3388a81049d48e4d7453432ff29bec2706701ce401e410c11f25ffcd5ea1de4932357f834d12e154bd156a107490dd8f85a257b2684a0ac99f97f027d39210f0cf03526233400c7b27394ff60d556cb69a2db067d66131e190bb1b8bcf0ad8e69348482ca2c1b99d68a0963dda7944a2bfe6786f4cb9c89a973c1460760df4e7c41539392ccb3ce229751e09045479f8027551848eb2993087d3911817d5023475896d8933354df77b6576fbf44db92b5a44f8884ef92a38b08600734e0930a2a18299f04c088a6788c49b5680b53a0f65fad691e80c759eab5269746ab67913b10d285c00bec63b208cf067e4f506148fd9726ba837f2ef267f7c12b008800448319bd8fdf6c677b384744e5523855cdd8ead3a54b41c02ea94e9f2519321668aed10bfa4f574418a105b00d91d1dc785659f22d9e442536b6580ea830fbec67e430535a90dcd7c8adf215745e2ca36b41d3351e0d0b4b49912f3454771a2bc525953e48e5ef5115d02bf7aac3194f9b80677bbc5d1a8c352ab7b78b09b1bbffad3edb6f005c50a32f22e825d18aee4b614f00c134e2ed61be6d29ed605b49604bd95943977c7bf760ee2031aac29d70c5802bacfdbae928380d32ae838f6cc463e73d6a2d34407db44fae0c26bcda1aa35d51b56d0b5ba369c28a5c72987b2892fc40f830ede716cfa757f37933547cb7a4e47a51a399995c78298f1e2d37f9673448a645242a9363516946603e42ff1f5b231cd5789075b81a4c432e196909a5eb1355591788981f62f4de23e7d96a168fef4627975c1fb2b40dae81acedf1818a7e4d5f04bef0fb8b7bfb8709ebe0de3f2f5b868079f4b6f400bd37bd2ae837b6ef86587eac0c6735faf3763a4fd2b848090a5bcf0e62429135605f62ec6d5577723f3ffdaa889617777a2603aefaa7e9438db678a177703380c79386e7092a279b3094fc9e9a9413bb0f976720d76025b5874b80d3d0a326ed5901aede0db6a2b157d0a2d131ffdf86fed9f4a59db95d57889bcd71f9695a611e25dbd72811926c41ca5540b1afe44bd8f8962c46d6fd3d6c5e47ef68e220fed558ab3213c2fe0706e90536b85ac7fbaf8eda98f6eaa041a646d3fe3d43d4726d205f8e6857d7cc560a895f138b19f06b73131d7030cf437f5108ed84228ab2a2593ba7cdab70a550586feb2522793c5b6590fbe8e5040bcffe5bf57f16a7be090b92dc12b61db88e2b9a73fd5cf4965e9b60ed45d2b58e02f3f8b7db05ba1cecb652a1452a132999bd2a561a25d711d17b19082f82f41553616a7fb61200be2483dcd882d2a88e65609eef141d7d23e48bde5f15dd4787d22d782c7a538e13b9aa602dd5529930e428688c04361adb8fa5d28f84846ae57cda69be55aa13a59e527b3c850224dc5fe818ed70015da575c75175f3af82757a44255580a67af5cc7eeda2a24cf34d4110f6e4fa26a520f8ccbdaafd645fec22c678d180e0f7ed241656194ceba77e7af6d037aecd0117e5d3a970495cd1f889647f3929fbe22df7e6bcc13ec080806b727a9a7fa04fdcf85dd3839793e883d3aaaede46c544eee1bf53c4416a95b9daef131f0a4c5ce46298b777a62ec78792a3b417ecaf453738ef84222577e261a18897f41b4f5db510b9501f06e7a5c338b8775dddcdfefbd49327c8805bf649273a4ee867aafcc32e1f9e0d9aa4c8d1d3b24aac16e3cee77197f24ab4ceb724083cd72ed1d88d83959a8be27dce19ae948575641278e02d02740bbeb30f74f4aead457530ebda95da98a44bbf4ecfad78349e9580195eeddad979062c6e38db2ad033aefe7b0d309495446c9de936afbc5280d3af2a3a6271f517d39d4e7f0100ec749c608a8b1dbcc5a939107635f44d4914a8193c6118975ea2ad2730a5bfa06ff3e44dd1b0efd8dbf9636b9904ec48c84d92f81da65ab0ab12ba687f11155c52ba65e6cca2e75cfe6b9abe1c6f70694158a072c1c15dc303d9a3256148f641cf371de75b60f47dd62b405d011ddf520d93aae0f367ce4216ba01ed69c92847b799e22f0445ac40873e1538c8cdcd714d09a134fa6154479b58a9abfe42ddef0a758298b93b31b9e75c60c96e4834979cb48fcb6892c1848d65a70c452a16322ea82e0fb3d59784a5281da846116a4a0aba939862ca8df3d80354b62fe7be47366cc22c3e4123c2bd2eb5ce88869340a16a69dd2a0436522347c79959b217454344f6eb81745e9a04ff91d5935d08e04a0140fccf34d94410c6c8e000c6b1da9cd04750b94c485c97531b9f1caf68cada2d7e359b7ef01bceee678f12141c2263195eea6266a8f20b2a9dd0d9e8438a73dcb4fb82f75347e693c68728ee5d5402da39bfb4b206b8b1717f269b77c089a7cda42b839fe20dd277e7460f2fa23bc30cce4d418ae4adecf80a4f88b6ad6e02d16a9301f8d3a121ed3944cc1319c840da9dd4ba1b69ea9e275287e0a278c6e8bff497a78f42985abe390e19cd0c9e9bb688c6ca59879aa6dd4a544b43577f4ac01b8477f896ffeb95ee82b48e0352a7dc1ac45ea25cb1cf5587853f0d713704e3565cc61c36e2e6d8eabe22413210367091a1619e0de5b049bfbec4ba305976af45b632e8940f13e12ee03894c2c197fcd5c7807afc280fa33b07b6d345527f8a2853a4b3357c7c2c8e35d90d1fdec9a31c38c659f505b32f3ac9f07b108cbf046de031b6679331f1f370abe11165327c2a1b8ac6ef71a697dc2a4d1e8473eb00817d76462c5c03184bf5291381430b395992e8dd982ea7a0b861fec537cb6b1beefc7a0fc4bf9a19124ca99b79805edc7559fbc4f21b919bc8694489fa3734e91fdf2537b1f7fe8867004f68d752991179e618ad0b5e556851c0a2af3e031d638889cc0e967befae57d5509fd437c992c5486b591f3463c1bc8bb5fb6f9f96c5a7c43b2eadc4aa02144308589cb6e53d4c5a6160230798189f68e4c7f1a54dd5a7018339fc987fe9142de5b11881ccf772f84185e5913e0320003353c62169d40da6a80bdae285b3edcdbc1db339f1d6592cc07e4fcc0e021c12fd399972b7619786e8cd77f7e7da6a03d71d28a2c0770491f7516fd8f7dfa69427a2f62278526134ced1005ff7aebf1e5bc6456a748ebe3b6372720f764ee8bdfed965ce387fd3d7d137ebf33c9460431248236a40558c7e05d3a30a2ad761be2ee7abb8065ba19789b166ef51d53907d18e6347b3ae0b6dfda0578bc646b0746815519e793cbccd61781f2962889d1a6bffe11dc7fa08845e67a0d45b087dc95e2ddbf01e49394ecbfb06b33b147070184d258e942eb19614be04d7ba383a515cc0633b3d17dec1d74c169db3f228d620f02828a80e9c6dfc48008b90fb2603f71deaa7b80075750c020f4abeef3d65cf43f411c4c26ad479b0b801640117ca17de533f22f39325ad16b685c9f532aa9baa5f3241beae9be4202ad70f5b5baeec65475981c8593165bf58ef411e2c492045bc8e9c3d76481115f94d83873ab683c085ba48ef0c532d94b6613e81f7f64a38c9e234c839d993c399328bb8fee9f1b00314ea9bd1c78be8cb9ba4ed4d9a9ad77e5796ebd85c5bd7937e09c4ec84d5cffbb099b01f11e2795c43d43ddf9ff1c5c83a633fba20f74f78dce54f4fa63445e0df9bfc1feb37ae6b32b50f7c4c4edb05a198e209ec719dd6b85f67de3cb7a0fd51bd8eeba58fff9c1e82dd65cb55da793d82483206798355dfa61e8a97eb6e4cc02c89d806300118597b52c6276b52f701ae716f4bc4af8b41d6d71921d6c86de9a992018e05bc73686c5ef18afa43b06e7ce011f6c4cc791d4227298dd89e65005880fa8df725604f74be381c9e9eba033aaaf366bae79d13e89e79081344dba43380a198110f476b96c87d8efd3c491ab2faaa81145f9000cacd3a286ddbdaf97093622f8600d571a0ea794d18b1095e4a6629b03cff8b5d39b5098309c74a664b392472e37480d97e7c5f5d6375a5eac80b12f6feb12110b720a073598c2d76ce24f5466f5d372988bb402b08463198cdb4e2f6bb6a19230eaa14c8ba8af9a776c8df5d7374d5dfa2cc424738c6c14afc2cc8fa95fd03157136c47594098ba2b31e988ba868e3fb0cbf511c9032c8c2c026e6c4c289760227cbb3e0edbd0a5946db0646873728a5656cd704410f9c2e90560e2f16d73247aa881dfd201a93ed22522dc514eb90954831c00966e530cd14ca3b377187c4d23022657da149aafb3f603fe64390cec927377c694c8c87145ade38e9490d750359ce1326b55152fccbd7c0512a9b925cf5a63b21f5cdf5b58bf4612be3f4f025a9e5fc89c535b37a4943bd686554a0b5b591bfed0166132c7b0452230cbc38d9a5515f1e95bb00a4447e511988f3436507bceac73423e0032f5bbd0a7b3a89efcfbc44f09ae506a71cd13b6ebe7ad34e13aefe8a4899e69a8da612921f3a5db0403919229e03d4ddc0eafab800311e68021b4ca2d4ae6ac16ed6f58c7a62cdd9e51f9a3239e14dbc9a55b6036672c48f012c180ec8bd9b7</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-blink">
+      <input class="hbe hbe-input-field hbe-input-field-blink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-blink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-blink" data-content="请在此输入密码">请在此输入密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>英语学习</category>
+      </categories>
+      <tags>
+        <tag>思考</tag>
+        <tag>托福</tag>
+        <tag>英语</tag>
+        <tag>规划</tag>
       </tags>
   </entry>
   <entry>

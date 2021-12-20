@@ -44,6 +44,167 @@
   </entry>
   
   <entry>
+    <title>HOG特征</title>
+    <link href="https://weiren1998.github.io/archives/6a4ff405.html"/>
+    <id>https://weiren1998.github.io/archives/6a4ff405.html</id>
+    <published>2021-08-24T13:12:29.000Z</published>
+    <updated>2021-12-20T17:43:41.151Z</updated>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;简介：HOG全称&lt;strong&gt;histogram of oriented gradients&lt;/strong&gt;，中文是&lt;strong&gt;方向梯度直方图&lt;/strong&gt;。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。&lt;/li&gt;
+&lt;li&gt;主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述&lt;/li&gt;
+&lt;li&gt;本质：梯度的统计信息，而梯度主要存在于边缘的地方&lt;/li&gt;
+&lt;li&gt;优点：
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;由于HOG是在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上&lt;/li&gt;
+&lt;li&gt;在粗的空域抽样、精细的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响检测效果。因此HOG特征是特别适合于做图像中的人体检测的&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="图像处理" scheme="https://weiren1998.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+    <category term="图像边缘信息提取" scheme="https://weiren1998.github.io/tags/%E5%9B%BE%E5%83%8F%E8%BE%B9%E7%BC%98%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据预处理</title>
+    <link href="https://weiren1998.github.io/archives/e92b12e5.html"/>
+    <id>https://weiren1998.github.io/archives/e92b12e5.html</id>
+    <published>2021-08-21T13:50:43.000Z</published>
+    <updated>2021-12-20T17:33:47.757Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="机器学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="数据预处理" scheme="https://weiren1998.github.io/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    
+    <category term="挖坑" scheme="https://weiren1998.github.io/tags/%E6%8C%96%E5%9D%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文阅读：Analysis of Human Back Shape Using Surface Curvatures</title>
+    <link href="https://weiren1998.github.io/archives/8918aa0c.html"/>
+    <id>https://weiren1998.github.io/archives/8918aa0c.html</id>
+    <published>2021-08-19T04:46:57.797Z</published>
+    <updated>2021-12-20T17:55:47.247Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;给出一种评测标准，使其不受坐标系和病人位置的影响，这种方法叫做surface curvature表面曲率&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="脊柱侧弯检测" scheme="https://weiren1998.github.io/tags/%E8%84%8A%E6%9F%B1%E4%BE%A7%E5%BC%AF%E6%A3%80%E6%B5%8B/"/>
+    
+    <category term="表面曲率" scheme="https://weiren1998.github.io/tags/%E8%A1%A8%E9%9D%A2%E6%9B%B2%E7%8E%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>目标检测算法脉络梳理</title>
+    <link href="https://weiren1998.github.io/archives/78535d66.html"/>
+    <id>https://weiren1998.github.io/archives/78535d66.html</id>
+    <published>2021-08-04T12:12:13.000Z</published>
+    <updated>2021-12-20T17:40:51.017Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;目标检测（Object Detection）是计算机视觉中一个重要分支，其&lt;strong&gt;定义&lt;/strong&gt;就是&lt;strong&gt;在给定的图片中精确找到物体所在位置，并标注出物体的类别。&lt;/strong&gt;其主流方法包括&lt;strong&gt;R-CNN、Fast R-CNN、Faster R-CNN、YOLO、SSD&lt;/strong&gt;等。主要&lt;strong&gt;难点&lt;/strong&gt;在于&lt;strong&gt;物体尺寸变化大、物体摆放角度不同、出现位置随机、多物体、多类别&lt;/strong&gt;等等。&lt;/p&gt;
+&lt;p&gt;参考文献：https://www.julyedu.com/question/big/kp_id/32/ques_id/2103&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="目标检测" scheme="https://weiren1998.github.io/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/"/>
+    
+    <category term="深度学习" scheme="https://weiren1998.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CV面试之常识题</title>
+    <link href="https://weiren1998.github.io/archives/555d6097.html"/>
+    <id>https://weiren1998.github.io/archives/555d6097.html</id>
+    <published>2021-08-04T00:09:00.000Z</published>
+    <updated>2021-12-20T17:41:44.775Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近本科毕业，想回顾一下本科的学习内容，同时为实习&amp;amp;找工作的面试做准备，刚好找到了一个网站，有一些“常识题”，自己需要积累并且背下来，加油！&lt;/p&gt;
+&lt;p&gt;参考：https://www.julyedu.com/question/topic_list/32&lt;/p&gt;
+&lt;p&gt;​ https://m.julyedu.com/problems/920&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="挖坑" scheme="https://weiren1998.github.io/tags/%E6%8C%96%E5%9D%91/"/>
+    
+    <category term="常识题" scheme="https://weiren1998.github.io/tags/%E5%B8%B8%E8%AF%86%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Action Spotting Experiments</title>
+    <link href="https://weiren1998.github.io/archives/e7d645d1.html"/>
+    <id>https://weiren1998.github.io/archives/e7d645d1.html</id>
+    <published>2021-06-05T18:54:01.000Z</published>
+    <updated>2021-12-20T17:55:07.108Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="足球" scheme="https://weiren1998.github.io/tags/%E8%B6%B3%E7%90%83/"/>
+    
+    <category term="毕业设计" scheme="https://weiren1998.github.io/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux基本命令</title>
     <link href="https://weiren1998.github.io/archives/4b6ea061.html"/>
     <id>https://weiren1998.github.io/archives/4b6ea061.html</id>
@@ -111,6 +272,33 @@
   </entry>
   
   <entry>
+    <title>天文词汇 Astronomy</title>
+    <link href="https://weiren1998.github.io/archives/27799dd0.html"/>
+    <id>https://weiren1998.github.io/archives/27799dd0.html</id>
+    <published>2020-07-26T03:19:00.532Z</published>
+    <updated>2021-12-20T17:27:49.341Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一太阳系-solar-system&quot;&gt;一、太阳系 Solar System&lt;/h2&gt;
+&lt;h3 id=&quot;基本信息&quot;&gt;1. 基本信息&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在太阳的引力作用下(Under the control of the Sun&#39;s gravitational force)，周边有8个行星(planet)、67个卫星(moon)、至少50万个小行星(asteroid)、矮行星(dwarf planet)和少量彗星(comet)绕其运转&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="托福" scheme="https://weiren1998.github.io/tags/%E6%89%98%E7%A6%8F/"/>
+    
+    <category term="听力" scheme="https://weiren1998.github.io/tags/%E5%90%AC%E5%8A%9B/"/>
+    
+    <category term="天文学" scheme="https://weiren1998.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Of Studies</title>
     <link href="https://weiren1998.github.io/archives/8b15f764.html"/>
     <id>https://weiren1998.github.io/archives/8b15f764.html</id>
@@ -133,6 +321,161 @@
     <category term="读书" scheme="https://weiren1998.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
     
     <category term="鸡汤" scheme="https://weiren1998.github.io/tags/%E9%B8%A1%E6%B1%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>名词性从句</title>
+    <link href="https://weiren1998.github.io/archives/1f5cd790.html"/>
+    <id>https://weiren1998.github.io/archives/1f5cd790.html</id>
+    <published>2020-06-09T08:32:57.476Z</published>
+    <updated>2021-12-20T17:30:13.846Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;day-71-从句充当名词成份可跟在介词后&quot;&gt;Day 71 从句充当名词成份(可跟在介词后)&lt;/h2&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;句子&lt;/strong&gt;：&lt;font color=red&gt;To reduce our&lt;/font&gt; diet&#39;s &lt;font color=red&gt;impact, we&#39;d also need to be a bit more rational about&lt;/font&gt; &lt;a href=&quot;n.&quot;&gt;&lt;strong&gt;how much&lt;/strong&gt; we eat&lt;/a&gt;.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="百句天天练" scheme="https://weiren1998.github.io/tags/%E7%99%BE%E5%8F%A5%E5%A4%A9%E5%A4%A9%E7%BB%83/"/>
+    
+    <category term="写作" scheme="https://weiren1998.github.io/tags/%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="语法" scheme="https://weiren1998.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>表语从句</title>
+    <link href="https://weiren1998.github.io/archives/39059898.html"/>
+    <id>https://weiren1998.github.io/archives/39059898.html</id>
+    <published>2020-06-09T03:16:53.524Z</published>
+    <updated>2021-12-20T17:28:49.995Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;day-91-paraphrase-句子改写技巧&quot;&gt;Day 91 Paraphrase 句子改写技巧&lt;/h2&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;原题&lt;/strong&gt;：Some people say that main environmental problem of our time is the loss of particular species of plants and animals.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;改写&lt;/strong&gt;：&lt;font color=red&gt;Some people consider that&lt;/font&gt; the loss of individual species of plants and animals &lt;font color=red&gt;is the main&lt;/font&gt; environmental &lt;font color=red&gt;problem of our time.&lt;/font&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="百句天天练" scheme="https://weiren1998.github.io/tags/%E7%99%BE%E5%8F%A5%E5%A4%A9%E5%A4%A9%E7%BB%83/"/>
+    
+    <category term="写作" scheme="https://weiren1998.github.io/tags/%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="语法" scheme="https://weiren1998.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>同位语从句</title>
+    <link href="https://weiren1998.github.io/archives/7dbecab8.html"/>
+    <id>https://weiren1998.github.io/archives/7dbecab8.html</id>
+    <published>2020-06-09T03:12:11.711Z</published>
+    <updated>2021-12-20T17:30:31.669Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;day-81-同位语从句-前面修饰的名词&quot;&gt;Day 81 同位语从句 = 前面修饰的名词&lt;/h2&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;句子&lt;/strong&gt;：&lt;font color=red&gt;It&#39;s an unsettling thought that&lt;/font&gt; extreme temperatures are the new normal for this generation of children.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="百句天天练" scheme="https://weiren1998.github.io/tags/%E7%99%BE%E5%8F%A5%E5%A4%A9%E5%A4%A9%E7%BB%83/"/>
+    
+    <category term="写作" scheme="https://weiren1998.github.io/tags/%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="语法" scheme="https://weiren1998.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>估计量的相合性和无偏性</title>
+    <link href="https://weiren1998.github.io/archives/84afe1b9.html"/>
+    <id>https://weiren1998.github.io/archives/84afe1b9.html</id>
+    <published>2020-05-15T00:40:45.411Z</published>
+    <updated>2021-12-20T17:34:47.829Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;估计量&quot;&gt;估计量&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;参数的点估计就是根据样本构造的一个统计量，把这个统计量称作总体总体参数的估计量&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;无偏性、渐进无偏性、有效性、相合性（一致性）都是对与样本统计量好坏的一种度量&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="机器学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="参数估计" scheme="https://weiren1998.github.io/tags/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/"/>
+    
+    <category term="相合性" scheme="https://weiren1998.github.io/tags/%E7%9B%B8%E5%90%88%E6%80%A7/"/>
+    
+    <category term="无偏性" scheme="https://weiren1998.github.io/tags/%E6%97%A0%E5%81%8F%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复杂句式</title>
+    <link href="https://weiren1998.github.io/archives/8e48727d.html"/>
+    <id>https://weiren1998.github.io/archives/8e48727d.html</id>
+    <published>2020-04-26T14:14:20.588Z</published>
+    <updated>2021-12-20T17:29:35.590Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;day-31-summarize-compare-the-trend-and-key-features&quot;&gt;Day 31 summarize &amp;amp; compare the trend and key features&lt;/h2&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;句子&lt;/strong&gt;：&lt;font color=red&gt;A whopping&lt;/font&gt; 83 per cent &lt;font color=red&gt;of us wolud like to see&lt;/font&gt; Australia &lt;font color=red&gt;rely more on solar power, &lt;strong&gt;while&lt;/strong&gt;&lt;/font&gt; 68% &lt;font color=red&gt;would like to see more wind and&lt;/font&gt; 62% &lt;font color=red&gt;more hydro power.&lt;/font&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="写作" scheme="https://weiren1998.github.io/tags/%E5%86%99%E4%BD%9C/"/>
+    
+    <category term="语法" scheme="https://weiren1998.github.io/tags/%E8%AF%AD%E6%B3%95/"/>
+    
+    <category term="英语" scheme="https://weiren1998.github.io/tags/%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>托福备考规划051620</title>
+    <link href="https://weiren1998.github.io/archives/d47528e1.html"/>
+    <id>https://weiren1998.github.io/archives/d47528e1.html</id>
+    <published>2020-04-19T10:13:25.714Z</published>
+    <updated>2021-12-20T17:31:10.809Z</updated>
+    
+    
+    <summary type="html">文章被加密了，输入密码后方可阅读~</summary>
+    
+    
+    
+    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="思考" scheme="https://weiren1998.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="托福" scheme="https://weiren1998.github.io/tags/%E6%89%98%E7%A6%8F/"/>
+    
+    <category term="英语" scheme="https://weiren1998.github.io/tags/%E8%8B%B1%E8%AF%AD/"/>
+    
+    <category term="规划" scheme="https://weiren1998.github.io/tags/%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
