@@ -25,7 +25,7 @@
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/print_out/article/details/88558841&quot;&gt;https://blog.csdn.net/print_out/article/details/88558841&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：https://blog.csdn.net/print_out/article/details/88558841&lt;/p&gt;
 &lt;p&gt;安装版本：opencv3.4.0&lt;/p&gt;
 &lt;p&gt;编译环境：visual studio 2017&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
@@ -115,20 +115,13 @@
     <link href="https://weiren1998.github.io/archives/8b15f764.html"/>
     <id>https://weiren1998.github.io/archives/8b15f764.html</id>
     <published>2020-07-07T12:42:12.888Z</published>
-    <updated>2021-12-19T10:02:42.141Z</updated>
+    <updated>2021-12-20T16:24:18.585Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h2 id=&quot;of-studies&quot;&gt;Of Studies&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;——Francis Bacon&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Studies serve for delight, for ornament, and</summary>
-        
-      
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -148,7 +141,7 @@
     <link href="https://weiren1998.github.io/archives/4c58ca92.html"/>
     <id>https://weiren1998.github.io/archives/4c58ca92.html</id>
     <published>2020-04-07T07:00:14.079Z</published>
-    <updated>2021-12-19T14:42:59.047Z</updated>
+    <updated>2021-12-20T16:25:52.230Z</updated>
     
     
     <summary type="html">文章被加密了，输入密码后方可阅读~</summary>
@@ -180,7 +173,7 @@
 &lt;p&gt;又一次做了修改哈哈哈，目前重新搭了一下所有的环境，沿用了next的Gemini主题，配置了很多有的没得，感谢几位大佬，学到了很多。这次直接在hexo的source/_data中对主题进行了修改，所以之后next更新后，不会有过多的影响，只有归档页的格式对主题中的一些文件进行了修改，其他均未在主题文件中进行改动。&lt;/p&gt;
 &lt;p&gt;主要参考：&lt;a href=&quot;https://tding.top/&quot;&gt;小丁的博客&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;back2top小猫：&lt;a href=&quot;http://yearito.cn/posts/hexo-theme-beautify.html&quot;&gt;yearito&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;归档&amp;amp;分类样式参考：&lt;a href=&quot;https://jrbcode.gitee.io/posts/be9758cd.html&quot;&gt;CodeHeap&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;归档&amp;amp;分类样式参考：&lt;a href=&quot;https://jrbcode.gitee.io/posts/be9758cd.html&quot;&gt;CodeHeap&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -190,9 +183,9 @@
     <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
     
     
-    <category term="环境配置" scheme="https://weiren1998.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
     <category term="hexo" scheme="https://weiren1998.github.io/tags/hexo/"/>
+    
+    <category term="环境配置" scheme="https://weiren1998.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
     <category term="next" scheme="https://weiren1998.github.io/tags/next/"/>
     
