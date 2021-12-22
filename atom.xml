@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2021-12-21T17:15:45.404Z</updated>
+  <updated>2021-12-22T05:54:45.431Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://weiren1998.github.io/archives/15f7c05f.html"/>
     <id>https://weiren1998.github.io/archives/15f7c05f.html</id>
     <published>2021-12-22T00:05:32.000Z</published>
-    <updated>2021-12-21T17:15:45.404Z</updated>
+    <updated>2021-12-22T05:54:45.431Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;题目判定字符是否唯一&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/is-unique-lcci/&quot;&gt;判定字符是否唯一&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;可能解法&quot;&gt;可能解法：&lt;/h3&gt;
 &lt;ol type=&quot;1&quot;&gt;
-&lt;li&gt;用哈希表，记录目前为止出现的字符&lt;/li&gt;
+&lt;li&gt;用哈希表&lt;code&gt;unordered_map&lt;/code&gt;，记录目前为止出现的字符&lt;/li&gt;
 &lt;li&gt;用bool数组来完成记录功能&lt;/li&gt;
 &lt;li&gt;用位运算代替bool数组的记录功能&lt;/li&gt;
 &lt;/ol&gt;
