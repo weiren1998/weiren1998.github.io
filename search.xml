@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>面试金典0102</title>
+    <url>/archives/8cfe91e5.html</url>
+    <content><![CDATA[<h3 id="题目判定是否互为字符重排">题目：<a href="https://leetcode-cn.com/problems/check-permutation-lcci/">判定是否互为字符重排</a></h3>
+<h3 id="解题方法">解题方法：</h3>
+<ol type="1">
+<li>用哈希表<code>unordered_map&lt;char, int&gt;</code>，记录<code>s1</code>中字符出现数，并于<code>s2</code>做对比</li>
+<li>用<code>int count[256]</code>的数组来完成上述工作<strong>（桶计数）</strong></li>
+<li>没想到的方法：将<code>s1</code>和<code>s2</code>内部按照字符升序排序，最后判定两者是否相等即可</li>
+</ol>
+<div class="note primary">
+            <p>2的时间复杂度为<span class="math inline">\(O(N)\)</span>，因为<span class="math inline">\(N &lt;= 100\)</span>，因此可以理解为<span class="math inline">\(O(1)\)</span></p>
+          </div>
+<span id="more"></span>
+<h3 id="解法一">解法一：</h3>
+<div class="note warning">
+            <p>用到了C++ std中的<code>unordered_map</code>类，需要注意是否可以修改<code>pair</code>中的值！</p><p><code>it</code>的类型是什么！！？？</p><p><code>unordered_map&lt;char, int&gt;</code>中，添加新hash对时，初值为0？？</p>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; map;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            map[s1[i]] += <span class="number">1</span>; <span class="comment">// 初值是0吗？</span></span><br><span class="line">            map[s2[i]] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// unordered_map&lt;char, int&gt;::iterator it;</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it : map) <span class="comment">// 这里it的类型是？</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(it.second != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二">解法二：</h3>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count[<span class="number">256</span>];</span><br><span class="line">        <span class="built_in">memset</span>(count, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(count));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s1[i])]++;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s2[i])]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">256</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(count[i] != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>哈希</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试金典0101</title>
     <url>/archives/15f7c05f.html</url>
     <content><![CDATA[<h3 id="题目判定字符是否唯一">题目：<a href="https://leetcode-cn.com/problems/is-unique-lcci/">判定字符是否唯一</a></h3>
-<h3 id="可能解法">可能解法：</h3>
+<h3 id="解题方法">解题方法：</h3>
 <ol type="1">
 <li>用哈希表<code>unordered_map</code>，记录目前为止出现的字符</li>
-<li>用bool数组来完成记录功能</li>
+<li>用bool数组来完成记录功能<strong>（桶计数）</strong></li>
 <li>用位运算代替bool数组的记录功能</li>
 </ol>
 <div class="note primary">
@@ -36,8 +67,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
+        <tag>哈希</tag>
         <tag>位运算</tag>
-        <tag>哈希表</tag>
       </tags>
   </entry>
   <entry>
@@ -145,8 +176,8 @@
       <tags>
         <tag>面试</tag>
         <tag>递归</tag>
-        <tag>概率</tag>
         <tag>DFS</tag>
+        <tag>概率</tag>
       </tags>
   </entry>
   <entry>
@@ -2550,8 +2581,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>字符串</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -2718,8 +2749,8 @@
         <category>工具学习</category>
       </categories>
       <tags>
-        <tag>环境配置</tag>
         <tag>hexo</tag>
+        <tag>环境配置</tag>
         <tag>next</tag>
       </tags>
   </entry>

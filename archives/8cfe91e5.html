@@ -20,29 +20,21 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧         .hexo-douban-tabs {     margin-bottom: 15px;     margin-top: 15px; }  .hexo-douban-tab {     padding: 5px; }  .hexo-douban-active {">
-<meta property="og:type" content="website">
-<meta property="og:title" content="书籍是人类进步的阶梯">
-<meta property="og:url" content="https://weiren1998.github.io/books/index.html">
+  <meta name="description" content="题目：判定是否互为字符重排 解题方法：  用哈希表unordered_map&lt;char, int&gt;，记录s1中字符出现数，并于s2做对比 用int count[256]的数组来完成上述工作（桶计数） 没想到的方法：将s1和s2内部按照字符升序排序，最后判定两者是否相等即可               2的时间复杂度为\(O(N)\)，因为\(N &lt;&#x3D; 100\)，因">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试金典0102">
+<meta property="og:url" content="https://weiren1998.github.io/archives/8cfe91e5.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧         .hexo-douban-tabs {     margin-bottom: 15px;     margin-top: 15px; }  .hexo-douban-tab {     padding: 5px; }  .hexo-douban-active {">
+<meta property="og:description" content="题目：判定是否互为字符重排 解题方法：  用哈希表unordered_map&lt;char, int&gt;，记录s1中字符出现数，并于s2做对比 用int count[256]的数组来完成上述工作（桶计数） 没想到的方法：将s1和s2内部按照字符升序排序，最后判定两者是否相等即可               2的时间复杂度为\(O(N)\)，因为\(N &lt;&#x3D; 100\)，因">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s1050021.jpg">
-<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s4250062.jpg">
-<meta property="og:image" content="https://img9.doubanio.com/view/subject/s/public/s29952174.jpg">
-<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s3228699.jpg">
-<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s2659208.jpg">
-<meta property="og:image" content="https://img3.doubanio.com/view/subject/s/public/s2347590.jpg">
-<meta property="og:image" content="https://img3.doubanio.com/view/subject/s/public/s1066570.jpg">
-<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s1103152.jpg">
-<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s1078958.jpg">
-<meta property="og:image" content="https://img9.doubanio.com/view/subject/s/public/s28357056.jpg">
+<meta property="article:published_time" content="2021-12-23T00:56:44.000Z">
+<meta property="article:modified_time" content="2021-12-22T17:23:03.178Z">
 <meta property="article:author" content="鸡球星">
-<meta property="article:tag" content="思考 &amp; 行动">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="哈希">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img2.doubanio.com/view/subject/s/public/s1050021.jpg">
 
-<link rel="canonical" href="https://weiren1998.github.io/books/">
+<link rel="canonical" href="https://weiren1998.github.io/archives/8cfe91e5.html">
 
 
 <script id="page-configurations">
@@ -50,12 +42,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>书籍是人类进步的阶梯 | J球星的博客
-  </title>
+  <title>面试金典0102 | J球星的博客</title>
   
 
 
@@ -209,478 +200,181 @@
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/8cfe91e5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
+      <meta itemprop="name" content="鸡球星">
+      <meta itemprop="description" content="努力是矢量，有大小也有方向">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J球星的博客">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          面试金典0102
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">书籍是人类进步的阶梯
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<div class="post-meta">
-  
+              <time title="创建时间：2021-12-23 00:56:44" itemprop="dateCreated datePublished" datetime="2021-12-23T00:56:44Z">2021-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-22 17:23:03" itemprop="dateModified" datetime="2021-12-22T17:23:03Z">2021-12-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
 
-</div>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      
-      <div class="post-body">
-          <blockquote>
-    <p>我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧</p>
-</blockquote>
-
-<style>
     
-.hexo-douban-tabs {
-    margin-bottom: 15px;
-    margin-top: 15px;
-}
-
-.hexo-douban-tab {
-    padding: 5px;
-}
-
-.hexo-douban-active {
-    background: #657b83;
-    color: #fff;
-}
-
-.hexo-douban-item {
-    padding-bottom: 10px;
-    position: relative;
-    clear: both;
-    min-height: 170px;
-    padding: 10px 0;
-    border-bottom: 1px #ddd solid;
-}
-
-@media screen and (max-width: 600px) {
-    .hexo-douban-item {
-        width: 100%;
-    }
-}
-
-.hexo-douban-picture {
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 100px;
-}
-
-.hexo-douban-info {
-    padding-left: 120px;
-}
-
-.hexo-douban-meta {
-    font-size: 12px;
-    padding-right: 10px;
-}
-
-.hexo-douban-comments {
-    font-size: 12px;
-}
-
-.hexo-douban-pagination {
-    margin-top: 15px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hexo-douban-button {
-    padding: 5px;
-}
-
-.hexo-douban-button:hover {
-    background: #657b83;
-    color: #fff;
-}
-
-.hexo-douban-hide {
-    display: none;
-}
-
-.hexo-douban-show {
-    display: block;
-}
-
-
-</style>
-
-<div class="hexo-douban-tabs">
-    <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;"
-       rel="external">
-        在读
-        (2)</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;"
-       rel="external">
-        想读
-        (8)</a>
-    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;"
-       rel="external">
-        已读
-        (0)</a>
-</div>
-<div>
-    <div id="hexo-douban-item1">
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s1050021.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1064275/" rel="external nofollow noreferrer"> 老人与海</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  海明威 / 吴劳 / 上海译文出版社 / 1999-10 / 8.20元
-
-        </div>
-        <div class="hexo-douban-meta">2021-12-21
-      在读 /  外国文学 外国名著 经典 海明威 小说 老人与海 励志 人生 美国</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s4250062.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1083428/" rel="external nofollow noreferrer"> 傲慢与偏见</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [英] 奥斯丁 / 张玲、张扬 / 人民文学出版社 / 1993-7 / 13.00元
-
-        </div>
-        <div class="hexo-douban-meta">2021-12-21
-      在读 /  名著 奥斯丁 傲慢与偏见 外国名著 小说 爱情 英国</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
-</div>
-    </div>
-    <div id="hexo-douban-item2">
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/s/public/s29952174.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/30286914/" rel="external nofollow noreferrer"> 基督山伯爵</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [法]大仲马 / 周克希 / 译林出版社 / 2018-10 / 138
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        </div>
-        <div class="hexo-douban-meta">2021-12-22
-      想读 /  法国 世界名著 法国文学 经典 复仇</div>
-        <div class="hexo-douban-comments">
-  </div>
+        <h3 id="题目判定是否互为字符重排">题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/check-permutation-lcci/">判定是否互为字符重排</a></h3>
+<h3 id="解题方法">解题方法：</h3>
+<ol type="1">
+<li>用哈希表<code>unordered_map&lt;char, int&gt;</code>，记录<code>s1</code>中字符出现数，并于<code>s2</code>做对比</li>
+<li>用<code>int count[256]</code>的数组来完成上述工作<strong>（桶计数）</strong></li>
+<li>没想到的方法：将<code>s1</code>和<code>s2</code>内部按照字符升序排序，最后判定两者是否相等即可</li>
+</ol>
+<div class="note primary">
+            <p>2的时间复杂度为<span class="math inline">\(O(N)\)</span>，因为<span class="math inline">\(N &lt;= 100\)</span>，因此可以理解为<span class="math inline">\(O(1)\)</span></p>
+          </div>
+<span id="more"></span>
+<h3 id="解法一">解法一：</h3>
+<div class="note warning">
+            <p>用到了C++ std中的<code>unordered_map</code>类，需要注意是否可以修改<code>pair</code>中的值！</p><p><code>it</code>的类型是什么！！？？</p><p><code>unordered_map&lt;char, int&gt;</code>中，添加新hash对时，初值为0？？</p>
+          </div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; map;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            map[s1[i]] += <span class="number">1</span>; <span class="comment">// 初值是0吗？</span></span><br><span class="line">            map[s2[i]] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// unordered_map&lt;char, int&gt;::iterator it;</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it : map) <span class="comment">// 这里it的类型是？</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(it.second != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二">解法二：</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count[<span class="number">256</span>];</span><br><span class="line">        <span class="built_in">memset</span>(count, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(count));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s1[i])]++;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s2[i])]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">256</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(count[i] != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
     </div>
-</div>
 
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s3228699.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3183775/" rel="external nofollow noreferrer"> 四世同堂</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  老舍 / 北京十月文艺出版社 / 2008-07 / 36.00元
-
+    
+    
+    
+        <div class="reward-container">
+  <div>欲戴皇冠，必承其重，加油！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
       
-        </div>
-        <div class="hexo-douban-meta">2021-12-22
-      想读 /  北京 小说 中国 经典 抗日战争 中国文学 现代文学 老舍</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s2659208.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1858513/" rel="external nofollow noreferrer"> 月亮和六便士</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [英] 毛姆 / 傅惟慈 / 上海译文出版社 / 2006-8 / 15.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-20
-      想读 /  英国文学 月亮和六便士 艺术 毛姆</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/s/public/s2347590.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2035179/" rel="external nofollow noreferrer"> 动物农场</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [英] 乔治·奥威尔 / 荣如德 / 上海译文出版社 / 2007-3 / 10.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-20
-      想读 /  乔治·奥威尔 动物农场 外国文学 政治寓言 反乌托邦</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/s/public/s1066570.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1060068/" rel="external nofollow noreferrer"> 撒哈拉的故事</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  三毛 / 哈尔滨出版社 / 2003-8 / 15.80元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-20
-      想读 /  三毛 撒哈拉的故事 中国文学</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s1103152.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1084336/" rel="external nofollow noreferrer"> 小王子</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [法] 圣埃克苏佩里 / 马振聘 / 人民文学出版社 / 2003-8 / 22.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-20
-      想读 /  经典 小王子 外国文学 成长 童话</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s1078958.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1068920/" rel="external nofollow noreferrer"> 飘</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  [美国] 玛格丽特·米切尔 / 李美华 / 译林出版社 / 2000-9 / 40.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-20
-      想读 /  美国 飘 女性 爱情 外国名著 经典</div>
-        <div class="hexo-douban-comments">
-      美国南北战争时期的爱情故事，同时也是经典
-      
-  
-
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-item">
-    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/s/public/s28357056.jpg" referrerPolicy="no-referrer" /></div>
-    <div class="hexo-douban-info">
-        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/6518605/" rel="external nofollow noreferrer"> 三体全集</a></div>
-        <div class="hexo-douban-meta">
-        
-  
-  刘慈欣 / 重庆出版社 / 2012-1-1 / 168.00元
-
-      
-        </div>
-        <div class="hexo-douban-meta">2021-12-15
-      想读 /  经典 科幻小说 三体</div>
-        <div class="hexo-douban-comments">
-  </div>
-    </div>
-</div>
-
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
-</div>
-
-    </div>
-    <div id="hexo-douban-item3">
-        
-        <div class="hexo-douban-pagination">
-    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
-    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
-    <span class="hexo-douban-pagenum">2 / 3</span>
-    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
-    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
-</div>
-    </div>
-
-</div>
-
-<script>
-    /**
- * Created by myths on 18-2-8.
- */
-
-Element.prototype.siblings = function () {
-    var siblingElement = [];
-    var sibs = this.parentNode.children;
-    for (var i = 0; i < sibs.length; i++) {
-        if (sibs[i] !== this) {
-            siblingElement.push(sibs[i]);
-        }
-    }
-    return siblingElement;
-};
-function tabClick() {
-    //修改标签样式
-    this.classList.add('hexo-douban-active');
-    var sibs = this.siblings();
-    for (var j = 0; j < sibs.length; j++) {
-        sibs[j].classList.remove('hexo-douban-active');
-    }
-    //显示对应板块
-    var itemId = this.id.replace('tab', 'item');
-    var target = document.getElementById(itemId);
-    target.classList.remove('hexo-douban-hide');
-    target.classList.add('hexo-douban-show');
-    sibs = document.getElementById(itemId).siblings();
-    for (var k = 0; k < sibs.length; k++) {
-        sibs[k].classList.remove('hexo-douban-show');
-        sibs[k].classList.add('hexo-douban-hide');
-    }
-}
-var tabs = document.getElementsByClassName("hexo-douban-tab");
-for (var i = 0; i < tabs.length; i++) {
-    tabs[i].onclick = tabClick;
-    tabs[i].onclick.apply(tabs[i]);
-}
-tabs[2].click();
-
-    var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
-var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
-var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
-var lastpages = document.getElementsByClassName("hexo-douban-lastpage");
-var pagenums = document.getElementsByClassName("hexo-douban-pagenum");
-
-function makePageNum(num, arr) {
-    return (num + 1) + ' / ' + (Math.ceil(arr.length / 10 === 0 ? 1 : Math.ceil(arr.length / 10)));
-}
-
-function firstBtn() {
-    var sibs = this.parentNode.siblings();
-    displayPage(sibs, 0);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(0, sibs);
-}
-
-function previousBtn() {
-    var sibs = this.parentNode.siblings();
-    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
-    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
-    currNum = parseInt(currNum, 10) - 1;
-    if (currNum > 0) {
-        currNum--;
-    }
-    displayPage(sibs, currNum);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
-}
-
-function nextBtn() {
-    var sibs = this.parentNode.siblings();
-    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
-    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
-    currNum = parseInt(currNum, 10) - 1;
-    if (currNum < Math.ceil(sibs.length / 10) - 1) {
-        currNum++;
-    }
-    displayPage(sibs, currNum);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
-}
-
-function lastBtn() {
-    var sibs = this.parentNode.siblings();
-    displayPage(sibs, Math.ceil(sibs.length / 10) - 1);
-    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(Math.ceil(sibs.length / 10) - 1 === -1 ? 0 : Math.ceil(sibs.length / 10) - 1, sibs);
-}
-
-function displayPage(arr, num) {
-    for (var i = 0; i < arr.length; i++) {
-        if (Math.floor(i / 10) === num) {
-            arr[i].classList.remove('hexo-douban-hide');
-            var img = arr[i].getElementsByTagName('img')[0];
-            img.src = img.getAttribute('data-src');
-        } else {
-            arr[i].classList.add('hexo-douban-hide');
-        }
-    }
-}
-
-for (var i = 0; i < firstpages.length; i++) {
-
-    //add listener
-    firstpages[i].onclick = firstBtn;
-    previouspages[i].onclick = previousBtn;
-    nextpages[i].onclick = nextBtn;
-    lastpages[i].onclick = lastBtn;
-
-    //set page num
-    var size = pagenums[i].parentNode.siblings().length;
-    pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
-    firstpages[i].click();
-}
-
-</script>
-
-
+      <div style="display: inline-block;">
+        <img src="/images/reward/wechatpay.png" alt="鸡球星 微信支付">
+        <p>微信支付</p>
       </div>
       
-      
-      
-    </div>
-    
+      <div style="display: inline-block;">
+        <img src="/images/reward/alipay.png" alt="鸡球星 支付宝">
+        <p>支付宝</p>
+      </div>
 
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>鸡球星
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://weiren1998.github.io/archives/8cfe91e5.html" title="面试金典0102">https://weiren1998.github.io/archives/8cfe91e5.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C/" rel="tag"><i class="fa fa-tag"></i> 哈希</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/15f7c05f.html" rel="prev" title="面试金典0101">
+      <i class="fa fa-chevron-left"></i> 面试金典0101
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
     
-    
-    
+  </article>
+  
+  
+  
+
   </div>
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -727,6 +421,7 @@ for (var i = 0; i < firstpages.length; i++) {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92"><span class="nav-number">1.</span> <span class="nav-text">题目：判定是否互为字符重排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1191,9 +886,83 @@ if(canvas.getContext){
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'd0cbb9b4ac6f930d8fde',
+      clientSecret: 'ee24993cc20ba8e4457199d7052f2bae70817a82',
+      repo        : 'weiren1998.github.io',
+      owner       : 'weiren1998',
+      admin       : ['weiren1998'],
+      id          : 'c10e17cd0117851e3a88041dcc4cb658',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 
   <script async src="/js/cursor/fireworks.js"></script>
