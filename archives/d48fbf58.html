@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
+  <meta name="description" content="题目：判定是否互为字符重排 解题方法：  用哈希表unordered_map&lt;char, int&gt;，记录s1中字符出现数，并于s2做对比 用int count[256]的数组来完成上述工作（桶计数） 没想到的方法：将s1和s2内部按照字符升序排序，最后判定两者是否相等即可               2的时间复杂度为\(O(N)\)，因为\(N &lt;&#x3D; 100\)，因">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据预处理">
-<meta property="og:url" content="https://weiren1998.github.io/archives/e92b12e5.html">
+<meta property="og:title" content="面试金典0102 判断是否互为字符重排">
+<meta property="og:url" content="https://weiren1998.github.io/archives/d48fbf58.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
+<meta property="og:description" content="题目：判定是否互为字符重排 解题方法：  用哈希表unordered_map&lt;char, int&gt;，记录s1中字符出现数，并于s2做对比 用int count[256]的数组来完成上述工作（桶计数） 没想到的方法：将s1和s2内部按照字符升序排序，最后判定两者是否相等即可               2的时间复杂度为\(O(N)\)，因为\(N &lt;&#x3D; 100\)，因">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-21T13:50:43.000Z">
-<meta property="article:modified_time" content="2021-12-20T17:33:47.757Z">
+<meta property="article:published_time" content="2021-12-23T00:56:44.000Z">
+<meta property="article:modified_time" content="2021-12-23T15:36:18.371Z">
 <meta property="article:author" content="鸡球星">
-<meta property="article:tag" content="数据预处理">
-<meta property="article:tag" content="挖坑">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="哈希">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://weiren1998.github.io/archives/e92b12e5.html">
+<link rel="canonical" href="https://weiren1998.github.io/archives/d48fbf58.html">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>数据预处理 | J球星的博客</title>
+  <title>面试金典0102 判断是否互为字符重排 | J球星的博客</title>
   
 
 
@@ -204,7 +204,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/e92b12e5.html">
+    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/d48fbf58.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
@@ -217,7 +217,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数据预处理
+          面试金典0102 判断是否互为字符重排
         </h1>
 
         <div class="post-meta">
@@ -226,16 +226,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-08-21 13:50:43" itemprop="dateCreated datePublished" datetime="2021-08-21T13:50:43Z">2021-08-21</time>
+              <time title="创建时间：2021-12-23 00:56:44 / 修改时间：15:36:18" itemprop="dateCreated datePublished" datetime="2021-12-23T00:56:44Z">2021-12-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-20 17:33:47" itemprop="dateModified" datetime="2021-12-20T17:33:47Z">2021-12-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -246,7 +240,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
                 </span>
             </span>
 
@@ -263,7 +257,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>842</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -282,71 +276,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。</p>
-</blockquote>
-<p>今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等</p>
+        <h3 id="题目判定是否互为字符重排">题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/check-permutation-lcci/">判定是否互为字符重排</a></h3>
+<h3 id="解题方法">解题方法：</h3>
+<ol type="1">
+<li>用哈希表<code>unordered_map&lt;char, int&gt;</code>，记录<code>s1</code>中字符出现数，并于<code>s2</code>做对比</li>
+<li>用<code>int count[256]</code>的数组来完成上述工作<strong>（桶计数）</strong></li>
+<li>没想到的方法：将<code>s1</code>和<code>s2</code>内部按照字符升序排序，最后判定两者是否相等即可</li>
+</ol>
+<div class="note primary">
+            <p>2的时间复杂度为<span class="math inline">\(O(N)\)</span>，因为<span class="math inline">\(N &lt;= 100\)</span>，因此可以理解为<span class="math inline">\(O(1)\)</span></p>
+          </div>
 <span id="more"></span>
-<h1 id="basic-concepts">Basic Concepts</h1>
-<h2 id="nominal-vs.-numeric">Nominal vs. Numeric</h2>
-<ul>
-<li>Nominal(Categorical) Attributes: 取值是某个类别，类别属于一个特定的数据集，可以有序也可以无序。处理这类数据时，可以根据一定方法转化为Numeric的数据再处理。</li>
-<li>Numeric(continuous) Attributes: 取值是一个数值，有的可比（定比）有的不可比（定距），通常也要去量纲后才能在类别之间比较</li>
-</ul>
-<h2 id="type-of-data">Type of Data</h2>
-<ol type="1">
-<li>Data matrix</li>
-<li>Sequential</li>
-<li>graph</li>
-<li>transaction data</li>
-<li>spatio-temporal</li>
-</ol>
-<h2 id="noise">Noise</h2>
-<ol type="1">
-<li>Distortion of values: 例如语音中的噪声</li>
-<li>Adding of spurious examples</li>
-<li>Inconsistent and duplicate data</li>
-</ol>
-<blockquote>
-<p>最后一类是比较好处理的，前两类噪声可以通过信号、图像处理等方式处理，也可以通过机器学习的算法来消除，后者更准确</p>
-</blockquote>
-<h2 id="missing-values">Missing values</h2>
-<ol type="1">
-<li>删除有缺失值的数据项</li>
-<li>给缺失值赋值
-<ol type="1">
-<li>Nominal特征：采用多数投票方式，有以下两种方式
-<ul>
-<li>在总体中投票</li>
-<li>在该类别中投票</li>
-</ul></li>
-<li>Numerical特征：用k近邻点的均值赋值（最相似样本）</li>
-</ol></li>
-</ol>
-<h1 id="data-preprocessing">Data Preprocessing</h1>
-<h2 id="data-aggregation">Data aggregation</h2>
-<ol type="1">
-<li>定义：将两个或多个特征combine到一起</li>
-<li>目的：
-<ul>
-<li>减少数据维度</li>
-<li>减少计算量</li>
-<li>降低数据方差，使得数据更平稳</li>
-<li>缺点：有损失重要特征的风险</li>
-</ul></li>
-<li>降维方法Dimensionality reduction：
-<ul>
-<li>待补充</li>
-</ul></li>
-</ol>
-<h2 id="feature-extraction">Feature extraction</h2>
-<ol type="1">
-<li>定义：从原始数据中提取特征</li>
-<li><h2 id="目的得到更容易理解的数据">目的：得到更容易理解的数据</h2></li>
-</ol>
-<h2 id="feature-subset-selection">Feature subset selection</h2>
-<h2 id="converting-attributes-from-one-type-to-another">Converting attributes from one type to another</h2>
-<h2 id="normalization">Normalization</h2>
+<h3 id="解法一">解法一：</h3>
+<div class="note warning">
+            <p>用到了C++ std中的<code>unordered_map</code>类，需要注意是否可以修改<code>pair</code>中的值！</p><p><code>it</code>的类型是什么！！？？</p><p><code>unordered_map&lt;char, int&gt;</code>中，添加新hash对时，初值为0？？</p>
+          </div>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; map;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            map[s1[i]] += <span class="number">1</span>; <span class="comment">// 初值是0吗？</span></span><br><span class="line">            map[s2[i]] -= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// unordered_map&lt;char, int&gt;::iterator it;</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it : map) <span class="comment">// 这里it的类型是？</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(it.second != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二">解法二：</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s1.<span class="built_in">size</span>() != s2.<span class="built_in">size</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count[<span class="number">256</span>];</span><br><span class="line">        <span class="built_in">memset</span>(count, <span class="number">0</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(count));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s1.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s1[i])]++;</span><br><span class="line">            count[<span class="built_in"><span class="keyword">int</span></span>(s2[i])]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">256</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(count[i] != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法三">解法三</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">CheckPermutation</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(s1.<span class="built_in">begin</span>(), s1.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">sort</span>(s2.<span class="built_in">begin</span>(), s2.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> s1 == s2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -382,7 +331,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://weiren1998.github.io/archives/e92b12e5.html" title="数据预处理">https://weiren1998.github.io/archives/e92b12e5.html</a>
+    <a href="https://weiren1998.github.io/archives/d48fbf58.html" title="面试金典0102 判断是否互为字符重排">https://weiren1998.github.io/archives/d48fbf58.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -394,8 +343,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 数据预处理</a>
-              <a href="/tags/%E6%8C%96%E5%9D%91/" rel="tag"><i class="fa fa-tag"></i> 挖坑</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+              <a href="/tags/%E5%93%88%E5%B8%8C/" rel="tag"><i class="fa fa-tag"></i> 哈希</a>
           </div>
 
         
@@ -404,12 +353,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/8918aa0c.html" rel="prev" title="论文阅读：Analysis of Human Back Shape Using Surface Curvatures">
-      <i class="fa fa-chevron-left"></i> 论文阅读：Analysis of Human Back Shape Using Surface Curvatures
+    <a href="/archives/15f7c05f.html" rel="prev" title="面试金典0101">
+      <i class="fa fa-chevron-left"></i> 面试金典0101
     </a></div>
       <div class="post-nav-item">
-    <a href="/archives/6a4ff405.html" rel="next" title="HOG特征">
-      HOG特征 <i class="fa fa-chevron-right"></i>
+    <a href="/archives/a7735c82.html" rel="next" title="面试金典0103 URL化">
+      面试金典0103 URL化 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -471,7 +420,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nominal-vs.-numeric"><span class="nav-number">1.1.</span> <span class="nav-text">Nominal vs. Numeric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-of-data"><span class="nav-number">1.2.</span> <span class="nav-text">Type of Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#noise"><span class="nav-number">1.3.</span> <span class="nav-text">Noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#missing-values"><span class="nav-number">1.4.</span> <span class="nav-text">Missing values</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-preprocessing"><span class="nav-number">2.</span> <span class="nav-text">Data Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-aggregation"><span class="nav-number">2.1.</span> <span class="nav-text">Data aggregation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-extraction"><span class="nav-number">2.2.</span> <span class="nav-text">Feature extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%E5%BE%97%E5%88%B0%E6%9B%B4%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">目的：得到更容易理解的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-subset-selection"><span class="nav-number">2.4.</span> <span class="nav-text">Feature subset selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#converting-attributes-from-one-type-to-another"><span class="nav-number">2.5.</span> <span class="nav-text">Converting attributes from one type to another</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normalization"><span class="nav-number">2.6.</span> <span class="nav-text">Normalization</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%88%A4%E5%AE%9A%E6%98%AF%E5%90%A6%E4%BA%92%E4%B8%BA%E5%AD%97%E7%AC%A6%E9%87%8D%E6%8E%92"><span class="nav-number">1.</span> <span class="nav-text">题目：判定是否互为字符重排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89"><span class="nav-number">5.</span> <span class="nav-text">解法三</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -936,6 +885,61 @@ if(canvas.getContext){
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
@@ -950,7 +954,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'weiren1998.github.io',
       owner       : 'weiren1998',
       admin       : ['weiren1998'],
-      id          : '8709faf079b449b346456e0e4bb09a98',
+      id          : '8bc92054d021068d81a4f8d5e827a13a',
         language: 'zh-CN',
       distractionFreeMode: true
     });
