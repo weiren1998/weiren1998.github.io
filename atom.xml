@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2021-12-23T15:36:42.335Z</updated>
+  <updated>2021-12-23T17:04:11.406Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -17,11 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>面试金典0104 回文排列</title>
+    <link href="https://weiren1998.github.io/archives/d4029378.html"/>
+    <id>https://weiren1998.github.io/archives/d4029378.html</id>
+    <published>2021-12-23T23:43:34.000Z</published>
+    <updated>2021-12-23T17:04:11.406Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;题目回文排列&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/palindrome-permutation-lcci/submissions/&quot;&gt;回文排列&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;位运算：统计某个字符出现的次数是奇数还是偶数，可以用&lt;code&gt;异或^&lt;/code&gt;来统计&lt;/li&gt;
+&lt;li&gt;哈希计数&lt;/li&gt;
+&lt;li&gt;桶计数（较简单，未给出代码）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;note primary&quot;&gt;
+            &lt;ul&gt;&lt;li&gt;&lt;p&gt;原理都是统计字符串中每个字符出现的频数，如果奇数的个数小于等于1，则可以产生回文排列，否则不行&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;三种方法时间复杂度相同，但所用到的空间不同，&lt;code&gt;1 &amp;lt; 2 &amp;lt; 3&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+          &lt;/div&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="哈希" scheme="https://weiren1998.github.io/tags/%E5%93%88%E5%B8%8C/"/>
+    
+    <category term="位运算" scheme="https://weiren1998.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面试金典0103 URL化</title>
     <link href="https://weiren1998.github.io/archives/a7735c82.html"/>
     <id>https://weiren1998.github.io/archives/a7735c82.html</id>
     <published>2021-12-23T23:22:02.000Z</published>
-    <updated>2021-12-23T15:36:42.335Z</updated>
+    <updated>2021-12-23T15:44:23.409Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;题目url化&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/string-to-url-lcci/&quot;&gt;URL化&lt;/a&gt;&lt;/h3&gt;
@@ -42,8 +76,6 @@
     
     
     <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-    <category term="哈希" scheme="https://weiren1998.github.io/tags/%E5%93%88%E5%B8%8C/"/>
     
   </entry>
   
@@ -528,32 +560,6 @@
     <category term="听力" scheme="https://weiren1998.github.io/tags/%E5%90%AC%E5%8A%9B/"/>
     
     <category term="天文学" scheme="https://weiren1998.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Of Studies</title>
-    <link href="https://weiren1998.github.io/archives/8b15f764.html"/>
-    <id>https://weiren1998.github.io/archives/8b15f764.html</id>
-    <published>2020-07-07T12:42:12.888Z</published>
-    <updated>2021-12-20T16:24:18.585Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;of-studies&quot;&gt;Of Studies&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;——Francis Bacon&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="思考" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="读书笔记" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="读书" scheme="https://weiren1998.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
-    <category term="鸡汤" scheme="https://weiren1998.github.io/tags/%E9%B8%A1%E6%B1%A4/"/>
     
   </entry>
   
