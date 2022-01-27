@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-03T23:16:31.000Z">
 <meta property="article:modified_time" content="2021-12-21T15:42:08.285Z">
-<meta property="article:author" content="鸡球星">
+<meta property="article:author" content="J球星">
 <meta property="article:tag" content="位运算">
 <meta property="article:tag" content="进制转换">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">莫听穿林打叶声，何妨吟啸且徐行</p>
+        <p class="site-subtitle">Flag敢立，才敢拔！</p>
   </div>
 
   <div class="site-nav-right">
@@ -208,7 +208,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-      <meta itemprop="name" content="鸡球星">
+      <meta itemprop="name" content="J球星">
       <meta itemprop="description" content="努力是矢量，有大小也有方向">
     </span>
 
@@ -263,14 +263,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>672</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -286,11 +286,10 @@
 <p>这是大一初学编程时的一道题，当时做了详细的推导，才慢慢搞懂位运算，再次回顾，发现有些知识点确实已经忘记，但再看完后总能叫快速的想起，还是需要温故知新呀！下面附上当时的代码及笔记，并顺带将位运算中的左移&amp;右移运算符进行回顾</p>
 </blockquote>
 <span id="more"></span>
-<h3 id="十进制数转二进制数">十进制数转二进制数</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="comment">// char c = &#x27;a&#x27;;</span></span><br><span class="line">	<span class="comment">// c = c &lt;&lt; 1;</span></span><br><span class="line">	<span class="comment">// cout &lt;&lt; c &lt;&lt;&quot;c&quot;&lt;&lt;endl; 字符型不可以位运算</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;type in a decimal number n: &quot;</span>;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Convert n to a binary number:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">32</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">	    cout &lt;&lt; (n&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>) &lt;&lt; ((i+<span class="number">1</span>)%<span class="number">8</span>==<span class="number">0</span>?<span class="string">&quot; &quot;</span>:<span class="string">&quot;&quot;</span>); <span class="comment">// 问号表达式需要加括号 </span></span><br><span class="line">		n = n&lt;&lt;<span class="number">1</span>; <span class="comment">// 位运算符：左移 </span></span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="十进制数转二进制数"><a href="#十进制数转二进制数" class="headerlink" title="十进制数转二进制数"></a>十进制数转二进制数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="comment">// char c = &#x27;a&#x27;;</span></span><br><span class="line">	<span class="comment">// c = c &lt;&lt; 1;</span></span><br><span class="line">	<span class="comment">// cout &lt;&lt; c &lt;&lt;&quot;c&quot;&lt;&lt;endl; 字符型不可以位运算</span></span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;type in a decimal number n: &quot;</span>;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;Convert n to a binary number:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">32</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">	    cout &lt;&lt; (n&lt;<span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>) &lt;&lt; ((i+<span class="number">1</span>)%<span class="number">8</span>==<span class="number">0</span>?<span class="string">&quot; &quot;</span>:<span class="string">&quot;&quot;</span>); <span class="comment">// 问号表达式需要加括号 </span></span><br><span class="line">		n = n&lt;&lt;<span class="number">1</span>; <span class="comment">// 位运算符：左移 </span></span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>附上当时的解析：</p>
 <blockquote>
-<p>这个是把输入的十进制转换成二进制输出。cout &lt;&lt; (n&lt;0?1:0) &lt;&lt; (i%8==0?&quot;&quot;:&quot;&quot;);这句话的意思是如果n&lt;0输出1，如果n&gt;=0输出0，后面的(i%8==0?&quot;&quot;:&quot;&quot;)其实没什么用相当于&quot;&quot;（可以用&quot;&quot;带入试试结果），唯一的作用就是把二进制位0或者1连接起来，没有空格。n&lt;&lt;1就是n左移一位，相当于乘以2.</p>
+<p>这个是把输入的十进制转换成二进制输出。cout &lt;&lt; (n<0?1:0) << (i%8\==0?"":"");这句话的意思是如果n<0输出1，如果n>=0输出0，后面的(i%8==0?””:””)其实没什么用相当于””（可以用””带入试试结果），唯一的作用就是把二进制位0或者1连接起来，没有空格。n&lt;&lt;1就是n左移一位，相当于乘以2.</p>
 <p>例子：</p>
 <p>输入5（0000000000000101）</p>
 <p>按上诉程序的步骤：</p>
@@ -308,37 +307,38 @@
 <p>循环结束</p>
 <p>输出5的二进制表示0000000000000101</p>
 <p>结束，LZ慢慢享用.</p>
-<p>cout &lt;&lt; (n&lt;0?1:0) &lt;&lt; (i%8==0?&quot;&quot;:&quot;&quot;);//这句中cout是输出流，n&lt;0?1:0是一个问号表达式，如果n小于0则输出1，否则输出0 //整数在内存中用32位补码表示，即如果n的最高位为1，则n为负数；如果n的最高位为0，则n为正数或0。 //于是，当最高位为1时，由于n为负数，即n小于0，所以n&lt;0成立，输出1； //当最高位为0时，由于n为0或正数，所以n&lt;0不成立，输出0； //(i%8==0?&quot; &quot;:&quot;&quot;)首先，我觉得第一对双引号中间应该有一个空格，意思是每输出8位二进制数字之后输出一个空格隔开，方便阅读 //语法是，%为求余，如果i除以8余0则输出一个空格 n = n&lt;&lt;1;//这句的意思是每次输出一个二进制数后，把n左移一位，即把n的次高位移到最高位上，以此类推，这样当下次执行这个循环的时候，n的最高位就是原来的次高位，这样每次循环中，表达式n&lt;0就可以依次检查n在内存中的从最高位到最低位，每个二进制位是0还是1，并输出相应的二进制数。由于VC平台32位机中int类型是32位的，所以循环32次结束。</p>
+<p>cout &lt;&lt; (n&lt;0?1:0) &lt;&lt; (i%8\==0?””:””);//这句中cout是输出流，n&lt;0?1:0是一个问号表达式，如果n小于0则输出1，否则输出0<br>//整数在内存中用32位补码表示，即如果n的最高位为1，则n为负数；如果n的最高位为0，则n为正数或0。<br>//于是，当最高位为1时，由于n为负数，即n小于0，所以n&lt;0成立，输出1；<br>//当最高位为0时，由于n为0或正数，所以n&lt;0不成立，输出0；<br>//(i%8==0?” “:””)首先，我觉得第一对双引号中间应该有一个空格，意思是每输出8位二进制数字之后输出一个空格隔开，方便阅读<br>//语法是，%为求余，如果i除以8余0则输出一个空格<br>n = n&lt;&lt;1;//这句的意思是每次输出一个二进制数后，把n左移一位，即把n的次高位移到最高位上，以此类推，这样当下次执行这个循环的时候，n的最高位就是原来的次高位，这样每次循环中，表达式n&lt;0就可以依次检查n在内存中的从最高位到最低位，每个二进制位是0还是1，并输出相应的二进制数。由于VC平台32位机中int类型是32位的，所以循环32次结束。</p>
 </blockquote>
-<h3 id="位运算左移右移">位运算——左移&amp;右移</h3>
-<ol type="1">
-<li>左移 &lt;&lt;
+<h3 id="位运算——左移-amp-右移"><a href="#位运算——左移-amp-右移" class="headerlink" title="位运算——左移&amp;右移"></a>位运算——左移&amp;右移</h3><ol>
+<li><p>左移 &lt;&lt;</p>
 <ul>
 <li>定义：将数字按位进行左移</li>
 <li>用法：<code>a = a&lt;&lt;n;</code></li>
-<li>效果：通常情况下，左移n位，则代表将原始数字a乘以<span class="math inline">\(2^n\)</span></li>
-<li>注意：
-<ul>
+<li>效果：通常情况下，左移n位，则代表将原始数字a乘以$2^n$ </li>
+<li>注意：<ul>
 <li>一般int类型为32位，最高位代表符号，0为正，1为负</li>
 <li>左移时右侧补零</li>
 <li>当1移动到，或者移出最高位时，注意数字将变号，且不服从上述“效果”</li>
-</ul></li>
-</ul></li>
-<li>右移 &gt;&gt;
+</ul>
+</li>
+</ul>
+</li>
+<li><p>右移 &gt;&gt;</p>
 <ul>
 <li>定义：将数字按位进行右移</li>
 <li>用法：<code>a = a&gt;&gt;n;</code></li>
-<li>效果：通常情况下，右移n位，则代表将原始数字a除以<span class="math inline">\(2^n\)</span></li>
-<li>注意：
-<ul>
+<li>效果：通常情况下，右移n位，则代表将原始数字a除以$2^n$ </li>
+<li>注意：<ul>
 <li>一般int类型为32位，最高位代表符号，0为正，1为负</li>
 <li>右移时，如果最高位为1，则从左侧补1，将不服从上述“效果”；如果为0，则补0，服从上述“效果”</li>
 <li>当a为奇数时，上述“效果”也不成立。你如7&lt;&lt;2=3</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
 <blockquote>
-<p>参考：https://blog.csdn.net/qq_15037231/article/details/76999926</p>
+<p>参考：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/qq_15037231/article/details/76999926">https://blog.csdn.net/qq_15037231/article/details/76999926</a></p>
 </blockquote>
 
     </div>
@@ -354,12 +354,12 @@
   <div id="qr" style="display: none;">
       
       <div style="display: inline-block;">
-        <img src="/images/reward/wechatpay.png" alt="鸡球星 微信支付">
+        <img src="/images/reward/wechatpay.png" alt="J球星 微信支付">
         <p>微信支付</p>
       </div>
       
       <div style="display: inline-block;">
-        <img src="/images/reward/alipay.png" alt="鸡球星 支付宝">
+        <img src="/images/reward/alipay.png" alt="J球星 支付宝">
         <p>支付宝</p>
       </div>
 
@@ -371,7 +371,7 @@
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>鸡球星
+    <strong>本文作者： </strong>J球星
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
@@ -464,15 +464,15 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">十进制数转二进制数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E5%B7%A6%E7%A7%BB%E5%8F%B3%E7%A7%BB"><span class="nav-number">2.</span> <span class="nav-text">位运算——左移&amp;右移</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">十进制数转二进制数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E2%80%94%E2%80%94%E5%B7%A6%E7%A7%BB-amp-%E5%8F%B3%E7%A7%BB"><span class="nav-number">2.</span> <span class="nav-text">位运算——左移&amp;右移</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="鸡球星"
+    <img class="site-author-image" itemprop="image" alt="J球星"
       src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-  <p class="site-author-name" itemprop="name">鸡球星</p>
+  <p class="site-author-name" itemprop="name">J球星</p>
   <div class="site-description" itemprop="description">努力是矢量，有大小也有方向</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -480,20 +480,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -525,6 +525,10 @@
         
         
           <li>
+            <a href="/archives/22e4771a.html" title="情侣沟通" target="_blank">情侣沟通</a>
+          </li>
+        
+          <li>
             <a href="/archives/d4029378.html" title="面试金典0104 回文排列" target="_blank">面试金典0104 回文排列</a>
           </li>
         
@@ -538,10 +542,6 @@
         
           <li>
             <a href="/archives/15f7c05f.html" title="面试金典0101 判定字符是否唯一" target="_blank">面试金典0101 判定字符是否唯一</a>
-          </li>
-        
-          <li>
-            <a href="/archives/36ae25f5.html" title="21年华为秋招" target="_blank">21年华为秋招</a>
           </li>
         
       </ul>
@@ -831,23 +831,23 @@ if(canvas.getContext){
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">鸡球星</span>
+  <span class="author" itemprop="copyrightHolder">J球星</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">85k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:18</span>
+    <span title="站点阅读时长">1:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

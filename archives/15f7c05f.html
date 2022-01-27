@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目：判定字符是否唯一 解题方法：  用哈希表unordered_map，记录目前为止出现的字符 用bool数组来完成记录功能（桶计数） 用位运算代替bool数组的记录功能               以上三种算法的时间复杂度均为\(O(n)\)，差别在于空间利用的大小，其实量级也都是\(O(1)\)，但是实际利用的比特数不同">
+  <meta name="description" content="题目：判定字符是否唯一解题方法： 用哈希表unordered_map，记录目前为止出现的字符 用bool数组来完成记录功能（桶计数） 用位运算代替bool数组的记录功能               以上三种算法的时间复杂度均为$O(n)$，差别在于空间利用的大小，其实量级也都是$O(1)$，但是实际利用的比特数不同">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试金典0101 判定字符是否唯一">
 <meta property="og:url" content="https://weiren1998.github.io/archives/15f7c05f.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="题目：判定字符是否唯一 解题方法：  用哈希表unordered_map，记录目前为止出现的字符 用bool数组来完成记录功能（桶计数） 用位运算代替bool数组的记录功能               以上三种算法的时间复杂度均为\(O(n)\)，差别在于空间利用的大小，其实量级也都是\(O(1)\)，但是实际利用的比特数不同">
+<meta property="og:description" content="题目：判定字符是否唯一解题方法： 用哈希表unordered_map，记录目前为止出现的字符 用bool数组来完成记录功能（桶计数） 用位运算代替bool数组的记录功能               以上三种算法的时间复杂度均为$O(n)$，差别在于空间利用的大小，其实量级也都是$O(1)$，但是实际利用的比特数不同">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-22T00:05:32.000Z">
 <meta property="article:modified_time" content="2021-12-23T15:37:09.733Z">
-<meta property="article:author" content="鸡球星">
+<meta property="article:author" content="J球星">
 <meta property="article:tag" content="字符串">
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="位运算">
@@ -104,7 +104,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">莫听穿林打叶声，何妨吟啸且徐行</p>
+        <p class="site-subtitle">Flag敢立，才敢拔！</p>
   </div>
 
   <div class="site-nav-right">
@@ -209,7 +209,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-      <meta itemprop="name" content="鸡球星">
+      <meta itemprop="name" content="J球星">
       <meta itemprop="description" content="努力是矢量，有大小也有方向">
     </span>
 
@@ -283,29 +283,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目判定字符是否唯一">题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/is-unique-lcci/">判定字符是否唯一</a></h3>
-<h3 id="解题方法">解题方法：</h3>
-<ol type="1">
+        <h3 id="题目：判定字符是否唯一"><a href="#题目：判定字符是否唯一" class="headerlink" title="题目：判定字符是否唯一"></a>题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/is-unique-lcci/">判定字符是否唯一</a></h3><h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
 <li>用哈希表<code>unordered_map</code>，记录目前为止出现的字符</li>
 <li>用bool数组来完成记录功能<strong>（桶计数）</strong></li>
 <li>用位运算代替bool数组的记录功能</li>
 </ol>
 <div class="note primary">
-            <p>以上三种算法的时间复杂度均为<span class="math inline">\(O(n)\)</span>，差别在于空间利用的大小，其实量级也都是<span class="math inline">\(O(1)\)</span>，但是实际利用的比特数不同</p>
-          </div>
+            <p>以上三种算法的时间复杂度均为$O(n)$，差别在于空间利用的大小，其实量级也都是$O(1)$，但是实际利用的比特数不同</p>
+          </div> 
 <span id="more"></span>
-<h3 id="解法一">解法一：</h3>
-<div class="note warning">
+<h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><div class="note warning">
             <p>用到了C++ std中的<code>unordered_map</code>类，需要注意如何插入和查找</p>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUnique</span><span class="params">(string astr)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">bool</span>&gt; map;</span><br><span class="line">        unordered_map&lt;<span class="keyword">char</span>, <span class="keyword">bool</span>&gt;::iterator it;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;astr.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>((it = map.<span class="built_in">find</span>(astr[i])) != map.<span class="built_in">end</span>()) <span class="comment">// delete &#x27;it&#x27; will get the same result.</span></span><br><span class="line">            &#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(astr[i], <span class="literal">true</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">        <span class="comment">// 赋值语句返回值为所赋的值，这也是连等的合法性</span></span><br><span class="line">        <span class="comment">// int a=3, b=2;</span></span><br><span class="line">        <span class="comment">// if((a=2) == b)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     cout &lt;&lt; (a = b = 3) &lt;&lt; endl;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法二">解法二：</h3>
-<div class="note warning">
-            <p>ASCII码表原本是只有128个字符的（对应7bits的空间 <span class="math inline">\(2^7=128\)</span>），但为了有更多的字符而扩充到了256个字符（对应8bits空间 <span class="math inline">\(2^8=256\)</span>）</p>
+<h3 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h3><div class="note warning">
+            <p>ASCII码表原本是只有128个字符的（对应7bits的空间 $2^7=128$），但为了有更多的字符而扩充到了256个字符（对应8bits空间 $2^8=256$）</p>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUnique</span><span class="params">(string astr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> A[<span class="number">256</span>]; <span class="comment">// record; ASCII augmentation includes 256 characters</span></span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">memset</span>(A, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(A));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;astr.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(!A[<span class="built_in"><span class="keyword">int</span></span>(astr[i])]) <span class="comment">// current character has not appeared</span></span><br><span class="line">            &#123;</span><br><span class="line">                A[<span class="built_in"><span class="keyword">int</span></span>(astr[i])] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法三">解法三：</h3>
-<div class="note warning">
+<h3 id="解法三："><a href="#解法三：" class="headerlink" title="解法三："></a>解法三：</h3><div class="note warning">
             <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/is-unique-lcci/solution/wei-yun-suan-fang-fa-si-lu-jie-shao-by-zhen-zhu-ha/">解题参考</a> 注意原作者只考虑小写字母的情况，如果是整个ASCII表的话，有128个字符，需要两个long int型来存储（32位机上int型是4字节32bits，long int是8字节64bits），每部分的逻辑一样，只是外层加入是否大于64而已</p>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUnique</span><span class="params">(string astr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>; <span class="comment">// noticed &#x27;left&#x27; should be equal to 0</span></span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;astr.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cur_num = <span class="built_in"><span class="keyword">int</span></span>(astr[i]);</span><br><span class="line">            <span class="keyword">if</span>(cur_num &gt;= <span class="number">64</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">long</span> <span class="keyword">int</span> cur = <span class="built_in"><span class="keyword">long</span></span>(<span class="number">1</span>) &lt;&lt; (cur_num - <span class="number">64</span>); <span class="comment">// noticed &#x27;1&#x27; should be the type of &#x27;long int&#x27;</span></span><br><span class="line">                <span class="keyword">if</span>((left &amp; cur) == <span class="number">0</span>) <span class="comment">// noticed the priority of the &#x27;&amp;&#x27; and &#x27;==&#x27;</span></span><br><span class="line">                &#123;</span><br><span class="line">                    left = left | cur;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">long</span> <span class="keyword">int</span> cur = <span class="built_in"><span class="keyword">long</span></span>(<span class="number">1</span>) &lt;&lt; cur_num;</span><br><span class="line">                <span class="keyword">if</span>((right &amp; cur) == <span class="number">0</span>) <span class="comment">// noticed the priority of the &#x27;&amp;&#x27; and &#x27;==&#x27;</span></span><br><span class="line">                &#123;</span><br><span class="line">                    right = right | cur;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -323,12 +318,12 @@
   <div id="qr" style="display: none;">
       
       <div style="display: inline-block;">
-        <img src="/images/reward/wechatpay.png" alt="鸡球星 微信支付">
+        <img src="/images/reward/wechatpay.png" alt="J球星 微信支付">
         <p>微信支付</p>
       </div>
       
       <div style="display: inline-block;">
-        <img src="/images/reward/alipay.png" alt="鸡球星 支付宝">
+        <img src="/images/reward/alipay.png" alt="J球星 支付宝">
         <p>支付宝</p>
       </div>
 
@@ -340,7 +335,7 @@
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>鸡球星
+    <strong>本文作者： </strong>J球星
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
@@ -434,15 +429,15 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E5%88%A4%E5%AE%9A%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">题目：判定字符是否唯一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89"><span class="nav-number">5.</span> <span class="nav-text">解法三：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%A4%E5%AE%9A%E5%AD%97%E7%AC%A6%E6%98%AF%E5%90%A6%E5%94%AF%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">题目：判定字符是否唯一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">解法三：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="鸡球星"
+    <img class="site-author-image" itemprop="image" alt="J球星"
       src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-  <p class="site-author-name" itemprop="name">鸡球星</p>
+  <p class="site-author-name" itemprop="name">J球星</p>
   <div class="site-description" itemprop="description">努力是矢量，有大小也有方向</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -450,20 +445,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -495,6 +490,10 @@
         
         
           <li>
+            <a href="/archives/22e4771a.html" title="情侣沟通" target="_blank">情侣沟通</a>
+          </li>
+        
+          <li>
             <a href="/archives/d4029378.html" title="面试金典0104 回文排列" target="_blank">面试金典0104 回文排列</a>
           </li>
         
@@ -508,10 +507,6 @@
         
           <li>
             <a href="/archives/15f7c05f.html" title="面试金典0101 判定字符是否唯一" target="_blank">面试金典0101 判定字符是否唯一</a>
-          </li>
-        
-          <li>
-            <a href="/archives/36ae25f5.html" title="21年华为秋招" target="_blank">21年华为秋招</a>
           </li>
         
       </ul>
@@ -801,23 +796,23 @@ if(canvas.getContext){
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">鸡球星</span>
+  <span class="author" itemprop="copyrightHolder">J球星</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">85k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:18</span>
+    <span title="站点阅读时长">1:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

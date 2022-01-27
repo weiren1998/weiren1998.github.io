@@ -2,37 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>J球星的博客</title>
   <icon>https://weiren1998.github.io/icon.png</icon>
-  <subtitle>莫听穿林打叶声，何妨吟啸且徐行</subtitle>
+  <subtitle>Flag敢立，才敢拔！</subtitle>
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2021-12-23T17:04:11.406Z</updated>
+  <updated>2022-01-27T15:31:07.757Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
-    <name>鸡球星</name>
+    <name>J球星</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>情侣沟通</title>
+    <link href="https://weiren1998.github.io/archives/22e4771a.html"/>
+    <id>https://weiren1998.github.io/archives/22e4771a.html</id>
+    <published>2022-01-27T23:22:34.000Z</published>
+    <updated>2022-01-27T15:31:07.757Z</updated>
+    
+    
+    <summary type="html">文章被加密了，输入密码后方可阅读~</summary>
+    
+    
+    
+    <category term="感情" scheme="https://weiren1998.github.io/categories/%E6%84%9F%E6%83%85/"/>
+    
+    
+    <category term="沟通" scheme="https://weiren1998.github.io/tags/%E6%B2%9F%E9%80%9A/"/>
+    
+    <category term="曾曾" scheme="https://weiren1998.github.io/tags/%E6%9B%BE%E6%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面试金典0104 回文排列</title>
     <link href="https://weiren1998.github.io/archives/d4029378.html"/>
     <id>https://weiren1998.github.io/archives/d4029378.html</id>
     <published>2021-12-23T23:43:34.000Z</published>
-    <updated>2021-12-23T17:04:11.406Z</updated>
+    <updated>2021-12-23T17:04:34.179Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目回文排列&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/palindrome-permutation-lcci/submissions/&quot;&gt;回文排列&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
+    <summary type="html">&lt;h3 id=&quot;题目：回文排列&quot;&gt;&lt;a href=&quot;#题目：回文排列&quot; class=&quot;headerlink&quot; title=&quot;题目：回文排列&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/palindrome-permutation-lcci/submissions/&quot;&gt;回文排列&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;位运算：统计某个字符出现的次数是奇数还是偶数，可以用&lt;code&gt;异或^&lt;/code&gt;来统计&lt;/li&gt;
 &lt;li&gt;哈希计数&lt;/li&gt;
 &lt;li&gt;桶计数（较简单，未给出代码）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;ul&gt;&lt;li&gt;&lt;p&gt;原理都是统计字符串中每个字符出现的频数，如果奇数的个数小于等于1，则可以产生回文排列，否则不行&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;三种方法时间复杂度相同，但所用到的空间不同，&lt;code&gt;1 &amp;lt; 2 &amp;lt; 3&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+            &lt;ul&gt;&lt;li&gt;&lt;p&gt;原理都是统计字符串中每个字符出现的频数，如果奇数的个数小于等于1，则可以产生回文排列，否则不行&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;三种方法时间复杂度相同，但所用到的空间不同，&lt;code&gt;1 &amp;lt; 2 &amp;lt; 3&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
           &lt;/div&gt;</summary>
     
     
@@ -58,14 +77,12 @@
     <updated>2021-12-23T15:44:23.409Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目url化&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/string-to-url-lcci/&quot;&gt;URL化&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
+    <summary type="html">&lt;h3 id=&quot;题目：URL化&quot;&gt;&lt;a href=&quot;#题目：URL化&quot; class=&quot;headerlink&quot; title=&quot;题目：URL化&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/string-to-url-lcci/&quot;&gt;URL化&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;新建字符串，双指针法&lt;/li&gt;
 &lt;li&gt;在&lt;code&gt;S&lt;/code&gt;上从后往前，双指针法&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;两种解法时间复杂度一样，都是&lt;span class=&quot;math inline&quot;&gt;\(O(n)\)&lt;/span&gt;，解法二不需要额外的空间&lt;/p&gt;
+            &lt;p&gt;两种解法时间复杂度一样，都是$O(n)$，解法二不需要额外的空间&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -87,15 +104,13 @@
     <updated>2021-12-23T15:36:18.371Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目判定是否互为字符重排&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/check-permutation-lcci/&quot;&gt;判定是否互为字符重排&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
+    <summary type="html">&lt;h3 id=&quot;题目：判定是否互为字符重排&quot;&gt;&lt;a href=&quot;#题目：判定是否互为字符重排&quot; class=&quot;headerlink&quot; title=&quot;题目：判定是否互为字符重排&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/check-permutation-lcci/&quot;&gt;判定是否互为字符重排&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;用哈希表&lt;code&gt;unordered_map&amp;lt;char, int&amp;gt;&lt;/code&gt;，记录&lt;code&gt;s1&lt;/code&gt;中字符出现数，并于&lt;code&gt;s2&lt;/code&gt;做对比&lt;/li&gt;
 &lt;li&gt;用&lt;code&gt;int count[256]&lt;/code&gt;的数组来完成上述工作&lt;strong&gt;（桶计数）&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;没想到的方法：将&lt;code&gt;s1&lt;/code&gt;和&lt;code&gt;s2&lt;/code&gt;内部按照字符升序排序，最后判定两者是否相等即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;2的时间复杂度为&lt;span class=&quot;math inline&quot;&gt;\(O(N)\)&lt;/span&gt;，因为&lt;span class=&quot;math inline&quot;&gt;\(N &amp;lt;= 100\)&lt;/span&gt;，因此可以理解为&lt;span class=&quot;math inline&quot;&gt;\(O(1)\)&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;2的时间复杂度为$O(N)$，因为$N &amp;lt;= 100$，因此可以理解为$O(1)$&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -119,15 +134,13 @@
     <updated>2021-12-23T15:37:09.733Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目判定字符是否唯一&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/is-unique-lcci/&quot;&gt;判定字符是否唯一&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
-&lt;ol type=&quot;1&quot;&gt;
+    <summary type="html">&lt;h3 id=&quot;题目：判定字符是否唯一&quot;&gt;&lt;a href=&quot;#题目：判定字符是否唯一&quot; class=&quot;headerlink&quot; title=&quot;题目：判定字符是否唯一&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/is-unique-lcci/&quot;&gt;判定字符是否唯一&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;用哈希表&lt;code&gt;unordered_map&lt;/code&gt;，记录目前为止出现的字符&lt;/li&gt;
 &lt;li&gt;用bool数组来完成记录功能&lt;strong&gt;（桶计数）&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;用位运算代替bool数组的记录功能&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;以上三种算法的时间复杂度均为&lt;span class=&quot;math inline&quot;&gt;\(O(n)\)&lt;/span&gt;，差别在于空间利用的大小，其实量级也都是&lt;span class=&quot;math inline&quot;&gt;\(O(1)\)&lt;/span&gt;，但是实际利用的比特数不同&lt;/p&gt;
+            &lt;p&gt;以上三种算法的时间复杂度均为$O(n)$，差别在于空间利用的大小，其实量级也都是$O(1)$，但是实际利用的比特数不同&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -185,7 +198,7 @@
     <summary type="html">&lt;p&gt;动态规划实在是同重要了，而且饱含了计算机之美，虽然多次被虐，但还是决定要认真牢记！&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;主要思想：用空间换时间，从而避免递归中不必要的重复计算。&lt;/li&gt;
-&lt;li&gt;难点：定义&lt;span class=&quot;math inline&quot;&gt;\(dp[i]\)&lt;/span&gt;的含义，以及动态转移方程&lt;/li&gt;
+&lt;li&gt;难点：定义$dp[i]$的含义，以及动态转移方程&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -210,11 +223,11 @@
     <summary type="html">&lt;p&gt;排序算法中有非常经典的算法思想蕴含其中，本篇主要实现了几种经典的排序算法，希望常常回看，彻底牢记！&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;定义：将数组中的数按照升序或降序进行排列&lt;/li&gt;
-&lt;li&gt;时间复杂度：
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&quot;math inline&quot;&gt;\(O(NlogN)\)&lt;/span&gt;：快速排序、归并排序、堆排序等&lt;/li&gt;
-&lt;li&gt;&lt;span class=&quot;math inline&quot;&gt;\(O(N^2)\)&lt;/span&gt;：冒泡排序，插入排序等&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;时间复杂度：&lt;ul&gt;
+&lt;li&gt;$O(NlogN)$：快速排序、归并排序、堆排序等&lt;/li&gt;
+&lt;li&gt;$O(N^2)$：冒泡排序，插入排序等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -237,7 +250,7 @@
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：https://blog.csdn.net/print_out/article/details/88558841&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/print_out/article/details/88558841&quot;&gt;https://blog.csdn.net/print_out/article/details/88558841&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;安装版本：opencv3.4.0&lt;/p&gt;
 &lt;p&gt;编译环境：visual studio 2017&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
@@ -267,11 +280,11 @@
 &lt;li&gt;简介：HOG全称&lt;strong&gt;histogram of oriented gradients&lt;/strong&gt;，中文是&lt;strong&gt;方向梯度直方图&lt;/strong&gt;。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。&lt;/li&gt;
 &lt;li&gt;主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述&lt;/li&gt;
 &lt;li&gt;本质：梯度的统计信息，而梯度主要存在于边缘的地方&lt;/li&gt;
-&lt;li&gt;优点：
-&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;优点：&lt;ol&gt;
 &lt;li&gt;由于HOG是在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上&lt;/li&gt;
 &lt;li&gt;在粗的空域抽样、精细的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响检测效果。因此HOG特征是特别适合于做图像中的人体检测的&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -346,11 +359,16 @@
     
     <summary type="html">&lt;p&gt;递归是计算机算法中一类较为经典的问题。本文首先总结递归的思想，然后上例题和代码&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定义：从程序设计的角度来看，递归就是让程序自己调用自己的一种编程技巧&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;作用：递归通常可以将大型复杂问题转化为一个与原始问题相似的较小规模的问题来求解&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;①子问题和原问题要执行的操作一样，且子问题规模更小；②不能无限制调用自身，需要有出口&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;思想：&lt;/strong&gt;将待求解问题的解看作输入变量&lt;span class=&quot;math inline&quot;&gt;\(x\)&lt;/span&gt;的函数&lt;span class=&quot;math inline&quot;&gt;\(f(x)\)&lt;/span&gt;，通过寻找递归函数&lt;span class=&quot;math inline&quot;&gt;\(g\)&lt;/span&gt;，使得&lt;span class=&quot;math inline&quot;&gt;\(f(x)=g(f(x-1))\)&lt;/span&gt;，同时&lt;span class=&quot;math inline&quot;&gt;\(f(0)\)&lt;/span&gt;已知，根据递归函数和递归终止条件，就可递归求解了&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;推广：&lt;/strong&gt;可以推广至多变量，也可以推广至&lt;span class=&quot;math inline&quot;&gt;\(x-2\)&lt;/span&gt;等，只要递归朝着出口方向前进即可&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义：从程序设计的角度来看，递归就是让程序自己调用自己的一种编程技巧&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作用：递归通常可以将大型复杂问题转化为一个与原始问题相似的较小规模的问题来求解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;①子问题和原问题要执行的操作一样，且子问题规模更小；②不能无限制调用自身，需要有出口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;思想：&lt;/strong&gt;将待求解问题的解看作输入变量$x$的函数$f(x)$，通过寻找递归函数$g$，使得$f(x)=g(f(x-1))$，同时$f(0)$已知，根据递归函数和递归终止条件，就可递归求解了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;推广：&lt;/strong&gt;可以推广至多变量，也可以推广至$x-2$等，只要递归朝着出口方向前进即可&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -374,7 +392,7 @@
     
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;目标检测（Object Detection）是计算机视觉中一个重要分支，其&lt;strong&gt;定义&lt;/strong&gt;就是&lt;strong&gt;在给定的图片中精确找到物体所在位置，并标注出物体的类别。&lt;/strong&gt;其主流方法包括&lt;strong&gt;R-CNN、Fast R-CNN、Faster R-CNN、YOLO、SSD&lt;/strong&gt;等。主要&lt;strong&gt;难点&lt;/strong&gt;在于&lt;strong&gt;物体尺寸变化大、物体摆放角度不同、出现位置随机、多物体、多类别&lt;/strong&gt;等等。&lt;/p&gt;
-&lt;p&gt;参考文献：https://www.julyedu.com/question/big/kp_id/32/ques_id/2103&lt;/p&gt;
+&lt;p&gt;参考文献：&lt;a href=&quot;https://www.julyedu.com/question/big/kp_id/32/ques_id/2103&quot;&gt;https://www.julyedu.com/question/big/kp_id/32/ques_id/2103&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -400,8 +418,8 @@
     
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;最近本科毕业，想回顾一下本科的学习内容，同时为实习&amp;amp;找工作的面试做准备，刚好找到了一个网站，有一些“常识题”，自己需要积累并且背下来，加油！&lt;/p&gt;
-&lt;p&gt;参考：https://www.julyedu.com/question/topic_list/32&lt;/p&gt;
-&lt;p&gt;​ https://m.julyedu.com/problems/920&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.julyedu.com/question/topic_list/32&quot;&gt;https://www.julyedu.com/question/topic_list/32&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;​          &lt;a href=&quot;https://m.julyedu.com/problems/920&quot;&gt;https://m.julyedu.com/problems/920&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -461,9 +479,9 @@
     <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
     
-    <category term="足球" scheme="https://weiren1998.github.io/tags/%E8%B6%B3%E7%90%83/"/>
-    
     <category term="毕业设计" scheme="https://weiren1998.github.io/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/"/>
+    
+    <category term="足球" scheme="https://weiren1998.github.io/tags/%E8%B6%B3%E7%90%83/"/>
     
     <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
     
@@ -530,36 +548,9 @@
     <category term="学业" scheme="https://weiren1998.github.io/categories/%E6%80%9D%E8%80%83/%E5%AD%A6%E4%B8%9A/"/>
     
     
-    <category term="重要决策" scheme="https://weiren1998.github.io/tags/%E9%87%8D%E8%A6%81%E5%86%B3%E7%AD%96/"/>
-    
     <category term="思考" scheme="https://weiren1998.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
-  </entry>
-  
-  <entry>
-    <title>天文词汇 Astronomy</title>
-    <link href="https://weiren1998.github.io/archives/27799dd0.html"/>
-    <id>https://weiren1998.github.io/archives/27799dd0.html</id>
-    <published>2020-07-26T03:19:00.532Z</published>
-    <updated>2021-12-20T17:27:49.341Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;一太阳系-solar-system&quot;&gt;一、太阳系 Solar System&lt;/h2&gt;
-&lt;h3 id=&quot;基本信息&quot;&gt;1. 基本信息&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;在太阳的引力作用下(Under the control of the Sun&#39;s gravitational force)，周边有8个行星(planet)、67个卫星(moon)、至少50万个小行星(asteroid)、矮行星(dwarf planet)和少量彗星(comet)绕其运转&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="英语学习" scheme="https://weiren1998.github.io/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="托福" scheme="https://weiren1998.github.io/tags/%E6%89%98%E7%A6%8F/"/>
-    
-    <category term="听力" scheme="https://weiren1998.github.io/tags/%E5%90%AC%E5%8A%9B/"/>
-    
-    <category term="天文学" scheme="https://weiren1998.github.io/tags/%E5%A4%A9%E6%96%87%E5%AD%A6/"/>
+    <category term="重要决策" scheme="https://weiren1998.github.io/tags/%E9%87%8D%E8%A6%81%E5%86%B3%E7%AD%96/"/>
     
   </entry>
   

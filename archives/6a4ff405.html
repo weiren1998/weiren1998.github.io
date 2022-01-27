@@ -20,16 +20,16 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="简介：HOG全称histogram of oriented gradients，中文是方向梯度直方图。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。 主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述 本质：梯度的统计信息，而梯度主要存在于边缘的地方 优点：  由于HOG是在图像的局部方格单元上操作">
+  <meta name="description" content="简介：HOG全称histogram of oriented gradients，中文是方向梯度直方图。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。 主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述 本质：梯度的统计信息，而梯度主要存在于边缘的地方 优点： 由于HOG是在图像的局部方格单元上操作，所以它对图像">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HOG特征">
 <meta property="og:url" content="https://weiren1998.github.io/archives/6a4ff405.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="简介：HOG全称histogram of oriented gradients，中文是方向梯度直方图。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。 主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述 本质：梯度的统计信息，而梯度主要存在于边缘的地方 优点：  由于HOG是在图像的局部方格单元上操作">
+<meta property="og:description" content="简介：HOG全称histogram of oriented gradients，中文是方向梯度直方图。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。 主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述 本质：梯度的统计信息，而梯度主要存在于边缘的地方 优点： 由于HOG是在图像的局部方格单元上操作，所以它对图像">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-24T13:12:29.000Z">
 <meta property="article:modified_time" content="2021-12-20T17:43:41.151Z">
-<meta property="article:author" content="鸡球星">
+<meta property="article:author" content="J球星">
 <meta property="article:tag" content="图像处理">
 <meta property="article:tag" content="图像边缘信息提取">
 <meta name="twitter:card" content="summary">
@@ -103,7 +103,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">莫听穿林打叶声，何妨吟啸且徐行</p>
+        <p class="site-subtitle">Flag敢立，才敢拔！</p>
   </div>
 
   <div class="site-nav-right">
@@ -208,7 +208,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-      <meta itemprop="name" content="鸡球星">
+      <meta itemprop="name" content="J球星">
       <meta itemprop="description" content="努力是矢量，有大小也有方向">
     </span>
 
@@ -263,7 +263,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -286,37 +286,38 @@
 <li>简介：HOG全称<strong>histogram of oriented gradients</strong>，中文是<strong>方向梯度直方图</strong>。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。</li>
 <li>主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述</li>
 <li>本质：梯度的统计信息，而梯度主要存在于边缘的地方</li>
-<li>优点：
-<ol type="1">
+<li>优点：<ol>
 <li>由于HOG是在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上</li>
 <li>在粗的空域抽样、精细的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响检测效果。因此HOG特征是特别适合于做图像中的人体检测的</li>
-</ol></li>
+</ol>
+</li>
 </ul>
 <span id="more"></span>
-<h2 id="hog的原理">HOG的原理</h2>
-<ol type="1">
-<li>图像预处理：伽马校正和灰度化，也可不做，对实验影响不大。
-<ul>
+<h2 id="HOG的原理"><a href="#HOG的原理" class="headerlink" title="HOG的原理"></a>HOG的原理</h2><ol>
+<li>图像预处理：伽马校正和灰度化，也可不做，对实验影响不大。<ul>
 <li>伽马校正是减少光度对实验的影响</li>
 <li>灰度化是将彩色图片变成灰度图。其实彩色图片也可以直接处理，不过是分别对三通道的颜色值进行梯度计算，最后选择梯度最大的那个</li>
-<li>为简单起见，假设输入为灰度图，同时大小是**64*128**</li>
-</ul></li>
-<li>计算每个像素点的梯度大小和梯度方向
+<li>为简单起见，假设输入为灰度图，同时大小是<strong>64*128</strong> </li>
+</ul>
+</li>
+<li><p>计算每个像素点的梯度大小和梯度方向</p>
 <ul>
-<li>水平<span class="math inline">\(x\)</span>方向梯度<span class="math inline">\(\frac{\mathrm{d}f}{\mathrm{d} x}=\frac{f(x+1)-f(x-1)}{2}\approx f(x+1)-f(x-1)\)</span></li>
-<li>竖直<span class="math inline">\(y\)</span>方向的梯度<span class="math inline">\(\frac{\mathrm{d} f}{\mathrm{d} y}=\frac{f(y+1)-f(y-1)}{2}\approx f(y+1)-f(y-1)\)</span></li>
-<li>梯度大小<span class="math inline">\(||f&#39;|| = \sqrt{(\frac{\mathrm{d} f}{\mathrm{d} x})^2+(\frac{\mathrm{d} f}{\mathrm{d} y})^2}\)</span></li>
-<li>梯度方向<span class="math inline">\(\theta=tan^{-1}{(\frac{\mathrm{d} f}{\mathrm{d} y}/\frac{\mathrm{d} f}{\mathrm{d} x})}\)</span></li>
-</ul></li>
-<li>每8*8个pixel为一个cell，根据梯度方向的大小划分为9个bins，并将梯度大小根据梯度方向投递到不同的bin中，计算直方图</li>
-<li><span class="math inline">\(2*2\)</span>的cell为一个block，计算对block中<span class="math inline">\(2*2*9\)</span>个数字进行归一化，每个block得到一个大小为<span class="math inline">\(36\)</span>的特征向量</li>
-<li>对于<span class="math inline">\(64*128\)</span>大小的输入图像，用stride为1的block逐一计算每个block的特征向量，共得到<span class="math inline">\((8-1)*(16-1)\)</span>个<span class="math inline">\(36\)</span>维的特征向量，将其拉成一个concat成一个<span class="math inline">\(7*15*36=3780\)</span>维的特征向量，即为HOG特征</li>
+<li>水平$x$方向梯度$\frac{\mathrm{d}f}{\mathrm{d} x}=\frac{f(x+1)-f(x-1)}{2}\approx f(x+1)-f(x-1)$ </li>
+<li>竖直$y$方向的梯度$\frac{\mathrm{d} f}{\mathrm{d} y}=\frac{f(y+1)-f(y-1)}{2}\approx f(y+1)-f(y-1)$ </li>
+<li>梯度大小$||f’|| = \sqrt{(\frac{\mathrm{d} f}{\mathrm{d} x})^2+(\frac{\mathrm{d} f}{\mathrm{d} y})^2}$ </li>
+<li>梯度方向$\theta=tan^{-1}{(\frac{\mathrm{d} f}{\mathrm{d} y}/\frac{\mathrm{d} f}{\mathrm{d} x})}$ </li>
+</ul>
+</li>
+<li><p>每8*8个pixel为一个cell，根据梯度方向的大小划分为9个bins，并将梯度大小根据梯度方向投递到不同的bin中，计算直方图</p>
+</li>
+<li>$2<em>2$的cell为一个block，计算对block中$2</em>2*9$个数字进行归一化，每个block得到一个大小为$36$的特征向量</li>
+<li>对于$64<em>128$大小的输入图像，用stride为1的block逐一计算每个block的特征向量，共得到$(8-1)</em>(16-1)$个$36$维的特征向量，将其拉成一个concat成一个$7<em>15</em>36=3780$维的特征向量，即为HOG特征</li>
 </ol>
 <blockquote>
 <p>参考文献：</p>
-<ol type="1">
-<li>https://zhuanlan.zhihu.com/p/40960756</li>
-<li>https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2<sub>all</sub>sobaiduweb~default-1-7929348&amp;spm=3001.4430</li>
+<ol>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/40960756">https://zhuanlan.zhihu.com/p/40960756</a> </li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-1-7929348&amp;spm=3001.4430">https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-1-7929348&amp;spm=3001.4430</a> </li>
 </ol>
 </blockquote>
 
@@ -333,12 +334,12 @@
   <div id="qr" style="display: none;">
       
       <div style="display: inline-block;">
-        <img src="/images/reward/wechatpay.png" alt="鸡球星 微信支付">
+        <img src="/images/reward/wechatpay.png" alt="J球星 微信支付">
         <p>微信支付</p>
       </div>
       
       <div style="display: inline-block;">
-        <img src="/images/reward/alipay.png" alt="鸡球星 支付宝">
+        <img src="/images/reward/alipay.png" alt="J球星 支付宝">
         <p>支付宝</p>
       </div>
 
@@ -350,7 +351,7 @@
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>鸡球星
+    <strong>本文作者： </strong>J球星
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
@@ -443,15 +444,15 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hog%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">HOG的原理</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HOG%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">HOG的原理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="鸡球星"
+    <img class="site-author-image" itemprop="image" alt="J球星"
       src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-  <p class="site-author-name" itemprop="name">鸡球星</p>
+  <p class="site-author-name" itemprop="name">J球星</p>
   <div class="site-description" itemprop="description">努力是矢量，有大小也有方向</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -459,20 +460,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -504,6 +505,10 @@
         
         
           <li>
+            <a href="/archives/22e4771a.html" title="情侣沟通" target="_blank">情侣沟通</a>
+          </li>
+        
+          <li>
             <a href="/archives/d4029378.html" title="面试金典0104 回文排列" target="_blank">面试金典0104 回文排列</a>
           </li>
         
@@ -517,10 +522,6 @@
         
           <li>
             <a href="/archives/15f7c05f.html" title="面试金典0101 判定字符是否唯一" target="_blank">面试金典0101 判定字符是否唯一</a>
-          </li>
-        
-          <li>
-            <a href="/archives/36ae25f5.html" title="21年华为秋招" target="_blank">21年华为秋招</a>
           </li>
         
       </ul>
@@ -810,23 +811,23 @@ if(canvas.getContext){
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">鸡球星</span>
+  <span class="author" itemprop="copyrightHolder">J球星</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">85k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:18</span>
+    <span title="站点阅读时长">1:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>
