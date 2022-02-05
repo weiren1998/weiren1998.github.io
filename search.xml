@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>面试金典0108 零矩阵</title>
+    <url>/archives/8c04a153.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="https://leetcode-cn.com/problems/zero-matrix-lcci/">题目：</a></h3>
+<ul>
+<li><p>编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">输入：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">输入：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>]</span><br><span class="line">]</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<span id="more"></span>
+<h3 id="解题方法">解题方法：</h3>
+<div class="note warning">
+            <p>有旋转时记得用对称性来计算旋转前后的坐标</p>
+          </div>
+<ol type="1">
+<li><p>原地旋转（根据顺时针旋转特性）：旋转前后是<strong>点对点</strong>的变化，因此只需要将对应的点旋转即可，这里由于不让使用额外空间，因此可以<strong>顺时针switch三遍起始点和对应点即可</strong></p>
+<div class="note primary">
+            <p>时间复杂度为<span class="math inline">\(O(n^2)\)</span>，额外的空间复杂度为<span class="math inline">\(O(1)\)</span></p>
+          </div></li>
+<li><p>辅助空间（利用多余空间）：新建另一个<code>N × N</code>的矩阵，遍历时交换元素到<strong>对应位置</strong></p>
+<div class="note primary">
+            <p>时间复杂度为<span class="math inline">\(O(n^2)\)</span>，额外的空间复杂度为<span class="math inline">\(O(n^2)\)</span>，</p>
+          </div></li>
+</ol>
+<h3 id="解法一原地旋转">解法一：原地旋转</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107(旋转矩阵示意图1)" width="50%" height="50%" align="center"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107（旋转示意图2）" width="50%" height="50%" align="center"></p>
+<div class="note warning">
+            <ul><li>如何计算对应位置？<ol type="1"><li>位置3和1是轴对称，也就是关于横轴对称后再关于纵轴对称，计算相应的节点即可</li><li>位置2和1是先关于纵轴对称后，再关于对角线对称，可以通过计算得到</li><li>位置4和1是先关于横轴对称，然后再关于对角线对称</li></ol></li><li>用位运算代替除法，<strong>右移1个单位等价于除以二</strong></li></ul>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> r = (n&gt;&gt;<span class="number">1</span>)<span class="number">-1</span>; <span class="comment">//左上角区域的最大行下标</span></span><br><span class="line">        <span class="keyword">int</span> c = (n<span class="number">-1</span>)&gt;&gt;<span class="number">1</span>; <span class="comment">//左上角区域的最大列下标，行列下标从 0 开始。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = c; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][n-i<span class="number">-1</span>]); <span class="comment">// 1和2交换</span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-i<span class="number">-1</span>][n-j<span class="number">-1</span>]); <span class="comment">// 1和3交换 </span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-j<span class="number">-1</span>][i]); <span class="comment">// 1和4交换</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二辅助空间">解法二：辅助空间</h3>
+<div class="note warning">
+            <ul><li>如何计算对应位置？<ol type="1"><li>先关于<code>y=-x</code>对角线对称：<span class="math inline">\(x_1=y_0;\ y_1=x_0\)</span></li><li>然后关于纵轴对称：<span class="math inline">\(x_2=x_1=y_0;\ y_2=n-1-y_1=n-1-x_0\)</span></li></ol></li><li>二维<code>vector</code>初始化方法<ul><li>初始化为另一个已知vector：<code>vector&lt;vector&lt;int&gt;&gt; tmp = matrix;</code></li><li>初始化为<code>row * cul</code>大小的0矩阵：<code>vector&lt;vector&lt;int&gt;&gt; tmp(row, vector&lt;int&gt;(cul, 0));</code></li></ul></li><li>一维<code>vector</code>初始化方法：<code>vector&lt;int&gt; vec(len, 0);</code>长度为len，初始化值为0</li></ul>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// vector&lt;vector&lt;int&gt;&gt; output(N, vector&lt;int&gt;(N, 0));//初始化N * N二维动态数组，初始化值为0</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; tmp = matrix;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;N; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[j][N<span class="number">-1</span>-i] = tmp[i][j]; <span class="comment">// 关于y=-x对称后再关于横轴对称</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>二维矩阵</tag>
+        <tag>vector</tag>
+        <tag>旋转</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试金典0107 旋转矩阵</title>
+    <url>/archives/924acc2a.html</url>
+    <content><![CDATA[<h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a><a href="https://leetcode-cn.com/problems/rotate-matrix-lcci/">题目：</a></h3><ul>
+<li><p>给你一幅由 <code>N × N</code> 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。</p>
+<p><strong>不占用额外内存空间能否做到？</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">给定 matrix = </span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">  [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">7</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">9</span>,<span class="number">6</span>,<span class="number">3</span>]</span><br><span class="line">]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">给定 matrix =</span><br><span class="line">[</span><br><span class="line">  [ <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>,<span class="number">11</span>],</span><br><span class="line">  [ <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>,<span class="number">10</span>],</span><br><span class="line">  [<span class="number">13</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">  [<span class="number">15</span>,<span class="number">14</span>,<span class="number">12</span>,<span class="number">16</span>]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">15</span>,<span class="number">13</span>, <span class="number">2</span>, <span class="number">5</span>],</span><br><span class="line">  [<span class="number">14</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">12</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">16</span>, <span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<span id="more"></span>
+<h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><div class="note warning">
+            <p>有旋转时记得用对称性来计算旋转前后的坐标</p>
+          </div> 
+<ol>
+<li><p>原地旋转（根据顺时针旋转特性）：旋转前后是<strong>点对点</strong>的变化，因此只需要将对应的点旋转即可，这里由于不让使用额外空间，因此可以<strong>顺时针switch三遍起始点和对应点即可</strong></p>
+<div class="note primary">
+            <p>时间复杂度为$O(n^2)$，额外的空间复杂度为$O(1)$</p>
+          </div> 
+</li>
+<li><p>辅助空间（利用多余空间）：新建另一个<code>N × N</code>的矩阵，遍历时交换元素到<strong>对应位置</strong></p>
+<div class="note primary">
+            <p>时间复杂度为$O(n^2)$，额外的空间复杂度为$O(n^2)$，</p>
+          </div> 
+</li>
+</ol>
+<h3 id="解法一：原地旋转"><a href="#解法一：原地旋转" class="headerlink" title="解法一：原地旋转"></a>解法一：原地旋转</h3><p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107(旋转矩阵示意图1)" width="50%" height="50%" align="center"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107（旋转示意图2）" width="50%" height="50%" align="center"></p>
+<div class="note warning">
+            <ul><li>如何计算对应位置？<ol><li>位置3和1是轴对称，也就是关于横轴对称后再关于纵轴对称，计算相应的节点即可</li><li>位置2和1是先关于纵轴对称后，再关于对角线对称，可以通过计算得到</li><li>位置4和1是先关于横轴对称，然后再关于对角线对称</li></ol></li><li>用位运算代替除法，<strong>右移1个单位等价于除以二</strong></li></ul>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> r = (n&gt;&gt;<span class="number">1</span>)<span class="number">-1</span>; <span class="comment">//左上角区域的最大行下标</span></span><br><span class="line">        <span class="keyword">int</span> c = (n<span class="number">-1</span>)&gt;&gt;<span class="number">1</span>; <span class="comment">//左上角区域的最大列下标，行列下标从 0 开始。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = c; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][n-i<span class="number">-1</span>]); <span class="comment">// 1和2交换</span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-i<span class="number">-1</span>][n-j<span class="number">-1</span>]); <span class="comment">// 1和3交换 </span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-j<span class="number">-1</span>][i]); <span class="comment">// 1和4交换</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解法二：辅助空间"><a href="#解法二：辅助空间" class="headerlink" title="解法二：辅助空间"></a>解法二：辅助空间</h3><div class="note warning">
+            <ul><li>如何计算对应位置？<ol><li>先关于<code>y=-x</code>对角线对称：$x_1=y_0;\ y_1=x_0$</li><li>然后关于纵轴对称：$x_2=x_1=y_0;\ y_2=n-1-y_1=n-1-x_0$</li></ol></li><li>二维<code>vector</code>初始化方法<ul><li>初始化为另一个已知vector：<code>vector&lt;vector&lt;int&gt;&gt; tmp = matrix;</code></li><li>初始化为<code>row * cul</code>大小的0矩阵：<code>vector&lt;vector&lt;int&gt;&gt; tmp(row, vector&lt;int&gt;(cul, 0));</code></li></ul></li><li>一维<code>vector</code>初始化方法：<code>vector&lt;int&gt; vec(len, 0);</code>长度为len，初始化值为0</li></ul>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// vector&lt;vector&lt;int&gt;&gt; output(N, vector&lt;int&gt;(N, 0));//初始化N * N二维动态数组，初始化值为0</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; tmp = matrix;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;N; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[j][N<span class="number">-1</span>-i] = tmp[i][j]; <span class="comment">// 关于y=-x对称后再关于横轴对称</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>二维矩阵</tag>
+        <tag>vector</tag>
+        <tag>旋转</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试金典0106 字符串压缩</title>
+    <url>/archives/9c329055.html</url>
+    <content><![CDATA[<h3 id="题目：字符串压缩"><a href="#题目：字符串压缩" class="headerlink" title="题目：字符串压缩"></a>题目：<a href="https://leetcode-cn.com/problems/compress-string-lcci/">字符串压缩</a></h3><ul>
+<li><p>利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返回原先的字符串。你可以假设字符串中只包含大小写英文字母（a至z）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">输入：<span class="string">&quot;aabcccccaaa&quot;</span></span><br><span class="line">输出：<span class="string">&quot;a2b1c5a3&quot;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line"> 输入：<span class="string">&quot;abbccd&quot;</span></span><br><span class="line"> 输出：<span class="string">&quot;abbccd&quot;</span></span><br><span class="line"> 解释：<span class="string">&quot;abbccd&quot;</span>压缩后为<span class="string">&quot;a1b2c2d1&quot;</span>，比原字符串长度更长。</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 提示：</span></span><br><span class="line">字符串长度在[<span class="number">0</span>, <span class="number">50000</span>]范围内。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<span id="more"></span>
+<h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
+<li>遍历模拟：两层遍历，内层用<code>while</code>，判断当前字符连续出现了多少个</li>
+</ol>
+<div class="note primary">
+            <p>时间复杂度为O(n)，空间复杂度为O(n)，用于存储生成的字符串</p>
+          </div> 
+<h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><div class="note warning">
+            <ol><li>强制类型转化：想把<code>int</code>转为对应的字符，不可以用<code>char()</code>，因为这样会转化到对应的ASCII表中的字符，需要用<code>to_string()</code>来转化，转换完为<code>string</code>类型</li><li><code>S.push_back(char c)</code>：push_back()函数只能在字符串末尾添加字符，而不能是字符串</li><li><code>S.insert(int pos, string s)</code>：insert()函数只能在<code>pos</code>后面添加字符串，而不能是字符。如果<code>pos==S.size()</code>时，可以直接用加号<code>S = S + s</code>就可以了</li></ol>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">compressString</span><span class="params">(string S)</span> </span>&#123;</span><br><span class="line">        string S2 = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;S.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> c = S[i];</span><br><span class="line">            <span class="keyword">int</span> c_num = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(c == S[i+<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                c_num++;</span><br><span class="line">            &#125;</span><br><span class="line">            S2.<span class="built_in">push_back</span>(c); <span class="comment">// 只能push_back(char c) char类型变量</span></span><br><span class="line">            <span class="comment">// cout &lt;&lt; S2.size() &lt;&lt; (char(c_num)) &lt;&lt; &quot;##&quot; &lt;&lt; to_string(c_num); // 1##23##15##57##2 </span></span><br><span class="line">            S2.<span class="built_in">insert</span>(S2.<span class="built_in">size</span>(), <span class="built_in">to_string</span>(c_num)); <span class="comment">// 只能insert(int pos, string s) string类型变量</span></span><br><span class="line">            <span class="comment">// S2 = S2 + to_string(c_num);</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(S.<span class="built_in">size</span>() &lt;= S2.<span class="built_in">size</span>())</span><br><span class="line">            <span class="keyword">return</span> S;</span><br><span class="line">        <span class="keyword">return</span> S2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>强制类型转化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试金典0105 一次编辑</title>
+    <url>/archives/bba92df8.html</url>
+    <content><![CDATA[<h3 id="题目：一次编辑"><a href="#题目：一次编辑" class="headerlink" title="题目：一次编辑"></a>题目：<a href="https://leetcode-cn.com/problems/one-away-lcci/">一次编辑</a></h3><ul>
+<li><p>字符串有三种编辑操作：插入一个字符、删除一个字符或者替换一个字符。 给定两个字符串，编写一个函数判定它们是否只需要一次(或者零次)编辑。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 示例 1:</span></span><br><span class="line">输入: </span><br><span class="line">first = <span class="string">&quot;pale&quot;</span></span><br><span class="line">second = <span class="string">&quot;ple&quot;</span></span><br><span class="line">输出: <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 示例 2:</span></span><br><span class="line">输入: </span><br><span class="line">first = <span class="string">&quot;pales&quot;</span></span><br><span class="line">second = <span class="string">&quot;pal&quot;</span></span><br><span class="line">输出: <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<span id="more"></span>
+<h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
+<li>分情况讨论：<ol>
+<li>当两字符串长度相差大于1时：不可能</li>
+<li>当两字符串长度相等时：判断替换次数是否小于等于一</li>
+<li>当两字符串长度相差为1时：遍历长的，看短的是否能只用一次插入就完成</li>
+</ol>
+</li>
+</ol>
+<div class="note primary">
+            <p>目前只有一种解决方案，时间复杂度为O(n)，空间复杂度为​O(n)​</p>
+          </div>
+<h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><div class="note warning">
+            <p>巧妙的点在于当长度相差1时，可以再次调用函数，传入参数时将<code>first</code>和<code>second</code>对调即可</p>
+          </div>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">oneEditAway</span><span class="params">(string first, string second)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(first == second) <span class="comment">// 相等</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(first.<span class="built_in">size</span>() == second.<span class="built_in">size</span>()) <span class="comment">// 不相等，但长度相等，判断替换策略是否可行</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;first.<span class="built_in">size</span>(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(first[i] != second[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    flag++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> flag &lt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((first.<span class="built_in">size</span>() - second.<span class="built_in">size</span>()) == <span class="number">1</span>) <span class="comment">// 不相等，长度差一，判断添加策略是否可行</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>; i&lt;first.<span class="built_in">size</span>(); ++i, ++j) <span class="comment">// 注意遍历较长的字符串</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// cout &lt;&lt; i &lt;&lt; &quot;  &quot;&lt;&lt; j &lt;&lt; endl;</span></span><br><span class="line">                <span class="keyword">if</span>(first[i] != second[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(flag)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    flag = <span class="literal">true</span>;</span><br><span class="line">                    --j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((first.<span class="built_in">size</span>() - second.<span class="built_in">size</span>()) == <span class="number">-1</span>) <span class="comment">// 不相等，长度差一，判断添加策略是否可行</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">oneEditAway</span>(second, first); <span class="comment">// 聪明的switch</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>情侣沟通</title>
     <url>/archives/22e4771a.html</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="Oh, these decrypted content cannot be verified, but you can still have a look.">
@@ -47,8 +201,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>哈希</tag>
         <tag>位运算</tag>
+        <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -110,7 +264,13 @@
   <entry>
     <title>面试金典0101 判定字符是否唯一</title>
     <url>/archives/15f7c05f.html</url>
-    <content><![CDATA[<h3 id="题目：判定字符是否唯一"><a href="#题目：判定字符是否唯一" class="headerlink" title="题目：判定字符是否唯一"></a>题目：<a href="https://leetcode-cn.com/problems/is-unique-lcci/">判定字符是否唯一</a></h3><h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
+    <content><![CDATA[<h3 id="题目：判定字符是否唯一"><a href="#题目：判定字符是否唯一" class="headerlink" title="题目：判定字符是否唯一"></a>题目：<a href="https://leetcode-cn.com/problems/is-unique-lcci/">判定字符是否唯一</a></h3><ul>
+<li><p>实现一个算法，确定一个字符串 <code>s</code> 的所有字符是否全都不同。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">输入: s = <span class="string">&quot;leetcode&quot;</span></span><br><span class="line">输出: false</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">输入: s = <span class="string">&quot;abc&quot;</span></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<span id="more"></span>
+<h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
 <li>用哈希表<code>unordered_map</code>，记录目前为止出现的字符</li>
 <li>用bool数组来完成记录功能<strong>（桶计数）</strong></li>
 <li>用位运算代替bool数组的记录功能</li>
@@ -118,7 +278,6 @@
 <div class="note primary">
             <p>以上三种算法的时间复杂度均为$O(n)$，差别在于空间利用的大小，其实量级也都是$O(1)$，但是实际利用的比特数不同</p>
           </div> 
-<span id="more"></span>
 <h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><div class="note warning">
             <p>用到了C++ std中的<code>unordered_map</code>类，需要注意如何插入和查找</p>
           </div>
@@ -138,8 +297,8 @@
       </categories>
       <tags>
         <tag>字符串</tag>
-        <tag>哈希</tag>
         <tag>位运算</tag>
+        <tag>哈希</tag>
       </tags>
   </entry>
   <entry>
@@ -520,8 +679,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>数据预处理</tag>
         <tag>挖坑</tag>
+        <tag>数据预处理</tag>
       </tags>
   </entry>
   <entry>
@@ -935,8 +1094,8 @@
         <category>计算机视觉</category>
       </categories>
       <tags>
-        <tag>挖坑</tag>
         <tag>常识题</tag>
+        <tag>挖坑</tag>
       </tags>
   </entry>
   <entry>
@@ -1451,8 +1610,8 @@
         <category>计算机视觉</category>
       </categories>
       <tags>
-        <tag>毕业设计</tag>
         <tag>足球</tag>
+        <tag>毕业设计</tag>
         <tag>实验</tag>
       </tags>
   </entry>
@@ -2659,8 +2818,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C++</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -2806,8 +2965,8 @@
         <category>工具学习</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>环境配置</tag>
+        <tag>hexo</tag>
         <tag>next</tag>
       </tags>
   </entry>
