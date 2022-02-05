@@ -20,22 +20,22 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目：  编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。 123456789101112131415161718192021222324252627# 样例1输入：[  [1,1,1],  [1,0,1],  [1,1,1]]输出：[  [1,0,1],  [0,0,0],  [1,0,1]]    # 样例2输入：[  [0,1,2,0],  [3,4,5,2],">
+  <meta name="description" content="题目：  给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串） 12345678910111213# 样例1输入：s1 &#x3D; &quot;waterbottle&quot;, s2 &#x3D; &quot;erbottlewat&quot;输出：True    # 样例2输入：s1 &#x3D; &quot;aa&quot;, s2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面试金典0108 零矩阵">
-<meta property="og:url" content="https://weiren1998.github.io/archives/8c04a153.html">
+<meta property="og:title" content="面试金典0109 字符串轮转">
+<meta property="og:url" content="https://weiren1998.github.io/archives/f56eaff7.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="题目：  编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。 123456789101112131415161718192021222324252627# 样例1输入：[  [1,1,1],  [1,0,1],  [1,1,1]]输出：[  [1,0,1],  [0,0,0],  [1,0,1]]    # 样例2输入：[  [0,1,2,0],  [3,4,5,2],">
+<meta property="og:description" content="题目：  给定两个字符串s1和s2，请编写代码检查s2是否为s1旋转而成（比如，waterbottle是erbottlewat旋转后的字符串） 12345678910111213# 样例1输入：s1 &#x3D; &quot;waterbottle&quot;, s2 &#x3D; &quot;erbottlewat&quot;输出：True    # 样例2输入：s1 &#x3D; &quot;aa&quot;, s2">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-05T16:30:00.000Z">
-<meta property="article:modified_time" content="2022-02-05T13:34:45.583Z">
+<meta property="article:published_time" content="2022-02-05T21:30:00.000Z">
+<meta property="article:modified_time" content="2022-02-05T13:52:34.644Z">
 <meta property="article:author" content="J球星">
-<meta property="article:tag" content="二维矩阵">
-<meta property="article:tag" content="vector">
-<meta property="article:tag" content="set">
+<meta property="article:tag" content="挖坑">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="KMP算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://weiren1998.github.io/archives/8c04a153.html">
+<link rel="canonical" href="https://weiren1998.github.io/archives/f56eaff7.html">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>面试金典0108 零矩阵 | J球星的博客</title>
+  <title>面试金典0109 字符串轮转 | J球星的博客</title>
   
 
 
@@ -205,7 +205,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/8c04a153.html">
+    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/f56eaff7.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
@@ -218,7 +218,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          面试金典0108 零矩阵
+          面试金典0109 字符串轮转
         </h1>
 
         <div class="post-meta">
@@ -229,7 +229,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-02-05 16:30:00 / 修改时间：13:34:45" itemprop="dateCreated datePublished" datetime="2022-02-05T16:30:00Z">2022-02-05</time>
+              <time title="创建时间：2022-02-05 21:30:00 / 修改时间：13:52:34" itemprop="dateCreated datePublished" datetime="2022-02-05T21:30:00Z">2022-02-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,14 +258,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -277,41 +277,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/zero-matrix-lcci/">题目：</a></h3>
+        <h3 id="题目"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/string-rotation-lcci/">题目：</a></h3>
 <ul>
-<li><p>编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">输入：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">输入：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>]</span><br><span class="line">]</span><br><span class="line">输出：</span><br><span class="line">[</span><br><span class="line">  [<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">0</span>],</span><br><span class="line">  [<span class="number">0</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li><p>给定两个字符串<code>s1</code>和<code>s2</code>，请编写代码检查<code>s2</code>是否为<code>s1</code>旋转而成（比如，<code>waterbottle</code>是<code>erbottlewat</code>旋转后的字符串）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">输入：s1 = <span class="string">&quot;waterbottle&quot;</span>, s2 = <span class="string">&quot;erbottlewat&quot;</span></span><br><span class="line">输出：<span class="literal">True</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">输入：s1 = <span class="string">&quot;aa&quot;</span>, s2 = <span class="string">&quot;aba&quot;</span></span><br><span class="line">输出：<span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 提示：</span></span><br><span class="line">字符串长度在[<span class="number">0</span>, <span class="number">100000</span>]范围内。</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说明:</span></span><br><span class="line">你能只调用一次检查子串的方法吗？</span><br></pre></td></tr></table></figure></li>
 </ul>
 <span id="more"></span>
 <h3 id="解题方法">解题方法：</h3>
-<div class="note warning">
-            <p>读到零直接修改行列这种做法会是数据变脏，导致结果不符合预期，因此需要将有0的行和列存下来，然后再想办法置零，这里有两种置零策略，<strong>前者时间复杂度更低</strong>，后者<code>find()</code>函数的复杂度为<span class="math inline">\(O(n)\)</span></p>
-          </div>
 <ol type="1">
-<li><p><strong>使用标记数组：</strong>遍历矩阵，找到有零存在的所有行和列；<strong>分别遍历这些行和列</strong>，并置零</p>
+<li><p><strong>扩充：</strong>如果s2是由s1旋转而成，那么将两个s2首尾拼接起来，那么s1一定是拼接后字符串的子串，因此这里用了<code>s.find(s1)?=-1</code>这个函数来判断是否为子串。</p>
 <div class="note primary">
-            <p>时间复杂度为<span class="math inline">\(O(n^2)\)</span>，额外的空间复杂度为<span class="math inline">\(O(n)\)</span></p>
-          </div></li>
-<li><p><strong>使用标记数组：</strong>遍历矩阵，找到有零存在的所有行和列；<strong>重新遍历矩阵</strong>，判断当前所在的行列是否属于有零存在的行列，因为用<code>set</code>集合存储了为零的行列，因此利用<code>find()</code>函数即可</p>
-<div class="note primary">
-            <p>时间复杂度为<span class="math inline">\(O(n^3)\)</span>，因为<code>find()</code>函数的复杂度为<span class="math inline">\(O(n)\)</span>，额外的空间复杂度为<span class="math inline">\(O(n)\)</span></p>
-          </div></li>
-<li><p><strong>使用两个标记变量：</strong>用矩阵的第一行和第一列来当标记数组，然后用两个标记变量标记原本第一行和第一列是否出现过0，这样就可以降低空间复杂度了！<strong>目前未实现</strong></p>
-<div class="note primary">
-            <p>时间复杂度为<span class="math inline">\(O(n^3)\)</span>，额外的空间复杂度为<span class="math inline">\(O(1)\)</span></p>
+            <ul><li><p>时间复杂度取决于C++中<code>find()</code>的速度，这里find函数应该是简单使用了匹配算法（见文末），最坏的复杂度为<span class="math inline">\(O(n*m)\)</span>，但随机字符串均摊后还是<span class="math inline">\(O(m+n)\)</span>，额外的空间复杂度为<span class="math inline">\(O(n)\)</span>。</p></li><li><p><strong>KMP算法还是值得了解一下原理的（挖坑）</strong></p></li></ul>
           </div></li>
 </ol>
-<h3 id="解法一使用标记数组">解法一：使用标记数组</h3>
+<h3 id="解法一扩充">解法一：扩充</h3>
 <div class="note warning">
-            <ul><li><p>集合的定义：<code>set&lt;int&gt; set_row;</code></p></li><li><p>集合添加元素：</p><ul><li><code>set_row.insert(int i);</code></li><li>添加pair：<code>set&lt;pair&lt;T1, T2&gt;&gt; set_pair; set_pair.emplace(T1 a, T2, b);</code></li></ul></li><li><p>集合删除元素：成员函数 clear() 会删除 set 的所有元素。成员函数 erase() 会删除迭代器指定位置的元素或与对象匹配的元素。</p><ul><li><code>set_row.erase(int a);</code>删除对应的元素，如果没有会返回什么？</li><li><code>set_row.erase(iterator);</code>删除迭代器位置元素</li><li><code>set_row.clear();</code>删除全部元素</li></ul></li><li><p>集合的遍历（只能用iterator）：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line"><span class="keyword">for</span>(it = set_row.<span class="built_in">begin</span>(); it != set_row.<span class="built_in">end</span>(); ++it)</span><br><span class="line">&#123;</span><br><span class="line">    cout &lt;&lt; *it &lt;&lt; endl; <span class="comment">// *it为取it地址下的值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>查找元素是否在集合中：<code>if(set_row.find(int a) != set_row.end()) return true;</code> find的复杂度为<span class="math inline">\(O(n)\)</span>，底层逻辑就是遍历整个set，直到end()</p></li></ul>
+            <ul><li>字符串拼接：<code>string s = s2 + s2</code>直接用加号即可</li><li>字符串匹配：<code>s.find(s1)</code>匹配成功则返回s1在s中的起始位置，否则返回-1</li></ul>
           </div>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        set&lt;<span class="keyword">int</span>&gt; set_row, set_col;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;matrix.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;matrix[i].<span class="built_in">size</span>(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    set_row.<span class="built_in">insert</span>(i);</span><br><span class="line">                    set_col.<span class="built_in">insert</span>(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        set&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">        <span class="comment">// set all the 0 rows</span></span><br><span class="line">        <span class="keyword">for</span>(it = set_row.<span class="built_in">begin</span>(); it!=set_row.<span class="built_in">end</span>(); ++it)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;matrix[*it].<span class="built_in">size</span>(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[*it][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// set all the 0 colums</span></span><br><span class="line">        <span class="keyword">for</span>(it = set_col.<span class="built_in">begin</span>(); it!=set_col.<span class="built_in">end</span>(); ++it)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;matrix.<span class="built_in">size</span>(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[i][*it] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法二使用标记数组">解法二：使用标记数组</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isFlipedString</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        string s = s2 + s2;</span><br><span class="line">        <span class="keyword">int</span> a = s.<span class="built_in">find</span>(s1);</span><br><span class="line">        <span class="comment">// cout &lt;&lt; a &lt;&lt; &quot;$$&quot; &lt;&lt; s &lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">return</span> (s1.<span class="built_in">size</span>() == s2.<span class="built_in">size</span>()) &amp;&amp; s.<span class="built_in">find</span>(s1) != <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="字符串匹配暴力算法">字符串匹配暴力算法</h3>
 <div class="note warning">
-            <ul><li>集合的find操作，见上文</li></ul>
+            <p>遍历主串作为匹配起始点，依次和模式串匹配，匹配成功则返回匹配成功的起始点，不成功返回-1</p>
           </div>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        set&lt;<span class="keyword">int</span>&gt; set_row, set_col;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;matrix.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;matrix[i].<span class="built_in">size</span>(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    set_row.<span class="built_in">insert</span>(i);</span><br><span class="line">                    set_col.<span class="built_in">insert</span>(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;matrix.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;matrix[i].<span class="built_in">size</span>(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(set_row.<span class="built_in">find</span>(i) != set_row.<span class="built_in">end</span>()) <span class="comment">// 时间复杂度O(n)</span></span><br><span class="line">                &#123;</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(set_col.<span class="built_in">find</span>(j) != set_col.<span class="built_in">end</span>())</span><br><span class="line">                &#123;</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法三使用两个标记变量未实现">解法三：使用两个标记变量（未实现）</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 暴力破解法</span></span><br><span class="line"><span class="comment"> * @param ts 主串</span></span><br><span class="line"><span class="comment"> * @param ps 模式串</span></span><br><span class="line"><span class="comment"> * @return 如果找到，返回在主串中第一个字符出现的下标，否则为-1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bf</span><span class="params">(String ts, String ps)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] t = ts.<span class="built_in">toCharArray</span>();</span><br><span class="line">    <span class="keyword">char</span>[] p = ps.<span class="built_in">toCharArray</span>();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// 主串的位置</span></span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>; <span class="comment">// 模式串的位置</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; t.length &amp;&amp; j &lt; p.length) &#123;</span><br><span class="line">       <span class="keyword">if</span> (t[i] == p[j]) &#123; <span class="comment">// 当两个字符相同，就比较下一个</span></span><br><span class="line">           i++;</span><br><span class="line">           j++;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           i = i - j + <span class="number">1</span>; <span class="comment">// 一旦不匹配，i后退</span></span><br><span class="line">           j = <span class="number">0</span>; <span class="comment">// j归0</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j == p.length) &#123;</span><br><span class="line">       <span class="keyword">return</span> i - j;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="kmp算法未搞懂">KMP算法（未搞懂）</h3>
+<p>参考资料:<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cnblogs.com/yjiyjige/p/3263858.html">KMP算法</a></p>
 
     </div>
 
@@ -347,7 +337,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://weiren1998.github.io/archives/8c04a153.html" title="面试金典0108 零矩阵">https://weiren1998.github.io/archives/8c04a153.html</a>
+    <a href="https://weiren1998.github.io/archives/f56eaff7.html" title="面试金典0109 字符串轮转">https://weiren1998.github.io/archives/f56eaff7.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -359,9 +349,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/" rel="tag"><i class="fa fa-tag"></i> 二维矩阵</a>
-              <a href="/tags/vector/" rel="tag"><i class="fa fa-tag"></i> vector</a>
-              <a href="/tags/set/" rel="tag"><i class="fa fa-tag"></i> set</a>
+              <a href="/tags/%E6%8C%96%E5%9D%91/" rel="tag"><i class="fa fa-tag"></i> 挖坑</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"><i class="fa fa-tag"></i> 字符串</a>
+              <a href="/tags/KMP%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> KMP算法</a>
           </div>
 
         
@@ -370,13 +360,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/archives/924acc2a.html" rel="prev" title="面试金典0107 旋转矩阵">
-      <i class="fa fa-chevron-left"></i> 面试金典0107 旋转矩阵
+    <a href="/archives/8c04a153.html" rel="prev" title="面试金典0108 零矩阵">
+      <i class="fa fa-chevron-left"></i> 面试金典0108 零矩阵
     </a></div>
-      <div class="post-nav-item">
-    <a href="/archives/f56eaff7.html" rel="next" title="面试金典0109 字符串轮转">
-      面试金典0109 字符串轮转 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -437,7 +424,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E4%BD%BF%E7%94%A8%E6%A0%87%E8%AE%B0%E6%95%B0%E7%BB%84"><span class="nav-number">3.</span> <span class="nav-text">解法一：使用标记数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E4%BD%BF%E7%94%A8%E6%A0%87%E8%AE%B0%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">解法二：使用标记数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%89%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%87%E8%AE%B0%E5%8F%98%E9%87%8F%E6%9C%AA%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">解法三：使用两个标记变量（未实现）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E6%89%A9%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">解法一：扩充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E6%9A%B4%E5%8A%9B%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">字符串匹配暴力算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kmp%E7%AE%97%E6%B3%95%E6%9C%AA%E6%90%9E%E6%87%82"><span class="nav-number">5.</span> <span class="nav-text">KMP算法（未搞懂）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -971,7 +958,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'weiren1998.github.io',
       owner       : 'weiren1998',
       admin       : ['weiren1998'],
-      id          : 'e2a877fc901f23af64398702b0d31312',
+      id          : '46a101d773e9b80901b925688f6297e4',
         language: 'zh-CN',
       distractionFreeMode: true
     });

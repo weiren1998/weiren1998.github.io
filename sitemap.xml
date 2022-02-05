@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://weiren1998.github.io/archives/f56eaff7.html</loc>
+    
+    <lastmod>2022-02-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://weiren1998.github.io/archives/8c04a153.html</loc>
     
     <lastmod>2022-02-05</lastmod>
@@ -786,6 +795,20 @@
   
   <url>
     <loc>https://weiren1998.github.io/tags/%E8%A7%84%E5%88%92/</loc>
+    <lastmod>2022-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://weiren1998.github.io/tags/KMP%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://weiren1998.github.io/tags/set/</loc>
     <lastmod>2022-02-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
