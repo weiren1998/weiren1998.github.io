@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目： 给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 12345678910111213141516171819202122232425262728293031# 样例1给定 matrix &#x3D; [  [1,2,3],  [4,5,6],  [7,8,9]],原地旋转输入矩阵，使其变为:[  [7,4,">
+  <meta name="description" content="题目：  给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 12345678910111213141516171819202122232425262728293031# 样例1给定 matrix &#x3D; [  [1,2,3],  [4,5,6],  [7,8,9]],原地旋转输入矩阵，使其变为:[">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试金典0107 旋转矩阵">
 <meta property="og:url" content="https://weiren1998.github.io/archives/924acc2a.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="题目： 给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 12345678910111213141516171819202122232425262728293031# 样例1给定 matrix &#x3D; [  [1,2,3],  [4,5,6],  [7,8,9]],原地旋转输入矩阵，使其变为:[  [7,4,">
+<meta property="og:description" content="题目：  给你一幅由 N × N 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。 不占用额外内存空间能否做到？ 12345678910111213141516171819202122232425262728293031# 样例1给定 matrix &#x3D; [  [1,2,3],  [4,5,6],  [7,8,9]],原地旋转输入矩阵，使其变为:[">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107(旋转矩阵示意图1)">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107（旋转示意图2）">
@@ -280,36 +280,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/rotate-matrix-lcci/">题目：</a></h3><ul>
+        <h3 id="题目"><a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/rotate-matrix-lcci/">题目：</a></h3>
+<ul>
 <li><p>给你一幅由 <code>N × N</code> 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。</p>
 <p><strong>不占用额外内存空间能否做到？</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">给定 matrix = </span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">  [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">7</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">9</span>,<span class="number">6</span>,<span class="number">3</span>]</span><br><span class="line">]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">给定 matrix =</span><br><span class="line">[</span><br><span class="line">  [ <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>,<span class="number">11</span>],</span><br><span class="line">  [ <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>,<span class="number">10</span>],</span><br><span class="line">  [<span class="number">13</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">  [<span class="number">15</span>,<span class="number">14</span>,<span class="number">12</span>,<span class="number">16</span>]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">15</span>,<span class="number">13</span>, <span class="number">2</span>, <span class="number">5</span>],</span><br><span class="line">  [<span class="number">14</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">12</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">16</span>, <span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例1</span></span><br><span class="line">给定 matrix = </span><br><span class="line">[</span><br><span class="line">  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],</span><br><span class="line">  [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">  [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">7</span>,<span class="number">4</span>,<span class="number">1</span>],</span><br><span class="line">  [<span class="number">8</span>,<span class="number">5</span>,<span class="number">2</span>],</span><br><span class="line">  [<span class="number">9</span>,<span class="number">6</span>,<span class="number">3</span>]</span><br><span class="line">]</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 样例2</span></span><br><span class="line">给定 matrix =</span><br><span class="line">[</span><br><span class="line">  [ <span class="number">5</span>, <span class="number">1</span>, <span class="number">9</span>,<span class="number">11</span>],</span><br><span class="line">  [ <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>,<span class="number">10</span>],</span><br><span class="line">  [<span class="number">13</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">  [<span class="number">15</span>,<span class="number">14</span>,<span class="number">12</span>,<span class="number">16</span>]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">原地旋转输入矩阵，使其变为:</span><br><span class="line">[</span><br><span class="line">  [<span class="number">15</span>,<span class="number">13</span>, <span class="number">2</span>, <span class="number">5</span>],</span><br><span class="line">  [<span class="number">14</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="number">12</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>],</span><br><span class="line">  [<span class="number">16</span>, <span class="number">7</span>,<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
 </ul>
 <span id="more"></span>
-<h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><div class="note warning">
+<h3 id="解题方法">解题方法：</h3>
+<div class="note warning">
             <p>有旋转时记得用对称性来计算旋转前后的坐标</p>
-          </div> 
-<ol>
+          </div>
+<ol type="1">
 <li><p>原地旋转（根据顺时针旋转特性）：旋转前后是<strong>点对点</strong>的变化，因此只需要将对应的点旋转即可，这里由于不让使用额外空间，因此可以<strong>顺时针switch三遍起始点和对应点即可</strong></p>
 <div class="note primary">
-            <p>时间复杂度为$O(n^2)$，额外的空间复杂度为$O(1)$</p>
-          </div> 
-</li>
+            <p>时间复杂度为<span class="math inline">\(O(n^2)\)</span>，额外的空间复杂度为<span class="math inline">\(O(1)\)</span></p>
+          </div></li>
 <li><p>辅助空间（利用多余空间）：新建另一个<code>N × N</code>的矩阵，遍历时交换元素到<strong>对应位置</strong></p>
 <div class="note primary">
-            <p>时间复杂度为$O(n^2)$，额外的空间复杂度为$O(n^2)$，</p>
-          </div> 
-</li>
+            <p>时间复杂度为<span class="math inline">\(O(n^2)\)</span>，额外的空间复杂度为<span class="math inline">\(O(n^2)\)</span>，</p>
+          </div></li>
 </ol>
-<h3 id="解法一：原地旋转"><a href="#解法一：原地旋转" class="headerlink" title="解法一：原地旋转"></a>解法一：原地旋转</h3><p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107(旋转矩阵示意图1)" width="50%" height="50%" align="center"></p>
+<h3 id="解法一原地旋转">解法一：原地旋转</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107(旋转矩阵示意图1)" width="50%" height="50%" align="center"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/面试金典0107（旋转示意图2）" width="50%" height="50%" align="center"></p>
 <div class="note warning">
-            <ul><li>如何计算对应位置？<ol><li>位置3和1是轴对称，也就是关于横轴对称后再关于纵轴对称，计算相应的节点即可</li><li>位置2和1是先关于纵轴对称后，再关于对角线对称，可以通过计算得到</li><li>位置4和1是先关于横轴对称，然后再关于对角线对称</li></ol></li><li>用位运算代替除法，<strong>右移1个单位等价于除以二</strong></li></ul>
+            <ul><li>如何计算对应位置？<ol type="1"><li>位置3和1是轴对称，也就是关于横轴对称后再关于纵轴对称，计算相应的节点即可</li><li>位置2和1是先关于纵轴对称后，再关于对角线对称，可以通过计算得到</li><li>位置4和1是先关于横轴对称，然后再关于对角线对称</li></ol></li><li>用位运算代替除法，<strong>右移1个单位等价于除以二</strong></li></ul>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line">        <span class="keyword">int</span> r = (n&gt;&gt;<span class="number">1</span>)<span class="number">-1</span>; <span class="comment">//左上角区域的最大行下标</span></span><br><span class="line">        <span class="keyword">int</span> c = (n<span class="number">-1</span>)&gt;&gt;<span class="number">1</span>; <span class="comment">//左上角区域的最大列下标，行列下标从 0 开始。</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = r; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = c; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][n-i<span class="number">-1</span>]); <span class="comment">// 1和2交换</span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-i<span class="number">-1</span>][n-j<span class="number">-1</span>]); <span class="comment">// 1和3交换 </span></span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[n-j<span class="number">-1</span>][i]); <span class="comment">// 1和4交换</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法二：辅助空间"><a href="#解法二：辅助空间" class="headerlink" title="解法二：辅助空间"></a>解法二：辅助空间</h3><div class="note warning">
-            <ul><li>如何计算对应位置？<ol><li>先关于<code>y=-x</code>对角线对称：$x_1=y_0;\ y_1=x_0$</li><li>然后关于纵轴对称：$x_2=x_1=y_0;\ y_2=n-1-y_1=n-1-x_0$</li></ol></li><li>二维<code>vector</code>初始化方法<ul><li>初始化为另一个已知vector：<code>vector&lt;vector&lt;int&gt;&gt; tmp = matrix;</code></li><li>初始化为<code>row * cul</code>大小的0矩阵：<code>vector&lt;vector&lt;int&gt;&gt; tmp(row, vector&lt;int&gt;(cul, 0));</code></li></ul></li><li>一维<code>vector</code>初始化方法：<code>vector&lt;int&gt; vec(len, 0);</code>长度为len，初始化值为0</li></ul>
+<h3 id="解法二辅助空间">解法二：辅助空间</h3>
+<div class="note warning">
+            <ul><li>如何计算对应位置？<ol type="1"><li>先关于<code>y=-x</code>对角线对称：<span class="math inline">\(x_1=y_0;\ y_1=x_0\)</span></li><li>然后关于纵轴对称：<span class="math inline">\(x_2=x_1=y_0;\ y_2=n-1-y_1=n-1-x_0\)</span></li></ol></li><li>二维<code>vector</code>初始化方法<ul><li>初始化为另一个已知vector：<code>vector&lt;vector&lt;int&gt;&gt; tmp = matrix;</code></li><li>初始化为<code>row * cul</code>大小的0矩阵：<code>vector&lt;vector&lt;int&gt;&gt; tmp(row, vector&lt;int&gt;(cul, 0));</code></li></ul></li><li>一维<code>vector</code>初始化方法：<code>vector&lt;int&gt; vec(len, 0);</code>长度为len，初始化值为0</li></ul>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// vector&lt;vector&lt;int&gt;&gt; output(N, vector&lt;int&gt;(N, 0));//初始化N * N二维动态数组，初始化值为0</span></span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; tmp = matrix;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;N; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;N; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[j][N<span class="number">-1</span>-i] = tmp[i][j]; <span class="comment">// 关于y=-x对称后再关于横轴对称</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -437,7 +438,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8E%9F%E5%9C%B0%E6%97%8B%E8%BD%AC"><span class="nav-number">3.</span> <span class="nav-text">解法一：原地旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A%E8%BE%85%E5%8A%A9%E7%A9%BA%E9%97%B4"><span class="nav-number">4.</span> <span class="nav-text">解法二：辅助空间</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%E5%8E%9F%E5%9C%B0%E6%97%8B%E8%BD%AC"><span class="nav-number">3.</span> <span class="nav-text">解法一：原地旋转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%E8%BE%85%E5%8A%A9%E7%A9%BA%E9%97%B4"><span class="nav-number">4.</span> <span class="nav-text">解法二：辅助空间</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -453,7 +454,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -466,7 +467,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -498,23 +499,23 @@
         
         
           <li>
-            <a href="/archives/5371f097.html" title="面试金典0301 三合一" target="_blank">面试金典0301 三合一</a>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
           </li>
         
           <li>
-            <a href="/archives/dd36b91f.html" title="面试金典0208 环路检测" target="_blank">面试金典0208 环路检测</a>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
           </li>
         
           <li>
-            <a href="/archives/f56eaff7.html" title="面试金典0109 字符串轮转" target="_blank">面试金典0109 字符串轮转</a>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
           </li>
         
           <li>
-            <a href="/archives/8c04a153.html" title="面试金典0108 零矩阵" target="_blank">面试金典0108 零矩阵</a>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
           </li>
         
           <li>
-            <a href="/archives/924acc2a.html" title="面试金典0107 旋转矩阵" target="_blank">面试金典0107 旋转矩阵</a>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
           </li>
         
       </ul>
@@ -814,13 +815,13 @@ if(canvas.getContext){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">116k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

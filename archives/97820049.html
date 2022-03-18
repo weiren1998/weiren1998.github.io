@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/r.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/r.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/r.png">
+  <link rel="mask-icon" href="/images/r.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=consolas:300,300italic,400,400italic,700,700italic|Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale Alexey Dosovitskiy (Google, Brain Team) 论文地址：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2010.11929v2 代码地址(timm-vision_transformer.py)：https:&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ViT：视觉Transformer开创者（论文+代码详解）">
+<meta property="og:url" content="https://weiren1998.github.io/archives/97820049.html">
+<meta property="og:site_name" content="J球星的博客">
+<meta property="og:description" content="An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale Alexey Dosovitskiy (Google, Brain Team) 论文地址：https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;2010.11929v2 代码地址(timm-vision_transformer.py)：https:&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/ViT-figure1">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/ViT分类头">
+<meta property="article:published_time" content="2022-03-18T14:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-18T06:03:36.189Z">
+<meta property="article:author" content="J球星">
+<meta property="article:tag" content="Transformer">
+<meta property="article:tag" content="ViT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/ViT-figure1">
+
+<link rel="canonical" href="https://weiren1998.github.io/archives/97820049.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>ViT：视觉Transformer开创者（论文+代码详解） | J球星的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="J球星的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">J球星的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Flag敢立，才敢拔！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-fw fa-film"></i>观影</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-book"></i>阅读</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/97820049.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
+      <meta itemprop="name" content="J球星">
+      <meta itemprop="description" content="努力是矢量，有大小也有方向">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="J球星的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ViT：视觉Transformer开创者（论文+代码详解）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-18 14:00:00 / 修改时间：06:03:36" itemprop="dateCreated datePublished" datetime="2022-03-18T14:00:00Z">2022-03-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" itemprop="url" rel="index"><span itemprop="name">计算机视觉</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</p>
+<p>Alexey Dosovitskiy (Google, Brain Team)</p>
+<p>论文地址：https://arxiv.org/abs/2010.11929v2</p>
+<p>代码地址(timm-vision_transformer.py)：https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="动机">动机：</h3>
+<ul>
+<li>是否CNN对于图像特征提取来说不是必须的？</li>
+<li>NLP领域中，Transformer相关的Encoder和Decoder这一套框架是否可以代替CNN来完成图像领域的任务？</li>
+</ul>
+<h3 id="创新点">创新点：</h3>
+<ul>
+<li><strong>将NLP领域的Transformer架构成功迁移到了CV领域，并且取得了和CNN相当的结果</strong></li>
+<li>不降低图像分辨率，将图像分成小的patch，加入位置编码后加入到网络中</li>
+<li>实验表明，在超大数据集上训练，在常规数据集上Finetune后可以和CNN的SOTA结果相比较，所用计算资源也大大减少</li>
+</ul>
+<h3 id="实验参数">实验参数：</h3>
+<h3 id="结果汇总">结果汇总：</h3>
+<h3 id="网络架构">网络架构：</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/ViT-figure1" width="80%" height="80%" align="center"></p>
+<h5 id="预处理embedding">预处理（Embedding）：</h5>
+<ol type="1">
+<li><p>Patch Embedding：将3维图像分patch，并且压缩到2维</p>
+<ul>
+<li><p>操作分解：</p>
+<ol type="1">
+<li><p>图像原始尺寸：<span class="math inline">\(B \times C \times H \times W\)</span></p></li>
+<li>按照patch块大小 <span class="math inline">\(P\)</span> 切块，把patch内的像素放到channel维度 <span class="math inline">\((C*P^2) \times (H/P) \times (W/P)\)</span></li>
+<li>将channel维度线性映射到embedding dimension <span class="math inline">\(D\)</span>，即变为 <span class="math inline">\(D \times (H/P) \times (W/P)\)</span></li>
+<li>将后两维flatten成一个维度 <span class="math inline">\(N\)</span>，得到 <span class="math inline">\(D \times N\)</span> 的张量</li>
+<li>将 <span class="math inline">\(D\)</span> 和 <span class="math inline">\(N\)</span> 所在的维度transpose，得到 <span class="math inline">\(N \times D\)</span> 的张量，因为此时 <span class="math inline">\(D\)</span> 中存的是patch的信息，这里就变成了feature map，而 <span class="math inline">\(N\)</span> 则是patch的数量，相当于原始的channel</li>
+<li>对处理过后的张量做LN操作，即对每个feature map做归一化，LN共 <span class="math inline">\(2B \times N\)</span> 个参数</li>
+<li><p>处理后的张量大小：<span class="math inline">\(B \times N \times D\)</span></p></li>
+</ol></li>
+<li><p>代码解读：<code>./timm/models/layers/patch_embed.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PatchEmbed</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; 2D Image to Patch Embedding</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, img_size=<span class="number">224</span>, patch_size=<span class="number">16</span>, in_chans=<span class="number">3</span>, embed_dim=<span class="number">768</span>, norm_layer=<span class="literal">None</span>, flatten=<span class="literal">True</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        img_size = to_2tuple(img_size)</span><br><span class="line">        patch_size = to_2tuple(patch_size)</span><br><span class="line">        self.img_size = img_size</span><br><span class="line">        self.patch_size = patch_size</span><br><span class="line">        self.grid_size = (img_size[<span class="number">0</span>] // patch_size[<span class="number">0</span>], img_size[<span class="number">1</span>] // patch_size[<span class="number">1</span>])</span><br><span class="line">        self.num_patches = self.grid_size[<span class="number">0</span>] * self.grid_size[<span class="number">1</span>]</span><br><span class="line">        self.flatten = flatten</span><br><span class="line"></span><br><span class="line">        self.proj = nn.Conv2d(in_chans, embed_dim, kernel_size=patch_size, stride=patch_size) <span class="comment"># 用卷积实现上述2、3步骤</span></span><br><span class="line">        self.norm = norm_layer(embed_dim) <span class="keyword">if</span> norm_layer <span class="keyword">else</span> nn.Identity()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        B, C, H, W = x.shape</span><br><span class="line">        _<span class="keyword">assert</span>(H == self.img_size[<span class="number">0</span>], <span class="string">f&quot;Input image height (<span class="subst">&#123;H&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">0</span>]&#125;</span>).&quot;</span>)</span><br><span class="line">        _<span class="keyword">assert</span>(W == self.img_size[<span class="number">1</span>], <span class="string">f&quot;Input image width (<span class="subst">&#123;W&#125;</span>) doesn&#x27;t match model (<span class="subst">&#123;self.img_size[<span class="number">1</span>]&#125;</span>).&quot;</span>)</span><br><span class="line">        x = self.proj(x) </span><br><span class="line">        <span class="keyword">if</span> self.flatten:</span><br><span class="line">            x = x.flatten(<span class="number">2</span>).transpose(<span class="number">1</span>, <span class="number">2</span>)  <span class="comment"># 先把宽高维度flatten为N，然后将其与channel维度transpose # BCHW -&gt; BNC 这里后者的C其实为embed_dim D</span></span><br><span class="line">        x = self.norm(x) <span class="comment"># 这里还有一个标准化层</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Learnable Class Embedding</p>
+<ul>
+<li><p>操作分解：（如果存在蒸馏，则同理加入蒸馏token）</p>
+<ol type="1">
+<li>新建大小为 <span class="math inline">\(1 \times 1 \times D\)</span> 维度的可训练的变量</li>
+<li><code>.expand</code>成 <span class="math inline">\(B \times 1 \times D\)</span> 维度</li>
+<li>把patch embedding的结果与class embedding的结果在第一维上concat <code>torch.cat()</code></li>
+</ol></li>
+<li><p>代码解读：<code>./timm/models/vision_transformer.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VisionTransformer</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">...</span>):</span></span><br><span class="line">        <span class="comment"># 只截取了相关的部分</span></span><br><span class="line">        self.cls_token = nn.Parameter(torch.zeros(<span class="number">1</span>, <span class="number">1</span>, embed_dim)) <span class="comment"># 类别token 对应第1步</span></span><br><span class="line">        self.dist_token = nn.Parameter(torch.zeros(<span class="number">1</span>, <span class="number">1</span>, embed_dim)) <span class="keyword">if</span> distilled <span class="keyword">else</span> <span class="literal">None</span> <span class="comment"># 蒸馏token</span></span><br><span class="line">        self.pos_embed = nn.Parameter(torch.zeros(<span class="number">1</span>, num_patches + self.num_tokens, embed_dim)) <span class="comment"># PE Position Embedding</span></span><br><span class="line">        self.pos_drop = nn.Dropout(p=drop_rate)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward_features</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        x = self.patch_embed(x) <span class="comment"># patch embedding</span></span><br><span class="line">        cls_token = self.cls_token.expand(x.shape[<span class="number">0</span>], -<span class="number">1</span>, -<span class="number">1</span>)  <span class="comment"># 对应第2步</span></span><br><span class="line">        <span class="keyword">if</span> self.dist_token <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            x = torch.cat((cls_token, x), dim=<span class="number">1</span>) <span class="comment"># 对应第3步</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x = torch.cat((cls_token, self.dist_token.expand(x.shape[<span class="number">0</span>], -<span class="number">1</span>, -<span class="number">1</span>), x), dim=<span class="number">1</span>) <span class="comment"># 如果蒸馏，则concat分类token、蒸馏token和patch token</span></span><br><span class="line">        x = self.pos_drop(x + self.pos_embed)  <span class="comment"># PE</span></span><br><span class="line">        x = self.blocks(x)</span><br><span class="line">        x = self.norm(x)</span><br><span class="line">        <span class="keyword">if</span> self.dist_token <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self.pre_logits(x[:, <span class="number">0</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> x[:, <span class="number">0</span>], x[:, <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>Position Embedding</p>
+<ul>
+<li>操作分解：
+<ol type="1">
+<li>新建大小为 <span class="math inline">\(1 \times (N+1) \times D\)</span> 维度的可训练的变量，其中 <span class="math inline">\(x\)</span> 为额外加的token数量，通常为1或者2</li>
+<li>将新建的变量<code>+</code>到embedding后的tensor（常量）上，<strong>不同batch共享同样的PE变量</strong></li>
+</ol></li>
+<li>代码解读：见上方Class Embedding</li>
+</ul></li>
+</ol>
+<h5 id="transformer-encoder-l-重复l次">Transformer Encoder *L 重复L次</h5>
+<ol type="1">
+<li><p>总览： <span class="math display">\[
+{
+z_0 = [x_{class};\ x_p^1E;\ x_p^2E;\ ···\ ;\ x_p^NE]+\ E_{pos},\ \ \  E \in \R^{P^2C \times D},\ E_{pos} \in \R^{(N+1) \times D} \ \ \ (1)
+\\
+z&#39;_l = MSA(LN(z_{l-1}))\ + \ z_{l-1}, \ \ \  l=1...L \ \ \ (2)
+\\
+z_l = MLP(LN(z&#39;_{l}))\ + \ z&#39;_{l}, \ \ \  l=1...L \ \ \ (3)
+\\
+y = LN(z^{0}_{L}) \ \ \ (4)
+}
+\]</span></p>
+<ul>
+<li><p>操作分解：</p>
+<ol type="1">
+<li><span class="math inline">\(z_0\)</span> 为embedding后的结果，<span class="math inline">\(x_{class}\)</span> 为分类token，<span class="math inline">\(x_p^i \in \R^{1\times P^2C}\)</span> 为图像分完patch后的向量，<span class="math inline">\(E\)</span> 为线性变换矩阵，<span class="math inline">\(E_{pos}\)</span> 为位置编码</li>
+<li>共有<span class="math inline">\(L\)</span>个transformer结构，每个结构包含两个部分
+<ol type="1">
+<li>先做LN再做MSA，接一个shotcut</li>
+<li>先做LN再做MLP，接一个shotcut</li>
+</ol></li>
+<li>将最后一个transformer的输出中的第0个patch取出来做LN后得到 <span class="math inline">\(y\)</span> 用于分类</li>
+</ol></li>
+<li><p>代码解读：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Block</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dim, num_heads, mlp_ratio=<span class="number">4.</span>, qkv_bias=<span class="literal">False</span>, drop=<span class="number">0.</span>, attn_drop=<span class="number">0.</span>,</span></span></span><br><span class="line"><span class="params"><span class="function">                 drop_path=<span class="number">0.</span>, act_layer=nn.GELU, norm_layer=nn.LayerNorm</span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.norm1 = norm_layer(dim)</span><br><span class="line">        self.attn = Attention(dim, num_heads=num_heads, qkv_bias=qkv_bias, attn_drop=attn_drop, proj_drop=drop) <span class="comment"># 这里对应Attention模块，其中Multi-head的数量就是 num_heads也就是注意力模块的数量</span></span><br><span class="line">        <span class="comment"># <span class="doctag">NOTE:</span> drop path for stochastic depth, we shall see if this is better than dropout here</span></span><br><span class="line">        self.drop_path = DropPath(drop_path) <span class="keyword">if</span> drop_path &gt; <span class="number">0.</span> <span class="keyword">else</span> nn.Identity()</span><br><span class="line">        self.norm2 = norm_layer(dim)</span><br><span class="line">        mlp_hidden_dim = <span class="built_in">int</span>(dim * mlp_ratio)</span><br><span class="line">        self.mlp = Mlp(in_features=dim, hidden_features=mlp_hidden_dim, act_layer=act_layer, drop=drop) <span class="comment"># 对应MLP模块，其中hidden_features就是指中间隐藏层降到的维数</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        x = x + self.drop_path(self.attn(self.norm1(x))) <span class="comment"># 对应上方的公式（2）</span></span><br><span class="line">        x = x + self.drop_path(self.mlp(self.norm2(x))) <span class="comment"># 对应上方的公式（3）</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VisionTransformer</span>(<span class="params">nn.Module</span>):</span>       </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">...</span>):</span></span><br><span class="line">        <span class="comment"># 只截取了相关代码</span></span><br><span class="line">        dpr = [x.item() <span class="keyword">for</span> x <span class="keyword">in</span> torch.linspace(<span class="number">0</span>, drop_path_rate, depth)]  <span class="comment"># stochastic depth decay rule</span></span><br><span class="line">        self.blocks = nn.Sequential(*[</span><br><span class="line">            Block(dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, drop=drop_rate,attn_drop=attn_drop_rate, drop_path=dpr[i], norm_layer=norm_layer, act_layer=act_layer)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(depth)]) <span class="comment"># 用nn.Sequential(*[Block() for i in range(depth)])来完成transfermor结构重复depth次，depth=L</span></span><br><span class="line">        self.norm = norm_layer(embed_dim)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward_features</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="comment"># 只截取部分代码</span></span><br><span class="line">        x = self.blocks(x)</span><br><span class="line">        x = self.norm(x)</span><br><span class="line">        <span class="keyword">if</span> self.dist_token <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self.pre_logits(x[:, <span class="number">0</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> x[:, <span class="number">0</span>], x[:, <span class="number">1</span>]</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>MSA(Multi-head Self Attention) <strong>想了解一下head数量对于模型的影响！</strong></p>
+<ul>
+<li><strong>Self Attention 机制</strong>：<span class="math inline">\(Attention(x) \ = \ Softmax(Q \times K^T/\sqrt{d}) \times V\)</span>
+<ul>
+<li>为什么除以根号d？：防止 <span class="math inline">\(Q\times K^T\)</span> 的数值过大，过 <span class="math inline">\(Softmax\)</span> 时梯度消失</li>
+<li><span class="math inline">\(Softmax(Q \times K^T/\sqrt{d})\)</span> 整个相当于一个注意力矩阵，乘以原始图像 <span class="math inline">\(V\)</span></li>
+</ul></li>
+<li><p>操作分解：</p>
+<ol type="1">
+<li>将输入的 <span class="math inline">\(B\times N\times D\)</span> 做线性变换为原来的三倍 <span class="math inline">\(B\times N\times 3*D\)</span></li>
+<li><code>reshape</code>成 <span class="math inline">\(B\times N\times 3 \times H \times (D/H)\)</span>，其中 <span class="math inline">\(H\)</span> 为Multi-head的数量，相当于把每个patch在分成H分，每一份都做不同的attention</li>
+<li><code>permute</code>重新排列为 <span class="math inline">\(3\times B\times H \times N \times (D/H)\)</span>，然后<code>unbind(0)</code>得到 <span class="math inline">\(q,k,v\)</span> 三个张量，大小为<span class="math inline">\(B\times H \times N \times (D/H)\)</span></li>
+<li>利用公式 <span class="math inline">\(Attention(x) \ = \ Softmax(q \times k^T/\sqrt{D/H}) \times v\)</span> 计算注意力，中间会添加dropout防止过拟合</li>
+<li><code>transpose(1,2).reshape(B, N, C)</code>后将维度变换回了 <span class="math inline">\(B\times N\times D\)</span></li>
+<li>之后加一个全连接层，再接一个dropout层</li>
+</ol></li>
+<li><p>代码解读：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Attention</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, dim, num_heads=<span class="number">8</span>, qkv_bias=<span class="literal">False</span>, attn_drop=<span class="number">0.</span>, proj_drop=<span class="number">0.</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="keyword">assert</span> dim % num_heads == <span class="number">0</span>, <span class="string">&#x27;dim should be divisible by num_heads&#x27;</span></span><br><span class="line">        self.num_heads = num_heads</span><br><span class="line">        head_dim = dim // num_heads</span><br><span class="line">        self.scale = head_dim ** -<span class="number">0.5</span></span><br><span class="line"></span><br><span class="line">        self.qkv = nn.Linear(dim, dim * <span class="number">3</span>, bias=qkv_bias)</span><br><span class="line">        self.attn_drop = nn.Dropout(attn_drop)</span><br><span class="line">        self.proj = nn.Linear(dim, dim)</span><br><span class="line">        self.proj_drop = nn.Dropout(proj_drop)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        B, N, C = x.shape</span><br><span class="line">        qkv = self.qkv(x).reshape(B, N, <span class="number">3</span>, self.num_heads, C // self.num_heads).permute(<span class="number">2</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>)</span><br><span class="line">        q, k, v = qkv.unbind(<span class="number">0</span>)   <span class="comment"># make torchscript happy (cannot use tensor as tuple)</span></span><br><span class="line"></span><br><span class="line">        attn = (q @ k.transpose(-<span class="number">2</span>, -<span class="number">1</span>)) * self.scale</span><br><span class="line">        attn = attn.softmax(dim=-<span class="number">1</span>)</span><br><span class="line">        attn = self.attn_drop(attn)</span><br><span class="line"></span><br><span class="line">        x = (attn @ v).transpose(<span class="number">1</span>, <span class="number">2</span>).reshape(B, N, C)</span><br><span class="line">        x = self.proj(x)</span><br><span class="line">        x = self.proj_drop(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>MLP(Multi Layer Processor)</p>
+<ul>
+<li><p>操作分解：<strong>其实就是一个简单的降维再升维的操作，用全连接层实现</strong></p>
+<ol type="1">
+<li><code>nn.Linear(in_dim, out_dim)</code>全连接层将 <span class="math inline">\(B\times N\times D\)</span> 变成 <span class="math inline">\(B\times N\times H\)</span>，其中H为隐藏层维度</li>
+<li><code>nn.Gelu</code>激活函数层，增加非线性</li>
+<li><code>nn.Dropout(p)</code>随机丢弃一些点，不做正向传播和反向梯度更新</li>
+<li><code>nn.Linear(in_dim, out_dim)</code>全连接层将 <span class="math inline">\(B\times N\times H\)</span> <strong>变回</strong> <span class="math inline">\(B\times N\times D\)</span>，其中H为隐藏层维度</li>
+<li><code>nn.Gelu</code>激活函数层，增加非线性</li>
+<li><code>nn.Dropout(p)</code>随机丢弃一些点，不做正向传播和反向梯度更新</li>
+</ol></li>
+<li><p>代码解读：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mlp</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot; MLP as used in Vision Transformer, MLP-Mixer and related networks</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, in_features, hidden_features=<span class="literal">None</span>, out_features=<span class="literal">None</span>, act_layer=nn.GELU, drop=<span class="number">0.</span></span>):</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        out_features = out_features <span class="keyword">or</span> in_features</span><br><span class="line">        hidden_features = hidden_features <span class="keyword">or</span> in_features</span><br><span class="line">        drop_probs = to_2tuple(drop)</span><br><span class="line"></span><br><span class="line">        self.fc1 = nn.Linear(in_features, hidden_features)</span><br><span class="line">        self.act = act_layer()</span><br><span class="line">        self.drop1 = nn.Dropout(drop_probs[<span class="number">0</span>])</span><br><span class="line">        self.fc2 = nn.Linear(hidden_features, out_features)</span><br><span class="line">        self.drop2 = nn.Dropout(drop_probs[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        x = self.fc1(x)</span><br><span class="line">        x = self.act(x)</span><br><span class="line">        x = self.drop1(x)</span><br><span class="line">        x = self.fc2(x)</span><br><span class="line">        x = self.drop2(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+<h5 id="后处理classification">后处理（Classification）：</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main//imgs/ViT分类头" width="80%" height="50%" align="center"></p>
+<ol type="1">
+<li><p>分类：</p>
+<ul>
+<li><p>操作分解：</p>
+<ol type="1">
+<li>对于Transformer的输出中class token对应的位置进行操作，先过一个MLP层，然后再过一个分类头后计算cross entropy loss</li>
+<li>这里预训练和微调时不太一样，微调时会把MLP层删掉，只留下分类头。这个操作应该是借鉴了自监督，因为自监督在预训练是没有类别信息，所以MLP后跟的是一个<strong>contrastive loss</strong>，用于计算输出与原始图像的loss</li>
+</ol></li>
+<li><p>代码解读：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VisionTransformer</span>(<span class="params">nn.Module</span>):</span>       </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">...</span>):</span></span><br><span class="line">        <span class="comment"># 只截取了相关代码</span></span><br><span class="line">        <span class="comment"># Representation layer</span></span><br><span class="line">        <span class="keyword">if</span> representation_size <span class="keyword">and</span> <span class="keyword">not</span> distilled:</span><br><span class="line">            self.num_features = representation_size</span><br><span class="line">            self.pre_logits = nn.Sequential(OrderedDict([  <span class="comment"># 这里是预训练时的MLP层</span></span><br><span class="line">                (<span class="string">&#x27;fc&#x27;</span>, nn.Linear(embed_dim, representation_size)),</span><br><span class="line">                (<span class="string">&#x27;act&#x27;</span>, nn.Tanh())</span><br><span class="line">            ]))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.pre_logits = nn.Identity()</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward_features</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="comment"># 只截取部分代码</span></span><br><span class="line">        <span class="keyword">if</span> self.dist_token <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> self.pre_logits(x[:, <span class="number">0</span>]) <span class="comment"># 选取class token对应的区域进行分类</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> x[:, <span class="number">0</span>], x[:, <span class="number">1</span>]</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        x = self.forward_features(x)</span><br><span class="line">        <span class="keyword">if</span> self.head_dist <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            x, x_dist = self.head(x[<span class="number">0</span>]), self.head_dist(x[<span class="number">1</span>])  <span class="comment"># x must be a tuple</span></span><br><span class="line">            <span class="keyword">if</span> self.training <span class="keyword">and</span> <span class="keyword">not</span> torch.jit.is_scripting():</span><br><span class="line">                <span class="comment"># during inference, return the average of both classifier predictions</span></span><br><span class="line">                <span class="keyword">return</span> x, x_dist</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> (x + x_dist) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            x = self.head(x) <span class="comment"># ViT不蒸馏直接分类</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>欲戴皇冠，必承其重，加油！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/reward/wechatpay.png" alt="J球星 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/reward/alipay.png" alt="J球星 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>J球星
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://weiren1998.github.io/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）">https://weiren1998.github.io/archives/97820049.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Transformer/" rel="tag"><i class="fa fa-tag"></i> Transformer</a>
+              <a href="/tags/ViT/" rel="tag"><i class="fa fa-tag"></i> ViT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/164bcfad.html" rel="prev" title="Pytorch炼丹">
+      <i class="fa fa-chevron-left"></i> Pytorch炼丹
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/9f9b7c0a.html" rel="next" title="Transformer综述">
+      Transformer综述 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.</span> <span class="nav-text">动机：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E6%96%B0%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">创新点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8F%82%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">实验参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E6%B1%87%E6%80%BB"><span class="nav-number">4.</span> <span class="nav-text">结果汇总：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">网络架构：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86embedding"><span class="nav-number">5.0.1.</span> <span class="nav-text">预处理（Embedding）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#transformer-encoder-l-%E9%87%8D%E5%A4%8Dl%E6%AC%A1"><span class="nav-number">5.0.2.</span> <span class="nav-text">Transformer Encoder *L 重复L次</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8E%E5%A4%84%E7%90%86classification"><span class="nav-number">5.0.3.</span> <span class="nav-text">后处理（Classification）：</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="J球星"
+      src="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
+  <p class="site-author-name" itemprop="name">J球星</p>
+  <div class="site-description" itemprop="description">努力是矢量，有大小也有方向</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/weiren1998" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;weiren1998" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:876819220@qq.com" title="E-Mail → mailto:876819220@qq.com" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/481933815" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;481933815" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-tv"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i></a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
+          </li>
+        
+          <li>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
+          </li>
+        
+          <li>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
+          </li>
+        
+          <li>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
+          </li>
+        
+          <li>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+<div style="">
+  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+</div>
+<script>
+(function(){
+
+   var digit=
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,0,0,0]
+        ]//:
+    ];
+
+var canvas = document.getElementById('canvas');
+
+if(canvas.getContext){
+    var cxt = canvas.getContext('2d');
+    //声明canvas的宽高
+    var H = 100,W = 700;
+    canvas.height = H;
+    canvas.width = W;
+    cxt.fillStyle = '#f00';
+    cxt.fillRect(10,10,50,50);
+
+    //存储时间数据
+    var data = [];
+    //存储运动的小球
+    var balls = [];
+    //设置粒子半径
+    var R = canvas.height/20-1;
+    (function(){
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        //存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+        data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+    })();
+
+    /*生成点阵数字*/
+    function renderDigit(index,num){
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    cxt.beginPath();
+                    cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+        }
+    }
+
+    /*更新时钟*/
+    function updateDigitTime(){
+        var changeNumArray = [];
+        var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+        var NewData = [];
+        NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+        for(var i = data.length-1; i >=0 ; i--){
+            //时间发生变化
+            if(NewData[i] !== data[i]){
+                //将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+                changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+            }
+        }
+        //增加小球
+        for(var i = 0; i< changeNumArray.length; i++){
+            addBalls.apply(this,changeNumArray[i].split('_'));
+        }
+        data = NewData.concat();
+    }
+
+    /*更新小球状态*/
+    function updateBalls(){
+        for(var i = 0; i < balls.length; i++){
+            balls[i].stepY += balls[i].disY;
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            if(balls[i].x > W + R || balls[i].y > H + R){
+                balls.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    /*增加要运动的小球*/
+    function addBalls(index,num){
+        var numArray = [1,2,3];
+        var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+        for(var i = 0; i < digit[num].length; i++){
+            for(var j = 0; j < digit[num][i].length; j++){
+                if(digit[num][i][j] == 1){
+                    var ball = {
+                        x:14*(R+2)*index + j*2*(R+1)+(R+1),
+                        y:i*2*(R+1)+(R+1),
+                        stepX:Math.floor(Math.random() * 4 -2),
+                        stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+                        color:colorArray[Math.floor(Math.random()*colorArray.length)],
+                        disY:1
+                    };
+                    balls.push(ball);
+                }
+            }
+        }
+    }
+
+    /*渲染*/
+    function render(){
+        //重置画布宽度，达到清空画布的效果
+        canvas.height = 100;
+        //渲染时钟
+        for(var i = 0; i < data.length; i++){
+            renderDigit(i,data[i]);
+        }
+        //渲染小球
+        for(var i = 0; i < balls.length; i++){
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+            cxt.fillStyle = balls[i].color;
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+
+    clearInterval(oTimer);
+    var oTimer = setInterval(function(){
+        //更新时钟
+        updateDigitTime();
+        //更新小球状态
+        updateBalls();
+        //渲染
+        render();
+    },50);
+}
+
+})();
+</script>
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">J球星</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">116k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'd0cbb9b4ac6f930d8fde',
+      clientSecret: 'ee24993cc20ba8e4457199d7052f2bae70817a82',
+      repo        : 'weiren1998.github.io',
+      owner       : 'weiren1998',
+      admin       : ['weiren1998'],
+      id          : '951cb59e7017012609c09226f16ed76a',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+  <script src="/js/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+</body>
+</html>

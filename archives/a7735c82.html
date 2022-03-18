@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目：URL化解题方法： 新建字符串，双指针法 在S上从后往前，双指针法               两种解法时间复杂度一样，都是$O(n)$，解法二不需要额外的空间">
+  <meta name="description" content="题目：URL化 解题方法：  新建字符串，双指针法 在S上从后往前，双指针法               两种解法时间复杂度一样，都是\(O(n)\)，解法二不需要额外的空间">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试金典0103 URL化">
 <meta property="og:url" content="https://weiren1998.github.io/archives/a7735c82.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="题目：URL化解题方法： 新建字符串，双指针法 在S上从后往前，双指针法               两种解法时间复杂度一样，都是$O(n)$，解法二不需要额外的空间">
+<meta property="og:description" content="题目：URL化 解题方法：  新建字符串，双指针法 在S上从后往前，双指针法               两种解法时间复杂度一样，都是\(O(n)\)，解法二不需要额外的空间">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-23T23:22:02.000Z">
 <meta property="article:modified_time" content="2021-12-23T15:44:23.409Z">
@@ -275,20 +275,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目：URL化"><a href="#题目：URL化" class="headerlink" title="题目：URL化"></a>题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/string-to-url-lcci/">URL化</a></h3><h3 id="解题方法："><a href="#解题方法：" class="headerlink" title="解题方法："></a>解题方法：</h3><ol>
+        <h3 id="题目url化">题目：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://leetcode-cn.com/problems/string-to-url-lcci/">URL化</a></h3>
+<h3 id="解题方法">解题方法：</h3>
+<ol type="1">
 <li>新建字符串，双指针法</li>
 <li>在<code>S</code>上从后往前，双指针法</li>
 </ol>
 <div class="note primary">
-            <p>两种解法时间复杂度一样，都是$O(n)$，解法二不需要额外的空间</p>
+            <p>两种解法时间复杂度一样，都是<span class="math inline">\(O(n)\)</span>，解法二不需要额外的空间</p>
           </div>
 <span id="more"></span>
-<h3 id="解法一："><a href="#解法一：" class="headerlink" title="解法一："></a>解法一：</h3><div class="note warning">
-            <ul><li>这里可以通过初始化一个和<code>S</code>相同大小的<code>string</code>来存储新的序列，这里直接用<code>[p2]</code>来寻址就可以了，最后用<code>erase(int pos, int len)</code>来删除从<code>pos</code>开始长度为<code>len</code>的字符串</li><li>也可以新建一个空的字符串，用<code>insert(int pos, string s)</code>来在<code>pos</code>处插入<code>string</code>字符串，或用<code>push_back(char c)</code>来在<code>string</code>末尾添加<code>char</code>字符</li></ul>
+<h3 id="解法一">解法一：</h3>
+<div class="note warning">
+            <ul><li>这里可以通过初始化一个和<code>S</code>相同大小的<code>string</code>来存储新的序列，这里直接用<code>[p2]</code>来寻址就可以了，最后用<code>erase(int pos, int len)</code>来删除从<code>pos</code>开始长度为<code>len</code>的字符串</li><li>也可以新建一个空的字符串，用<code>insert(int pos, string s)</code>来在<code>pos</code>处插入<code>string</code>字符串，或用<code>push_back(char c)</code>来在<code>string</code>末尾添加<code>char</code>字符</li></ul>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpaces</span><span class="params">(string S, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        string S2 = S; <span class="comment">// 不初始化就不能用S2[p2]这样的寻址方法，而应该用push_back(char c)</span></span><br><span class="line">        <span class="keyword">int</span> p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p1=<span class="number">0</span>; p1&lt;length; ++p1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(S[p1] != <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                S2[p2++] = S[p1];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                S2[p2++] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">                S2[p2++] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                S2[p2++] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        S2.<span class="built_in">erase</span>(p2); <span class="comment">// erase(int start [, int len])，从start开始，删除len个长度，没有len的话会删除start开始的所有字符</span></span><br><span class="line">        <span class="keyword">return</span> S2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpaces</span><span class="params">(string S, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        string s2;</span><br><span class="line">        s2 = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>; i&lt;length; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(S[i] == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                s2.<span class="built_in">insert</span>(j++, <span class="string">&quot;%&quot;</span>); <span class="comment">// 注意这里insert后面用的是string类型 或者是char *，即字符数组，而不是char &#x27;%&#x27;</span></span><br><span class="line">                s2.<span class="built_in">push_back</span>(<span class="string">&#x27;2&#x27;</span>); <span class="comment">// 这里可以用push_back()，此时就是char类型，而不是char *</span></span><br><span class="line">                j++;</span><br><span class="line">                s2.<span class="built_in">insert</span>(j++, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                string <span class="built_in">tmp</span>(<span class="number">1</span>, S[i]); <span class="comment">// 将S[i]转化为字符串类型，再使用insert</span></span><br><span class="line">                s2.<span class="built_in">insert</span>(j++, tmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// s2.insert(0, &quot;abc&quot;);</span></span><br><span class="line">        <span class="keyword">return</span> s2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="解法二："><a href="#解法二：" class="headerlink" title="解法二："></a>解法二：</h3><div class="note warning">
+<h3 id="解法二">解法二：</h3>
+<div class="note warning">
             <p>因为题目中说<code>S</code>的长度够长，因此可以利用双指针，一个从<code>S</code>的末尾开始，一个从给定字符串长度开始，从后往前遍历。最后删掉<code>S</code>前面多余的部分即可</p>
           </div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpaces</span><span class="params">(string S, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j = S.<span class="built_in">size</span>() <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = length<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(S[i] == <span class="string">&#x27; &#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                S[j--] = <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                S[j--] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">                S[j--] = <span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                S[j--] = S[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        S.<span class="built_in">erase</span>(<span class="number">0</span>, j+<span class="number">1</span>); <span class="comment">// j多减了1，因此要加回来</span></span><br><span class="line">        <span class="keyword">return</span> S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -415,7 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9AURL%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">题目：URL化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AEurl%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">题目：URL化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解题方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-number">3.</span> <span class="nav-text">解法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-number">4.</span> <span class="nav-text">解法二：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -431,7 +435,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -444,7 +448,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -476,23 +480,23 @@
         
         
           <li>
-            <a href="/archives/5371f097.html" title="面试金典0301 三合一" target="_blank">面试金典0301 三合一</a>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
           </li>
         
           <li>
-            <a href="/archives/dd36b91f.html" title="面试金典0208 环路检测" target="_blank">面试金典0208 环路检测</a>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
           </li>
         
           <li>
-            <a href="/archives/f56eaff7.html" title="面试金典0109 字符串轮转" target="_blank">面试金典0109 字符串轮转</a>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
           </li>
         
           <li>
-            <a href="/archives/8c04a153.html" title="面试金典0108 零矩阵" target="_blank">面试金典0108 零矩阵</a>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
           </li>
         
           <li>
-            <a href="/archives/924acc2a.html" title="面试金典0107 旋转矩阵" target="_blank">面试金典0107 旋转矩阵</a>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
           </li>
         
       </ul>
@@ -792,13 +796,13 @@ if(canvas.getContext){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">116k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

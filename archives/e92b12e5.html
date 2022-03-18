@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
+  <meta name="description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据预处理">
 <meta property="og:url" content="https://weiren1998.github.io/archives/e92b12e5.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
+<meta property="og:description" content="做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。  今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-21T13:50:43.000Z">
 <meta property="article:modified_time" content="2021-12-20T17:33:47.757Z">
@@ -287,18 +287,22 @@
 </blockquote>
 <p>今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等</p>
 <span id="more"></span>
-<h1 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h1><h2 id="Nominal-vs-Numeric"><a href="#Nominal-vs-Numeric" class="headerlink" title="Nominal vs. Numeric"></a>Nominal vs. Numeric</h2><ul>
+<h1 id="basic-concepts">Basic Concepts</h1>
+<h2 id="nominal-vs.-numeric">Nominal vs. Numeric</h2>
+<ul>
 <li>Nominal(Categorical) Attributes: 取值是某个类别，类别属于一个特定的数据集，可以有序也可以无序。处理这类数据时，可以根据一定方法转化为Numeric的数据再处理。</li>
 <li>Numeric(continuous) Attributes: 取值是一个数值，有的可比（定比）有的不可比（定距），通常也要去量纲后才能在类别之间比较</li>
 </ul>
-<h2 id="Type-of-Data"><a href="#Type-of-Data" class="headerlink" title="Type of Data"></a>Type of Data</h2><ol>
+<h2 id="type-of-data">Type of Data</h2>
+<ol type="1">
 <li>Data matrix</li>
 <li>Sequential</li>
 <li>graph</li>
 <li>transaction data</li>
 <li>spatio-temporal</li>
 </ol>
-<h2 id="Noise"><a href="#Noise" class="headerlink" title="Noise"></a>Noise</h2><ol>
+<h2 id="noise">Noise</h2>
+<ol type="1">
 <li>Distortion of values: 例如语音中的噪声</li>
 <li>Adding of spurious examples</li>
 <li>Inconsistent and duplicate data</li>
@@ -306,40 +310,44 @@
 <blockquote>
 <p>最后一类是比较好处理的，前两类噪声可以通过信号、图像处理等方式处理，也可以通过机器学习的算法来消除，后者更准确</p>
 </blockquote>
-<h2 id="Missing-values"><a href="#Missing-values" class="headerlink" title="Missing values"></a>Missing values</h2><ol>
+<h2 id="missing-values">Missing values</h2>
+<ol type="1">
 <li>删除有缺失值的数据项</li>
-<li>给缺失值赋值<ol>
-<li>Nominal特征：采用多数投票方式，有以下两种方式<ul>
+<li>给缺失值赋值
+<ol type="1">
+<li>Nominal特征：采用多数投票方式，有以下两种方式
+<ul>
 <li>在总体中投票</li>
 <li>在该类别中投票</li>
-</ul>
-</li>
+</ul></li>
 <li>Numerical特征：用k近邻点的均值赋值（最相似样本）</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h1 id="Data-Preprocessing"><a href="#Data-Preprocessing" class="headerlink" title="Data Preprocessing"></a>Data Preprocessing</h1><h2 id="Data-aggregation"><a href="#Data-aggregation" class="headerlink" title="Data aggregation"></a>Data aggregation</h2><ol>
+<h1 id="data-preprocessing">Data Preprocessing</h1>
+<h2 id="data-aggregation">Data aggregation</h2>
+<ol type="1">
 <li>定义：将两个或多个特征combine到一起</li>
-<li>目的：<ul>
+<li>目的：
+<ul>
 <li>减少数据维度</li>
 <li>减少计算量</li>
 <li>降低数据方差，使得数据更平稳</li>
 <li>缺点：有损失重要特征的风险</li>
-</ul>
-</li>
-<li>降维方法Dimensionality reduction：<ul>
+</ul></li>
+<li>降维方法Dimensionality reduction：
+<ul>
 <li>待补充</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h2 id="Feature-extraction"><a href="#Feature-extraction" class="headerlink" title="Feature extraction"></a>Feature extraction</h2><ol>
+<h2 id="feature-extraction">Feature extraction</h2>
+<ol type="1">
 <li>定义：从原始数据中提取特征</li>
-<li>目的：得到更容易理解的数据<ul>
-<li></li>
-</ul>
-</li>
+<li><h2 id="目的得到更容易理解的数据">目的：得到更容易理解的数据</h2></li>
 </ol>
-<h2 id="Feature-subset-selection"><a href="#Feature-subset-selection" class="headerlink" title="Feature subset selection"></a>Feature subset selection</h2><h2 id="Converting-attributes-from-one-type-to-another"><a href="#Converting-attributes-from-one-type-to-another" class="headerlink" title="Converting attributes from one type to another"></a>Converting attributes from one type to another</h2><h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2>
+<h2 id="feature-subset-selection">Feature subset selection</h2>
+<h2 id="converting-attributes-from-one-type-to-another">Converting attributes from one type to another</h2>
+<h2 id="normalization">Normalization</h2>
+
     </div>
 
     
@@ -463,7 +471,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-Concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nominal-vs-Numeric"><span class="nav-number">1.1.</span> <span class="nav-text">Nominal vs. Numeric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Type-of-Data"><span class="nav-number">1.2.</span> <span class="nav-text">Type of Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Noise"><span class="nav-number">1.3.</span> <span class="nav-text">Noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Missing-values"><span class="nav-number">1.4.</span> <span class="nav-text">Missing values</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Preprocessing"><span class="nav-number">2.</span> <span class="nav-text">Data Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-aggregation"><span class="nav-number">2.1.</span> <span class="nav-text">Data aggregation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-extraction"><span class="nav-number">2.2.</span> <span class="nav-text">Feature extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-subset-selection"><span class="nav-number">2.3.</span> <span class="nav-text">Feature subset selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Converting-attributes-from-one-type-to-another"><span class="nav-number">2.4.</span> <span class="nav-text">Converting attributes from one type to another</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Normalization"><span class="nav-number">2.5.</span> <span class="nav-text">Normalization</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#basic-concepts"><span class="nav-number">1.</span> <span class="nav-text">Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nominal-vs.-numeric"><span class="nav-number">1.1.</span> <span class="nav-text">Nominal vs. Numeric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#type-of-data"><span class="nav-number">1.2.</span> <span class="nav-text">Type of Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#noise"><span class="nav-number">1.3.</span> <span class="nav-text">Noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#missing-values"><span class="nav-number">1.4.</span> <span class="nav-text">Missing values</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#data-preprocessing"><span class="nav-number">2.</span> <span class="nav-text">Data Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-aggregation"><span class="nav-number">2.1.</span> <span class="nav-text">Data aggregation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-extraction"><span class="nav-number">2.2.</span> <span class="nav-text">Feature extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84%E5%BE%97%E5%88%B0%E6%9B%B4%E5%AE%B9%E6%98%93%E7%90%86%E8%A7%A3%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="nav-number">2.3.</span> <span class="nav-text">目的：得到更容易理解的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#feature-subset-selection"><span class="nav-number">2.4.</span> <span class="nav-text">Feature subset selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#converting-attributes-from-one-type-to-another"><span class="nav-number">2.5.</span> <span class="nav-text">Converting attributes from one type to another</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normalization"><span class="nav-number">2.6.</span> <span class="nav-text">Normalization</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -479,7 +487,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -492,7 +500,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -524,23 +532,23 @@
         
         
           <li>
-            <a href="/archives/5371f097.html" title="面试金典0301 三合一" target="_blank">面试金典0301 三合一</a>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
           </li>
         
           <li>
-            <a href="/archives/dd36b91f.html" title="面试金典0208 环路检测" target="_blank">面试金典0208 环路检测</a>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
           </li>
         
           <li>
-            <a href="/archives/f56eaff7.html" title="面试金典0109 字符串轮转" target="_blank">面试金典0109 字符串轮转</a>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
           </li>
         
           <li>
-            <a href="/archives/8c04a153.html" title="面试金典0108 零矩阵" target="_blank">面试金典0108 零矩阵</a>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
           </li>
         
           <li>
-            <a href="/archives/924acc2a.html" title="面试金典0107 旋转矩阵" target="_blank">面试金典0107 旋转矩阵</a>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
           </li>
         
       </ul>
@@ -840,13 +848,13 @@ if(canvas.getContext){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">116k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

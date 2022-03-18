@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2022-02-11T16:27:15.576Z</updated>
+  <updated>2022-03-18T06:03:36.196Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -17,6 +17,133 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Transformer实验</title>
+    <link href="https://weiren1998.github.io/archives/697052e2.html"/>
+    <id>https://weiren1998.github.io/archives/697052e2.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.196Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OCR实验</title>
+    <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
+    <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.185Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+    <category term="OCR" scheme="https://weiren1998.github.io/tags/OCR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Transformer综述</title>
+    <link href="https://weiren1998.github.io/archives/9f9b7c0a.html"/>
+    <id>https://weiren1998.github.io/archives/9f9b7c0a.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.194Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近一段时间都在研究ViT相关的工作，需要多读论文多多总结&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ViT：视觉Transformer开创者（论文+代码详解）</title>
+    <link href="https://weiren1998.github.io/archives/97820049.html"/>
+    <id>https://weiren1998.github.io/archives/97820049.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.189Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale&lt;/p&gt;
+&lt;p&gt;Alexey Dosovitskiy (Google, Brain Team)&lt;/p&gt;
+&lt;p&gt;论文地址：https://arxiv.org/abs/2010.11929v2&lt;/p&gt;
+&lt;p&gt;代码地址(timm-vision_transformer.py)：https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+    <category term="ViT" scheme="https://weiren1998.github.io/tags/ViT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pytorch炼丹</title>
+    <link href="https://weiren1998.github.io/archives/164bcfad.html"/>
+    <id>https://weiren1998.github.io/archives/164bcfad.html</id>
+    <published>2022-03-18T13:45:00.000Z</published>
+    <updated>2022-03-18T06:05:27.537Z</updated>
+    
+    
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;最近实习中遇到了很多问题，需要慢慢总结下来，彻底记住&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="pytorch" scheme="https://weiren1998.github.io/tags/pytorch/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面试金典0301 三合一</title>
     <link href="https://weiren1998.github.io/archives/5371f097.html"/>
     <id>https://weiren1998.github.io/archives/5371f097.html</id>
@@ -24,12 +151,12 @@
     <updated>2022-02-11T16:27:15.576Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/three-in-one-lcci&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/three-in-one-lcci&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;描述如何&lt;strong&gt;只用一个数组来实现三个栈&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;你应该实现push(stackNum, value)、pop(stackNum)、isEmpty(stackNum)、peek(stackNum)方法。stackNum表示栈下标，value表示压入的值。&lt;/p&gt;
 &lt;p&gt;构造函数会传入一个stackSize参数，代表每个栈的大小&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&amp;quot;TripleInOne&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;isEmpty&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[null, null, null, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, true]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;说明：当栈为空时`pop, peek`返回-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;，当栈满时`push`不压入元素。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&amp;quot;TripleInOne&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;peek&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[null, null, null, null, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &amp;lt;= stackNum &amp;lt;= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&amp;quot;TripleInOne&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;isEmpty&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[null, null, null, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, true]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;说明：当栈为空时`pop, peek`返回-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;，当栈满时`push`不压入元素。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;span class=&quot;string&quot;&gt;&amp;quot;TripleInOne&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;push&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;pop&amp;quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&amp;quot;peek&amp;quot;&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;], [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[null, null, null, null, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, -&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &amp;lt;= stackNum &amp;lt;= &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -57,7 +184,7 @@
       
         
         
-    <summary type="html">&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;&lt;a</summary>
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a</summary>
         
       
     
@@ -84,10 +211,10 @@
     <updated>2022-02-05T15:26:39.755Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/string-rotation-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/string-rotation-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;给定两个字符串&lt;code&gt;s1&lt;/code&gt;和&lt;code&gt;s2&lt;/code&gt;，请编写代码检查&lt;code&gt;s2&lt;/code&gt;是否为&lt;code&gt;s1&lt;/code&gt;旋转而成（比如，&lt;code&gt;waterbottle&lt;/code&gt;是&lt;code&gt;erbottlewat&lt;/code&gt;旋转后的字符串）&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：s1 = &lt;span class=&quot;string&quot;&gt;&amp;quot;waterbottle&amp;quot;&lt;/span&gt;, s2 = &lt;span class=&quot;string&quot;&gt;&amp;quot;erbottlewat&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：s1 = &lt;span class=&quot;string&quot;&gt;&amp;quot;aa&amp;quot;&lt;/span&gt;, s2 = &lt;span class=&quot;string&quot;&gt;&amp;quot;aba&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;字符串长度在[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100000&lt;/span&gt;]范围内。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 说明:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;你能只调用一次检查子串的方法吗？&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：s1 = &lt;span class=&quot;string&quot;&gt;&amp;quot;waterbottle&amp;quot;&lt;/span&gt;, s2 = &lt;span class=&quot;string&quot;&gt;&amp;quot;erbottlewat&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：s1 = &lt;span class=&quot;string&quot;&gt;&amp;quot;aa&amp;quot;&lt;/span&gt;, s2 = &lt;span class=&quot;string&quot;&gt;&amp;quot;aba&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;字符串长度在[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100000&lt;/span&gt;]范围内。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 说明:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;你能只调用一次检查子串的方法吗？&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -113,10 +240,10 @@
     <updated>2022-02-05T13:52:43.509Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/zero-matrix-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/zero-matrix-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;编写一种算法，若M × N矩阵中某个元素为0，则将其所在的行与列清零。&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -142,11 +269,11 @@
     <updated>2022-02-05T08:27:20.223Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：&quot;&gt;&lt;a href=&quot;#题目：&quot; class=&quot;headerlink&quot; title=&quot;题目：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/rotate-matrix-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;https://leetcode-cn.com/problems/rotate-matrix-lcci/&quot;&gt;题目：&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;给你一幅由 &lt;code&gt;N × N&lt;/code&gt; 矩阵表示的图像，其中每个像素的大小为 4 字节。请你设计一种算法，将图像旋转 90 度。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;不占用额外内存空间能否做到？&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;给定 matrix = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;原地旋转输入矩阵，使其变为:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;给定 matrix =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [ &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [ &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;], &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;原地旋转输入矩阵，使其变为:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;给定 matrix = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;原地旋转输入矩阵，使其变为:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;给定 matrix =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [ &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [ &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;], &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;原地旋转输入矩阵，使其变为:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;13&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [&lt;span class=&quot;number&quot;&gt;16&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;11&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -172,10 +299,10 @@
     <updated>2022-02-05T07:40:14.294Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：字符串压缩&quot;&gt;&lt;a href=&quot;#题目：字符串压缩&quot; class=&quot;headerlink&quot; title=&quot;题目：字符串压缩&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/compress-string-lcci/&quot;&gt;字符串压缩&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目字符串压缩&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/compress-string-lcci/&quot;&gt;字符串压缩&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返回原先的字符串。你可以假设字符串中只包含大小写英文字母（a至z）&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;span class=&quot;string&quot;&gt;&amp;quot;aabcccccaaa&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;string&quot;&gt;&amp;quot;a2b1c5a3&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输入：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 解释：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;压缩后为&lt;span class=&quot;string&quot;&gt;&amp;quot;a1b2c2d1&amp;quot;&lt;/span&gt;，比原字符串长度更长。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;字符串长度在[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50000&lt;/span&gt;]范围内。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入：&lt;span class=&quot;string&quot;&gt;&amp;quot;aabcccccaaa&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出：&lt;span class=&quot;string&quot;&gt;&amp;quot;a2b1c5a3&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输入：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 输出：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; 解释：&lt;span class=&quot;string&quot;&gt;&amp;quot;abbccd&amp;quot;&lt;/span&gt;压缩后为&lt;span class=&quot;string&quot;&gt;&amp;quot;a1b2c2d1&amp;quot;&lt;/span&gt;，比原字符串长度更长。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 提示：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;字符串长度在[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50000&lt;/span&gt;]范围内。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -199,10 +326,10 @@
     <updated>2022-02-05T07:20:06.881Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：一次编辑&quot;&gt;&lt;a href=&quot;#题目：一次编辑&quot; class=&quot;headerlink&quot; title=&quot;题目：一次编辑&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/one-away-lcci/&quot;&gt;一次编辑&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目一次编辑&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/one-away-lcci/&quot;&gt;一次编辑&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;字符串有三种编辑操作：插入一个字符、删除一个字符或者替换一个字符。 给定两个字符串，编写一个函数判定它们是否只需要一次(或者零次)编辑。&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 示例 1:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;first = &lt;span class=&quot;string&quot;&gt;&amp;quot;pale&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;second = &lt;span class=&quot;string&quot;&gt;&amp;quot;ple&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: &lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 示例 2:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;first = &lt;span class=&quot;string&quot;&gt;&amp;quot;pales&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;second = &lt;span class=&quot;string&quot;&gt;&amp;quot;pal&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: &lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 示例 1:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;first = &lt;span class=&quot;string&quot;&gt;&amp;quot;pale&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;second = &lt;span class=&quot;string&quot;&gt;&amp;quot;ple&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: &lt;span class=&quot;literal&quot;&gt;True&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 示例 2:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;first = &lt;span class=&quot;string&quot;&gt;&amp;quot;pales&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;second = &lt;span class=&quot;string&quot;&gt;&amp;quot;pal&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: &lt;span class=&quot;literal&quot;&gt;False&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -245,13 +372,15 @@
     <updated>2022-02-05T07:20:27.560Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：回文排列&quot;&gt;&lt;a href=&quot;#题目：回文排列&quot; class=&quot;headerlink&quot; title=&quot;题目：回文排列&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/palindrome-permutation-lcci/submissions/&quot;&gt;回文排列&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
+    <summary type="html">&lt;h3 id=&quot;题目回文排列&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/palindrome-permutation-lcci/submissions/&quot;&gt;回文排列&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;位运算：统计某个字符出现的次数是奇数还是偶数，可以用&lt;code&gt;异或^&lt;/code&gt;来统计&lt;/li&gt;
 &lt;li&gt;哈希计数&lt;/li&gt;
 &lt;li&gt;桶计数（较简单，未给出代码）&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;ul&gt;&lt;li&gt;&lt;p&gt;原理都是统计字符串中每个字符出现的频数，如果奇数的个数小于等于1，则可以产生回文排列，否则不行&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;三种方法时间复杂度相同，但所用到的空间不同，&lt;code&gt;1 &amp;lt; 2 &amp;lt; 3&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+            &lt;ul&gt;&lt;li&gt;&lt;p&gt;原理都是统计字符串中每个字符出现的频数，如果奇数的个数小于等于1，则可以产生回文排列，否则不行&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;三种方法时间复杂度相同，但所用到的空间不同，&lt;code&gt;1 &amp;lt; 2 &amp;lt; 3&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
           &lt;/div&gt;</summary>
     
     
@@ -261,9 +390,9 @@
     <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
     <category term="位运算" scheme="https://weiren1998.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+    <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     <category term="哈希" scheme="https://weiren1998.github.io/tags/%E5%93%88%E5%B8%8C/"/>
     
@@ -277,12 +406,14 @@
     <updated>2021-12-23T15:44:23.409Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：URL化&quot;&gt;&lt;a href=&quot;#题目：URL化&quot; class=&quot;headerlink&quot; title=&quot;题目：URL化&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/string-to-url-lcci/&quot;&gt;URL化&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
+    <summary type="html">&lt;h3 id=&quot;题目url化&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/string-to-url-lcci/&quot;&gt;URL化&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;新建字符串，双指针法&lt;/li&gt;
 &lt;li&gt;在&lt;code&gt;S&lt;/code&gt;上从后往前，双指针法&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;两种解法时间复杂度一样，都是$O(n)$，解法二不需要额外的空间&lt;/p&gt;
+            &lt;p&gt;两种解法时间复杂度一样，都是&lt;span class=&quot;math inline&quot;&gt;\(O(n)\)&lt;/span&gt;，解法二不需要额外的空间&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -304,13 +435,15 @@
     <updated>2021-12-23T15:36:18.371Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：判定是否互为字符重排&quot;&gt;&lt;a href=&quot;#题目：判定是否互为字符重排&quot; class=&quot;headerlink&quot; title=&quot;题目：判定是否互为字符重排&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/check-permutation-lcci/&quot;&gt;判定是否互为字符重排&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;解题方法：&quot;&gt;&lt;a href=&quot;#解题方法：&quot; class=&quot;headerlink&quot; title=&quot;解题方法：&quot;&gt;&lt;/a&gt;解题方法：&lt;/h3&gt;&lt;ol&gt;
+    <summary type="html">&lt;h3 id=&quot;题目判定是否互为字符重排&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/check-permutation-lcci/&quot;&gt;判定是否互为字符重排&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;解题方法&quot;&gt;解题方法：&lt;/h3&gt;
+&lt;ol type=&quot;1&quot;&gt;
 &lt;li&gt;用哈希表&lt;code&gt;unordered_map&amp;lt;char, int&amp;gt;&lt;/code&gt;，记录&lt;code&gt;s1&lt;/code&gt;中字符出现数，并于&lt;code&gt;s2&lt;/code&gt;做对比&lt;/li&gt;
 &lt;li&gt;用&lt;code&gt;int count[256]&lt;/code&gt;的数组来完成上述工作&lt;strong&gt;（桶计数）&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;没想到的方法：将&lt;code&gt;s1&lt;/code&gt;和&lt;code&gt;s2&lt;/code&gt;内部按照字符升序排序，最后判定两者是否相等即可&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;2的时间复杂度为$O(N)$，因为$N &amp;lt;= 100$，因此可以理解为$O(1)$&lt;/p&gt;
+            &lt;p&gt;2的时间复杂度为&lt;span class=&quot;math inline&quot;&gt;\(O(N)\)&lt;/span&gt;，因为&lt;span class=&quot;math inline&quot;&gt;\(N &amp;lt;= 100\)&lt;/span&gt;，因此可以理解为&lt;span class=&quot;math inline&quot;&gt;\(O(1)\)&lt;/span&gt;&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -334,10 +467,10 @@
     <updated>2022-02-05T06:58:05.961Z</updated>
     
     
-    <summary type="html">&lt;h3 id=&quot;题目：判定字符是否唯一&quot;&gt;&lt;a href=&quot;#题目：判定字符是否唯一&quot; class=&quot;headerlink&quot; title=&quot;题目：判定字符是否唯一&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/is-unique-lcci/&quot;&gt;判定字符是否唯一&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+    <summary type="html">&lt;h3 id=&quot;题目判定字符是否唯一&quot;&gt;题目：&lt;a href=&quot;https://leetcode-cn.com/problems/is-unique-lcci/&quot;&gt;判定字符是否唯一&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;实现一个算法，确定一个字符串 &lt;code&gt;s&lt;/code&gt; 的所有字符是否全都不同。&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: s = &lt;span class=&quot;string&quot;&gt;&amp;quot;leetcode&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: s = &lt;span class=&quot;string&quot;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: s = &lt;span class=&quot;string&quot;&gt;&amp;quot;leetcode&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 样例2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输入: s = &lt;span class=&quot;string&quot;&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;输出: true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -347,9 +480,9 @@
     <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
     <category term="位运算" scheme="https://weiren1998.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+    <category term="字符串" scheme="https://weiren1998.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     <category term="哈希" scheme="https://weiren1998.github.io/tags/%E5%93%88%E5%B8%8C/"/>
     
@@ -389,13 +522,13 @@
     <link href="https://weiren1998.github.io/archives/1117fa0c.html"/>
     <id>https://weiren1998.github.io/archives/1117fa0c.html</id>
     <published>2021-11-17T01:47:35.000Z</published>
-    <updated>2021-12-21T15:41:34.751Z</updated>
+    <updated>2022-03-06T14:45:25.944Z</updated>
     
     
     <summary type="html">&lt;p&gt;动态规划实在是同重要了，而且饱含了计算机之美，虽然多次被虐，但还是决定要认真牢记！&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;主要思想：用空间换时间，从而避免递归中不必要的重复计算。&lt;/li&gt;
-&lt;li&gt;难点：定义$dp[i]$的含义，以及动态转移方程&lt;/li&gt;
+&lt;li&gt;难点：定义&lt;span class=&quot;math inline&quot;&gt;\(dp[i]\)&lt;/span&gt;的含义，以及动态转移方程&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -414,17 +547,17 @@
     <link href="https://weiren1998.github.io/archives/db4eb545.html"/>
     <id>https://weiren1998.github.io/archives/db4eb545.html</id>
     <published>2021-11-15T13:34:36.000Z</published>
-    <updated>2021-12-21T15:41:04.562Z</updated>
+    <updated>2022-03-03T15:58:41.341Z</updated>
     
     
     <summary type="html">&lt;p&gt;排序算法中有非常经典的算法思想蕴含其中，本篇主要实现了几种经典的排序算法，希望常常回看，彻底牢记！&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;定义：将数组中的数按照升序或降序进行排列&lt;/li&gt;
-&lt;li&gt;时间复杂度：&lt;ul&gt;
-&lt;li&gt;$O(NlogN)$：快速排序、归并排序、堆排序等&lt;/li&gt;
-&lt;li&gt;$O(N^2)$：冒泡排序，插入排序等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;时间复杂度：
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;math inline&quot;&gt;\(O(NlogN)\)&lt;/span&gt;：快速排序、归并排序、堆排序等&lt;/li&gt;
+&lt;li&gt;&lt;span class=&quot;math inline&quot;&gt;\(O(N^2)\)&lt;/span&gt;：冒泡排序，插入排序等&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;</summary>
     
     
@@ -435,147 +568,6 @@
     
     
     <category term="排序算法" scheme="https://weiren1998.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>opencv在win10上部署</title>
-    <link href="https://weiren1998.github.io/archives/8901be7f.html"/>
-    <id>https://weiren1998.github.io/archives/8901be7f.html</id>
-    <published>2021-08-26T10:06:13.000Z</published>
-    <updated>2021-12-19T07:46:46.579Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://blog.csdn.net/print_out/article/details/88558841&quot;&gt;https://blog.csdn.net/print_out/article/details/88558841&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;安装版本：opencv3.4.0&lt;/p&gt;
-&lt;p&gt;编译环境：visual studio 2017&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="工具学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="环境配置" scheme="https://weiren1998.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    
-    <category term="opencv" scheme="https://weiren1998.github.io/tags/opencv/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HOG特征</title>
-    <link href="https://weiren1998.github.io/archives/6a4ff405.html"/>
-    <id>https://weiren1998.github.io/archives/6a4ff405.html</id>
-    <published>2021-08-24T13:12:29.000Z</published>
-    <updated>2022-02-05T15:27:22.952Z</updated>
-    
-    
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;简介：HOG全称&lt;strong&gt;histogram of oriented gradients&lt;/strong&gt;，中文是&lt;strong&gt;方向梯度直方图&lt;/strong&gt;。它可以用来表示图像的物体特征，主要是轮廓特征，因此能够用于图像的分类等任务。&lt;/li&gt;
-&lt;li&gt;主要思想：在一副图像中，局部目标的appearance和shape能够被梯度或边缘的方向密度分布很好地描述&lt;/li&gt;
-&lt;li&gt;本质：梯度的统计信息，而梯度主要存在于边缘的地方&lt;/li&gt;
-&lt;li&gt;优点：&lt;ol&gt;
-&lt;li&gt;由于HOG是在图像的局部方格单元上操作，所以它对图像几何的和光学的形变都能保持很好的不变性，这两种形变只会出现在更大的空间领域上&lt;/li&gt;
-&lt;li&gt;在粗的空域抽样、精细的方向抽样以及较强的局部光学归一化等条件下，只要行人大体上能够保持直立的姿势，可以容许行人有一些细微的肢体动作，这些细微的动作可以被忽略而不影响检测效果。因此HOG特征是特别适合于做图像中的人体检测的&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="图像处理" scheme="https://weiren1998.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-    <category term="图像边缘信息提取" scheme="https://weiren1998.github.io/tags/%E5%9B%BE%E5%83%8F%E8%BE%B9%E7%BC%98%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据预处理</title>
-    <link href="https://weiren1998.github.io/archives/e92b12e5.html"/>
-    <id>https://weiren1998.github.io/archives/e92b12e5.html</id>
-    <published>2021-08-21T13:50:43.000Z</published>
-    <updated>2021-12-20T17:33:47.757Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;做为至少学了两遍ML的人，目前在上悉尼大学COMP5318，打算系统总结一下知识点，方便自己记忆更深。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;今天主要讲的内容是数据的预处理，包括去噪、去丢失值、提特征、特征转化、标准化、相似度度量和计算等等&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="机器学习" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="数据预处理" scheme="https://weiren1998.github.io/tags/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
-    
-    <category term="挖坑" scheme="https://weiren1998.github.io/tags/%E6%8C%96%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文阅读：Analysis of Human Back Shape Using Surface Curvatures</title>
-    <link href="https://weiren1998.github.io/archives/8918aa0c.html"/>
-    <id>https://weiren1998.github.io/archives/8918aa0c.html</id>
-    <published>2021-08-19T04:46:57.797Z</published>
-    <updated>2021-12-20T17:55:47.247Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;给出一种评测标准，使其不受坐标系和病人位置的影响，这种方法叫做surface curvature表面曲率&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="脊柱侧弯检测" scheme="https://weiren1998.github.io/tags/%E8%84%8A%E6%9F%B1%E4%BE%A7%E5%BC%AF%E6%A3%80%E6%B5%8B/"/>
-    
-    <category term="表面曲率" scheme="https://weiren1998.github.io/tags/%E8%A1%A8%E9%9D%A2%E6%9B%B2%E7%8E%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法之递归</title>
-    <link href="https://weiren1998.github.io/archives/b96f43ef.html"/>
-    <id>https://weiren1998.github.io/archives/b96f43ef.html</id>
-    <published>2021-08-08T14:26:43.000Z</published>
-    <updated>2021-12-21T15:41:29.566Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;递归是计算机算法中一类较为经典的问题。本文首先总结递归的思想，然后上例题和代码&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;定义：从程序设计的角度来看，递归就是让程序自己调用自己的一种编程技巧&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;作用：递归通常可以将大型复杂问题转化为一个与原始问题相似的较小规模的问题来求解&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;应用场景：&lt;/strong&gt;①子问题和原问题要执行的操作一样，且子问题规模更小；②不能无限制调用自身，需要有出口&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;思想：&lt;/strong&gt;将待求解问题的解看作输入变量$x$的函数$f(x)$，通过寻找递归函数$g$，使得$f(x)=g(f(x-1))$，同时$f(0)$已知，根据递归函数和递归终止条件，就可递归求解了&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;推广：&lt;/strong&gt;可以推广至多变量，也可以推广至$x-2$等，只要递归朝着出口方向前进即可&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="递归" scheme="https://weiren1998.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   

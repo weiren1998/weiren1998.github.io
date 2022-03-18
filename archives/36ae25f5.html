@@ -288,97 +288,95 @@
 <p>分为机考和面试两个部分，机考240/600，面试三轮，前两轮技术，最后一轮简历，积累了一点自信，但也看到了差距，之后要好好刷题，争取更加从容，加油！</p>
 </blockquote>
 <span id="more"></span>
-<h2 id="一、机考"><a href="#一、机考" class="headerlink" title="一、机考"></a>一、机考</h2><blockquote>
+<h2 id="一机考">一、机考</h2>
+<blockquote>
 <p>上周12.8参加了华为秋招的机试，不是在牛客网，是自己的平台，手机没有被绑定。三道编程题，都非常的不友好，最终只做出来了第二题，拿到了200分。</p>
 </blockquote>
 <ul>
-<li>经验总结：<ol>
+<li>经验总结：
+<ol type="1">
 <li>有时第一题看起来简单，但是很复杂，分值又低，如果非常难搞，建议先完成后面的题目</li>
 <li>题目给出的测试样例很少，有一些特殊的场景需要自己去想到，比如第二题计算并行任务数时，在第一个时间戳之前是可以有任务存在的，这里是个大坑</li>
 <li>第一题和第三题没做出来，之后有机会先把第三题做了，再做第一题</li>
-</ol>
-</li>
+</ol></li>
 </ul>
-<h2 id="二、面试"><a href="#二、面试" class="headerlink" title="二、面试"></a>二、面试</h2><blockquote>
+<h2 id="二面试">二、面试</h2>
+<blockquote>
 <p>本周一12.13日（南京大屠杀纪念日）完成了三轮面试，积累了一定的自信，但还要继续努力，毕竟面试官比较熟悉，题目也比较熟悉，之后的面试必然不会这么简单。</p>
 </blockquote>
-<h3 id="第一轮面试：王云鹤"><a href="#第一轮面试：王云鹤" class="headerlink" title="第一轮面试：王云鹤"></a>第一轮面试：王云鹤</h3><ul>
+<h3 id="第一轮面试王云鹤">第一轮面试：王云鹤</h3>
+<ul>
 <li><p>面试流程：</p>
 <ul>
 <li>Part1：自我介绍+工作讲解+提问细节+概率题（共30min）</li>
 <li>Part2：编程（解数独，自己写输入输出）</li>
-</ul>
-</li>
+</ul></li>
 <li><p>经验总结：</p>
 <ul>
 <li>Part1中没有过多刁难，但是有些项目细节还需要进一步熟悉和搞懂</li>
 <li>由于之前做过解数独这道题，所以做起来思路上是清晰的，但是最后还是代码有细节上的bug，std库用的也不是很好，导致最后没有了debug的时间</li>
-</ul>
-</li>
-<li><p>概率题：宝剑升级</p>
-</li>
+</ul></li>
+<li><p>概率题：宝剑升级</p></li>
 <li><p>编程题：解数独</p>
 <ul>
 <li>方法：dfs搜索每一个空白位置，每一个位置依次尝试1-9这九个数字，符合要求则继续深搜，不符合则回溯，注意回溯时需要将相应的flag修改回来</li>
-<li><strong>技巧：</strong><ul>
+<li><strong>技巧：</strong>
+<ul>
 <li>为每行每列每个block都建立一个bool型的数组，用于存放当前行、列、block内，当前数字是否已被用过</li>
 <li>存储空白点的位置，存入vector中，然后直接这些位置，而不用类似于迷宫再去上下左右的走</li>
-</ul>
-</li>
-<li>编程实现：<ul>
+</ul></li>
+<li>编程实现：
+<ul>
 <li><code>vector&lt;pair&lt;int, int&gt;&gt;</code>的使用，用于存储空白点位置</li>
 <li><code>pair&lt;int, int&gt;</code>：可以存储“变量当前值”，和vector配合使用时，要用<code>emplace_back()</code>，提取时用<code>.first</code>和<code>.second</code></li>
-</ul>
-</li>
-<li>Debug：<ul>
+</ul></li>
+<li>Debug：
+<ul>
 <li><code>block[x/3][y/3][num]</code>这里忘记除以3了</li>
-<li><code>char(i + &#39;1&#39;)</code>才可以把i变为相应的字符型，如果是<code>char(i)+1</code>则和前者的效果不一样</li>
+<li><code>char(i + '1')</code>才可以把i变为相应的字符型，如果是<code>char(i)+1</code>则和前者的效果不一样</li>
+</ul></li>
 </ul>
-</li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">board = [[&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],[&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> board[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> row[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> colum[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> block[<span class="number">3</span>][<span class="number">3</span>][<span class="number">9</span>];</span><br><span class="line">vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; pos;</span><br><span class="line"><span class="keyword">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cur == pos.<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		result = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> x = pos[cur].first;</span><br><span class="line">	<span class="keyword">int</span> y = pos[cur].second;</span><br><span class="line"><span class="comment">//	cout &lt;&lt; x &lt;&lt; y;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="keyword">if</span>(!result &amp;&amp; !row[x][i] &amp;&amp; !colum[y][i] &amp;&amp; !block[x/<span class="number">3</span>][y/<span class="number">3</span>][i])</span><br><span class="line">		&#123;</span><br><span class="line">			row[x][i] = colum[y][i] = block[x/<span class="number">3</span>][y/<span class="number">3</span>][i] = <span class="literal">true</span>;</span><br><span class="line">			board[x][y] = <span class="built_in"><span class="keyword">char</span></span>(i + <span class="string">&#x27;1&#x27;</span>); <span class="comment">// char(i) + &#x27;1&#x27; is not right!! </span></span><br><span class="line">			<span class="built_in">dfs</span>(cur+<span class="number">1</span>);</span><br><span class="line">			row[x][i] = colum[y][i] = block[x/<span class="number">3</span>][y/<span class="number">3</span>][i] = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(row, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(row));</span><br><span class="line">	<span class="built_in">memset</span>(colum, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(colum));</span><br><span class="line">	<span class="built_in">memset</span>(block, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(block));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">        cin.<span class="built_in">get</span>();</span><br><span class="line">		cin.<span class="built_in">get</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">9</span>; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">			cin &gt;&gt; c;</span><br><span class="line">			board[i][j] = c;</span><br><span class="line">			<span class="keyword">if</span>(c == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				pos.<span class="built_in">emplace_back</span>(i, j);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">		 	    <span class="keyword">int</span> num = <span class="built_in"><span class="keyword">int</span></span>(c - <span class="string">&#x27;0&#x27;</span>) - <span class="number">1</span>;</span><br><span class="line">				row[i][num] = <span class="literal">true</span>;</span><br><span class="line">				colum[j][num] = <span class="literal">true</span>;</span><br><span class="line">				block[i/<span class="number">3</span>][j/<span class="number">3</span>][num] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">9</span>; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; board[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">board = [[&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],[&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],[&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],[&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],[&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],[&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> board[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> row[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> colum[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="keyword">bool</span> block[<span class="number">3</span>][<span class="number">3</span>][<span class="number">9</span>];</span><br><span class="line">vector&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; pos;</span><br><span class="line"><span class="keyword">bool</span> result = <span class="literal">false</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cur == pos.<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		result = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> x = pos[cur].first;</span><br><span class="line">	<span class="keyword">int</span> y = pos[cur].second;</span><br><span class="line"><span class="comment">//	cout &lt;&lt; x &lt;&lt; y;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="keyword">if</span>(!result &amp;&amp; !row[x][i] &amp;&amp; !colum[y][i] &amp;&amp; !block[x/<span class="number">3</span>][y/<span class="number">3</span>][i])</span><br><span class="line">		&#123;</span><br><span class="line">			row[x][i] = colum[y][i] = block[x/<span class="number">3</span>][y/<span class="number">3</span>][i] = <span class="literal">true</span>;</span><br><span class="line">			board[x][y] = <span class="built_in"><span class="keyword">char</span></span>(i + <span class="string">&#x27;1&#x27;</span>); <span class="comment">// char(i) + &#x27;1&#x27; is not right!! </span></span><br><span class="line">			<span class="built_in">dfs</span>(cur+<span class="number">1</span>);</span><br><span class="line">			row[x][i] = colum[y][i] = block[x/<span class="number">3</span>][y/<span class="number">3</span>][i] = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(row, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(row));</span><br><span class="line">	<span class="built_in">memset</span>(colum, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(colum));</span><br><span class="line">	<span class="built_in">memset</span>(block, <span class="literal">false</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(block));</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">char</span> c;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">        cin.<span class="built_in">get</span>();</span><br><span class="line">		cin.<span class="built_in">get</span>();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">9</span>; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">			cin &gt;&gt; c;</span><br><span class="line">			board[i][j] = c;</span><br><span class="line">			<span class="keyword">if</span>(c == <span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				pos.<span class="built_in">emplace_back</span>(i, j);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">		 	    <span class="keyword">int</span> num = <span class="built_in"><span class="keyword">int</span></span>(c - <span class="string">&#x27;0&#x27;</span>) - <span class="number">1</span>;</span><br><span class="line">				row[i][num] = <span class="literal">true</span>;</span><br><span class="line">				colum[j][num] = <span class="literal">true</span>;</span><br><span class="line">				block[i/<span class="number">3</span>][j/<span class="number">3</span>][num] = <span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">			cin.<span class="built_in">get</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">dfs</span>(<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">9</span>; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">9</span>; ++j)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; board[i][j] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="第二轮面试：陈醒濠"><a href="#第二轮面试：陈醒濠" class="headerlink" title="第二轮面试：陈醒濠"></a>第二轮面试：陈醒濠</h3><ul>
-<li><p>面试流程：同上</p>
-</li>
-<li><p>经验总结：意识到了一些自己之前工作中可以继续深挖的点，非常感谢醒濠，之后一定会做出尝试的</p>
-</li>
+<h3 id="第二轮面试陈醒濠">第二轮面试：陈醒濠</h3>
+<ul>
+<li><p>面试流程：同上</p></li>
+<li><p>经验总结：意识到了一些自己之前工作中可以继续深挖的点，非常感谢醒濠，之后一定会做出尝试的</p></li>
 <li><p>编程题：9键字符序列对应的全排列</p>
 <ul>
 <li>方法：对于字符串中的的每一个数字，递归遍历他对应的字符，加入到当前排列中，回溯时，删除当前字符</li>
-</ul>
-</li>
-<li>技巧：<ul>
+</ul></li>
+<li>技巧：
+<ul>
 <li>将数字与字符的对应关系提前存好，下标关系对应即可，有时用空间换思路上的简单明了也是可以的</li>
-</ul>
-</li>
-<li>编程实现：<ul>
-<li>用<code>vector&lt;string&gt;</code>存取全部的排列结果<ul>
-<li>用<code>string</code>存取当前排列结果</li>
+</ul></li>
+<li>编程实现：
+<ul>
+<li>用<code>vector&lt;string&gt;</code>存取全部的排列结果</li>
+<li>用<code>string</code>存取当前排列结果
+<ul>
 <li><code>push_back()</code>：可以在string后加入char</li>
-</ul>
-</li>
-<li><code>pop_back()</code>：删除string后面的一个char<ul>
-<li>Debug：</li>
-</ul>
-</li>
+<li><code>pop_back()</code>：删除string后面的一个char</li>
+</ul></li>
+<li>Debug：
+<ul>
 <li>加入特殊字符的判定，全局加入<code>bool flag = false;</code></li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> Map[<span class="number">8</span>][<span class="number">4</span>] = &#123;&#123;<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;, &#123;<span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>, <span class="string">&#x27;f&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;, &#123;<span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;h&#x27;</span>, <span class="string">&#x27;i&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;,</span><br><span class="line">	 		   	  &#123;<span class="string">&#x27;j&#x27;</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;l&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;, &#123;<span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;n&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;, &#123;<span class="string">&#x27;p&#x27;</span>, <span class="string">&#x27;q&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;s&#x27;</span>&#125;,</span><br><span class="line">	 		   	  &#123;<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;u&#x27;</span>, <span class="string">&#x27;v&#x27;</span>, <span class="string">&#x27;#&#x27;</span>&#125;, &#123;<span class="string">&#x27;w&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;z&#x27;</span>&#125;&#125;;</span><br><span class="line">string s;</span><br><span class="line">string rst;</span><br><span class="line">vector&lt;string&gt; result;</span><br><span class="line"><span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">permute</span><span class="params">(string &amp; rst, <span class="keyword">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(cur == s.<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		result.<span class="built_in">push_back</span>(rst);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> num = <span class="built_in"><span class="keyword">int</span></span>(s[cur] - <span class="string">&#x27;0&#x27;</span>) - <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(num&lt;<span class="number">0</span> || num&gt;<span class="number">7</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">4</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(Map[num][i] != <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			rst.<span class="built_in">push_back</span>(Map[num][i]);</span><br><span class="line">			<span class="built_in">permute</span>(rst, cur+<span class="number">1</span>);</span><br><span class="line">			rst.<span class="built_in">pop_back</span>();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; s;</span><br><span class="line">	<span class="built_in">permute</span>(rst, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span>(flag)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;[]&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;result.<span class="built_in">size</span>(); ++i)</span><br><span class="line">		&#123;</span><br><span class="line">		    cout &lt;&lt; result[i] &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-<p>​    </p>
-<h3 id="第三轮面试：蒋欣（NLP大佬）"><a href="#第三轮面试：蒋欣（NLP大佬）" class="headerlink" title="第三轮面试：蒋欣（NLP大佬）"></a>第三轮面试：蒋欣（NLP大佬）</h3><ul>
+<p>​</p>
+<h3 id="第三轮面试蒋欣nlp大佬">第三轮面试：蒋欣（NLP大佬）</h3>
+<ul>
 <li>面试流程：只有半小时的简历面</li>
-<li>问题：<ul>
+<li>问题：
+<ul>
 <li>简短介绍之前工作</li>
 <li>之前项目最大的挑战</li>
 <li>公司价值观是否认同以及匹配</li>
 <li>长期规划</li>
 <li><strong>反问：</strong>科研和项目的部门是否分开？</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
     </div>
@@ -506,7 +504,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%9C%BA%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">一、机考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9D%A2%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">二、面试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%BD%AE%E9%9D%A2%E8%AF%95%EF%BC%9A%E7%8E%8B%E4%BA%91%E9%B9%A4"><span class="nav-number">2.1.</span> <span class="nav-text">第一轮面试：王云鹤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%BD%AE%E9%9D%A2%E8%AF%95%EF%BC%9A%E9%99%88%E9%86%92%E6%BF%A0"><span class="nav-number">2.2.</span> <span class="nav-text">第二轮面试：陈醒濠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%BD%AE%E9%9D%A2%E8%AF%95%EF%BC%9A%E8%92%8B%E6%AC%A3%EF%BC%88NLP%E5%A4%A7%E4%BD%AC%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">第三轮面试：蒋欣（NLP大佬）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%9C%BA%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">一、机考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%9D%A2%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">二、面试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%BD%AE%E9%9D%A2%E8%AF%95%E7%8E%8B%E4%BA%91%E9%B9%A4"><span class="nav-number">2.1.</span> <span class="nav-text">第一轮面试：王云鹤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%BD%AE%E9%9D%A2%E8%AF%95%E9%99%88%E9%86%92%E6%BF%A0"><span class="nav-number">2.2.</span> <span class="nav-text">第二轮面试：陈醒濠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%BD%AE%E9%9D%A2%E8%AF%95%E8%92%8B%E6%AC%A3nlp%E5%A4%A7%E4%BD%AC"><span class="nav-number">2.3.</span> <span class="nav-text">第三轮面试：蒋欣（NLP大佬）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -522,7 +520,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -535,7 +533,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -567,23 +565,23 @@
         
         
           <li>
-            <a href="/archives/5371f097.html" title="面试金典0301 三合一" target="_blank">面试金典0301 三合一</a>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
           </li>
         
           <li>
-            <a href="/archives/dd36b91f.html" title="面试金典0208 环路检测" target="_blank">面试金典0208 环路检测</a>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
           </li>
         
           <li>
-            <a href="/archives/f56eaff7.html" title="面试金典0109 字符串轮转" target="_blank">面试金典0109 字符串轮转</a>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
           </li>
         
           <li>
-            <a href="/archives/8c04a153.html" title="面试金典0108 零矩阵" target="_blank">面试金典0108 零矩阵</a>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
           </li>
         
           <li>
-            <a href="/archives/924acc2a.html" title="面试金典0107 旋转矩阵" target="_blank">面试金典0107 旋转矩阵</a>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
           </li>
         
       </ul>
@@ -883,13 +881,13 @@ if(canvas.getContext){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">116k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>

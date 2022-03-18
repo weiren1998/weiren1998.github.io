@@ -285,71 +285,74 @@
       
         <p>之前只学过一些基础的markdown语法，但今日需要用到表格、行内公式、行内代码、代码段、流程图、引用网址、引用图片等语法，因此在此总结，方便之后使用。</p>
 <span id="more"></span>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 序号 |   中文   |       英文       |</span><br><span class="line">| :--: | :------: | :--------------: |</span><br><span class="line">|  1   | 机器学习 | Machine Learning |</span><br></pre></td></tr></table></figure>
-<div class="table-container">
+<h3 id="表格">表格</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 序号 |   中文   |       英文       |</span><br><span class="line">| :--: | :------: | :--------------: |</span><br><span class="line">|  1   | 机器学习 | Machine Learning |</span><br></pre></td></tr></table></figure>
 <table>
 <thead>
-<tr>
-<th style="text-align:center">序号</th>
-<th style="text-align:center">中文</th>
-<th style="text-align:center">英文</th>
+<tr class="header">
+<th style="text-align: center;">序号</th>
+<th style="text-align: center;">中文</th>
+<th style="text-align: center;">英文</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">机器学习</td>
-<td style="text-align:center">Machine Learning</td>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">机器学习</td>
+<td style="text-align: center;">Machine Learning</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><ol>
-<li><p>行内公式： $y=ax+b$</p>
-</li>
+<h3 id="公式">公式</h3>
+<ol type="1">
+<li><p>行内公式： <span class="math inline">\(y=ax+b\)</span></p></li>
 <li><p>公式段：</p>
-<p>$f(x)=\alpha x+\beta$</p>
-<script type="math/tex; mode=display">f(x)=\alpha x+\beta</script><blockquote>
+<p><span class="math inline">\(f(x)=\alpha x+\beta\)</span></p>
+<p><code>$f(x)=\alpha x+\beta$</code></p>
+<blockquote>
 <p>两者语法一样，都是用单个$。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/ssjdoudou/article/details/103318019">公式渲染调试参考</a></p>
-</blockquote>
-</li>
+</blockquote></li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ol>
-<li><p>行内代码：<code>tmp = a[i]+b;</code> </p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 语法：</span></span><br><span class="line"><span class="code">`tmp = a[i]+b;`</span> </span><br></pre></td></tr></table></figure>
-</li>
+<h3 id="代码">代码</h3>
+<ol type="1">
+<li><p>行内代码：<code>tmp = a[i]+b;</code></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 语法：</span></span><br><span class="line"><span class="code">`tmp = a[i]+b;`</span> </span><br></pre></td></tr></table></figure></li>
 <li><p>代码段：</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 语法</span></span><br><span class="line">​<span class="code">```c++</span></span><br><span class="line"><span class="code">   #include&lt;iostream&gt;</span></span><br><span class="line"><span class="code">   using namespace std;</span></span><br><span class="line"><span class="code">   int main()</span></span><br><span class="line"><span class="code">   &#123;</span></span><br><span class="line"><span class="code">       cout&lt;&lt;&quot;hello world&quot;;</span></span><br><span class="line"><span class="code">       return 0;</span></span><br><span class="line"><span class="code">   &#125;</span></span><br><span class="line"><span class="code">​```</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
+<h3 id="流程图">流程图</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">op=&gt;operation: My Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
-<h3 id="引用网址"><a href="#引用网址" class="headerlink" title="引用网址"></a>引用网址</h3><ol>
-<li><p>在当前页跳转：<code>[百度](http://baidu.com)</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://baidu.com">百度</a></p>
-</li>
-<li><p>在空白页打开：<code>&lt;a href=&quot;https://baidu.com&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;</code> <a href="https://baidu.com" rel="external nofollow noreferrer" target="_blank">百度</a> </p>
+<h3 id="引用网址">引用网址</h3>
+<ol type="1">
+<li><p>在当前页跳转：<code>[百度](http://baidu.com)</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="http://baidu.com">百度</a></p></li>
+<li><p>在空白页打开：<code>&lt;a href=&quot;https://baidu.com&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;</code> <a href="https://baidu.com" rel="external nofollow noreferrer" target="_blank">百度</a></p>
 <blockquote>
 <p>两者好像效果一样，估计跟渲染器有关</p>
-</blockquote>
-</li>
+</blockquote></li>
 </ol>
-<h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 &#x27;&#x27;图片title&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
-<p><img src="https://pic2.zhimg.com/v2-bec8cb8d4ddee4ae698e2a4a41eb1610_1440w.jpg?source=172ae18b" alt="图片alt" title="title"></p>
-<h3 id="文字颜色、大小、居中"><a href="#文字颜色、大小、居中" class="headerlink" title="文字颜色、大小、居中"></a>文字颜色、大小、居中</h3><blockquote>
+<h3 id="引用图片">引用图片</h3>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片alt</span>](<span class="link">图片地址 &#x27;&#x27;图片title&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://pic2.zhimg.com/v2-bec8cb8d4ddee4ae698e2a4a41eb1610_1440w.jpg?source=172ae18b" title="title" alt="图片alt" /><figcaption>图片alt</figcaption>
+</figure>
+<h3 id="文字颜色大小居中">文字颜色、大小、居中</h3>
+<blockquote>
 <p>用html的语句写就可以啦</p>
 </blockquote>
-<font color="#FF0000"> 我可以设置这一句的颜色哈哈 </font> 
-
-<font size=6> 我还可以设置这一句的大小嘻嘻 </font> 
-
-<font size=5 color="#FF0000"> 我甚至可以设置这一句的颜色和大小呵呵</font> 
-
-<p><center>这一行需要居中</center><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;#FF0000&quot;</span>&gt;</span> 我可以设置这一句的颜色哈哈 <span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">6</span>&gt;</span> 我还可以设置这一句的大小嘻嘻 <span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">5</span> <span class="attr">color</span>=<span class="string">&quot;#FF0000&quot;</span>&gt;</span> 我甚至可以设置这一句的颜色和大小呵呵<span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span>这一行需要居中<span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote>
-<p>主要参考：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.jianshu.com/p/191d1e21f7ed">简书大佬教程</a> </p>
-<p>数学公式：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/ssjdoudou/article/details/103318019">渲染</a> </p>
+<p><font color="#FF0000"> 我可以设置这一句的颜色哈哈 </font></p>
+<p><font size=6> 我还可以设置这一句的大小嘻嘻 </font></p>
+<p><font size=5 color="#FF0000"> 我甚至可以设置这一句的颜色和大小呵呵</font></p>
+<center>
+这一行需要居中
+</center>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;#FF0000&quot;</span>&gt;</span> 我可以设置这一句的颜色哈哈 <span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">6</span>&gt;</span> 我还可以设置这一句的大小嘻嘻 <span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">5</span> <span class="attr">color</span>=<span class="string">&quot;#FF0000&quot;</span>&gt;</span> 我甚至可以设置这一句的颜色和大小呵呵<span class="tag">&lt;/<span class="name">font</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span>这一行需要居中<span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr />
+<h3 id="引用">引用</h3>
+<blockquote>
+<p>主要参考：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.jianshu.com/p/191d1e21f7ed">简书大佬教程</a></p>
+<p>数学公式：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.csdn.net/ssjdoudou/article/details/103318019">渲染</a></p>
 </blockquote>
 
     </div>
@@ -474,7 +477,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%BD%91%E5%9D%80"><span class="nav-number">5.</span> <span class="nav-text">引用网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87"><span class="nav-number">6.</span> <span class="nav-text">引用图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E9%A2%9C%E8%89%B2%E3%80%81%E5%A4%A7%E5%B0%8F%E3%80%81%E5%B1%85%E4%B8%AD"><span class="nav-number">7.</span> <span class="nav-text">文字颜色、大小、居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">1.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%BD%91%E5%9D%80"><span class="nav-number">5.</span> <span class="nav-text">引用网址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E5%9B%BE%E7%89%87"><span class="nav-number">6.</span> <span class="nav-text">引用图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E9%A2%9C%E8%89%B2%E5%A4%A7%E5%B0%8F%E5%B1%85%E4%B8%AD"><span class="nav-number">7.</span> <span class="nav-text">文字颜色、大小、居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -490,7 +493,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -503,7 +506,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">64</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -535,23 +538,23 @@
         
         
           <li>
-            <a href="/archives/5371f097.html" title="面试金典0301 三合一" target="_blank">面试金典0301 三合一</a>
+            <a href="/archives/697052e2.html" title="Transformer实验" target="_blank">Transformer实验</a>
           </li>
         
           <li>
-            <a href="/archives/dd36b91f.html" title="面试金典0208 环路检测" target="_blank">面试金典0208 环路检测</a>
+            <a href="/archives/36aea8fe.html" title="OCR实验" target="_blank">OCR实验</a>
           </li>
         
           <li>
-            <a href="/archives/f56eaff7.html" title="面试金典0109 字符串轮转" target="_blank">面试金典0109 字符串轮转</a>
+            <a href="/archives/9f9b7c0a.html" title="Transformer综述" target="_blank">Transformer综述</a>
           </li>
         
           <li>
-            <a href="/archives/8c04a153.html" title="面试金典0108 零矩阵" target="_blank">面试金典0108 零矩阵</a>
+            <a href="/archives/97820049.html" title="ViT：视觉Transformer开创者（论文+代码详解）" target="_blank">ViT：视觉Transformer开创者（论文+代码详解）</a>
           </li>
         
           <li>
-            <a href="/archives/924acc2a.html" title="面试金典0107 旋转矩阵" target="_blank">面试金典0107 旋转矩阵</a>
+            <a href="/archives/164bcfad.html" title="Pytorch炼丹" target="_blank">Pytorch炼丹</a>
           </li>
         
       </ul>
@@ -851,13 +854,13 @@ if(canvas.getContext){
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">97k</span>
+    <span title="站点总字数">116k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:46</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener external nofollow noreferrer" target="_blank">Hexo</a> 强力驱动 v5.4.0
   </div>
