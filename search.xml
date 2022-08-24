@@ -1,93 +1,325 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Transformer实验</title>
-    <url>/archives/697052e2.html</url>
-    <content><![CDATA[<blockquote>
-<p>在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉</p>
-</blockquote>
+    <title></title>
+    <url>/archives/0.html</url>
+    <content><![CDATA[<ul>
+<li><pre><code>title: 仗剑篇：进阶数据结构（树+图）
+categories:
+  - 计算机
+  - 算法
+tags:
+  - 基本数据结构
+  - 二叉树
+  - 图
+  - 算法tricks
+date: 2022-8-10 21:14:00
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 开启仗剑篇！加油！</span><br><span class="line">&gt;</span><br><span class="line">&gt; 原论文为Java版本，我这里选择用C++实现，同时记录自己的一些思考</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">## 1.1 二叉树</span><br><span class="line"></span><br><span class="line">&gt; 解题时只用思考每个节点需要做什么？</span><br><span class="line">&gt;</span><br><span class="line">&gt; 递归解题思路：</span><br><span class="line">&gt;</span><br><span class="line">&gt; 1. 回溯：遍历一遍二叉树得出结果（辅助全局变量）</span><br><span class="line">&gt; 2. 动归：拆解为子问题，并根据子问题的解推断问题的解</span><br><span class="line"></span><br><span class="line">- 递归遍历：二叉树的遍历和写for循环遍历数组和链表没有本质区别，只不过这里用了递归的思想</span><br><span class="line"></span><br><span class="line">  ~~~c++</span><br><span class="line">  void traverse(TreeNode root) </span><br><span class="line">  &#123;</span><br><span class="line">  	if (root == null) </span><br><span class="line">      &#123;</span><br><span class="line">  		return;</span><br><span class="line">  	&#125;</span><br><span class="line">      // 前序位置</span><br><span class="line">      traverse(root.left);</span><br><span class="line">      // 中序位置</span><br><span class="line">      traverse(root.right);</span><br><span class="line">      // 后序位置</span><br><span class="line">  &#125;</span><br><span class="line">  ~~~</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">### 田忌赛马背后的算法决策：</span><br><span class="line"></span><br><span class="line">&gt; 例题：[870. 优势洗牌](https://leetcode.cn/problems/advantage-shuffle/)</span><br><span class="line"></span><br><span class="line">- **解题思路**：</span><br><span class="line"></span><br><span class="line">  - 如果当前最快的马可以比过对方最快的马，则用该马来比赛</span><br><span class="line">    - 误区：如果第二快的马也可以比过对方，是否可以选择这一匹来比？**可以但没必要**，因为这样的话我最快的一匹还是比对方第二最快的马快</span><br><span class="line">  - 如果当前最快的马比不过对方最快的马，则用最烂的一匹来比</span><br><span class="line"></span><br><span class="line">- **实现trike**：</span><br><span class="line"></span><br><span class="line">  - 因为nums2不能改变顺序，但又需要他从大到小排列（方便后面比较），因此选用priority_queue来重新存储nums2，但这里需要把下标i以及数值num一起存储，并且用num来比大小，因此需要重载operator&lt;运算符</span><br><span class="line">  - nums1也要排序，这里选用升序排序，left为最小值，right为最大值</span><br><span class="line">  - 双指针来收缩nums1的两端，如果nums2当前最大值大于nums1[right]，则用left对应的马，反之则用right对应的马</span><br><span class="line"></span><br><span class="line">- 代码：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  class Solution &#123;public:    vector&lt;int&gt; advantageCount(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2)     &#123;        // 定义结构体：用来自定义优先队列比较规则        struct id_nums2        &#123;            int i;            int num;            id_nums2(int j, int x)            &#123;                i = j;                num = x;            &#125;            bool operator&lt;(const id_nums2&amp; a) const            &#123;                return num &lt; a.num; // 大顶堆            &#125;        &#125;;        // 对nums2数组建立优先队列        priority_queue&lt;id_nums2&gt; nums2pq;        for(int i=0; i&lt;nums2.size(); ++i)        &#123;            nums2pq.push(id_nums2(i, nums2[i]));        &#125;        // 双指针        int left = 0, right = nums1.size()-1;        vector&lt;int&gt; res(nums1.size(), 0);        sort(nums1.begin(), nums1.end()); // 从小到大排序        while(left&lt;=right)        &#123;            int i = nums2pq.top().i;            int num = nums2pq.top().num;            nums2pq.pop();            // nums1能打过            if(nums1[right]&gt;num)            &#123;                res[i] = nums1[right];                right--;            &#125;            else            &#123;                res[i] = nums1[left];                left++;            &#125;        &#125;        return res;    &#125;&#125;;</code></pre>
+<ul>
+<li>复杂度分析：前期排序为O(nlogn)，后续仅遍历一次队列，时间复杂度为O(nlogn)，因为共n个元素，调整最大堆的复杂度为O(logn)，其他操作为O(1)，因此时间复杂度为O(nlogn)。空间复杂度为O(n)因为需要新开辟优先队列和res</li>
+</ul>
+<h3 id="链表操作的递归思维一览用递归不用迭代">链表操作的递归思维一览：用递归不用迭代</h3>
 <blockquote>
-<p>最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。</p>
+<p>例题：<a href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表</a></p>
+</blockquote>
+<ul>
+<li></li>
+</ul></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>学剑篇：基本数据结构</title>
+    <url>/archives/a3522716.html</url>
+    <content><![CDATA[<blockquote>
+<p>发现labuladong算法秘籍真的不错，已经跟着刷了一段时间题了，打算总结一下，先从第一篇学剑开始吧！加油！具体可以参考<a href="https://labuladong.gitee.io/algo/">原网站</a></p>
+<p>原论文为Java版本，我这里选择用C++实现，同时记录自己的一些思考</p>
 </blockquote>
 <span id="more"></span>
-<h1 id="探究bn和ln对于vit的影响">探究BN和LN对于ViT的影响</h1>
-<h3 id="对比试验一">对比试验一：</h3>
+<h2 id="数组链表">1.1 数组+链表</h2>
+<h3 id="田忌赛马背后的算法决策">田忌赛马背后的算法决策：</h3>
 <blockquote>
-<p>modify3_10 vs modify3_11: 在baseline的基础上加入TMM结构（12 3, 27 3, 40 3, 80 3）</p>
+<p>例题：<a href="https://leetcode.cn/problems/advantage-shuffle/">870. 优势洗牌</a></p>
 </blockquote>
+<ul>
+<li><p><strong>解题思路</strong>：</p>
+<ul>
+<li>如果当前最快的马可以比过对方最快的马，则用该马来比赛
+<ul>
+<li>误区：如果第二快的马也可以比过对方，是否可以选择这一匹来比？<strong>可以但没必要</strong>，因为这样的话我最快的一匹还是比对方第二最快的马快</li>
+</ul></li>
+<li>如果当前最快的马比不过对方最快的马，则用最烂的一匹来比</li>
+</ul></li>
+<li><p><strong>实现trike</strong>：</p>
+<ul>
+<li>因为nums2不能改变顺序，但又需要他从大到小排列（方便后面比较），因此选用priority_queue来重新存储nums2，但这里需要把下标i以及数值num一起存储，并且用num来比大小，因此需要重载operator&lt;运算符</li>
+<li>nums1也要排序，这里选用升序排序，left为最小值，right为最大值</li>
+<li>双指针来收缩nums1的两端，如果nums2当前最大值大于nums1[right]，则用left对应的马，反之则用right对应的马</li>
+</ul></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">advantageCount</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1, vector&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 定义结构体：用来自定义优先队列比较规则</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">id_nums2</span></span></span><br><span class="line"><span class="class">        &#123;</span></span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line">            <span class="keyword">int</span> num;</span><br><span class="line">            <span class="built_in">id_nums2</span>(<span class="keyword">int</span> j, <span class="keyword">int</span> x)</span><br><span class="line">            &#123;</span><br><span class="line">                i = j;</span><br><span class="line">                num = x;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> id_nums2&amp; a) <span class="keyword">const</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> num &lt; a.num; <span class="comment">// 大顶堆</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">// 对nums2数组建立优先队列</span></span><br><span class="line">        priority_queue&lt;id_nums2&gt; nums2pq;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums2.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            nums2pq.<span class="built_in">push</span>(<span class="built_in">id_nums2</span>(i, nums2[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 双指针</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = nums1.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">res</span><span class="params">(nums1.size(), <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums1.<span class="built_in">begin</span>(), nums1.<span class="built_in">end</span>()); <span class="comment">// 从小到大排序</span></span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> i = nums2pq.<span class="built_in">top</span>().i;</span><br><span class="line">            <span class="keyword">int</span> num = nums2pq.<span class="built_in">top</span>().num;</span><br><span class="line">            nums2pq.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="comment">// nums1能打过</span></span><br><span class="line">            <span class="keyword">if</span>(nums1[right]&gt;num)</span><br><span class="line">            &#123;</span><br><span class="line">                res[i] = nums1[right];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                res[i] = nums1[left];</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：前期排序为O(nlogn)，后续仅遍历一次队列，时间复杂度为O(nlogn)，因为共n个元素，调整最大堆的复杂度为O(logn)，其他操作为O(1)，因此时间复杂度为O(nlogn)。空间复杂度为O(n)因为需要新开辟优先队列和res</p></li>
+</ul>
+<h3 id="链表操作的递归思维一览用递归不用迭代">链表操作的递归思维一览：用递归不用迭代</h3>
+<blockquote>
+<p>例题：<a href="https://leetcode.cn/problems/reverse-linked-list/">206. 反转链表</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li><strong>reverse函数</strong>：输入一个节点head，将以head为起点的链表反转，并返回反转后的头节点</li>
+</ul></li>
+<li><p>解题tricks：</p>
+<ul>
+<li><strong>不要跳进递归，而是要根据刚才的函数定义，来弄清楚这段代码会产生什么结果</strong></li>
+</ul></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* last = <span class="built_in">reverse</span>(head-&gt;next);</span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> last;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">reverse</span>(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：只遍历一遍链表，因此时间复杂度为O(n)，空间复杂度为O(n)，因为递归的底层实现是栈，而栈的大小是n（压入所有的节点）</p></li>
+</ul>
+<blockquote>
+<p>例题：<a href="https://leetcode.cn/problems/reverse-linked-list-ii/">92. 反转链表 II</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>先尝试解决反转前N个node</li>
+<li>定义reverseN(head, N)函数，输入节点head，以及要反转的节点个数N，返回前N个节点反转，后面节点顺序不变的链表的链表头</li>
+</ul></li>
+<li><p>解题tricks：</p>
+<ul>
+<li>定义successor，用来指向要反转的最后一个node的下一个node，好把第一个node指向successor上。</li>
+<li>在left不等于1时，反复调用原函数，使得head向后移动的同时，缩小left和right，当left为1时再调用reversN函数，最后将head-&gt;next指向reverseN的返回值（链表头）</li>
+</ul></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode *successor = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseN</span><span class="params">(ListNode* head, <span class="keyword">int</span> m)</span> <span class="comment">// 反转前M个节点，并返回反转后链表的头节点</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">1</span>) </span><br><span class="line">        &#123;</span><br><span class="line">            successor = head-&gt;next;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* last = <span class="built_in">reverseN</span>(head-&gt;next, m<span class="number">-1</span>);</span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = successor;</span><br><span class="line">        <span class="keyword">return</span> last;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">1</span>) <span class="keyword">return</span> <span class="built_in">reverseN</span>(head, right); <span class="comment">// 从left节点开始反转</span></span><br><span class="line">        head-&gt;next = <span class="built_in">reverseBetween</span>(head-&gt;next, left<span class="number">-1</span>, right<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：只遍历一遍，时间复杂度为O(n)，空间复杂度为O(n)</p></li>
+</ul>
+<h2 id="队列栈">1.3 队列&amp;栈</h2>
+<h3 id="用栈解决括号问题">用栈解决“括号问题”</h3>
+<blockquote>
+<p>例题1：<a href="https://leetcode.cn/problems/valid-parentheses/">20. 有效的括号</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>如果仅有一种括号，只用记录左括号的数量即可</li>
+<li>但多种括号时，无法通过计数来完成，比如&quot;([)]&quot;是不合法的，此时需要借助栈（后进先出）来完成</li>
+<li>当输入为左括号时，压入栈中；当输入为右括号时，比较栈顶和右括号是否匹配
+<ul>
+<li>匹配时，pop出栈顶元素</li>
+<li>不匹配或栈为空时，return false</li>
+</ul></li>
+</ul></li>
+<li><p>解题tricks：</p>
+<ul>
+<li><p>遍历字符串：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">&#123;</span><br><span class="line">    s[i];</span><br><span class="line">&#125;</span><br><span class="line">方法二：<span class="keyword">auto</span>类型</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> c:s)</span><br><span class="line">&#123;</span><br><span class="line">    c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        stack&lt;<span class="keyword">char</span>&gt; left;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">&#x27;(&#x27;</span> || s[i]==<span class="string">&#x27;[&#x27;</span> || s[i]==<span class="string">&#x27;&#123;&#x27;</span>) left.<span class="built_in">push</span>(s[i]);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(left.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">if</span>((s[i]==<span class="string">&#x27;)&#x27;</span> &amp;&amp; left.<span class="built_in">top</span>()==<span class="string">&#x27;(&#x27;</span>) </span><br><span class="line">                   || (s[i]==<span class="string">&#x27;]&#x27;</span> &amp;&amp; left.<span class="built_in">top</span>()==<span class="string">&#x27;[&#x27;</span>) </span><br><span class="line">                   || (s[i]==<span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; left.<span class="built_in">top</span>()==<span class="string">&#x27;&#123;&#x27;</span>)) </span><br><span class="line">                    left.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left.<span class="built_in">empty</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：时间复杂度为O(N)，空间复杂度为O(N)</p></li>
+</ul>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/">921. 使括号有效的最少添加</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>思路一：用栈来解决，碰到不匹配时说明左括号不够用，当最后结束时栈没空，证明左括号太多了</li>
+<li>思路二：不用栈，用两个变量记录左括号的数量以及res即可，思路同上</li>
+</ul></li>
+<li><p>解题tricks：最后要记得加上栈中残留的左括号</p></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minAddToMakeValid</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        stack&lt;<span class="keyword">char</span>&gt; left;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:s)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">&#x27;(&#x27;</span>) left.<span class="built_in">push</span>(c);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(left.<span class="built_in">empty</span>()) res++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    left.<span class="built_in">pop</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res += left.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：时间空间复杂度均为O(N)，但空间复杂度可以降到O(1)</p></li>
+</ul>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/minimum-insertions-to-balance-a-parentheses-string/">1541. 平衡括号字符串的最少插入次数</a> 1个左括号和2个右括号匹配</p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>不用栈：left记录当前有多少个左括号，以及res目前添加了多少个括号了
+<ul>
+<li>如果当前为左括号，left++</li>
+<li>如果为右括号
+<ul>
+<li>判断当前左括号是否为空，空的话则在当前位置左侧添加一个左括号</li>
+<li>不为空时，判断当前位置的下一个位置是否为右括号
+<ul>
+<li>如果是，则不用添加任何操作，把left--，然后i++（跳过下一个位置）</li>
+<li>如果不是，则需要在后侧加入一个右括号，即res++，同时减去匹配的左括号left--</li>
+</ul></li>
+</ul></li>
+<li>最后剩下的左括号需要用2倍的右括号来匹配</li>
+</ul></li>
+<li>用栈：也可以完成</li>
+</ul></li>
+<li><p>解题tricks：</p></li>
+<li><p>代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minInsertions</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>, res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span>) left++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(left==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    res++;</span><br><span class="line">                    left++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(s[i+<span class="number">1</span>]==<span class="string">&#x27;)&#x27;</span>) </span><br><span class="line">                &#123;</span><br><span class="line">                    left--;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(s[i+<span class="number">1</span>]==<span class="string">&#x27;(&#x27;</span> || i==s.<span class="built_in">size</span>()<span class="number">-1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    res++;</span><br><span class="line">                    left--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res + <span class="number">2</span>*left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：时间复杂度为O(N)，空间为O(1)</p></li>
+</ul>
+<h3 id="单调栈结构解决下一个更大数问题">单调栈结构解决“下一个更大数问题”</h3>
+<blockquote>
+<p>单调栈解决的就是The Next Greater Number问题，适用范围还是比较窄的，但是遇到这类问题就要用这个方法</p>
+</blockquote>
+<ul>
+<li><p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">stack&lt;<span class="keyword">int</span>&gt; s;</span><br><span class="line"><span class="comment">// 从后向前遍历数组</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=nums.<span class="built_in">size</span>()<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i) <span class="comment">// 当有循环数组出现时，可以遍历两遍，用%符号</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(!s.<span class="built_in">empty</span>() &amp;&amp; nums[i]&gt;=s.<span class="built_in">top</span>()) <span class="comment">// 如果当前值小于栈顶值，则压入栈，否则pop栈顶元素</span></span><br><span class="line">    &#123;</span><br><span class="line">        s.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    res[i] = s.<span class="built_in">empty</span>()? <span class="number">-1</span>:s.<span class="built_in">top</span>(); <span class="comment">// 这里res存储nums的值，其实有些题目也可以存储下标</span></span><br><span class="line">    s.<span class="built_in">push</span>(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/next-greater-element-i/">496. 下一个更大元素 I</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>建立单调栈，先把nums2中的数组从后向前遍历，同时将数值压入栈中，使栈呈现由大到小的排列，此时栈顶即为下一个更大的元素</li>
+</ul></li>
+<li><p>解题tricks：</p>
+<ul>
+<li>用哈希表来存储&lt;数值，下一个更大元素值&gt;，这样遍历nums1时就可以直接找到对应的答案了</li>
+</ul></li>
+<li><p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; nextGreaterElement(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) </span><br><span class="line">    &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; hm;</span><br><span class="line">        vector&lt;int&gt; res(nums1.size(), -1);</span><br><span class="line">        stack&lt;int&gt; s;</span><br><span class="line">        for(int i=nums2.size()-1; i&gt;=0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            while(!s.empty() &amp;&amp; s.top()&lt;=nums2[i])</span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            hm[nums2[i]] = s.empty() ? -1:s.top();</span><br><span class="line">            s.push(nums2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0; i&lt;nums1.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            res[i] = hm[nums1[i]];</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：因为每个元素只会被push和pop一次，因此时间复杂度为O(n)，空间复杂度因为是栈结构，且返回值也是数值，因此为O(n)</p></li>
+</ul>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/next-greater-element-ii/">503. 下一个更大元素 II</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>沿用单调栈的思路，找到下一个更大的数值，但这里设计循环数组，一般这个时候可以复制一份到原数组后面，然后就可以了</li>
+</ul></li>
+<li><p>解题tricks：<strong>没必要复制一份，可以遍历2n次，然后i用%n的值就可以达到相同的目的了</strong></p></li>
+<li><p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; nextGreaterElements(vector&lt;int&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        vector&lt;int&gt; res(n);</span><br><span class="line">        stack&lt;int&gt; s;</span><br><span class="line">        for(int i= 2*n-1; i&gt;=0; --i) // 假设复制了一份</span><br><span class="line">        &#123;</span><br><span class="line">            while(!s.empty() &amp;&amp; s.top()&lt;=nums[i%n]) // 用%来求相应的坐标</span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            if(!s.empty()) res[i%n] = s.top();</span><br><span class="line">            else res[i%n] = -1;</span><br><span class="line">            s.push(nums[i%n]);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：时间空间也都是O(n)</p></li>
+</ul>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/daily-temperatures/">739. 每日温度</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：同上</p></li>
+<li><p>解题tricks：栈中存储下一个更大元素的下标，这样方便计算距离，同时用下标也可以找到当日的温度</p></li>
+<li><p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; temperatures) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; res(temperatures.size(), 0);</span><br><span class="line">        stack&lt;int&gt; s; // 存放next greater number的下标</span><br><span class="line">        for(int i=temperatures.size()-1; i&gt;=0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            while(!s.empty() &amp;&amp; temperatures[s.top()]&lt;=temperatures[i])</span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            if(!s.empty()) res[i] = s.top() - i;</span><br><span class="line">            s.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>复杂度分析：时间空间复杂度是O(n)</p></li>
+</ul>
+<h3 id="单调队列解决滑动窗口最大值">单调队列解决“滑动窗口最大值”</h3>
+<blockquote>
+<p>单调队列的实现方式使用STL中的deque类，中文是双向队列，意思是两边都可以进出，在进出的过程中保证队列是单调递减（增）的就可以</p>
+</blockquote>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>思路一：用优先队列，滑动窗口内的值和下标作为pair压入最大堆中，first为值，因为优先队列先对pair的首个元素排序。for循环在外侧遍历所有的窗口右端点，while内循环来判断最大值是否在滑动窗口内部，不在的话需要都pop出去。</li>
+<li>思路二：用单调队列，<a href="https://leetcode.cn/problems/sliding-window-maximum/solution/dong-hua-yan-shi-dan-diao-dui-lie-239hua-hc5u/">解题参考</a>
+<ul>
+<li>遍历给定数组中的元素，如果队列不为空且当前考察元素大于等于队尾元素，则将队尾元素移除。直到，队列为空或当前考察元素小于新的队尾元素</li>
+<li>当队首元素的下标小于滑动窗口左侧边界left时，表示队首元素已经不再滑动窗口内，因此将其从队首移除</li>
+<li>由于数组下标从0开始，因此当窗口右边界right+1大于等于窗口大小k时，意味着窗口形成。此时，队首元素就是该窗口内的最大值</li>
+</ul></li>
+</ul></li>
+<li><p>解题tricks：</p>
+<ul>
+<li>优先队列priority_queue中数据类型为pair时，先对first比大小，在对second比大小</li>
+<li>双端队列deque可以从两端进行push和pop，关键字分别是back和front</li>
+</ul></li>
+<li><p>代码：</p>
+<ul>
+<li><p>思路一：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 解法一：最大堆</span></span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; pq;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; k<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                pq.<span class="built_in">push</span>(<span class="built_in">pair</span>(nums[i], i));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                pq.<span class="built_in">push</span>(<span class="built_in">pair</span>(nums[i], i));</span><br><span class="line">                <span class="keyword">while</span>(pq.<span class="built_in">top</span>().second &lt; i-k+<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    pq.<span class="built_in">pop</span>();</span><br><span class="line">                &#125;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(pq.<span class="built_in">top</span>().first);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>思路二：可以通过存pair来做，也可以通过存下标来完成</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 解法二：双向队列来实现单调队列</span></span><br><span class="line">        deque&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; dq; <span class="comment">// 存储值和下标</span></span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r=<span class="number">0</span>; r&lt;nums.<span class="built_in">size</span>(); ++r)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(!dq.<span class="built_in">empty</span>() &amp;&amp; dq.<span class="built_in">back</span>().first &lt;= nums[r])</span><br><span class="line">            &#123;</span><br><span class="line">                dq.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            dq.<span class="built_in">emplace_back</span>(<span class="built_in">pair</span>(nums[r], r));</span><br><span class="line">            <span class="keyword">int</span> l = r-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(!dq.<span class="built_in">empty</span>() &amp;&amp; dq.<span class="built_in">front</span>().second &lt; l)</span><br><span class="line">            &#123;</span><br><span class="line">                dq.<span class="built_in">pop_front</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(r+<span class="number">1</span>&gt;=k)</span><br><span class="line">            &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(dq.<span class="built_in">front</span>().first);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 解法二：双向队列来实现单调队列</span></span><br><span class="line">        deque&lt;<span class="keyword">int</span>&gt; dq; <span class="comment">// 只存储下标</span></span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r=<span class="number">0</span>; r&lt;nums.<span class="built_in">size</span>(); ++r)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span>(!dq.<span class="built_in">empty</span>() &amp;&amp; nums[dq.<span class="built_in">back</span>()] &lt;= nums[r])</span><br><span class="line">            &#123;</span><br><span class="line">                dq.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            dq.<span class="built_in">emplace_back</span>(r);</span><br><span class="line">            <span class="keyword">int</span> l = r-k+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(!dq.<span class="built_in">empty</span>() &amp;&amp; dq.<span class="built_in">front</span>() &lt; l)</span><br><span class="line">            &#123;</span><br><span class="line">                dq.<span class="built_in">pop_front</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(r+<span class="number">1</span>&gt;=k)</span><br><span class="line">            &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(nums[dq.<span class="built_in">front</span>()]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>复杂度分析：</p>
+<ul>
+<li>思路一的时间复杂度为O(nlogn)，因为优先队列的调整是logn的，而遍历数组是n</li>
+<li>思路二的时间复杂度为O(n)，因为从元素的角度出发，每个元素只被push和pop了一次</li>
+</ul></li>
+</ul>
+<h3 id="数组去重问题">“数组去重问题”</h3>
+<blockquote>
+<p><a href="https://leetcode.cn/problems/remove-duplicate-letters/">316. 去除重复字母</a></p>
+</blockquote>
+<ul>
+<li><p>解题思路：</p>
+<ul>
+<li>可以将题目拆分成3个问题
 <ol type="1">
-<li>modify3_10：两个TMB都有跳连操作</li>
-<li>modify3_11：两个TMB都没有跳连操作</li>
-</ol>
-<hr />
-<h3 id="对比试验二">对比试验二：</h3>
-<blockquote>
-<p>目前全部加TAM的效果最好</p>
-</blockquote>
-<table>
-<thead>
-<tr class="header">
-<th>实验</th>
-<th>设置</th>
-<th>screen</th>
-<th>nvidia</th>
-<th>参数量（万）</th>
-<th>s/epoch</th>
-<th>ave-mAP on V</th>
-<th>ave-mAP on T</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>modify4_1</td>
-<td>全部卷积后面都加入TAM</td>
-<td>1</td>
-<td>0</td>
-<td>32</td>
-<td>43</td>
-<td>55.97</td>
-<td>54.74</td>
-</tr>
-<tr class="even">
-<td>modify4_2</td>
-<td>只在TMM中加入TAM</td>
-<td>2</td>
-<td>1</td>
-<td>27</td>
-<td>36</td>
-<td>57.92</td>
-<td>54.11</td>
-</tr>
-<tr class="odd">
-<td>modify4_3</td>
-<td>只在分类网络内加入TAM</td>
-<td>3</td>
-<td>2</td>
-<td>15</td>
-<td>32</td>
-<td>55.96</td>
-<td>53.52</td>
-</tr>
-<tr class="even">
-<td>modify4_4</td>
-<td>所有卷积后都不加TAM</td>
-<td>4</td>
-<td>3</td>
-<td>15</td>
-<td>32</td>
-<td>57.05</td>
-<td>54.98</td>
-</tr>
-</tbody>
-</table>
+<li>去重</li>
+<li>字符前后顺序不变</li>
+<li>字典序最小</li>
+</ol></li>
+<li>可以尝试用栈+标记数组来解决前两个问题，即将<code>babc</code>变为<code>bac</code></li>
+<li>再尝试修改上面的思路，在插入元素时用while和栈顶元素比大小，并将大的元素且后面还会出现的元素pop出来（后方是否还会出现需要用一个count数组在一开始遍历一下整个字符串，记录每个字符出现的次数）</li>
+</ul></li>
+<li><p>解题triks</p>
+<ul>
+<li>方是否还会出现需要用一个count数组在一开始遍历一下整个字符串，记录每个字符出现的次数【在循环外多遍历一遍数组不会增加复杂度，因为遍历只有O(N)复杂度】</li>
+</ul></li>
+<li><p>代码</p>
+<ul>
+<li><p>解决前两个问题：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">removeDuplicateLetters</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        stack&lt;<span class="keyword">char</span>&gt; S;</span><br><span class="line">        <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">inStack</span><span class="params">(<span class="number">26</span>, <span class="literal">false</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(inStack[s[i]-<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            S.<span class="built_in">push</span>(s[i]);</span><br><span class="line">            inStack[s[i]-<span class="string">&#x27;a&#x27;</span>] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        string res;</span><br><span class="line">        <span class="keyword">while</span>(!S.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(S.<span class="built_in">top</span>());</span><br><span class="line">            S.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>解决第三个问题</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">  <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">      <span class="function">string <span class="title">removeDuplicateLetters</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">          stack&lt;<span class="keyword">char</span>&gt; S;</span><br><span class="line">          <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">ccount</span><span class="params">(<span class="number">26</span>, <span class="number">0</span>)</span></span>; <span class="comment">// 统计当前位置的后面元素的多少</span></span><br><span class="line">          <span class="function">vector&lt;<span class="keyword">char</span>&gt; <span class="title">inStack</span><span class="params">(<span class="number">26</span>, <span class="literal">false</span>)</span></span>;</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">char</span> c : s)</span><br><span class="line">          &#123;</span><br><span class="line">              ccount[c-<span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="comment">// 无论后面如何操作，当前的字符都--</span></span><br><span class="line">              ccount[s[i]-<span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">              <span class="comment">// 如果当前字符已经在里面了，那就没必要把一些元素挤出来，再push它进去了。例如abca，当第二个a来时，直接跳过即可，否则就变成了a</span></span><br><span class="line">              <span class="keyword">if</span>(inStack[s[i]-<span class="string">&#x27;a&#x27;</span>]) <span class="keyword">continue</span>;</span><br><span class="line">  </span><br><span class="line">              <span class="comment">// 当前值需要被插入</span></span><br><span class="line">              <span class="comment">// 栈不为空，栈顶元素大于当前值，且栈顶元素在后面还会出现</span></span><br><span class="line">              <span class="keyword">while</span>(!S.<span class="built_in">empty</span>() &amp;&amp; S.<span class="built_in">top</span>() &gt; s[i] &amp;&amp; ccount[S.<span class="built_in">top</span>()-<span class="string">&#x27;a&#x27;</span>] &gt; <span class="number">0</span>)</span><br><span class="line">              &#123;</span><br><span class="line">                  inStack[S.<span class="built_in">top</span>()-<span class="string">&#x27;a&#x27;</span>] = <span class="literal">false</span>;</span><br><span class="line">                  S.<span class="built_in">pop</span>();</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 把该pop的pop走后，再把当前元素push进来</span></span><br><span class="line">              S.<span class="built_in">push</span>(s[i]); </span><br><span class="line">              inStack[s[i]-<span class="string">&#x27;a&#x27;</span>] = <span class="literal">true</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          string res;</span><br><span class="line">          <span class="keyword">while</span>(!S.<span class="built_in">empty</span>())</span><br><span class="line">          &#123;</span><br><span class="line">              res.<span class="built_in">push_back</span>(S.<span class="built_in">top</span>());</span><br><span class="line">              S.<span class="built_in">pop</span>();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">          <span class="keyword">return</span> res;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure></li>
+</ul></li>
+<li><p>复杂度分析：总共遍历了一次字符串，虽然内部有个while循环，但是所有元素只会被push和pop一次到栈内，因此时间复杂度是O(N)</p></li>
+</ul>
 ]]></content>
       <categories>
         <category>计算机</category>
-        <category>计算机视觉</category>
+        <category>算法</category>
       </categories>
       <tags>
-        <tag>Transformer</tag>
-        <tag>实验</tag>
+        <tag>基本数据结构</tag>
+        <tag>算法tricks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lecture 1 课程信息+NLP简介</title>
+    <url>/archives/41b4512d.html</url>
+    <content><![CDATA[<blockquote>
+<p>2.22 于华为三层自习区上课</p>
+<p>3.1 于华为三层自习区看下半节课回放</p>
+<p>3.22</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="section"></h1>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+        <category>COMP5046 Natural Language Processing</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Lecture * 主讲内容</title>
+    <url>/archives/5cd8abdf.html</url>
+    <content><![CDATA[<blockquote>
+<p>记得修改标题和tag</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="section"></h1>
+]]></content>
+      <categories>
+        <category>课程笔记</category>
+        <category>COMP5046 Natural Language Processing</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -173,8 +405,98 @@
         <category>计算机视觉</category>
       </categories>
       <tags>
-        <tag>实验</tag>
         <tag>OCR</tag>
+        <tag>实验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Transformer实验</title>
+    <url>/archives/697052e2.html</url>
+    <content><![CDATA[<blockquote>
+<p>在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉</p>
+</blockquote>
+<blockquote>
+<p>最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="探究bn和ln对于vit的影响">探究BN和LN对于ViT的影响</h1>
+<h3 id="对比试验一">对比试验一：</h3>
+<blockquote>
+<p>modify3_10 vs modify3_11: 在baseline的基础上加入TMM结构（12 3, 27 3, 40 3, 80 3）</p>
+</blockquote>
+<ol type="1">
+<li>modify3_10：两个TMB都有跳连操作</li>
+<li>modify3_11：两个TMB都没有跳连操作</li>
+</ol>
+<hr />
+<h3 id="对比试验二">对比试验二：</h3>
+<blockquote>
+<p>目前全部加TAM的效果最好</p>
+</blockquote>
+<table>
+<thead>
+<tr class="header">
+<th>实验</th>
+<th>设置</th>
+<th>screen</th>
+<th>nvidia</th>
+<th>参数量（万）</th>
+<th>s/epoch</th>
+<th>ave-mAP on V</th>
+<th>ave-mAP on T</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>modify4_1</td>
+<td>全部卷积后面都加入TAM</td>
+<td>1</td>
+<td>0</td>
+<td>32</td>
+<td>43</td>
+<td>55.97</td>
+<td>54.74</td>
+</tr>
+<tr class="even">
+<td>modify4_2</td>
+<td>只在TMM中加入TAM</td>
+<td>2</td>
+<td>1</td>
+<td>27</td>
+<td>36</td>
+<td>57.92</td>
+<td>54.11</td>
+</tr>
+<tr class="odd">
+<td>modify4_3</td>
+<td>只在分类网络内加入TAM</td>
+<td>3</td>
+<td>2</td>
+<td>15</td>
+<td>32</td>
+<td>55.96</td>
+<td>53.52</td>
+</tr>
+<tr class="even">
+<td>modify4_4</td>
+<td>所有卷积后都不加TAM</td>
+<td>4</td>
+<td>3</td>
+<td>15</td>
+<td>32</td>
+<td>57.05</td>
+<td>54.98</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>计算机</category>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>Transformer</tag>
       </tags>
   </entry>
   <entry>
@@ -706,8 +1028,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>算法</category>
       </categories>
       <tags>
-        <tag>位运算</tag>
         <tag>字符串</tag>
+        <tag>位运算</tag>
         <tag>哈希</tag>
       </tags>
   </entry>
@@ -816,8 +1138,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>算法</category>
       </categories>
       <tags>
-        <tag>位运算</tag>
         <tag>字符串</tag>
+        <tag>位运算</tag>
         <tag>哈希</tag>
       </tags>
   </entry>
@@ -939,7 +1261,6 @@ y = LN(z^{0}_{L}) \ \ \ (4)
 <li>难点：定义<span class="math inline">\(dp[i]\)</span>的含义，以及动态转移方程</li>
 </ul>
 <span id="more"></span>
-<p>[TOC]</p>
 <h2 id="线性dp">线性DP</h2>
 <h3 id="连续子数组最大和存在负数">1. 连续子数组最大和（存在负数）</h3>
 <ul>
@@ -1001,7 +1322,7 @@ y = LN(z^{0}_{L}) \ \ \ (4)
 <li>动归：
 <ul>
 <li>部分利用动归，只是起到存储，不用重复计算的功能，本题用来计算节点 <code>i</code> 左侧的最大值（包括i）和右侧的最大值 <code>maxLeft[i]和maxRight[i]</code></li>
-<li><code>ans += min(maxLeft[i], maxRight[i]) - height[i]</code></li>
+<li><code>ans += min(maxLeft[i], maxRight[i]) - height[i]</code> 遍历所有的i</li>
 </ul></li>
 <li>双指针：
 <ul>
@@ -1027,7 +1348,7 @@ y = LN(z^{0}_{L}) \ \ \ (4)
 <li>初始化：<code>i==j</code> 时，<code>dp[i][i]=true;</code> <code>j-i=2</code>时，<code>dp[i][j] = (s[i]==s[j])</code></li>
 </ul></li>
 <li><p>代码</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>()&lt;<span class="number">2</span>) <span class="keyword">return</span> s;</span><br><span class="line">        </span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">dp</span>(s.<span class="built_in">size</span>(), vector&lt;<span class="keyword">bool</span>&gt;(s.<span class="built_in">size</span>(), <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">int</span> MaxLen = <span class="number">1</span>; <span class="comment">// 初值为1</span></span><br><span class="line">        <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 边界条件 </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> L=<span class="number">2</span>; L&lt;=s.<span class="built_in">size</span>(); ++L)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i+L<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j &gt;= s.<span class="built_in">size</span>()) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(s[i] != s[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i][j] = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(L == <span class="number">2</span>) dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">else</span> dp[i][j] = dp[i+<span class="number">1</span>][j<span class="number">-1</span>]; <span class="comment">// 动态转移方程</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 只有dp[i][j]==true时，才可能更新MaxLen和begin</span></span><br><span class="line">                <span class="keyword">if</span>(dp[i][j] &amp;&amp; MaxLen &lt; j-i+<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    begin = i;</span><br><span class="line">                    MaxLen = j-i+<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// cout&lt;&lt; begin&lt;&lt;&quot;#&quot;&lt;&lt;MaxLen;</span></span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(begin, MaxLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>()&lt;<span class="number">2</span>) <span class="keyword">return</span> s;</span><br><span class="line">        </span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">dp</span>(s.<span class="built_in">size</span>(), vector&lt;<span class="keyword">bool</span>&gt;(s.<span class="built_in">size</span>(), <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">int</span> MaxLen = <span class="number">1</span>; <span class="comment">// 初值为1</span></span><br><span class="line">        <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 边界条件 </span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> L=<span class="number">2</span>; L&lt;=s.<span class="built_in">size</span>(); ++L)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;s.<span class="built_in">size</span>(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i+L<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">if</span>(j &gt;= s.<span class="built_in">size</span>()) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(s[i] != s[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i][j] = <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(L == <span class="number">2</span>) dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">else</span> dp[i][j] = dp[i+<span class="number">1</span>][j<span class="number">-1</span>]; <span class="comment">// 动态转移方程</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 只有dp[i][j]==true时，才可能更新MaxLen和begin</span></span><br><span class="line">                <span class="keyword">if</span>(dp[i][j] &amp;&amp; MaxLen &lt; j-i+<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    begin = i;</span><br><span class="line">                    MaxLen = j-i+<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// cout&lt;&lt; begin&lt;&lt;&quot;#&quot;&lt;&lt;MaxLen;</span></span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(begin, MaxLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 220629 B站实习面试第一轮</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">longestPalindrome</span><span class="params">(string s)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> maxlen = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> s;</span><br><span class="line">        vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">dp</span>(n, vector&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> len = j-i+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(len &lt;=<span class="number">2</span>) </span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i][j] = (s[i]==s[j]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(len&gt;<span class="number">2</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i][j] = (s[i] == s[j] &amp;&amp; dp[i+<span class="number">1</span>][j<span class="number">-1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(dp[i][j] &amp;&amp; len &gt; maxlen)</span><br><span class="line">                &#123;</span><br><span class="line">                    maxlen = len;</span><br><span class="line">                    l = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        string res = s.<span class="built_in">substr</span>(l, maxlen);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="正则表达式匹配">2. 正则表达式匹配</h3>
 <ul>
@@ -1280,8 +1601,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>数据预处理</tag>
         <tag>挖坑</tag>
+        <tag>数据预处理</tag>
       </tags>
   </entry>
   <entry>
@@ -1673,8 +1994,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>计算机视觉</category>
       </categories>
       <tags>
-        <tag>挖坑</tag>
         <tag>常识题</tag>
+        <tag>挖坑</tag>
       </tags>
   </entry>
   <entry>
@@ -2331,8 +2652,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>学业</category>
       </categories>
       <tags>
-        <tag>重要决策</tag>
         <tag>思考</tag>
+        <tag>重要决策</tag>
       </tags>
   </entry>
   <entry>
@@ -3416,8 +3737,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>算法</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>C++</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -3553,9 +3874,9 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>足球</category>
       </categories>
       <tags>
-        <tag>思考</tag>
         <tag>足球</tag>
         <tag>访谈</tag>
+        <tag>思考</tag>
       </tags>
   </entry>
   <entry>
@@ -3584,8 +3905,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>工具学习</category>
       </categories>
       <tags>
-        <tag>环境配置</tag>
         <tag>hexo</tag>
+        <tag>环境配置</tag>
         <tag>next</tag>
       </tags>
   </entry>
