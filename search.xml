@@ -285,12 +285,10 @@ date: 2022-8-10 21:14:00
       </tags>
   </entry>
   <entry>
-    <title>Lecture 1 课程信息+NLP简介</title>
-    <url>/archives/41b4512d.html</url>
+    <title>Lecture * 主讲内容</title>
+    <url>/archives/5cd8abdf.html</url>
     <content><![CDATA[<blockquote>
-<p>2.22 于华为三层自习区上课</p>
-<p>3.1 于华为三层自习区看下半节课回放</p>
-<p>3.22</p>
+<p>记得修改标题和tag</p>
 </blockquote>
 <span id="more"></span>
 <h1 id="section"></h1>
@@ -305,10 +303,12 @@ date: 2022-8-10 21:14:00
       </tags>
   </entry>
   <entry>
-    <title>Lecture * 主讲内容</title>
-    <url>/archives/5cd8abdf.html</url>
+    <title>Lecture 1 课程信息+NLP简介</title>
+    <url>/archives/41b4512d.html</url>
     <content><![CDATA[<blockquote>
-<p>记得修改标题和tag</p>
+<p>2.22 于华为三层自习区上课</p>
+<p>3.1 于华为三层自习区看下半节课回放</p>
+<p>3.22</p>
 </blockquote>
 <span id="more"></span>
 <h1 id="section"></h1>
@@ -1510,13 +1510,9 @@ y = LN(z^{0}_{L}) \ \ \ (4)
 <li><span class="math inline">\(2*2\)</span>的cell为一个block，计算对block中<span class="math inline">\(2*2*9\)</span>个数字进行归一化，每个block得到一个大小为<span class="math inline">\(36\)</span>的特征向量</li>
 <li>对于<span class="math inline">\(64*128\)</span>大小的输入图像，用stride为1的block逐一计算每个block的特征向量，共得到<span class="math inline">\((8-1)*(16-1)\)</span>个<span class="math inline">\(36\)</span>维的特征向量，将其拉成一个concat成一个<span class="math inline">\(7*15*36=3780\)</span>维的特征向量，即为HOG特征</li>
 </ol>
-<blockquote>
-<p>参考文献：</p>
-<ol type="1">
-<li>https://zhuanlan.zhihu.com/p/40960756</li>
-<li>https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2<sub>all</sub>sobaiduweb~default-1-7929348&amp;spm=3001.4430</li>
-</ol>
-</blockquote>
+<div class="note primary">
+            <p>参考文献：</p><ol type="1"><li>https://zhuanlan.zhihu.com/p/40960756</li><li>https://blog.csdn.net/zouxy09/article/details/7929348?utm_term=hog%E7%89%B9%E5%BE%81%E5%9B%BE&amp;utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2<sub>all</sub>sobaiduweb~default-1-7929348&amp;spm=3001.4430</li></ol>
+          </div>
 ]]></content>
       <categories>
         <category>计算机</category>
@@ -1601,8 +1597,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>挖坑</tag>
         <tag>数据预处理</tag>
+        <tag>挖坑</tag>
       </tags>
   </entry>
   <entry>
@@ -1994,8 +1990,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>计算机视觉</category>
       </categories>
       <tags>
-        <tag>常识题</tag>
         <tag>挖坑</tag>
+        <tag>常识题</tag>
       </tags>
   </entry>
   <entry>
@@ -2652,8 +2648,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>学业</category>
       </categories>
       <tags>
-        <tag>思考</tag>
         <tag>重要决策</tag>
+        <tag>思考</tag>
       </tags>
   </entry>
   <entry>
@@ -3874,9 +3870,9 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>足球</category>
       </categories>
       <tags>
+        <tag>思考</tag>
         <tag>足球</tag>
         <tag>访谈</tag>
-        <tag>思考</tag>
       </tags>
   </entry>
   <entry>
@@ -3905,8 +3901,8 @@ y = LN(z^{0}_{L}) \ \ \ (4)
         <category>工具学习</category>
       </categories>
       <tags>
-        <tag>hexo</tag>
         <tag>环境配置</tag>
+        <tag>hexo</tag>
         <tag>next</tag>
       </tags>
   </entry>
