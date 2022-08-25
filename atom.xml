@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2022-08-24T07:11:04.884Z</updated>
+  <updated>2022-08-24T16:41:54.506Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -17,33 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://weiren1998.github.io/archives/0.html"/>
-    <id>https://weiren1998.github.io/archives/0.html</id>
-    <published>2022-08-10T13:17:08.422Z</published>
-    <updated>2022-08-24T07:11:04.884Z</updated>
+    <title>仗剑篇：进阶数据结构（树+图）</title>
+    <link href="https://weiren1998.github.io/archives/4c55038.html"/>
+    <id>https://weiren1998.github.io/archives/4c55038.html</id>
+    <published>2022-08-10T21:14:00.000Z</published>
+    <updated>2022-08-24T16:41:54.506Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;pre&gt;&lt;code&gt;title: 仗剑篇：进阶数据结构（树+图）
-categories:
-  - 计算机
-  - 算法
-tags:
-  - 基本数据结构
-  - 二叉树
-  - 图
-  - 算法tricks
-date: 2022-8-10</summary>
-        
-      
+    <summary type="html">&lt;div class=&quot;note primary&quot;&gt;
+            &lt;p&gt;开启仗剑篇！加油！ 原论文为Java版本，我这里选择用C++实现，同时记录自己的一些思考&lt;/p&gt;
+          &lt;/div&gt;
+&lt;p&gt;</summary>
     
     
     
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="基本数据结构" scheme="https://weiren1998.github.io/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="二叉树" scheme="https://weiren1998.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    
+    <category term="图" scheme="https://weiren1998.github.io/tags/%E5%9B%BE/"/>
+    
+    <category term="算法tricks" scheme="https://weiren1998.github.io/tags/%E7%AE%97%E6%B3%95tricks/"/>
     
   </entry>
   
@@ -70,31 +69,6 @@ date: 2022-8-10</summary>
     <category term="基本数据结构" scheme="https://weiren1998.github.io/tags/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     <category term="算法tricks" scheme="https://weiren1998.github.io/tags/%E7%AE%97%E6%B3%95tricks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Lecture * 主讲内容</title>
-    <link href="https://weiren1998.github.io/archives/5cd8abdf.html"/>
-    <id>https://weiren1998.github.io/archives/5cd8abdf.html</id>
-    <published>2022-03-22T23:30:00.000Z</published>
-    <updated>2022-08-24T07:11:04.894Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;记得修改标题和tag&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://weiren1998.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="COMP5046 Natural Language Processing" scheme="https://weiren1998.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/COMP5046-Natural-Language-Processing/"/>
-    
-    
-    <category term="NLP" scheme="https://weiren1998.github.io/tags/NLP/"/>
-    
-    <category term="笔记" scheme="https://weiren1998.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -126,27 +100,27 @@ date: 2022-8-10</summary>
   </entry>
   
   <entry>
-    <title>OCR实验</title>
-    <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
-    <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
-    <published>2022-03-18T14:00:00.000Z</published>
-    <updated>2022-03-18T06:03:36.185Z</updated>
+    <title>Lecture * 主讲内容</title>
+    <link href="https://weiren1998.github.io/archives/5cd8abdf.html"/>
+    <id>https://weiren1998.github.io/archives/5cd8abdf.html</id>
+    <published>2022-03-22T23:30:00.000Z</published>
+    <updated>2022-08-24T07:11:04.894Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
+&lt;p&gt;记得修改标题和tag&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
     
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="课程笔记" scheme="https://weiren1998.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    <category term="COMP5046 Natural Language Processing" scheme="https://weiren1998.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/COMP5046-Natural-Language-Processing/"/>
     
     
-    <category term="OCR" scheme="https://weiren1998.github.io/tags/OCR/"/>
+    <category term="NLP" scheme="https://weiren1998.github.io/tags/NLP/"/>
     
-    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    <category term="笔记" scheme="https://weiren1998.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -172,9 +146,59 @@ date: 2022-8-10</summary>
     <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
     
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
     <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
     
+  </entry>
+  
+  <entry>
+    <title>OCR实验</title>
+    <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
+    <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.185Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+    <category term="OCR" scheme="https://weiren1998.github.io/tags/OCR/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ViT：视觉Transformer开创者（论文+代码详解）</title>
+    <link href="https://weiren1998.github.io/archives/97820049.html"/>
+    <id>https://weiren1998.github.io/archives/97820049.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-08-24T17:06:02.772Z</updated>
+    
+    
+    <summary type="html">&lt;div class=&quot;note primary&quot;&gt;
+            &lt;p&gt;An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale&lt;/p&gt;&lt;p&gt;Alexey Dosovitskiy (Google, Brain Team)&lt;/p&gt;&lt;p&gt;论文地址: &lt;a href=&quot;https://arxiv.org/abs/2010.11929v2&quot;&gt;ViT, arxiv&lt;/a&gt;&lt;/p&gt;&lt;p&gt;代码地址: &lt;a href=&quot;https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py&quot;&gt;timm-vision_transformer.py&lt;/a&gt;&lt;/p&gt;
+          &lt;/div&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
     <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+    <category term="ViT" scheme="https://weiren1998.github.io/tags/ViT/"/>
     
   </entry>
   
@@ -198,34 +222,6 @@ date: 2022-8-10</summary>
     
     
     <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ViT：视觉Transformer开创者（论文+代码详解）</title>
-    <link href="https://weiren1998.github.io/archives/97820049.html"/>
-    <id>https://weiren1998.github.io/archives/97820049.html</id>
-    <published>2022-03-18T14:00:00.000Z</published>
-    <updated>2022-08-24T11:07:44.560Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale&lt;/p&gt;
-&lt;p&gt;Alexey Dosovitskiy (Google, Brain Team)&lt;/p&gt;
-&lt;p&gt;论文地址：https://arxiv.org/abs/2010.11929v2&lt;/p&gt;
-&lt;p&gt;代码地址(timm-vision_transformer.py)：https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
-    
-    <category term="ViT" scheme="https://weiren1998.github.io/tags/ViT/"/>
     
   </entry>
   
