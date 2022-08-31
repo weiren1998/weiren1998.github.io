@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2022-08-30T16:43:18.132Z</updated>
+  <updated>2022-08-31T02:46:45.717Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://weiren1998.github.io/archives/de00e3bc.html"/>
     <id>https://weiren1998.github.io/archives/de00e3bc.html</id>
     <published>2022-08-25T21:18:00.000Z</published>
-    <updated>2022-08-30T16:43:18.132Z</updated>
+    <updated>2022-08-31T02:46:45.717Z</updated>
     
     
     <summary type="html">&lt;div class=&quot;note primary&quot;&gt;
@@ -162,6 +162,29 @@
   </entry>
   
   <entry>
+    <title>Transformer综述</title>
+    <link href="https://weiren1998.github.io/archives/9f9b7c0a.html"/>
+    <id>https://weiren1998.github.io/archives/9f9b7c0a.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.194Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近一段时间都在研究ViT相关的工作，需要多读论文多多总结&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>OCR实验</title>
     <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
     <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
@@ -187,29 +210,6 @@
   </entry>
   
   <entry>
-    <title>Transformer综述</title>
-    <link href="https://weiren1998.github.io/archives/9f9b7c0a.html"/>
-    <id>https://weiren1998.github.io/archives/9f9b7c0a.html</id>
-    <published>2022-03-18T14:00:00.000Z</published>
-    <updated>2022-03-18T06:03:36.194Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近一段时间都在研究ViT相关的工作，需要多读论文多多总结&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Transformer实验</title>
     <link href="https://weiren1998.github.io/archives/697052e2.html"/>
     <id>https://weiren1998.github.io/archives/697052e2.html</id>
@@ -231,9 +231,9 @@
     <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
     
-    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
-    
     <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
     
   </entry>
   

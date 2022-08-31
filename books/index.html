@@ -20,21 +20,30 @@
     var CONFIG = {"hostname":"weiren1998.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉   最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Transformer实验">
-<meta property="og:url" content="https://weiren1998.github.io/archives/697052e2.html">
+  <meta name="description" content="我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧         .hexo-douban-tabs {     margin-bottom: 15px;     margin-top: 15px; }  .hexo-douban-tab {     padding: 5px; }  .hexo-douban-active {">
+<meta property="og:type" content="website">
+<meta property="og:title" content="书籍是人类进步的阶梯">
+<meta property="og:url" content="https://weiren1998.github.io/books/index.html">
 <meta property="og:site_name" content="J球星的博客">
-<meta property="og:description" content="在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉   最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。">
+<meta property="og:description" content="我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧         .hexo-douban-tabs {     margin-bottom: 15px;     margin-top: 15px; }  .hexo-douban-tab {     padding: 5px; }  .hexo-douban-active {">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-18T14:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-18T06:03:36.196Z">
+<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s4250062.jpg">
+<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s1050021.jpg">
+<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s29254737.jpg">
+<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s3228699.jpg">
+<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s2659208.jpg">
+<meta property="og:image" content="https://img3.doubanio.com/view/subject/s/public/s2347590.jpg">
+<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s1369343.jpg">
+<meta property="og:image" content="https://img2.doubanio.com/view/subject/s/public/s1103152.jpg">
+<meta property="og:image" content="https://img1.doubanio.com/view/subject/s/public/s1078958.jpg">
+<meta property="og:image" content="https://img9.doubanio.com/view/subject/s/public/s28357056.jpg">
+<meta property="og:image" content="https://img9.doubanio.com/view/subject/s/public/s29952174.jpg">
 <meta property="article:author" content="J球星">
-<meta property="article:tag" content="Transformer">
-<meta property="article:tag" content="实验">
+<meta property="article:tag" content="思考 &amp; 行动">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2.doubanio.com/view/subject/s/public/s4250062.jpg">
 
-<link rel="canonical" href="https://weiren1998.github.io/archives/697052e2.html">
+<link rel="canonical" href="https://weiren1998.github.io/books/">
 
 
 <script id="page-configurations">
@@ -42,11 +51,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true
+    isPost : false
   };
 </script>
 
-  <title>Transformer实验 | J球星的博客</title>
+  <title>书籍是人类进步的阶梯 | J球星的博客
+  </title>
   
 
 
@@ -200,237 +210,509 @@
             
 
   <div class="posts-expand">
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://weiren1998.github.io/archives/697052e2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.jsdelivr.net/gh/weiren1998/Blog_Sources@main/imgs/头像.jpg">
-      <meta itemprop="name" content="J球星">
-      <meta itemprop="description" content="努力是矢量，有大小也有方向">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="J球星的博客">
-    </span>
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Transformer实验
-        </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+<h1 class="post-title" itemprop="name headline">书籍是人类进步的阶梯
+</h1>
 
-              <time title="创建时间：2022-03-18 14:00:00 / 修改时间：06:03:36" itemprop="dateCreated datePublished" datetime="2022-03-18T14:00:00Z">2022-03-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">计算机</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" itemprop="url" rel="index"><span itemprop="name">计算机视觉</span></a>
-                </span>
-            </span>
+<div class="post-meta">
+  
 
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span><br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>496</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <blockquote>
+    <p>我可能没有那么喜欢读书，但我也深知自己的无知，希望可以借助blog多读一些书吧</p>
+</blockquote>
+
+<style>
+    
+.hexo-douban-tabs {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.hexo-douban-tab {
+    padding: 5px;
+}
+
+.hexo-douban-active {
+    background: #657b83;
+    color: #fff;
+}
+
+.hexo-douban-item {
+    padding-bottom: 10px;
+    position: relative;
+    clear: both;
+    min-height: 170px;
+    padding: 10px 0;
+    border-bottom: 1px #ddd solid;
+}
+
+@media screen and (max-width: 600px) {
+    .hexo-douban-item {
+        width: 100%;
+    }
+}
+
+.hexo-douban-picture {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100px;
+}
+
+.hexo-douban-info {
+    padding-left: 120px;
+}
+
+.hexo-douban-meta {
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+.hexo-douban-comments {
+    font-size: 12px;
+}
+
+.hexo-douban-pagination {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.hexo-douban-button {
+    padding: 5px;
+}
+
+.hexo-douban-button:hover {
+    background: #657b83;
+    color: #fff;
+}
+
+.hexo-douban-hide {
+    display: none;
+}
+
+.hexo-douban-show {
+    display: block;
+}
+
+
+</style>
+
+<div class="hexo-douban-tabs">
+    <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;"
+       rel="external">
+        在读
+        (2)</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;"
+       rel="external">
+        想读
+        (8)</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;"
+       rel="external">
+        已读
+        (1)</a>
+</div>
+<div>
+    <div id="hexo-douban-item1">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s4250062.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1083428/" rel="external nofollow noreferrer"> 傲慢与偏见</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 奥斯丁 / 张玲、张扬 / 人民文学出版社 / 1993-7 / 13.00元
 
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        <div class="hexo-douban-meta">2022-08-24
+      在读 / </div>
+        <div class="hexo-douban-comments">
+      刚读了一小部分，写的是英国乡下一家人中五个女儿的爱情故事
       
-        <blockquote>
-<p>在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉</p>
-</blockquote>
-<blockquote>
-<p>最近在做本科的毕业设计，题目是足球视频中的行为关键帧检测算法设计。在实验过程中，发现有很多细小的想法，但有时一晃而过，可能是一些小的尝试，但很少会做对比试验，因此将这些想法记录下来，方便之后再做改进。</p>
-</blockquote>
-<span id="more"></span>
-<h1 id="探究bn和ln对于vit的影响">探究BN和LN对于ViT的影响</h1>
-<h3 id="对比试验一">对比试验一：</h3>
-<blockquote>
-<p>modify3_10 vs modify3_11: 在baseline的基础上加入TMM结构（12 3, 27 3, 40 3, 80 3）</p>
-</blockquote>
-<ol type="1">
-<li>modify3_10：两个TMB都有跳连操作</li>
-<li>modify3_11：两个TMB都没有跳连操作</li>
-</ol>
-<hr />
-<h3 id="对比试验二">对比试验二：</h3>
-<blockquote>
-<p>目前全部加TAM的效果最好</p>
-</blockquote>
-<table>
-<thead>
-<tr class="header">
-<th>实验</th>
-<th>设置</th>
-<th>screen</th>
-<th>nvidia</th>
-<th>参数量（万）</th>
-<th>s/epoch</th>
-<th>ave-mAP on V</th>
-<th>ave-mAP on T</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>modify4_1</td>
-<td>全部卷积后面都加入TAM</td>
-<td>1</td>
-<td>0</td>
-<td>32</td>
-<td>43</td>
-<td>55.97</td>
-<td>54.74</td>
-</tr>
-<tr class="even">
-<td>modify4_2</td>
-<td>只在TMM中加入TAM</td>
-<td>2</td>
-<td>1</td>
-<td>27</td>
-<td>36</td>
-<td>57.92</td>
-<td>54.11</td>
-</tr>
-<tr class="odd">
-<td>modify4_3</td>
-<td>只在分类网络内加入TAM</td>
-<td>3</td>
-<td>2</td>
-<td>15</td>
-<td>32</td>
-<td>55.96</td>
-<td>53.52</td>
-</tr>
-<tr class="even">
-<td>modify4_4</td>
-<td>所有卷积后都不加TAM</td>
-<td>4</td>
-<td>3</td>
-<td>15</td>
-<td>32</td>
-<td>57.05</td>
-<td>54.98</td>
-</tr>
-</tbody>
-</table>
-
-    </div>
-
-    
-    
-    
-        <div class="reward-container">
-  <div>欲戴皇冠，必承其重，加油！</div>
-  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    <i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i>
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/reward/wechatpay.png" alt="J球星 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/reward/alipay.png" alt="J球星 支付宝">
-        <p>支付宝</p>
-      </div>
-
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>J球星
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://weiren1998.github.io/archives/697052e2.html" title="Transformer实验">https://weiren1998.github.io/archives/697052e2.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener external nofollow noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Transformer/" rel="tag"><i class="fa fa-tag"></i> Transformer</a>
-              <a href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag"><i class="fa fa-tag"></i> 实验</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/archives/97820049.html" rel="prev" title="ViT：视觉Transformer开创者（论文+代码详解）">
-      <i class="fa fa-chevron-left"></i> ViT：视觉Transformer开创者（论文+代码详解）
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/archives/36aea8fe.html" rel="next" title="OCR实验">
-      OCR实验 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
   
 
   </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s1050021.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1064275/" rel="external nofollow noreferrer"> 老人与海</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [美]海明威 / 吴劳 / 上海译文出版社 / 1999-10 / 8.20元
+
+        </div>
+        <div class="hexo-douban-meta">2021-12-21
+      在读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
+</div>
+    </div>
+    <div id="hexo-douban-item2">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s29254737.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26410016/" rel="external nofollow noreferrer"> 金翼</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  林耀华 / 庄孔韶、方静文 / 生活·读书·新知三联书店 / 2015-5-15 / 34.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2022-01-06
+      想读 / </div>
+        <div class="hexo-douban-comments">
+      曾曾推荐的一本将社会学融入小说中讲述的书
+      
+  
+
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s3228699.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3183775/" rel="external nofollow noreferrer"> 四世同堂</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  老舍 / 北京十月文艺出版社 / 2008-07 / 36.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s2659208.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1858513/" rel="external nofollow noreferrer"> 月亮和六便士</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 毛姆 / 傅惟慈 / 上海译文出版社 / 2006-8 / 15.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-20
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/s/public/s2347590.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2035179/" rel="external nofollow noreferrer"> 动物农场</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 乔治·奥威尔 / 荣如德 / 上海译文出版社 / 2007-3 / 10.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-20
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s1369343.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1060068/" rel="external nofollow noreferrer"> 撒哈拉的故事</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  三毛 / 哈尔滨出版社 / 2003-8 / 15.80元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-20
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img2.doubanio.com/view/subject/s/public/s1103152.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1084336/" rel="external nofollow noreferrer"> 小王子</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [法] 圣埃克苏佩里 / 马振聘 / 人民文学出版社 / 2003-8 / 22.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-20
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/s/public/s1078958.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1068920/" rel="external nofollow noreferrer"> 飘</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [美国] 玛格丽特·米切尔 / 李美华 / 译林出版社 / 2000-9 / 40.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-20
+      想读 / </div>
+        <div class="hexo-douban-comments">
+      美国南北战争时期的爱情故事，同时也是经典
+      
+  
+
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/s/public/s28357056.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/6518605/" rel="external nofollow noreferrer"> 三体全集</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘慈欣 / 重庆出版社 / 2012-1-1 / 168.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2021-12-15
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
+</div>
+
+    </div>
+    <div id="hexo-douban-item3">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/s/public/s29952174.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/30286914/" rel="external nofollow noreferrer"> 基督山伯爵</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [法]大仲马 / 周克希 / 译林出版社 / 2018-10 / 138
+
+      </div>
+        <div class="hexo-douban-meta">2022-08-24
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+      陆陆续续的读了半年的书，整体的故事和叙事节奏都觉得不错，在大仲马的笔下，把埃德蒙唐代斯（基督山伯爵）的一生勾勒的跌宕起伏。其中很多人物的描写非常的鲜活，比如爱财如命的唐格拉尔、背信弃义的蒙戴戈、虚伪的检察官唯尔福，以及法国巴黎上流社会的种种，这些人的一生也是给我的一些警醒，人要永远保持善良。
+读书真是一件不错的事情呢，应该多读书，体会不一样的人生，接受不一样的思想，有一些独立的思考和沉淀。
+      
+  
+
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;" rel="external nofollow noreferrer"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;" rel="external nofollow noreferrer">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;" rel="external nofollow noreferrer">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;" rel="external nofollow noreferrer">尾页</a>
+</div>
+    </div>
+
+</div>
+
+<script>
+    /**
+ * Created by myths on 18-2-8.
+ */
+
+Element.prototype.siblings = function () {
+    var siblingElement = [];
+    var sibs = this.parentNode.children;
+    for (var i = 0; i < sibs.length; i++) {
+        if (sibs[i] !== this) {
+            siblingElement.push(sibs[i]);
+        }
+    }
+    return siblingElement;
+};
+function tabClick() {
+    //修改标签样式
+    this.classList.add('hexo-douban-active');
+    var sibs = this.siblings();
+    for (var j = 0; j < sibs.length; j++) {
+        sibs[j].classList.remove('hexo-douban-active');
+    }
+    //显示对应板块
+    var itemId = this.id.replace('tab', 'item');
+    var target = document.getElementById(itemId);
+    target.classList.remove('hexo-douban-hide');
+    target.classList.add('hexo-douban-show');
+    sibs = document.getElementById(itemId).siblings();
+    for (var k = 0; k < sibs.length; k++) {
+        sibs[k].classList.remove('hexo-douban-show');
+        sibs[k].classList.add('hexo-douban-hide');
+    }
+}
+var tabs = document.getElementsByClassName("hexo-douban-tab");
+for (var i = 0; i < tabs.length; i++) {
+    tabs[i].onclick = tabClick;
+    tabs[i].onclick.apply(tabs[i]);
+}
+tabs[2].click();
+
+    var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
+var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
+var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
+var lastpages = document.getElementsByClassName("hexo-douban-lastpage");
+var pagenums = document.getElementsByClassName("hexo-douban-pagenum");
+
+function makePageNum(num, arr) {
+    return (num + 1) + ' / ' + (Math.ceil(arr.length / 10 === 0 ? 1 : Math.ceil(arr.length / 10)));
+}
+
+function firstBtn() {
+    var sibs = this.parentNode.siblings();
+    displayPage(sibs, 0);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(0, sibs);
+}
+
+function previousBtn() {
+    var sibs = this.parentNode.siblings();
+    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
+    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
+    currNum = parseInt(currNum, 10) - 1;
+    if (currNum > 0) {
+        currNum--;
+    }
+    displayPage(sibs, currNum);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
+}
+
+function nextBtn() {
+    var sibs = this.parentNode.siblings();
+    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
+    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
+    currNum = parseInt(currNum, 10) - 1;
+    if (currNum < Math.ceil(sibs.length / 10) - 1) {
+        currNum++;
+    }
+    displayPage(sibs, currNum);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
+}
+
+function lastBtn() {
+    var sibs = this.parentNode.siblings();
+    displayPage(sibs, Math.ceil(sibs.length / 10) - 1);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(Math.ceil(sibs.length / 10) - 1 === -1 ? 0 : Math.ceil(sibs.length / 10) - 1, sibs);
+}
+
+function displayPage(arr, num) {
+    for (var i = 0; i < arr.length; i++) {
+        if (Math.floor(i / 10) === num) {
+            arr[i].classList.remove('hexo-douban-hide');
+            var img = arr[i].getElementsByTagName('img')[0];
+            img.src = img.getAttribute('data-src');
+        } else {
+            arr[i].classList.add('hexo-douban-hide');
+        }
+    }
+}
+
+for (var i = 0; i < firstpages.length; i++) {
+
+    //add listener
+    firstpages[i].onclick = firstBtn;
+    previouspages[i].onclick = previousBtn;
+    nextpages[i].onclick = nextBtn;
+    lastpages[i].onclick = lastBtn;
+
+    //set page num
+    var size = pagenums[i].parentNode.siblings().length;
+    pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
+    firstpages[i].click();
+}
+
+</script>
+
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+  </div>
 
 
           </div>
           
-    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -477,7 +759,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6bn%E5%92%8Cln%E5%AF%B9%E4%BA%8Evit%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.</span> <span class="nav-text">探究BN和LN对于ViT的影响</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E8%AF%95%E9%AA%8C%E4%B8%80"><span class="nav-number">1.0.1.</span> <span class="nav-text">对比试验一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E8%AF%95%E9%AA%8C%E4%BA%8C"><span class="nav-number">1.0.2.</span> <span class="nav-text">对比试验二：</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -945,25 +1226,6 @@ if(canvas.getContext){
 
   
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-<script>
-NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID    : 'd0cbb9b4ac6f930d8fde',
-      clientSecret: 'ee24993cc20ba8e4457199d7052f2bae70817a82',
-      repo        : 'weiren1998.github.io',
-      owner       : 'weiren1998',
-      admin       : ['weiren1998'],
-      id          : '72c95ab126eb1340849163fa1be3c7a4',
-        language: 'zh-CN',
-      distractionFreeMode: true
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
-});
-</script>
 
 
   <script async src="/js/cursor/fireworks.js"></script>
