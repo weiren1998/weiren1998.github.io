@@ -6,7 +6,7 @@
   <link href="https://weiren1998.github.io/atom.xml" rel="self"/>
   
   <link href="https://weiren1998.github.io/"/>
-  <updated>2022-08-25T13:50:07.180Z</updated>
+  <updated>2022-08-30T16:43:18.132Z</updated>
   <id>https://weiren1998.github.io/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://weiren1998.github.io/archives/de00e3bc.html"/>
     <id>https://weiren1998.github.io/archives/de00e3bc.html</id>
     <published>2022-08-25T21:18:00.000Z</published>
-    <updated>2022-08-25T13:50:07.180Z</updated>
+    <updated>2022-08-30T16:43:18.132Z</updated>
     
     
     <summary type="html">&lt;div class=&quot;note primary&quot;&gt;
-            &lt;p&gt;微软笔试一共四轮，攒人品加总结一下前三轮的笔试内容，第四轮结束后会再做总结！&lt;/p&gt;&lt;p&gt;微软笔试共3道题，其中第一题是较为简单的，一般用贪心来做，第二题较难，第三题复杂但难度适中。&lt;/p&gt;
+            &lt;p&gt;微软笔试一共四轮（取最高成绩），攒人品加总结一下前三轮的笔试内容，第四轮结束后会再做总结！&lt;/p&gt;&lt;p&gt;微软笔试共3道题，其中第一题是较为简单的，一般用贪心来做，第二题较难，第三题复杂但难度适中。&lt;/p&gt;&lt;p&gt;属于开卷考试，因此可以查一些资料来辅助做题，但是题目基本上也很难找到原型，不如自己去思考后做答，要相信自己的实力&lt;/p&gt;
           &lt;/div&gt;</summary>
     
     
@@ -35,11 +35,21 @@
     <category term="算法" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%AE%97%E6%B3%95/"/>
     
     
+    <category term="DFS" scheme="https://weiren1998.github.io/tags/DFS/"/>
+    
+    <category term="位运算" scheme="https://weiren1998.github.io/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
     <category term="笔试" scheme="https://weiren1998.github.io/tags/%E7%AC%94%E8%AF%95/"/>
     
     <category term="贪心" scheme="https://weiren1998.github.io/tags/%E8%B4%AA%E5%BF%83/"/>
     
     <category term="双指针" scheme="https://weiren1998.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    <category term="拓扑排序" scheme="https://weiren1998.github.io/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
+    
+    <category term="最小公约数" scheme="https://weiren1998.github.io/tags/%E6%9C%80%E5%B0%8F%E5%85%AC%E7%BA%A6%E6%95%B0/"/>
+    
+    <category term="前缀和" scheme="https://weiren1998.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
     
   </entry>
   
@@ -152,6 +162,54 @@
   </entry>
   
   <entry>
+    <title>OCR实验</title>
+    <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
+    <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.185Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="OCR" scheme="https://weiren1998.github.io/tags/OCR/"/>
+    
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Transformer综述</title>
+    <link href="https://weiren1998.github.io/archives/9f9b7c0a.html"/>
+    <id>https://weiren1998.github.io/archives/9f9b7c0a.html</id>
+    <published>2022-03-18T14:00:00.000Z</published>
+    <updated>2022-03-18T06:03:36.194Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近一段时间都在研究ViT相关的工作，需要多读论文多多总结&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+    
+    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Transformer实验</title>
     <link href="https://weiren1998.github.io/archives/697052e2.html"/>
     <id>https://weiren1998.github.io/archives/697052e2.html</id>
@@ -173,34 +231,9 @@
     <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
     
+    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
+    
     <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
-    
-    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OCR实验</title>
-    <link href="https://weiren1998.github.io/archives/36aea8fe.html"/>
-    <id>https://weiren1998.github.io/archives/36aea8fe.html</id>
-    <published>2022-03-18T14:00:00.000Z</published>
-    <updated>2022-03-18T06:03:36.185Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在探索网络架构的过程中，需要做很多尝试和思考，同时也需要把实验数据和对于结果的思考等记录下来，从而一点点积累感觉&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="实验" scheme="https://weiren1998.github.io/tags/%E5%AE%9E%E9%AA%8C/"/>
-    
-    <category term="OCR" scheme="https://weiren1998.github.io/tags/OCR/"/>
     
   </entry>
   
@@ -226,29 +259,6 @@
     <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
     
     <category term="ViT" scheme="https://weiren1998.github.io/tags/ViT/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Transformer综述</title>
-    <link href="https://weiren1998.github.io/archives/9f9b7c0a.html"/>
-    <id>https://weiren1998.github.io/archives/9f9b7c0a.html</id>
-    <published>2022-03-18T14:00:00.000Z</published>
-    <updated>2022-03-18T06:03:36.194Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近一段时间都在研究ViT相关的工作，需要多读论文多多总结&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="计算机" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机视觉" scheme="https://weiren1998.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
-    
-    
-    <category term="Transformer" scheme="https://weiren1998.github.io/tags/Transformer/"/>
     
   </entry>
   
